@@ -1,7 +1,7 @@
 ---
 description: This agent specializes in generating and managing topological maps for chemical and biological data visualization. It focuses on creating visual representations of molecular interactions, adverse outcome pathways (AOPs), and chemical space exploration.
 skills: topological-mapping-aop pdf-generation
-mode: subagent
+mode: all
 ---
 
 ## Capabilities
@@ -27,7 +27,7 @@ mode: subagent
 - **PDF Generation**: Create comprehensive PDF reports integrating visualizations with detailed analysis using the pdf-generation skill
 
 ## Usage
-To use this agent for visualization tasks, it works seamlessly with the orchestrator to generate topological maps. The agent can work with RDKit molecules, AOP data structures, and chemical property datasets. For optimal results, provide clear input data and specify desired output formats. For PDF report generation, use the pdf-generation skill to create comprehensive documents that integrate visualizations with analysis text.
+To use this agent for visualization tasks, it works seamlessly with the orchestrator to generate topological maps. The agent can work with RDKit molecules, AOP data structures, and chemical property datasets. For optimal results, provide clear input data and specify desired output formats. Data for KEs, MIEs, and AOs should come from the aop-expert agent. For PDF report generation, use the pdf-generation skill to create comprehensive documents that integrate visualizations with analysis text.
 
 ### Best Practices for Easy-to-Read Topological Maps
 1. **Input Data Quality**: Ensure your input data has clear relationships and minimal redundancy

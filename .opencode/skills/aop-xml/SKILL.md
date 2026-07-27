@@ -3,7 +3,7 @@ name: aop-xml
 description: Provides detailed instructions for analyzing XML data from the OECD AOP database. Contains technical details about XML structure and query patterns, and implementation strategies. Use this skill when answering questions that require exact data extraction from the AOP database, such as "what is", "how many", "which record", "what status", "what ID", or "find the entry" queries.
 ---
 ## XML File Location
-The XML file can be found at [data/aop-knowledge-base.xml](data/aop-knowledge-base.xml)
+The XML file can be found at ./.opencode/skills/aop-xml/data/aop-knowledge-base.xml
 
 ## XML File Structure
 

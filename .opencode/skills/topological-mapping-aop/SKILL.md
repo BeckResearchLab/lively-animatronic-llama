@@ -14,26 +14,21 @@ This skill provides comprehensive tools and methods for creating topological map
 - **Critical Path Identification**: Identify critical pathways that significantly contribute to adverse outcomes
 - **Intervention Point Analysis**: Determine optimal intervention points to disrupt harmful pathways
 - **Network Metrics**: Calculate network metrics such as betweenness centrality, degree centrality, and other topological properties
-- **Temporal Analysis**: Analyze how AOP networks evolve over time using time series data
-- **Robustness Assessment**: Evaluate network resilience to perturbations and identify vulnerable components
-- **Interactive Visualization**: Generate interactive network visualizations for exploration and presentation
 
 ## **Every Map should include:**
-- Clear labeling of nodes and edges with relevant biological information (e.g., KE1, KE2, AO1)
+- **Clear labeling of nodes and edges with relevant biological information (e.g., KE1, KE2, AO1)**
+- **All maps should follow formatting in the reference implementation**
 - Color coding for different types of nodes (MIEs, KEs, AOs) and edges (activation, inhibition)
-- Node size proportional to centrality measures (degree, betweenness)
 - Edge thickness proportional to confidence scores or interaction strength
 - Labels for confidence and KE, MIE, AO, and Stressor.
 - NO overlapping text or nodes; use text wrapping and node clustering to reduce clutter
 - Use of force-directed or hierarchical layouts for better readability
-- Any supplementary interactions that affect the AOP network (e.g., genetic polymorphisms, drug-drug interactions, electrolyte imbalances) should be represented as modulating nodes that influence edge strength or probability
+
 
 ## Use Cases
 - Understanding complex biological pathways and their interactions
 - Identifying key nodes that play critical roles in disease progression
 - Visualizing AOP networks for research and presentation purposes
-- Finding optimal intervention strategies for therapeutic development
-- Analyzing robustness and sensitivity of biological networks
 - Studying temporal dynamics of pathway activation and progression
 - Creating interactive visualizations for educational and research purposes
 - Integrating with AOP construction workflows to validate pathway structure
@@ -46,12 +41,233 @@ This skill provides comprehensive tools and methods for creating topological map
 ### Core Components
 1. **Graph Representation**: AOP pathways are represented as directed graphs where:
     - Nodes represent biological entities (genes, proteins, metabolites, etc.)
-    - **Node Categories**: Nodes should be categorized by biological level (e.g., Molecular, Cellular, Organ, Organism) for visual grouping.
+    - **Node Categories**: Nodes should be categorized by AOP level (e.g., Stressor, MIE, KE, AO) for visual grouping.
     - Edges represent relationships or interactions between entities
-    - Edge weights represent confidence scores, interaction strengths, or potency (e.g., IC50).
-    - **Modulating Nodes**: The graph should support non-linear nodes that act as "Modifiers" (e.g., Genetic Polymorphisms, Drug-Drug Interactions, Electrolyte Imbalances) which influence the strength or probability of an edge.
+    - Edge weights represent confidence scores or interaction strengths
+    - **Modulating Nodes**: The graph should support non-linear nodes that act as "Modulators" (e.g., Genetic Polymorphisms, Drug-Drug Interactions, Electrolyte Imbalances) which influence the strength or probability of an edge.
     - Temporal information can be incorporated for dynamic analysis
     - **ALWAYS** label edges and nodes with relevant biological information for clarity and KE1, KE2, AO1, etc.
+    - **Layout Constraint**: All connections must go straight down vertically. Pathways only split horizontally when they diverge into multiple branches. **Uniform vertical spacing of 3 units between levels ensures all edges have consistent length.**
+
+### Reference Implementation
+The skill includes a reference implementation for creating general AOP maps. See the reference files in the `references/` directory for the complete implementation:
+
+- `general_aop_map.py`: Main implementation for creating general AOP maps
+- `combined_map_generation_utils.py`: Utility functions for standardized layouts and visualization
+    """
+    Create a general topological map for any molecule's AOP pathways.
+    
+    Parameters:
+    -----------
+    molecule_name : str
+        Name of the molecule for the title and filename.
+    pathways : dict
+        Dictionary containing pathway information with the following structure:
+        {
+            'nodes': {
+                'MIE1': ('Label for MIE 1', 'MIE'),
+                'KE1': ('Label for KE 1', 'KE'),
+                'KE2': ('Label for KE 2', 'KE'),
+                'AO1': ('Label for AO 1', 'AO'),
+                # Add more nodes as needed
+            },
+            'edges': [
+                ('MIE1', 'KE1', 'Induces'),
+                ('KE1', 'KE2', 'Triggers'),
+                ('KE2', 'AO1', 'Leads to'),
+                # Add more edges as needed
+            ],
+            'colors': {
+                'MIE': 'salmon',
+                'KE': 'skyblue',
+                'AO': 'darkred',
+                # Add more node types and colors as needed
+            }
+        }
+    """
+    
+    # Initialize Directed Graph
+    G = nx.DiGraph()
+    
+    # Add nodes with labels and types, ensuring top-down format
+    # First add nodes in order: Stressor → MIE → KE → AO
+    node_order = {}
+    for node_id, (label, node_type) in pathways['nodes'].items():
+        G.add_node(node_id, label=label, type=node_type)
+        # Assign order based on node type to ensure top-down layout
+        if node_type == 'Stressor':
+            node_order[node_id] = 0
+        elif node_type == 'MIE':
+            node_order[node_id] = 1
+        elif node_type == 'KE':
+            node_order[node_id] = 2
+        elif node_type == 'AO':
+            node_order[node_id] = 3
+        else:
+            node_order[node_id] = 4  # Default for other types
+    
+    # Add edges with labels
+    for u, v, label in pathways['edges']:
+        G.add_edge(u, v, label=label)
+    
+    # Calculate positions to prevent overlaps
+    pos = calculate_non_overlapping_positions(G)
+    
+    # Color mapping for nodes
+    node_colors = [pathways['colors'][G.nodes[node]['type']] for node in G.nodes]
+    
+    # Create figure with dynamic size based on number of nodes
+    num_nodes = len(G.nodes)
+    figsize = (max(8, num_nodes * 1.5), max(10, num_nodes * 2))
+    plt.figure(figsize=figsize)
+    
+    # Draw nodes with enhanced styling
+    node_sizes = [4000 + (i * 500) for i in range(len(G.nodes))]
+    nx.draw_networkx_nodes(G, pos, node_size=node_sizes, node_color=node_colors, 
+                          edgecolors='black', linewidths=1.5, alpha=0.9)
+    
+    # Draw labels with enhanced styling
+    labels = nx.get_node_attributes(G, 'label')
+    nx.draw_networkx_labels(G, pos, labels, font_size=10, font_weight='bold',
+                           bbox=dict(facecolor='white', edgecolor='none', alpha=0.7, pad=1))
+    
+    # Draw edges with enhanced styling
+    edge_colors = ['gray' for _ in G.edges]
+    nx.draw_networkx_edges(G, pos, width=2, alpha=0.6, edge_color=edge_colors, 
+                          arrowsize=20, connectionstyle='arc3,rad=0.1')
+    
+    # Draw edge labels with enhanced styling
+    edge_labels = nx.get_edge_attributes(G, 'label')
+    nx.draw_networkx_edge_labels(G, pos, edge_labels, font_size=9, 
+                                bbox=dict(facecolor='white', edgecolor='none', alpha=0.7, pad=0.5),
+                                label_style={'connectionstyle': 'arc3,rad=0.1'})
+    
+    # Add legend
+    legend_elements = [
+        plt.Line2D([0], [0], marker='o', color='w', label='MIE', 
+                  markerfacecolor=pathways['colors']['MIE'], markersize=12),
+        plt.Line2D([0], [0], marker='o', color='w', label='KE', 
+                  markerfacecolor=pathways['colors']['KE'], markersize=12),
+        plt.Line2D([0], [0], marker='o', color='w', label='AO', 
+                  markerfacecolor=pathways['colors']['AO'], markersize=12)
+    ]
+    plt.legend(handles=legend_elements, loc='upper right', bbox_to_anchor=(1.2, 1))
+    
+    # Add title and remove axes
+    plt.title(f"Topological Map: {molecule_name} Adverse Outcome Pathway", 
+             fontsize=14, pad=20, fontweight='bold')
+    plt.axis('off')
+    plt.tight_layout()
+    
+    # Save the figure
+    filename = f"{molecule_name.lower().replace(' ', '_')}_aop_map.png"
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
+    print(f"Map saved as {filename}")
+    
+    return G, pos
+
+def calculate_non_overlapping_positions(G):
+    """
+    Calculate positions for nodes to prevent overlaps.
+    Uses a hierarchical layout with manual adjustments for complex graphs.
+    """
+    # Separate nodes by type
+    stressor_nodes = [node for node, data in G.nodes(data=True) if data['type'] == 'Stressor']
+    mie_nodes = [node for node, data in G.nodes(data=True) if data['type'] == 'MIE']
+    ke_nodes = [node for node, data in G.nodes(data=True) if data['type'] == 'KE']
+    ao_nodes = [node for node, data in G.nodes(data=True) if data['type'] == 'AO']
+    
+    # Calculate positions based on node types
+    pos = {}
+    
+    # Position stressor nodes at the very top
+    if stressor_nodes:
+        for node in stressor_nodes:
+            pos[node] = (0, 0)
+    
+    # Position MIE nodes below stressor
+    if mie_nodes:
+        y_pos = -1
+        for node in mie_nodes:
+            pos[node] = (0, y_pos)
+            y_pos -= 1
+    
+    # Position KE nodes below MIE
+    if ke_nodes:
+        # Distribute KE nodes horizontally based on their connections
+        ke_levels = {}
+        for node in ke_nodes:
+            # Count incoming edges to determine level
+            incoming = len(list(G.predecessors(node)))
+            if incoming not in ke_levels:
+                ke_levels[incoming] = []
+            ke_levels[incoming].append(node)
+        
+        y_pos = max(pos.values(), key=lambda x: x[1])[1] - 1.5
+        x_offset = 0
+        
+        for level in sorted(ke_levels.keys()):
+            nodes_at_level = ke_levels[level]
+            for i, node in enumerate(nodes_at_level):
+                pos[node] = (x_offset, y_pos)
+                x_offset += 2
+            y_pos -= 1.5
+            x_offset = 0
+    
+    # Position AO nodes at the bottom
+    if ao_nodes:
+        y_pos = min(pos.values(), key=lambda x: x[1])[1] - 1.5
+        x_offset = 0
+        for node in ao_nodes:
+            pos[node] = (x_offset, y_pos)
+            x_offset += 2
+    
+    # Adjust positions to prevent overlaps
+    pos = adjust_positions_to_prevent_overlaps(G, pos)
+    
+    return pos
+
+def adjust_positions_to_prevent_overlaps(G, pos):
+    """
+    Adjust node positions to prevent overlaps.
+    """
+    adjusted_pos = pos.copy()
+    
+    # Get all node positions
+    nodes = list(G.nodes())
+    num_nodes = len(nodes)
+    
+    # Calculate minimum distance between nodes
+    min_distance = 1.5
+    
+    # Iteratively adjust positions
+    for i in range(num_nodes):
+        for j in range(i + 1, num_nodes):
+            node1 = nodes[i]
+            node2 = nodes[j]
+            
+            # Calculate distance between nodes
+            x1, y1 = adjusted_pos[node1]
+            x2, y2 = adjusted_pos[node2]
+            distance = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+            
+            # If nodes are too close, adjust their positions
+            if distance < min_distance:
+                # Calculate direction vector
+                dx = x2 - x1
+                dy = y2 - y1
+                
+                # Calculate adjustment
+                adjustment = (min_distance - distance) / 2
+                
+                # Adjust positions
+                adjusted_pos[node1] = (x1 - dx * adjustment / distance, 
+                                     y1 - dy * adjustment / distance)
+                adjusted_pos[node2] = (x2 + dx * adjustment / distance, 
+                                     y2 + dy * adjustment / distance)
+    
+See the reference files in the `references/` directory for the complete implementation.
+```
 
 2. **Algorithmic Analysis**:
    - Path finding algorithms to identify critical pathways
@@ -70,6 +286,7 @@ This skill provides comprehensive tools and methods for creating topological map
 
 ### Key Functions
 - `create_topological_map(pathway_data)`: Create a topological map from pathway data
+- `create_general_aop_map(molecule_name, pathways)`: Create a general topological map using the reference implementation
 - `analyze_critical_paths(map)`: Identify critical pathways in the network
 - `find_intervention_points(map)`: Find optimal intervention points
 - `calculate_network_metrics(map)`: Calculate various network metrics
@@ -85,10 +302,8 @@ This skill provides comprehensive tools and methods for creating topological map
 - `create_comprehensive_visualization(map, critical_paths, intervention_points)`: Create integrated visualization
 - `identify_subnetworks(map)`: Identify modular components in complex networks
 - `assess_robustness_with_sampling(map, sample_size)`: Efficient robustness assessment for large networks
-
-### Enhanced Visualization API
-
-The visualization system provides comprehensive customization options to create readable, accessible, and publication-quality topological maps:
+- `calculate_non_overlapping_positions(G)`: Calculate positions for nodes to prevent overlaps
+- `adjust_positions_to_prevent_overlaps(G, pos)`: Adjust node positions to prevent overlaps
 
 #### Visualization Configuration Options
 
@@ -96,13 +311,11 @@ The visualization system provides comprehensive customization options to create 
 # Comprehensive visualization configuration
 vis_config = {
     # Layout options
-    'layout': 'hierarchical',  # 'force_directed', 'circular', 'cluster'
+    'layout': 'hierarchical',
     'layout_kwargs': {'scale': 2.0, 'center': (0, 0)},
     
     # Node styling
     'node_size_scale': 1000,  # Base size for nodes
-    'node_size_min': 50,     # Minimum node size
-    'node_size_max': 2000,   # Maximum node size
     'node_color_by': 'type', # 'type', 'degree', 'betweenness', 'closeness'
     'node_color_scheme': 'colorblind_friendly',  # 'viridis', 'plasma', 'cividis'
     'node_border_width': 1.5,
@@ -147,15 +360,6 @@ vis_config = {
         'intermediate': 'lightblue'
     },
     
-    # Interactive options
-    'interactive': False,      # Use Plotly for interactive
-    'hover_info': ['name', 'type', 'degree', 'betweenness'],
-    
-    # Animation options (for temporal)
-    'animation_speed': 'medium',  # 'slow', 'medium', 'fast'
-    'frames': 10,
-    'fps': 2,
-    'output_format': 'gif'      # 'gif', 'mp4', 'html'
 }
 
 # Generate enhanced visualization
@@ -176,20 +380,14 @@ fig = topological_map.visualize_enhanced(config=vis_config)
    - Best for: Cyclic pathways and feedback loops
    - Parameters: `scale`, `rotation`
 
-4. **Cluster-Based**: Groups related nodes together
-   - Best for: Large networks with modular structure
-   - Parameters: `cluster_algorithm`, `cluster_threshold`
-
 #### Color Schemes
 
 - **Colorblind-Friendly**: 'viridis', 'plasma', 'cividis', 'inferno'
 - **High Contrast**: 'Set1', 'Set2', 'Set3'
 - **Sequential**: 'Blues', 'Reds', 'Greens', 'Purples', 'Oranges'
-- **Diverging**: 'RdYlGn', 'RdBu', 'Spectral'
 
 #### Output Formats
-
-- **Static Images**: PNG, PDF
+- **Static Images**: PNG
 
 #### Accessibility Features
 
@@ -202,20 +400,29 @@ fig = topological_map.visualize_enhanced(config=vis_config)
 
 - **Edge Bundling**: Reduces clutter in dense networks
 - **Node Clustering**: Groups related nodes automatically
-- **Temporal Heatmaps**: Shows activation patterns over time
 - **Subnetwork Extraction**: Focus on specific pathways
 - **Comparative Visualization**: Side-by-side network comparison
 - **Interactive Tooltips**: Detailed information on hover
+
+### Layout Constraints
+
+**IMPORTANT**: All topological maps MUST follow these layout constraints:
+
+1. **Top-Down Format**: AO nodes must be at the bottom, stressor nodes at the top
+2. **Straight Vertical Lines**: All connections must go straight down vertically
+3. **Horizontal Splitting Only**: Pathways only split horizontally when they diverge into multiple branches
+4. **No Overlapping Lines**: Lines should not cross or overlap unless absolutely necessary for complex branching
+5. **Consistent Spacing**: Equal vertical spacing between levels (3 units between each level)
+6. **Uniform Edge Lengths**: All edges connecting nodes must be of uniform length to maintain visual consistency
 
 ### Visualization Improvements
 
 The topological mapping skill provides enhanced visualization capabilities to make complex AOP networks more readable and better formatted:
 
 #### 1. **Enhanced Layout Algorithms**
+- **Top-Down Hierarchical Layout**: Organizes nodes by temporal progression (Stressor → MIE → KE → AO) with straight vertical connections. Pathways only split horizontally when they diverge into multiple branches. **Uniform vertical spacing of 3 units between each level ensures consistent edge lengths.**
 - **Force-Directed Layout**: Optimized for balanced node distribution, reducing overlaps
-- **Hierarchical Layout**: Organizes nodes by temporal progression (MIE → KE → AO)
 - **Circular Layout**: Useful for cyclic pathways and feedback loops
-- **Cluster-Based Layout**: Groups related nodes together using community detection
 
 #### 2. **Improved Node and Edge Styling**
 - **Color Coding**: 
@@ -223,59 +430,18 @@ The topological mapping skill provides enhanced visualization capabilities to ma
   - Key Events (KEs): Blue
   - Adverse Outcomes (AOs): Dark Red
   - Intermediate nodes: Light Blue
-- **Size Scaling**: Node size proportional to centrality measures (degree, betweenness)
 - **Edge Thickness**: Weighted by confidence scores or interaction strength
 - **Edge Colors**: Green for activation, Red for inhibition, Gray for unknown
 
 #### 3. **Interactive Features**
-- **Node Highlighting**: Click nodes to highlight their connections
 - **Edge Filtering**: Toggle edges by weight/confidence threshold
 - **Dynamic Zooming**: Smooth zoom and pan capabilities
-- **Tooltip Information**: Hover over nodes/edges to see detailed information
 
 #### 4. **Accessibility Enhancements**
 - **Colorblind-Friendly Palettes**: Multiple color schemes for accessibility
 - **Clear Labels**: Readable font sizes (10pt for nodes, 8pt for edge labels)
 - **High Contrast**: Ensures visibility against backgrounds
 - **Legend System**: Comprehensive legend explaining all visual elements
-
-#### 5. **Advanced Visualization Options**
-- **Temporal Heatmaps**: Show activation patterns over time
-- **Subnetwork Extraction**: Focus on specific pathways while maintaining context
-- **Comparative Visualization**: Side-by-side network comparison
-
-
-#### 7. **Customization API**
-```python
-# Custom visualization configuration
-vis_config = {
-    'layout': 'hierarchical',
-    'node_size_scale': 1000,
-    'edge_alpha': 0.4,
-    'figsize': (16, 12),
-    'dpi': 300,
-    'color_scheme': 'colorblind_friendly',
-    'show_labels': True,
-    'label_fontsize': 10,
-    'node_border_width': 1.5,
-    'edge_linewidth_scale': 2,
-    'with_legend': True,
-    'legend_fontsize': 9,
-    'interactive': True,
-    'animation_speed': 'medium'
-}
-
-# Generate enhanced visualization
-fig = topological_map.visualize_enhanced(config=vis_config)
-```
-
-#### 8. **Best Practices for Readable Visualizations**
-- **For Small Networks**: Use force-directed layout with high detail
-- **For Large Networks**: Use hierarchical or cluster-based layouts
-- **For Temporal Analysis**: Use animation or heatmap overlays
-- **For Presentations**: Use high-contrast color schemes and large fonts
-
-These improvements ensure that topological maps are not only informative but also visually appealing and accessible to a wide range of users, from researchers to stakeholders without technical backgrounds.
 
 ## Example Usage
 
@@ -356,21 +522,8 @@ visualization.save("integrated_aop_analysis.png")
 - scikit-learn for machine learning algorithms (temporal analysis)
 - RDKit for chemical structure handling (optional)
 
-## Configuration
-The skill can be configured through a configuration file that specifies:
-- Default visualization parameters
-- Thresholds for identifying critical pathways
-- Weighting schemes for edge importance
-- Output formats for visualization
-- Temporal analysis parameters
-- Robustness assessment settings
-- Interactive visualization options
-
 ## Performance Considerations
 - For large networks, consider using efficient graph algorithms
 - Implement caching for frequently accessed network metrics
 - Use incremental updates for dynamic networks
 - Consider parallel processing for computationally intensive operations
-- Optimize temporal analysis by using appropriate time windows
-- Use sampling for robustness analysis on very large networks
-- Consider memory-efficient data structures for complex visualizations

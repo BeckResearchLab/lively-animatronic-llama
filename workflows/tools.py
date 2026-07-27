@@ -17,8 +17,13 @@ def search_information(query: str) -> str:
     Returns:
         str: Search results or information
     """
-    # In a real implementation, this would use a search API
-    return f"Search results for: '{query}'"
+    try:
+        # Try to use the search skill if available
+        from opencode.skills.search.search_tool import search_information as search_skill
+        return search_skill(query)
+    except ImportError:
+        # Fallback to basic implementation
+        return f"Search results for: '{query}'"
 
 
 def calculate_expression(expression: str) -> str:
@@ -32,10 +37,16 @@ def calculate_expression(expression: str) -> str:
         str: Result of the calculation
     """
     try:
-        result = eval(expression)
-        return f"Result: {result}"
-    except Exception as e:
-        return f"Error in calculation: {str(e)}"
+        # Try to use the calculation skill if available
+        from opencode.skills.calculator.calculation_tool import calculate as calc_skill
+        return calc_skill(expression)
+    except ImportError:
+        # Fallback to basic implementation
+        try:
+            result = eval(expression)
+            return f"Result: {result}"
+        except Exception as e:
+            return f"Error in calculation: {str(e)}"
 
 
 def save_to_file(content: str, filename: str) -> str:
@@ -50,11 +61,17 @@ def save_to_file(content: str, filename: str) -> str:
         str: Confirmation message
     """
     try:
-        with open(filename, 'w') as f:
-            f.write(content)
-        return f"Content saved to {filename}"
-    except Exception as e:
-        return f"Error saving file: {str(e)}"
+        # Try to use the file operations skill if available
+        from opencode.skills.file_operations.file_tool import save_file as file_skill
+        return file_skill(content, filename)
+    except ImportError:
+        # Fallback to basic implementation
+        try:
+            with open(filename, 'w') as f:
+                f.write(content)
+            return f"Content saved to {filename}"
+        except Exception as e:
+            return f"Error saving to file: {str(e)}"
 
 
 # List of all available tools for easy import
