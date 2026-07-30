@@ -1,6 +1,9 @@
 ---
 name: admet-ai-scoring
 description: Predict ADMET (Absorption, Distribution, Metabolism, Excretion, Toxicity) properties of chemical compounds from SMILES strings using ADMET-AI, a local open-source Python package with pretrained graph neural network models. Use this skill whenever the user wants to evaluate pharmacokinetic/toxicological properties of a molecule or list of molecules for all questions regarding ADMET, drug-likeness, or toxicity. Also use for batch screening of compound libraries (CSV of SMILES) for lead optimization or virtual screening filtering. This skill focuses solely on ADMET prediction and endpoint identification. For Molecular Initiating Event (MIE) identification, use the mie-identification skill.
+metadata:
+    references:
+    - references/endpoints.md
 ---
 
 Predicts pharmacokinetic and toxicity properties of small molecules from their SMILES representation, using [ADMET-AI](https://github.com/swansonk14/admet_ai) — an open-source, locally-run graph neural network (Chemprop-RDKit) trained on 41 ADMET endpoints from the Therapeutics Data Commons. No API key, no network access, and no rate limits required; everything runs on-device after a one-time install.

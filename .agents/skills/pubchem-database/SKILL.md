@@ -28,7 +28,7 @@ multi-agent use of APIs.
 Example: Resolve a chemical name to its Compound ID (CID)
 
 ```bash
-uv run scripts/pubchem_api.py resolve --name "aspirin" --output result.json
+uv run scripts/pubchem_api.py resolve --name "aspirin" --output aspirin_result.json
 ```
 
 ## Core Rules
@@ -49,22 +49,22 @@ uv run scripts/pubchem_api.py resolve --name "aspirin" --output result.json
 names or InChI strings into PubChem CIDs, SMILES, and InChIKeys.
 
 ```bash
-uv run scripts/pubchem_api.py resolve --name "ibuprofen" --output result.json
+uv run scripts/pubchem_api.py resolve --name "ibuprofen" --output ibuprofen_result.json
 # OR
-uv run scripts/pubchem_api.py resolve --inchi "InChI=1S/C3/c1-3-2/i1+1" --output result.json
+uv run scripts/pubchem_api.py resolve --inchi "InChI=1S/C3/c1-3-2/i1+1" --output inchi_result.json
 ```
 
 **2. Physical & Chemical Property Retrieval** Fetch computed properties (e.g.,
 MolecularWeight, XLogP, TPSA).
 
 ```bash
-uv run scripts/pubchem_api.py properties --cid 2244 --output result.json
+uv run scripts/pubchem_api.py properties --cid 2244 --output aspirin_properties.json
 ```
 
 **3. Synonyms and Trade Names** Find alternative names and brand names.
 
 ```bash
-uv run scripts/pubchem_api.py synonyms --cid 2244 --output result.json
+uv run scripts/pubchem_api.py synonyms --cid 2244 --output aspirin_synonyms.json
 ```
 
 ## Advanced Context
@@ -73,28 +73,28 @@ uv run scripts/pubchem_api.py synonyms --cid 2244 --output result.json
 hazard statements and handling precautions (uses PUG-View).
 
 ```bash
-uv run scripts/pubchem_api.py safety --cid 2244 --output result.json
+uv run scripts/pubchem_api.py safety --cid 2244 --output aspirin_safety.json
 ```
 
 **5. Drug and Medication Information** Fetch FDA pharmacology data, mechanism of
 action, and therapeutic uses (uses PUG-View).
 
 ```bash
-uv run scripts/pubchem_api.py pharmacology --cid 2244 --output result.json
+uv run scripts/pubchem_api.py pharmacology --cid 2244 --output aspirin_pharmacology.json
 ```
 
 **6. Custom Heading (PUG-View)** Retrieve any specific heading from the PUG-View
 system (e.g., 'Geometry', 'Crystal Structures').
 
 ```bash
-uv run scripts/pubchem_api.py view --cid 3939 --heading "Crystal Structures" --output result.json
+uv run scripts/pubchem_api.py view --cid 3939 --heading "Crystal Structures" --output crystal_structures.json
 ```
 
 **7. Image Generation** Retrieve 2D chemical structure images. The script
 returns a Markdown-formatted image link.
 
 ```bash
-uv run scripts/pubchem_api.py image --cid 2244 --output result.json
+uv run scripts/pubchem_api.py image --cid 2244 --output aspirin_image.json
 ```
 
 ## Complex Search & Biology
@@ -103,20 +103,20 @@ uv run scripts/pubchem_api.py image --cid 2244 --output result.json
 similar to a SMILES string or containing a specific substructure.
 
 ```bash
-uv run scripts/pubchem_api.py similarity --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --output result.json
+uv run scripts/pubchem_api.py similarity --smiles "CC(=O)OC1=CC=CC=C1C(=O)O" --output similarity_results.json
 ```
 
 and
 
 ```bash
-uv run scripts/pubchem_api.py substructure --smiles "C1=CC=CC=C1" --output result.json
+uv run scripts/pubchem_api.py substructure --smiles "C1=CC=CC=C1" --output substructure_results.json
 ```
 
 **9. BioAssay & Target Interactions** Identify genes or proteins a chemical
 interacts with.
 
 ```bash
-uv run scripts/pubchem_api.py assays --cid 2244 --output result.json
+uv run scripts/pubchem_api.py assays --cid 2244 --output aspirin_assays.json
 ```
 
 ## Advanced Usage & Workflows
@@ -125,7 +125,7 @@ uv run scripts/pubchem_api.py assays --cid 2244 --output result.json
 (e.g., PatentID, PubMedID).
 
 ```bash
-uv run scripts/pubchem_api.py xrefs --cid 2244 --type "PatentID" --output result.json
+uv run scripts/pubchem_api.py xrefs --cid 2244 --type "PatentID" --output aspirin_xrefs.json
 ```
 
 **11. Property Range Search** Find CIDs within a specific property range.
@@ -134,13 +134,13 @@ Supported features include: `molecular_weight`, `heavy_atom_count`, `xlogp`,
 `exact_mass`, `monoisotopic_mass`, and `complexity`.
 
 ```bash
-uv run scripts/pubchem_api.py range --feature molecular_weight --min 400.0 --max 400.05 --output result.json
+uv run scripts/pubchem_api.py range --feature molecular_weight --min 400.0 --max 400.05 --output weight_range_results.json
 ```
 
 **12. Custom PUG-REST Query** Execute a raw path against the PUG-REST API.
 
 ```bash
-uv run scripts/pubchem_api.py query --path "compound/cid/2244/xrefs/PatentID/JSON" --output result.json
+uv run scripts/pubchem_api.py query --path "compound/cid/2244/xrefs/PatentID/JSON" --output custom_query_results.json
 ```
 
 ## Fallback Search Strategies

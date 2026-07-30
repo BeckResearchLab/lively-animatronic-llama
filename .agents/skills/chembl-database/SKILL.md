@@ -48,7 +48,7 @@ uv run scripts/chembl_api.py <subcommand> --output <file> [options]
 ### 1. Check API Status
 
 ```bash
-uv run scripts/chembl_api.py status --output /tmp/status.json
+uv run scripts/chembl_api.py status --output status.json
 ```
 
 --------------------------------------------------------------------------------
@@ -56,24 +56,24 @@ uv run scripts/chembl_api.py status --output /tmp/status.json
 ### 2. Molecule Queries
 
 **Fetch by ChEMBL ID:** `bash uv run scripts/chembl_api.py molecule --id
-CHEMBL25 --output /tmp/mol.json`
+CHEMBL25 --output mol.json`
 
 **Search by name:** `bash uv run scripts/chembl_api.py molecule --search
-"aspirin" --limit 3 --output /tmp/mol_search.json`
+"aspirin" --limit 3 --output mol_search.json`
 
 **Batch fetch:** `bash uv run scripts/chembl_api.py molecule --ids
-"CHEMBL25;CHEMBL1642" --limit 10 --output /tmp/mol_batch.json`
+"CHEMBL25;CHEMBL1642" --limit 10 --output mol_batch.json`
 
 **Filter by properties:** `bash uv run scripts/chembl_api.py molecule --filter
 molecule_properties__mw_freebase__lte=500 --limit 5 --output
-/tmp/mol_filter.json`
+mol_filter.json`
 
 **Filter by range:** `bash uv run scripts/chembl_api.py molecule --filter
 molecule_properties__mw_freebase__range=150,200 --limit 5 --output
-/tmp/mol_range.json`
+mol_range.json`
 
 **Download SDF structure file:** `bash uv run scripts/chembl_api.py molecule
---id CHEMBL25 --dl_format sdf --output /tmp/aspirin.sdf`
+--id CHEMBL25 --dl_format sdf --output aspirin.sdf`
 
 > **Tip**: SDF/MOL files can be passed directly to tools like PyMOL or RDKit for
 > 3D visualization and analysis.
@@ -83,20 +83,20 @@ molecule_properties__mw_freebase__range=150,200 --limit 5 --output
 ### 3. Target Queries
 
 **Search for targets:** `bash uv run scripts/chembl_api.py target --search
-"EGFR" --limit 5 --output /tmp/targets.json`
+"EGFR" --limit 5 --output targets.json`
 
 **Fetch by ID:** `bash uv run scripts/chembl_api.py target --id CHEMBL203
---output /tmp/egfr.json`
+--output egfr.json`
 
 --------------------------------------------------------------------------------
 
 ### 4. Bioactivity Data
 
 **Fetch activity by ID:** `bash uv run scripts/chembl_api.py activity --id 31863
---output /tmp/act.json`
+--output act.json`
 
 **Search activities:** `bash uv run scripts/chembl_api.py activity --search
-"EGFR" --limit 5 --output /tmp/act_search.json`
+"EGFR" --limit 5 --output act_search.json`
 
 **Filter activities for a target:** `bash uv run scripts/chembl_api.py activity
 --filter target_chembl_id=CHEMBL203 standard_type=IC50 --limit 10 --output
