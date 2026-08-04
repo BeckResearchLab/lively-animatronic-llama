@@ -1,0 +1,10 @@
+.env
+.venv
+node_modules
+
+data/*
+pdfs/*
+artifacts/*
+wiki/*
+
+opencode.json
