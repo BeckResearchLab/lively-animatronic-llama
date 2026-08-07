@@ -1,0 +1,120 @@
+{
+  "chemical": "ibuprofen",
+  "pathway": [
+    {
+      "event": "COX-1 Inhibition",
+      "type": "MIE",
+      "score": 0.95,
+      "provenance": [
+        "Ibuprofen acts as a competitive inhibitor of COX-1"
+      ]
+    },
+    {
+      "event": "Decreased Prostaglandin E2 synthesis",
+      "type": "KE",
+      "score": 0.95,
+      "provenance": [
+        "Direct downstream effect of COX-1 inhibition"
+      ]
+    },
+    {
+      "event": "Decreased gastric mucus production",
+      "type": "KE",
+      "score": 0.85,
+      "provenance": [
+        "Inhibition of COX-1 and subsequent decrease in Prostaglandin E2 synthesis in the gastric mucosa leads to decreased mucus and bicarbonate secretion"
+      ]
+    },
+    {
+      "event": "Increased gastric permeability",
+      "type": "KE",
+      "score": 0.9,
+      "provenance": [
+        "In the AOP-Wiki/OECD framework for NSAID-induced gastropathy, decreased gastric mucus production and reduced PGE2 levels lead to increased gastric permeability and breakdown of the mucosal barrier."
+      ]
+    },
+    {
+      "event": "Gastric Ulceration",
+      "type": "AO",
+      "score": 0.9,
+      "provenance": [
+        "In the AOP-Wiki/OECD framework for NSAID-induced gastropathy, increased gastric permeability and the breakdown of the mucosal barrier directly lead to the formation of gastric ulcers as the terminal adverse outcome."
+      ]
+    }
+  ],
+  "final_ao": true,
+  "confidence_score": 0.834,
+  "confidence_breakdown": {
+    "mie_foundation": 0.8075,
+    "pathway_confidence": 0.903171,
+    "similarity_consistency": 0.5,
+    "pathway_length_penalty": 1.0,
+    "weights": {
+      "mie_foundation": 0.35,
+      "pathway_confidence": 0.45,
+      "similarity_consistency": 0.15,
+      "pathway_length": 0.05
+    }
+  },
+  "uncertainty": 0.1,
+  "decision_risk": "low",
+  "next_action": "terminate",
+  "decision_reason": "The candidate 'Gastric Ulceration' is a direct and scientifically validated consequence of increased gastric permeability in the context of NSAID toxicity. The pathway is now complete from MIE to AO.",
+  "iteration_count": 4,
+  "termination_reason": "The Adverse Outcome (AO) 'Gastric Ulceration' has been reached, completing the AOP pathway for ibuprofen-induced gastrointestinal toxicity.",
+  "MIEs": [
+    {
+      "name": "COX-1 Inhibition",
+      "confidence": 0.95,
+      "reasoning": "Ibuprofen acts as a competitive inhibitor of COX-1, leading to decreased prostaglandin E2 synthesis in the gastric mucosa, which is the primary MIE for its gastrointestinal liability."
+    }
+  ],
+  "similarity_scores": [
+    {
+      "name": "Gastric Ulceration",
+      "similarity": 0.95,
+      "reasoning": "Ibuprofen is a Nonsteroidal anti-inflammatory drug (NSAID) with a known liability for gastrointestinal toxicity. Its mechanism of action involves the non-selective inhibition of COX-1 (PTGS1), which is the established Molecular Initiating Event (MIE) leading to decreased prostaglandin E2 synthesis and increased gastric permeability, directly resulting in the adverse outcome of Gastric Ulceration."
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Gastric Ulceration",
+      "type": "AO",
+      "confidence": 0.9,
+      "similarity": 0.95,
+      "reasoning": "In the AOP-Wiki/OECD framework for NSAID-induced gastropathy, increased gastric permeability and the breakdown of the mucosal barrier directly lead to the formation of gastric ulcers as the terminal adverse outcome.",
+      "similarity_reasoning": "Ibuprofen is a Nonsteroidal anti-inflammatory drug (NSAID) with a known liability for gastrointestinal toxicity. Its mechanism of action involves the non-selective inhibition of COX-1 (PTGS1), which is the established Molecular Initiating Event (MIE) leading to decreased prostaglandin E2 synthesis and increased gastric permeability, directly resulting in the adverse outcome of Gastric Ulceration."
+    }
+  ],
+  "provenance": [
+    {
+      "name": "Decreased Prostaglandin E2 synthesis",
+      "type": "KE",
+      "confidence": 0.95,
+      "similarity": 1.0,
+      "reasoning": "Direct downstream effect of COX-1 inhibition in the gastric mucosa, documented in AOP-Wiki for NSAID-induced gastrointestinal toxicity pathways."
+    },
+    {
+      "name": "Decreased gastric mucus production",
+      "type": "KE",
+      "confidence": 0.85,
+      "similarity": 0.9,
+      "reasoning": "In the AOP-Wiki, inhibition of COX-1 and the subsequent decrease in Prostaglandin E2 synthesis in the gastric mucosa leads to decreased mucus and bicarbonate secretion, which is a documented key event in NSAID-induced gastrointestinal toxicity."
+    },
+    {
+      "name": "Increased gastric permeability",
+      "type": "KE",
+      "confidence": 0.9,
+      "similarity": 0.95,
+      "reasoning": "In the AOP-Wiki/OECD framework for NSAID-induced gastropathy, decreased gastric mucus production and reduced PGE2 levels lead to increased gastric permeability and breakdown of the mucosal barrier."
+    },
+    {
+      "name": "Gastric Ulceration",
+      "type": "AO",
+      "confidence": 0.9,
+      "similarity": 0.95,
+      "reasoning": "In the AOP-Wiki/OECD framework for NSAID-induced gastropathy, increased gastric permeability and the breakdown of the mucosal barrier directly lead to the formation of gastric ulcers as the terminal adverse outcome."
+    }
+  ],
+  "visualization_path": "outputs/ibuprofen_aop_visualization.txt"
+}

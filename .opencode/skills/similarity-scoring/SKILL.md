@@ -28,9 +28,23 @@ Weights are assigned based on pharmacological priority to ensure the similarity 
 The agent should follow these steps to perform similarity scoring:
 
 ### 1. Data Acquisition
-- **Target Compound**: Get the ADMET profile for the target SMILES using the `admet-ai-scoring` skill. Save to `target.json`.
+- **Target Compound**: Get the ADMET profile for the target SMILES using the `admet-ai-scoring` and `admet-secondary-scoring` skills. Save to `target.json`.
 - **Candidate Compounds**: Get ADMET profiles for the candidate SMILES. Save to `candidates.json` (as a list of objects: `{"id": "...", "profile": {...}}`).
-- **Secondary Scores (Optional)**: If the user is interested in "broad profiles" (e.g., systemic exposure), use the `admet-secondary-scoring` skill to get bucketed scores and include those in the similarity vector.
+  - **Example `candidates.json`**:
+    ```json
+    [
+      {
+        "id": "Compound_A",
+        "profile": {"hERG": 0.75, "AMES": 0.12, "logP": 2.4, "Caco2": 0.55}
+      },
+      {
+        "id": "Compound_B",
+        "profile": {"hERG": 0.2, "AMES": 0.9, "logP": 1.1, "Caco2": 0.2}
+      }
+    ]
+    ```
+    - **NOTE** - this example is not fully finished, the profile should contain 41 ADMET properties
+- **Secondary Scores**: Use the `admet-secondary-scoring` skill to get bucketed scores and include those in the similarity vector. ALWAYS include secondary scoring as well
 
 ### 2. Computation
 Use the provided CLI tool for similarity calculation. You can specify a weight profile (e.g., `safety` or `pharmacokinetics`) to prioritize different property types.
@@ -54,6 +68,10 @@ from .opencode.skills.similarity_scoring.scripts.compare_admet import compare_ad
 - **Ranking**: List compounds in descending order of similarity.
 - **Divergence Analysis**: Use the `top_divergence` output from the script to identify which specific ADMET endpoints contribute most to the difference.
 - **Contextualization**: Link the most similar toxicity profiles to potential MIEs using the `mie-identification` agent/skill.
+  - **Suggested Workflow**:
+    1. Identify the top-ranked candidate from similarity results.
+    2. Pass the `target.json` and the candidate's profile to the `mie-identification` skill.
+    3. Ask: "The candidate [ID] shows a similarity score of [Score] to the target. Based on their shared high-weight endpoints (e.g., [Endpoints]), what common Molecular Initiating Events (MIEs) might explain this similar toxicity profile?"
 
 ## Usage Examples
 - "Find compounds in this list that have a similar toxicity profile to Aspirin."
