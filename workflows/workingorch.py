@@ -831,10 +831,10 @@ def similarity_scoring_node(state: AOPState) -> AOPState:
     if not similarities:
         similarities = [
         {
-    "name": c.get("name", ""),
-    "similarity": max(0.25, min(0.85, float(c.get("confidence", 0.0)) * 0.85 + 0.1)),
-    "reasoning": "Similarity fallback based on candidate confidence and analog-based reasoning when direct similarity scoring was sparse."
-    }
+        "name": c.get("name", ""),
+        "similarity": max(0.25, min(0.85, float(c.get("confidence", 0.0)) * 0.85 + 0.1)),
+        "reasoning": "Similarity fallback based on candidate confidence and analog-based reasoning when direct similarity scoring was sparse."
+        }
     for c in candidates
     if c.get("name")
     ]
@@ -845,12 +845,12 @@ def similarity_scoring_node(state: AOPState) -> AOPState:
 
     updated_candidates: List[Dict[str, Any]] = []
     for candidate in candidates:
-    item = dict(candidate)
-    score_entry = score_map.get(item.get("name"))
-    if score_entry:
-    item["similarity"] = score_entry.get("similarity")
-    item["similarity_reasoning"] = score_entry.get("reasoning", "")
-    updated_candidates.append(item)
+        item = dict(candidate)
+        score_entry = score_map.get(item.get("name"))
+        if score_entry:
+            item["similarity"] = score_entry.get("similarity")
+            item["similarity_reasoning"] = score_entry.get("reasoning", "")
+        updated_candidates.append(item)
 
     updated_candidates.sort(key=lambda c: float(c.get("similarity") or c.get("confidence") or 0.0), reverse=True)
     state["candidates"] = updated_candidates
@@ -916,33 +916,33 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     payload = as_dict(result)
 
     if not isinstance(payload, dict):
-    raise RuntimeError(f"aop_constructor returned unexpected output: {payload}")
+        raise RuntimeError(f"aop_constructor returned unexpected output: {payload}")
 
     decision = PathwayDecision.model_validate(payload)
 
     shallow = not pathway_depth_ok(state.get("AOP_pathways", []))
     if shallow and decision.updated_pathway and isinstance(decision.updated_pathway[-1], dict):
-    if str(decision.updated_pathway[-1].get("type", "")).upper() == "AO":
-    decision.is_ao_reached = False
-    decision.next_action = "expand"
-    decision.decision_reason = "Forced expansion: AO not allowed before sufficient intermediate KE coverage"
-    decision.termination_reason = "AO removed because pathway is too short"
-    decision.updated_pathway = [
-    step for step in decision.updated_pathway
-    if not (isinstance(step, dict) and str(step.get("type", "")).upper() == "AO")
-    ] or state.get("AOP_pathways", [])
+        if str(decision.updated_pathway[-1].get("type", "")).upper() == "AO":
+            decision.is_ao_reached = False
+            decision.next_action = "expand"
+            decision.decision_reason = "Forced expansion: AO not allowed before sufficient intermediate KE coverage"
+            decision.termination_reason = "AO removed because pathway is too short"
+        decision.updated_pathway = [
+            step for step in decision.updated_pathway
+            if not (isinstance(step, dict) and str(step.get("type", "")).upper() == "AO")
+        ] or state.get("AOP_pathways", [])
 
     if decision.is_ao_reached and not pathway_depth_ok(decision.updated_pathway):
-    decision.is_ao_reached = False
-    decision.next_action = "expand"
-    decision.termination_reason = "AO proposed before minimum pathway depth was reached"
-    if decision.updated_pathway:
-    decision.updated_pathway = [
-    step for step in decision.updated_pathway
-    if isinstance(step, dict) and str(step.get("type", "")).upper() != "AO"
-    ]
-    if not decision.updated_pathway:
-    decision.updated_pathway = state.get("AOP_pathways", [])
+        decision.is_ao_reached = False
+        decision.next_action = "expand"
+        decision.termination_reason = "AO proposed before minimum pathway depth was reached"
+        if decision.updated_pathway:
+            decision.updated_pathway = [
+                step for step in decision.updated_pathway
+                if isinstance(step, dict) and str(step.get("type", "")).upper() != "AO"
+            ]
+        if not decision.updated_pathway:
+            decision.updated_pathway = state.get("AOP_pathways", [])
 
 
     # Validate chemical specificity of the selected pathway
@@ -975,24 +975,24 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     )
 
     try:
-    specific_result = run_agent("aop_expert", chemical_specific_prompt, Candidate_List)
-    specific_payload = as_dict(specific_result)
-    if isinstance(specific_payload, dict) and "candidates" in specific_payload:
-    # Convert candidates to pathway format
-    specific_pathway = []
-    for candidate in specific_payload["candidates"]:
-    specific_pathway.append({
-    "event": candidate.get("name", ""),
-    "type": candidate.get("type", "KE"),
-    "score": float(candidate.get("confidence", 0.5)),
-    "provenance": [f"Chemical-specific for {chemical}"],
-    "chemical_specificity": 0.9
-    })
+        specific_result = run_agent("aop_expert", chemical_specific_prompt, Candidate_List)
+        specific_payload = as_dict(specific_result)
+        if isinstance(specific_payload, dict) and "candidates" in specific_payload:
+            # Convert candidates to pathway format
+            specific_pathway = []
+        for candidate in specific_payload["candidates"]:
+            specific_pathway.append({
+                "event": candidate.get("name", ""),
+                "type": candidate.get("type", "KE"),
+                "score": float(candidate.get("confidence", 0.5)),
+                "provenance": [f"Chemical-specific for {chemical}"],
+                "chemical_specificity": 0.9
+            })
 
-    # Merge with existing pathway, prioritizing chemical-specific steps
-    decision.updated_pathway = specific_pathway
+        # Merge with existing pathway, prioritizing chemical-specific steps
+        decision.updated_pathway = specific_pathway
     except Exception as e:
-    log(f"Chemical-specific pathway generation failed: {e}")
+        log(f"Chemical-specific pathway generation failed: {e}")
 
     state["AOP_pathways"] = decision.updated_pathway
 
@@ -1005,9 +1005,9 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     # Detect and prevent identical pathways
     if _detect_identical_pathways(state, state.get("chemical", "")):
     # Force complete pathway regeneration with chemical-specific focus
-    chemical = state.get("chemical", "")
-    target_profile = state.get("data", {}).get("target_profile", {})
-    properties = target_profile.get("properties", {}) if isinstance(target_profile, dict) else {}
+        chemical = state.get("chemical", "")
+        target_profile = state.get("data", {}).get("target_profile", {})
+        properties = target_profile.get("properties", {}) if isinstance(target_profile, dict) else {}
 
     regeneration_prompt = (
     f"Chemical: {chemical}\n"
@@ -1026,24 +1026,24 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     )
 
     try:
-    regen_result = run_agent("aop_expert", regeneration_prompt, Candidate_List)
-    regen_payload = as_dict(regen_result)
-    if isinstance(regen_payload, dict) and "candidates" in regen_payload:
-    # Convert candidates to pathway format
-    regenerated_pathway = []
-    for candidate in regen_payload["candidates"]:
-    regenerated_pathway.append({
-    "event": candidate.get("name", ""),
-    "type": candidate.get("type", "KE"),
-    "score": float(candidate.get("confidence", 0.5)),
-    "provenance": [f"Regenerated to prevent identical pathway for {chemical}"],
-    "chemical_specificity": 0.95
-    })
+        regen_result = run_agent("aop_expert", regeneration_prompt, Candidate_List)
+        regen_payload = as_dict(regen_result)
+        if isinstance(regen_payload, dict) and "candidates" in regen_payload:
+            # Convert candidates to pathway format
+            regenerated_pathway = []
+        for candidate in regen_payload["candidates"]:
+            regenerated_pathway.append({
+            "event": candidate.get("name", ""),
+            "type": candidate.get("type", "KE"),
+            "score": float(candidate.get("confidence", 0.5)),
+            "provenance": [f"Regenerated to prevent identical pathway for {chemical}"],
+            "chemical_specificity": 0.95
+        })
 
-    decision.updated_pathway = regenerated_pathway
-    state["AOP_pathways"] = regenerated_pathway
+        decision.updated_pathway = regenerated_pathway
+        state["AOP_pathways"] = regenerated_pathway
     except Exception as e:
-    log(f"Pathway regeneration failed: {e}")
+        log(f"Pathway regeneration failed: {e}")
 
     state["confidence_score"] = decision.confidence_score
     state["confidence_breakdown"] = as_dict(decision.confidence_breakdown)
@@ -1060,24 +1060,24 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     )
     state["is_ao_reached"] = bool(decision.is_ao_reached or last_is_ao)
     if state["is_ao_reached"] and not pathway_depth_ok(state.get("AOP_pathways", [])):
-    state["is_ao_reached"] = False
-    state["next_action"] = "expand"
-    state["termination_reason"] = "AO rejected because minimum pathway depth was not met"
+        state["is_ao_reached"] = False
+        state["next_action"] = "expand"
+        state["termination_reason"] = "AO rejected because minimum pathway depth was not met"
     else:
-    state["termination_reason"] = decision.termination_reason or (
-    "Adverse Outcome reached" if state["is_ao_reached"] else ""
+        state["termination_reason"] = decision.termination_reason or (
+        "Adverse Outcome reached" if state["is_ao_reached"] else ""
     )
 
     if decision.selected_candidate:
-    state.setdefault("provenance", []).append(
-    {
-    "name": decision.selected_candidate.name,
-    "type": decision.selected_candidate.type,
-    "confidence": decision.selected_candidate.confidence,
-    "similarity": decision.selected_candidate.similarity,
-    "reasoning": decision.selected_candidate.reasoning,
+        state.setdefault("provenance", []).append(
+            {
+        "name": decision.selected_candidate.name,
+        "type": decision.selected_candidate.type,
+        "confidence": decision.selected_candidate.confidence,
+        "similarity": decision.selected_candidate.similarity,
+        "reasoning": decision.selected_candidate.reasoning,
     }
-    )
+        )
 
     state["current_node_type"] = (
     decision.updated_pathway[-1].get("type", state.get("current_node_type", "MIE"))
@@ -1091,25 +1091,25 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
 
 
 def route_after_expand(state: AOPState):
-pathway = state.get("AOP_pathways", [])
+    pathway = state.get("AOP_pathways", [])
 
-if state.get("is_ao_reached"):
-if pathway_depth_ok(pathway):
-return "visualize"
-state["is_ao_reached"] = False
-state["next_action"] = "expand"
-state["termination_reason"] = "AO rejected because pathway is too short"
-return "candidate_gen"
+    if state.get("is_ao_reached"):
+        if pathway_depth_ok(pathway):
+            return "visualize"
+        state["is_ao_reached"] = False
+        state["next_action"] = "expand"
+        state["termination_reason"] = "AO rejected because pathway is too short"
+        return "candidate_gen"
 
-if state.get("next_action") == "terminate":
-state["termination_reason"] = state.get("termination_reason") or "Terminated by constructor"
-return "visualize"
+    if state.get("next_action") == "terminate":
+        state["termination_reason"] = state.get("termination_reason") or "Terminated by constructor"
+        return "visualize"
 
-if state.get("iteration_count", 0) >= MAX_ITERATIONS:
-state["termination_reason"] = state.get("termination_reason") or "Maximum iterations reached"
-return "visualize"
+    if state.get("iteration_count", 0) >= MAX_ITERATIONS:
+        state["termination_reason"] = state.get("termination_reason") or "Maximum iterations reached"
+        return "visualize"
 
-return "candidate_gen"
+    return "candidate_gen"
 
 
 OUTPUT_DIR = Path(os.environ.get("AOP_OUTPUT_DIR", "outputs"))
@@ -1117,29 +1117,29 @@ OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def save_png_from_response(response: Any, chemical: str) -> Optional[str]:
-if isinstance(response, dict):
-for key in ("file_path", "path", "output_path", "png_path", "saved_path"):
-value = response.get(key)
-if value and str(value).lower().endswith(".png"):
-return str(value)
+    if isinstance(response, dict):
+    for key in ("file_path", "path", "output_path", "png_path", "saved_path"):
+        value = response.get(key)
+        if value and str(value).lower().endswith(".png"):
+            return str(value)
 
-for key in ("png_base64", "image_base64", "base64"):
-value = response.get(key)
-if value:
-out = OUTPUT_DIR / f"{chemical.replace(' ', '_').lower()}_aop_map.png"
-out.write_bytes(base64.b64decode(value))
-return str(out)
+    for key in ("png_base64", "image_base64", "base64"):
+    value = response.get(key)
+    if value:
+    out = OUTPUT_DIR / f"{chemical.replace(' ', '_').lower()}_aop_map.png"
+    out.write_bytes(base64.b64decode(value))
+    return str(out)
 
-if isinstance(response, str):
-text = extract_json_text(response)
-try:
-parsed = json.loads(text)
-return save_png_from_response(parsed, chemical)
-except Exception:
-if text.strip().lower().endswith(".png"):
-return text.strip()
+    if isinstance(response, str):
+    text = extract_json_text(response)
+    try:
+    parsed = json.loads(text)
+    return save_png_from_response(parsed, chemical)
+    except Exception:
+    if text.strip().lower().endswith(".png"):
+    return text.strip()
 
-return None
+    return None
 
 
 def visualize(state: AOPState) -> AOPState:
