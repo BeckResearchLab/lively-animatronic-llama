@@ -1,0 +1,8 @@
+{
+  "label": "Models and Methods",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "Models and methods used in computational toxicology, including QSAR, read-across, and PBPK modeling."
+  }
+}
