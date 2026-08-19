@@ -1,0 +1,8 @@
+{
+  "label": "Biology",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "Biological targets, pathways, and species relevant to toxicological research."
+  }
+}

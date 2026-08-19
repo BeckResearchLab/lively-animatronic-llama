@@ -1,0 +1,8 @@
+{
+  "label": "Workflows",
+  "position": 11,
+  "link": {
+    "type": "generated-index",
+    "description": "Workflows for literature review, hazard assessment, dataset profiling, and in-silico assays."
+  }
+}
