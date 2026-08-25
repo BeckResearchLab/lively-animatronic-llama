@@ -160,7 +160,13 @@ The skill includes a reference implementation for creating general AOP maps. See
     plt.tight_layout()
     
     # Save the figure
-    filename = f"{molecule_name.lower().replace(' ', '_')}_aop_map.png"
+    # Check if OUTPUT_PATH is provided in the environment or as a parameter
+    output_path = os.environ.get("OUTPUT_PATH", None)
+    if output_path:
+        filename = output_path
+    else:
+        filename = f"{molecule_name.lower().replace(' ', '_')}_aop_map.png"
+    
     plt.savefig(filename, dpi=300, bbox_inches='tight')
     print(f"Map saved as {filename}")
     
@@ -475,6 +481,7 @@ robustness_metrics = topological_map.find_robustness_metrics()
 
 ```python
 # Integration with aop-constructor workflow
+import os
 from aop_constructor import AOPConstructor
 from topological_mapping import TopologicalAnalyzer
 

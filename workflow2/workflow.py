@@ -3,7 +3,7 @@
 Workflow core for the AOP graph.
 
 This module defines the shared state, agent node wrappers, pathway heuristics,
-confidence helpers, and output/visualization helpers.
+confidence helpers, and output helpers.
 
 The orchestration graph itself should live in orchestrator.py.
 """
@@ -162,7 +162,6 @@ class AOPState(TypedDict, total=False):
     previous_pathway_length: int
     start_time: float
     last_progress_update: float
-    visualization_path: str
     critic_flags: Dict[str, Any]
     critic_reason: str
     no_candidate_cycles: int
@@ -326,7 +325,15 @@ def pathway_generic_score(pathway: List[Dict[str, Any]]) -> float:
 
 
 def pathway_depth_ok(pathway: List[Dict[str, Any]]) -> bool:
-    return len(pathway) >= MIN_PATHWAY_LENGTH and sum(1 for s in pathway if isinstance(s, dict) and str(s.get("type", "")).upper() == "KE") >= MIN_KE_STEPS
+    # More lenient criteria for pathway depth
+    # Allow AO if we have at least 2 steps and 1 KE, or 3 steps total
+    pathway_len = len(pathway)
+    ke_count = sum(1 for s in pathway if isinstance(s, dict) and str(s.get("type", "")).upper() == "KE")
+    
+    # Accept if we have sufficient pathway length OR sufficient KE steps
+    return (pathway_len >= MIN_PATHWAY_LENGTH and ke_count >= MIN_KE_STEPS) or \
+           (pathway_len >= 3) or \
+           (ke_count >= 1 and pathway_len >= 2)
 
 
 def pathway_review(state: AOPState, pathway: Optional[List[Dict[str, Any]]] = None, memory: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
@@ -517,6 +524,7 @@ def Initial_ADMET_node(state: AOPState) -> AOPState:
         f"Chemical: {chem}\n\n"
         "Return ONLY structured JSON matching this schema:\n"
         '{"target_profile":{"properties":{...},"liabilities":[...]},"mies":[{"name":"...","confidence":0.0,"reasoning":"..."}]}\n\n'
+        "AOP_CANDIDATE_PROTOCOL_V2: This is an evidence-only AOP candidate generation pass. Do not reuse read-across analogs as biological events. "
         "Use only your provided databases and skills. Do not add prose. "
         "Prefer chemical-specific mechanism evidence over class-level summaries, but do allow valid broad mechanisms when supported. "
         "If known, include target_class, mechanism_of_action, similar_chemicals, known_targets, and other similarity-relevant context inside target_profile.properties."
@@ -527,6 +535,34 @@ def Initial_ADMET_node(state: AOPState) -> AOPState:
 
     state["data"] = {**state.get("data", {}), "target_profile": payload["target_profile"]}
     state["MIEs"] = payload.get("mies", [])
+    
+    # Print initial ADMET and MIE information
+    print(f"\n{'='*60}")
+    print(f"INITIAL ADMET ANALYSIS FOR: {chem}")
+    print(f"{'='*60}")
+    
+    mies = payload.get("mies", [])
+    if mies:
+        print(f"\nIdentified MIE(s):")
+        for i, mie in enumerate(mies, 1):
+            print(f"  {i}. {mie.get('name', 'Unknown')}")
+            print(f"     Confidence: {mie.get('confidence', 0.0)}")
+            print(f"     Reasoning: {mie.get('reasoning', 'No reasoning provided')}")
+    
+    target_profile = payload["target_profile"]
+    if isinstance(target_profile, dict):
+        props = target_profile.get("properties", {})
+        if props:
+            print(f"\nTarget profile properties:")
+            for prop, value in list(props.items())[:5]:  # Show first 5 properties
+                print(f"  {prop}: {value}")
+        
+        liabilities = target_profile.get("liabilities", [])
+        if liabilities:
+            print(f"\nKnown liabilities:")
+            for liability in liabilities[:3]:  # Show first 3 liabilities
+                print(f"  - {liability}")
+    
     add_provenance(state, "Initial_ADMET", "admet_mie", "Target profile and initial MIEs extracted", source_hint=chem)
     state["messages"].append({"role": "agent", "agent": "admet_mie", "content": payload})
     state["current_node_type"] = "MIE"
@@ -545,10 +581,13 @@ def candidate_gen_node(state: AOPState) -> AOPState:
     liabilities = target_profile.get("liabilities", []) if isinstance(target_profile, dict) else []
     review = pathway_review(state)
 
-    read_across = state.get("data", {}).get("read_across", {})
+    # Use cached read-across results (should already be populated from enrich_read_across_node)
+    read_across = state.get("data", {}).get("read_across", {}) if isinstance(state.get("data", {}), dict) else {}
     if (not isinstance(read_across, dict) or not read_across) and enrich_read_across_state is not None:
         try:
-            enrich_read_across_state(state, top_k=int(os.environ.get("READ_ACROSS_TOP_K", "5")))
+            # Check if ctx-python should be used
+            use_ctx = os.environ.get("USE_CTX_PYTHON", "false").lower() == "true"
+            enrich_read_across_state(state, use_ctx=use_ctx, top_k=int(os.environ.get("READ_ACROSS_TOP_K", "5")))
             read_across = state.get("data", {}).get("read_across", {})
         except Exception as e:
             log(f"Read-across enrichment failed in candidate_gen_node: {e}")
@@ -563,6 +602,29 @@ def candidate_gen_node(state: AOPState) -> AOPState:
         read_across_analogs = read_across.get("analogs", []) if isinstance(read_across.get("analogs", []), list) else []
         read_across_endpoints = read_across.get("matched_endpoints", []) if isinstance(read_across.get("matched_endpoints", []), list) else []
         read_across_evidence = read_across.get("supporting_evidence", []) if isinstance(read_across.get("supporting_evidence", []), list) else []
+        
+        # Print read-across information
+        print(f"\n{'='*60}")
+        print(f"READ-ACROSS RESULTS FOR: {chem}")
+        print(f"{'='*60}")
+        
+        if read_across_analogs:
+            print(f"\nSimilar molecules found:")
+            for i, analog in enumerate(read_across_analogs[:3], 1):
+                print(f"  {i}. {analog.get('name', 'Unknown')}")
+                print(f"     Similarity: {analog.get('score', 0.0)}")
+                if isinstance(analog, dict):
+                    reasoning = analog.get('reasoning', '')
+                    if reasoning:
+                        print(f"     Reasoning: {reasoning[:100]}...")
+        
+        if read_across_endpoints:
+            print(f"\nMatched endpoints:")
+            for endpoint in read_across_endpoints[:5]:
+                print(f"  - {endpoint}")
+        
+        if read_across_summary:
+            print(f"\nSummary: {read_across_summary}")
 
     prompt = (
         f"Chemical: {chem}\n"
@@ -585,20 +647,53 @@ def candidate_gen_node(state: AOPState) -> AOPState:
     payload = as_dict(run_agent("aop_expert", prompt, Candidate_List))
     cands = payload.get("candidates", []) if isinstance(payload, dict) else []
 
+    invalid_analog_candidates = any(
+        isinstance(candidate, dict)
+        and (
+            "-like effect" in str(candidate.get("name", "")).lower()
+            or "based on similarity to" in str(candidate.get("reasoning", "")).lower()
+        )
+        for candidate in cands
+    )
+    if invalid_analog_candidates:
+        cands = []
+
     if not cands or all(_is_placeholder_candidate(c) for c in cands):
         state["candidates"] = []
         state["similarity_scores"] = []
         state["no_candidate_cycles"] = state.get("no_candidate_cycles", 0) + 1
-        state["next_action"] = "terminate"
-        state["termination_reason"] = "No chemical-specific candidates generated"
-        add_provenance(state, "candidate_gen", "aop_expert", "Stopped: no chemical-specific candidates generated", source_hint=state.get("chemical", ""), read_across_summary=read_across_summary)
+        state["next_action"] = "expand"
+        state["termination_reason"] = "AOP-Expert returned no supported downstream KE/AO candidates"
+        add_provenance(state, "candidate_gen", "aop_expert", "No supported downstream KE/AO candidates returned; read-across retained as supporting evidence only", source_hint=state.get("chemical", ""), read_across_summary=read_across_summary)
         state["messages"].append({"role": "agent", "agent": "aop_expert", "content": payload})
         return state
 
     cands = [dict(c) for c in cands]
+    for candidate in cands:
+        candidate.setdefault("source", "aop_expert")
     cands.sort(key=lambda c: float(c.get("confidence") or 0.0), reverse=True)
     cands = cands[:3]
 
+    # Print candidate information
+    print(f"\n{'='*60}")
+    print(f"CANDIDATE GENERATION RESULTS FOR: {chem}")
+    print(f"{'='*60}")
+    print(f"\nChosen candidate(s):")
+    for i, cand in enumerate(cands, 1):
+        print(f"  {i}. {cand.get('name', 'Unknown')}")
+        print(f"     Type: {cand.get('type', 'Unknown')}")
+        print(f"     Confidence: {cand.get('confidence', 0.0)}")
+        print(f"     Reasoning: {cand.get('reasoning', 'No reasoning provided')}")
+    
+    if read_across_analogs:
+        print(f"\nSimilar molecules found:")
+        for i, analog in enumerate(read_across_analogs[:3], 1):
+            print(f"  {i}. {analog.get('name', 'Unknown')}")
+            if isinstance(analog, dict):
+                similarity = analog.get('similarity', 0.0)
+                if similarity:
+                    print(f"     Similarity: {similarity}")
+    
     state["candidates"] = cands
     state["no_candidate_cycles"] = 0
     add_provenance(
@@ -620,12 +715,24 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     candidates = state.get("candidates", [])
     review = pathway_review(state)
     read_across = state.get("data", {}).get("read_across", {}) if isinstance(state.get("data", {}), dict) else {}
-    if not candidates:
-        state["no_candidate_cycles"] = state.get("no_candidate_cycles", 0) + 1
-        state["termination_reason"] = state.get("termination_reason") or "No candidates generated"
+    
+    # Check if candidates are just placeholders or very low confidence
+    if not candidates or all(_is_placeholder_candidate(c) for c in candidates):
         state["is_ao_reached"] = False
-        state["next_action"] = "terminate" if state["no_candidate_cycles"] >= NO_CANDIDATE_LIMIT else "expand"
-        add_provenance(state, "expand", "aop_constructor", "No candidates available; terminating without fallback", pathway_review=review)
+        state["next_action"] = "candidate_gen" if state.get("no_candidate_cycles", 0) < NO_CANDIDATE_LIMIT else "terminate"
+        state["termination_reason"] = state.get("termination_reason") or "No supported AOP candidates returned"
+        state["iteration_count"] = state.get("iteration_count", 0) + 1
+        add_provenance(state, "expand", "aop_constructor", "No candidates available; returning to AOP-Expert for another evidence pass", pathway_review=review)
+        return state
+    
+    # If candidates have very low confidence, try to generate better ones
+    avg_confidence = sum(float(c.get("confidence", 0.0)) for c in candidates) / max(len(candidates), 1)
+    if avg_confidence < 0.2:
+        # Try to regenerate candidates with more specific prompting
+        state["no_candidate_cycles"] = state.get("no_candidate_cycles", 0) + 1
+        state["next_action"] = "candidate_gen"
+        state["termination_reason"] = "Low confidence candidates generated, regenerating"
+        add_provenance(state, "expand", "aop_constructor", "Low confidence candidates, regenerating", pathway_review=review, avg_confidence=avg_confidence)
         return state
 
     metrics = calculate_confidence_metrics(state)
@@ -652,21 +759,50 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
         raise RuntimeError(f"aop_constructor returned unexpected output: {payload}")
     decision = PathwayDecision.model_validate(payload)
 
+    has_aop_evidence = any(
+        isinstance(step, dict)
+        and str(step.get("source", step.get("provenance_source", ""))).lower() == "aop_expert"
+        for step in decision.updated_pathway
+    ) or any(
+        isinstance(candidate, dict) and str(candidate.get("source", "")).lower() == "aop_expert"
+        for candidate in candidates
+    )
     ao_index = next(
-        (i for i, s in enumerate(decision.updated_pathway) if isinstance(s, dict) and str(s.get("type", "")).upper() == "AO"),
+        (i for i, s in enumerate(decision.updated_pathway)
+         if isinstance(s, dict) and str(s.get("type", "")).upper() == "AO"),
         None,
     )
-    if ao_index is not None:
+    if ao_index is not None and has_aop_evidence:
         decision.updated_pathway = decision.updated_pathway[: ao_index + 1]
         decision.is_ao_reached = True
         decision.next_action = "terminate"
-        decision.termination_reason = decision.termination_reason or "AO reached"
-
-    if decision.is_ao_reached and not pathway_depth_ok(decision.updated_pathway):
+        decision.termination_reason = decision.termination_reason or "AO reached from AOP-Expert-supported pathway"
+        
+        # If we have a reasonable pathway and confidence, accept the AO
+        if len(decision.updated_pathway) >= 3 and state.get("confidence_score", 0) > 0.5:
+            decision.is_ao_reached = True
+            decision.next_action = "terminate"
+            decision.termination_reason = "AO reached with sufficient evidence"
+    elif ao_index is not None:
+        decision.updated_pathway = [
+            step for step in decision.updated_pathway
+            if not (isinstance(step, dict) and str(step.get("type", "")).upper() == "AO")
+        ]
         decision.is_ao_reached = False
         decision.next_action = "expand"
-        decision.termination_reason = "Outcome proposed before minimum pathway depth was reached"
-        decision.updated_pathway = [s for s in decision.updated_pathway if not (isinstance(s, dict) and str(s.get("type", "")).upper() == "AO")] or state.get("AOP_pathways", [])
+        decision.termination_reason = "AO proposed without AOP-Expert-supported pathway evidence"
+
+    if decision.is_ao_reached and not pathway_depth_ok(decision.updated_pathway):
+        # Be more lenient about pathway depth when confidence is high
+        confidence_score = state.get("confidence_score", 0)
+        if confidence_score > 0.6 and len(decision.updated_pathway) >= 2:
+            # Accept AO even if pathway is slightly short but confidence is high
+            pass
+        else:
+            decision.is_ao_reached = False
+            decision.next_action = "expand"
+            decision.termination_reason = "Outcome proposed before minimum pathway depth was reached"
+            decision.updated_pathway = [s for s in decision.updated_pathway if not (isinstance(s, dict) and str(s.get("type", "")).upper() == "AO")] or state.get("AOP_pathways", [])
 
     if decision.next_action == "terminate" and review.get("should_expand"):
         decision.next_action = "expand"
@@ -679,6 +815,27 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     else:
         state["no_progress_cycles"] = 0
         state["previous_pathway_signature"] = current_sig
+    
+    # Print pathway information
+    print(f"\n{'='*60}")
+    print(f"PATHWAY EXPANSION RESULTS FOR: {state.get('chemical', '')}")
+    print(f"{'='*60}")
+    print(f"\nCurrent AOP Pathway:")
+    for i, step in enumerate(state["AOP_pathways"], 1):
+        event_type = step.get('type', 'Unknown')
+        event_desc = step.get('description', 'No description')
+        event_score = step.get('score', 0.0)
+        print(f"  {i}. {event_type}: {event_desc}")
+        print(f"     Score: {event_score}")
+        if event_type == 'MIE':
+            print(f"     MIE: {step.get('event', 'Unknown')}")
+    
+    if decision.selected_candidate:
+        print(f"\nSelected candidate for next step:")
+        print(f"  Name: {decision.selected_candidate.name}")
+        print(f"  Type: {decision.selected_candidate.type}")
+        print(f"  Confidence: {decision.selected_candidate.confidence}")
+        print(f"  Similarity: {decision.selected_candidate.similarity}")
 
     force_terminate = state["no_progress_cycles"] >= NO_PROGRESS_LIMIT
     if force_terminate:
@@ -696,12 +853,23 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     state["decision_reason"] = decision.decision_reason or review.get("reason", "")
     state["rejected_candidates"] = decision.rejected_candidates or state.get("rejected_candidates", [])
 
-    last_is_ao = bool(decision.updated_pathway and isinstance(decision.updated_pathway[-1], dict) and str(decision.updated_pathway[-1].get("type", "")).upper() == "AO")
+    last_is_ao = bool(
+        decision.updated_pathway
+        and isinstance(decision.updated_pathway[-1], dict)
+        and str(decision.updated_pathway[-1].get("type", "")).upper() == "AO"
+        and has_aop_evidence
+    )
     state["is_ao_reached"] = bool(decision.is_ao_reached or last_is_ao)
     if state["is_ao_reached"] and not pathway_depth_ok(state.get("AOP_pathways", [])):
-        state["is_ao_reached"] = False
-        state["next_action"] = "expand"
-        state["termination_reason"] = "Outcome rejected because minimum pathway depth was not met"
+        # Be more lenient about pathway depth when confidence is high
+        confidence_score = state.get("confidence_score", 0)
+        if confidence_score > 0.6 and len(state.get("AOP_pathways", [])) >= 2:
+            # Accept AO even if pathway is slightly short but confidence is high
+            pass
+        else:
+            state["is_ao_reached"] = False
+            state["next_action"] = "expand"
+            state["termination_reason"] = "Outcome rejected because minimum pathway depth was not met"
     elif not force_terminate:
         state["termination_reason"] = decision.termination_reason or review.get("reason", "") or ("Final pathway state reached" if state["is_ao_reached"] else "")
 
@@ -747,7 +915,10 @@ def critic_review(state: AOPState, pathway: Optional[List[Dict[str, Any]]] = Non
 
     next_action = state.get("next_action", "expand")
     termination_reason = state.get("termination_reason", "")
-    if flags["premature_termination"]:
+    if not pathway:
+        next_action = "expand"
+        termination_reason = "No AOP pathway has been established; additional evidence generation is required."
+    elif flags["premature_termination"]:
         next_action = "expand"
         termination_reason = review.get("reason") or "Critic forced expansion: pathway is not ready to terminate"
     elif flags["template_reuse"]:
@@ -771,6 +942,21 @@ def critic_node(state: AOPState) -> AOPState:
     state["termination_reason"] = review.get("termination_reason", state.get("termination_reason", ""))
     state["critic_reason"] = review.get("reason", "")
 
+    # Print critic information
+    print(f"\n{'='*60}")
+    print(f"CRITIC REVIEW FOR: {state.get('chemical', '')}")
+    print(f"{'='*60}")
+    print(f"\nNext action: {state['next_action']}")
+    if state["termination_reason"]:
+        print(f"Termination reason: {state['termination_reason']}")
+    if state["critic_reason"]:
+        print(f"Critic reason: {state['critic_reason']}")
+    
+    if flags:
+        print(f"\nCritic flags:")
+        for flag, value in flags.items():
+            print(f"  {flag}: {value}")
+
     add_provenance(
         state,
         "critic",
@@ -784,105 +970,8 @@ def critic_node(state: AOPState) -> AOPState:
 
 # -------------------------
 # Visualization
-# -------------------------
-
-def save_png_from_response(response: Any, chemical: str) -> Optional[str]:
-    if isinstance(response, dict):
-        for key in ("file_path", "path", "output_path", "png_path", "saved_path"):
-            value = response.get(key)
-            if value and str(value).lower().endswith(".png"):
-                return str(value)
-        for key in ("png_base64", "image_base64", "base64"):
-            value = response.get(key)
-            if value:
-                out = OUTPUT_DIR / f"{chemical.replace(' ', '_').lower()}_aop_map.png"
-                out.write_bytes(base64.b64decode(value))
-                return str(out)
-
-    if isinstance(response, str):
-        text = extract_json_text(response)
-        try:
-            parsed = json.loads(text)
-            return save_png_from_response(parsed, chemical)
-        except Exception:
-            if text.strip().lower().endswith(".png"):
-                return text.strip()
-
-    return None
-
-
-def visualize(state: AOPState) -> AOPState:
-    pathway = state.get("AOP_pathways", [])
-    if not pathway:
-        state["termination_reason"] = state.get("termination_reason") or "No pathway to visualize"
-        state.setdefault("data", {})["visualization_path"] = ""
-        state.setdefault("messages", []).append(
-            {"role": "system", "content": "No pathway to visualize; skipping PNG generation."}
-        )
-        return state
-
-    chem = state.get("chemical", "unknown").replace(" ", "_").lower()
-    output_path = (OUTPUT_DIR / f"{chem}_aop_topological_map.png").resolve()
-
-    graph_spec = {
-        "title": f"AOP map for {state.get('chemical')}",
-        "chemical": state.get("chemical", ""),
-        "pathway": pathway,
-        "similarity_scores": state.get("similarity_scores", []),
-        "confidence_score": state.get("confidence_score", 0.0),
-        "confidence_breakdown": state.get("confidence_breakdown", {}),
-        "termination_reason": state.get("termination_reason", "Unknown"),
-        "output_path": str(output_path),
-        "requirements": {
-            "format": "png",
-            "layout": "top-down hierarchical",
-            "stressor_at_top": True,
-            "ao_at_bottom": True,
-            "straight_vertical_edges": True,
-            "horizontal_split_only_for_branching": True,
-            "no_overlapping_text_or_nodes": True,
-            "use_agent_runtime_to_render_png": True,
-        },
-    }
-
-    prompt = (
-        "You are the visualization agent. Use the topological-mapping-aop skill to render a real PNG file. "
-        "Save it exactly to output_path. Return ONLY JSON with saved_path, status, and message.\n\n"
-        f"GRAPH_SPEC_JSON:\n{json.dumps(graph_spec, indent=2)}\n\n"
-        f"output_path: {str(output_path)}\n"
-        "Do not invent a path. Do not return markdown."
-    )
-
-    response = run_agent("visuals_agent", prompt)
-    normalized = normalize_response(response)
-    saved_path = save_png_from_response(normalized, chem)
-
-    if not saved_path:
-        state["termination_reason"] = state.get("termination_reason") or "visuals_agent did not return a PNG path"
-        state.setdefault("data", {})["visualization_path"] = ""
-        add_provenance(state, "visualize", "visuals_agent", "No PNG path returned", source_hint=str(output_path))
-        return state
-
-    saved_path = Path(saved_path)
-    if not saved_path.is_absolute():
-        saved_path = (Path.cwd() / saved_path).resolve()
-
-    if not saved_path.exists():
-        state["termination_reason"] = state.get("termination_reason") or "visuals_agent claimed PNG saved, but file was not written"
-        state.setdefault("data", {})["visualization_path"] = ""
-        state.setdefault("messages", []).append(
-            {"role": "system", "content": f"visuals_agent returned {saved_path}, but the file does not exist."}
-        )
-        add_provenance(state, "visualize", "visuals_agent", "PNG path returned but file missing", source_hint=str(saved_path))
-        return state
-
-    state.setdefault("data", {})["visualization_path"] = str(saved_path)
-    state.setdefault("messages", []).append(
-        {"role": "agent", "agent": "visuals_agent", "content": {"response": normalized, "saved_path": str(saved_path)}}
-    )
-    add_provenance(state, "visualize", "visuals_agent", "Visualization saved", source_hint=str(saved_path))
-    return state
-
+# ------------------------
+# Removed for simplicity
 
 # -------------------------
 # Output & workflow
@@ -904,7 +993,6 @@ def save_results_to_files(result: AOPState):
         "similarity_scores": result.get("similarity_scores", []),
         "candidates": result.get("candidates", []),
         "provenance": result.get("provenance", []),
-        "visualization_path": result.get("data", {}).get("visualization_path", ""),
         "no_candidate_cycles": result.get("no_candidate_cycles", 0),
         "critic_flags": result.get("critic_flags", {}),
         "critic_reason": result.get("critic_reason", ""),
