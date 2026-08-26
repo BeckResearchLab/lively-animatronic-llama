@@ -1,3 +1,10 @@
 /secret
 *.pdf
 Miniforge3-Linux-x86_64.sh
+
+miniforge3
+cache
+
+__pycache__
+
+node_modules
