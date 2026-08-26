@@ -1,8 +1,0 @@
-{
-  "label": "Agent Operations",
-  "position": 12,
-  "link": {
-    "type": "generated-index",
-    "description": "Templates and records for agent tasks, tool invocations, model executions, and audit logs."
-  }
-}
