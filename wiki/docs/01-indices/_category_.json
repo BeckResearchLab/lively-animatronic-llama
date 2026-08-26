@@ -1,0 +1,8 @@
+{
+  "label": "Indices",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "Master indices for chemicals, endpoints, assays, datasets, models, literature, evidence claims, and workflows."
+  }
+}
