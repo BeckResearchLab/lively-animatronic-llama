@@ -1,99 +1,85 @@
 ---
 id: human-review-checkpoints
 title: Human Review Checkpoints
-description: Governance page defining human review checkpoints for the wiki.
+description: Defines human review checkpoints for the wiki.
 slug: /quality/human-review-checkpoints
 sidebar_label: Human Review Checkpoints
 page_type: governance
 entity_class: governance_rule
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-26
 ---
 
-# Human Review Checkpoints
+# Overview
 
-This page defines the checkpoints where human review is required for wiki content. Human review ensures the accuracy, reliability, and responsible use of the wiki's content.
+This page defines the human review checkpoints for the wiki, ensuring that content meets quality and governance standards before being published or updated.
 
-## Overview
+## Purpose
 
-Human review is required at specific stages of the wiki's content lifecycle. These checkpoints ensure that critical decisions, complex claims, and sensitive topics are reviewed by experts before being finalized.
+Human review checkpoints are critical for maintaining the accuracy, reliability, and integrity of the wiki. They ensure that content is thoroughly reviewed by subject matter experts before it is made available to users.
 
-## Checkpoints Requiring Human Review
+## Review Checkpoints
 
-### 1. New Page Creation
+### Content Creation
 
-- **Trigger**: A new page is created.
-- **Review Required**: Before the page is marked as active, it must be reviewed by a subject matter expert.
-- **Focus**: Ensure the page's scope, claims, and citations are accurate and appropriate.
+1. **Initial Draft Review**: The initial draft of a page is reviewed for completeness, accuracy, and adherence to the wiki's guidelines.
+2. **Subject Matter Expert Review**: A subject matter expert reviews the content for scientific accuracy and relevance.
+3. **Editorial Review**: The content is reviewed for clarity, coherence, and adherence to writing standards.
 
-### 2. Major Claim Addition or Revision
+### Content Update
 
-- **Trigger**: A major claim is added or revised on an existing page.
-- **Review Required**: Before the change is finalized, it must be reviewed by a subject matter expert.
-- **Focus**: Ensure the claim is supported by reliable evidence and appropriately scoped.
+1. **Change Assessment**: The proposed changes are assessed for their impact on the existing content.
+2. **Subject Matter Expert Review**: A subject matter expert reviews the changes for scientific accuracy and relevance.
+3. **Editorial Review**: The changes are reviewed for clarity, coherence, and adherence to writing standards.
 
-### 3. Contradiction Resolution
+### Content Verification
 
-- **Trigger**: A contradiction is identified and resolved.
-- **Review Required**: Before the resolution is finalized, it must be reviewed by a subject matter expert.
-- **Focus**: Ensure the resolution is accurate and justified by the evidence.
+1. **Claim Verification**: All substantive claims are verified against cited sources and evidence.
+2. **Contradiction Check**: Claims are checked for contradictions with existing evidence.
+3. **Quality Assurance**: The content is reviewed for adherence to quality and governance standards.
 
-### 4. Source Policy Changes
+## Review Process
 
-- **Trigger**: A change is proposed to the source policy.
-- **Review Required**: Before the change is implemented, it must be reviewed by the governance committee.
-- **Focus**: Ensure the change aligns with the wiki's mission and does not compromise the reliability of the content.
+### Step 1: Initial Draft Review
 
-### 5. Responsible Use Policy Changes
+- The author submits an initial draft of the page.
+- The draft is reviewed for completeness, accuracy, and adherence to the wiki's guidelines.
+- Feedback is provided to the author for revisions.
 
-- **Trigger**: A change is proposed to the responsible use policy.
-- **Review Required**: Before the change is implemented, it must be reviewed by the governance committee.
-- **Focus**: Ensure the change aligns with ethical and legal standards.
+### Step 2: Subject Matter Expert Review
 
-### 6. Evidence Standards Changes
+- The revised draft is sent to a subject matter expert for review.
+- The expert reviews the content for scientific accuracy and relevance.
+- Feedback is provided to the author for revisions.
 
-- **Trigger**: A change is proposed to the evidence standards.
-- **Review Required**: Before the change is implemented, it must be reviewed by the governance committee.
-- **Focus**: Ensure the change maintains or improves the quality of the evidence.
+### Step 3: Editorial Review
 
-### 7. High-Impact Claims
+- The revised draft is reviewed for clarity, coherence, and adherence to writing standards.
+- Feedback is provided to the author for revisions.
 
-- **Trigger**: A claim is identified as high-impact (e.g., related to safety, regulation, or public health).
-- **Review Required**: Before the claim is finalized, it must be reviewed by a subject matter expert.
-- **Focus**: Ensure the claim is accurate, reliable, and appropriately scoped.
+### Step 4: Final Approval
 
-### 8. Disputed Claims
+- The final draft is reviewed by the editorial team for overall quality and compliance with wiki standards.
+- Approval is granted, and the page is published or updated.
 
-- **Trigger**: A claim is disputed by a subject matter expert or stakeholder.
-- **Review Required**: Before the dispute is resolved, it must be reviewed by a neutral subject matter expert.
-- **Focus**: Ensure the resolution is accurate and justified by the evidence.
+## Review Criteria
 
-## Human Review Process
+### Scientific Accuracy
 
-### Review Steps
+- Content must be accurate and based on reliable sources.
+- Claims must be supported by evidence and citations.
 
-1. **Identify the Need for Review**: Determine if the change or claim triggers a human review checkpoint.
-2. **Assign a Reviewer**: Assign a subject matter expert or governance committee member to review the content.
-3. **Conduct the Review**: The reviewer evaluates the content against the relevant standards and guidelines.
-4. **Provide Feedback**: The reviewer provides feedback on the content, including any required changes.
-5. **Finalize the Content**: The content is revised based on the feedback and finalized.
+### Clarity and Coherence
 
-### Review Documentation
+- Content must be clear, concise, and easy to understand.
+- The structure and organization of the content must be logical and coherent.
 
-- **Review Notes**: The reviewer documents the review process, including any feedback or changes requested.
-- **Review Date**: The date of the review is recorded in the page's frontmatter.
-- **Review Owner**: The reviewer's name or identifier is recorded in the page's frontmatter.
+### Adherence to Guidelines
 
-## Compliance and Enforcement
-
-All content must comply with these human review checkpoints. Non-compliance may result in:
-
-- Content being marked as needing review or human review.
-- Restrictions on the use of claims in synthesis or decision-making.
-- Escalation to the governance committee for resolution.
+- Content must adhere to the wiki's guidelines for style, format, and structure.
+- Content must comply with quality and governance standards.
 
 ## Related Pages
 
-- [Evidence Standards](./evidence-standards.md)
-- [Citation and Provenance Rules](./citation-and-provenance-rules.md)
-- [Responsible Use Policy](./responsible-use-policy.md)
+- [Uncertainty Representation](./uncertainty-representation.md)
+- [Master Index](../01-indices/master-index.md)

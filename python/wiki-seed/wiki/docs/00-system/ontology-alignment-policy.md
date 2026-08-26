@@ -68,6 +68,6 @@ deviaiton_notes: "Custom term required for specific use case in the wiki."
 
 ## Related Pages
 
-- [Knowledge Representation Principles](#)
+- [Knowledge Representation Principles](./knowledge-representation-principles.md)
 - [Update and Review Policy](#)
-- [Evidence Standards](#)
+- [Evidence Standards](../14-quality-and-governance/evidence-standards.md)

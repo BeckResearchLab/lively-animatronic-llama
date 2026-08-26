@@ -1,84 +1,62 @@
 ---
 id: responsible-use-policy
 title: Responsible Use Policy
-description: Governance page defining responsible use policy for the wiki.
-slug: /quality/responsible-use-policy
+description: Policy defining the responsible use of the wiki and its tools.
+slug: /system/responsible-use-policy
 sidebar_label: Responsible Use Policy
 page_type: governance
 entity_class: governance_rule
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-25
 ---
 
-# Responsible Use Policy
+# Overview
 
-This page defines the responsible use policy for the wiki. This policy ensures that the wiki's content is used ethically, legally, and responsibly.
+This page defines the responsible use policy for the computational toxicology system. The policy ensures that all tools and data are used ethically, safely, and in compliance with relevant regulations.
 
-## Overview
+## Scope and Notes
 
-The responsible use policy applies to all users of the wiki, including agents, researchers, and the public. Compliance with this policy is mandatory for all users.
+This policy applies to all agents, users, and contributors to the system. For detailed guidelines on evidence standards, see the [Evidence Standards](evidence-standards.md) page.
 
-## Ethical Use
+## Policy Guidelines
 
-### Respect for Privacy
+### Ethical Use
 
-- **Data Privacy**: User data and personal information must be handled in accordance with applicable privacy laws and regulations.
-- **Anonymization**: Where possible, personal information must be anonymized to protect individual privacy.
+- All tools and data must be used for legitimate and ethical purposes.
+- Avoid using the system for harmful or unethical activities.
 
-### Avoiding Harm
+### Data Privacy
 
-- **Safety**: Claims related to safety, health, or environmental impact must be accurate and supported by reliable evidence.
-- **Misuse**: The wiki's content must not be used for harmful or unethical purposes, such as misinformation, fraud, or discrimination.
+- Ensure compliance with data privacy regulations.
+- Protect sensitive or personally identifiable information.
+
+### Compliance with Regulations
+
+- Adhere to all relevant regulatory requirements.
+- Ensure that all tools and data are used in compliance with local, national, and international laws.
 
 ### Transparency
 
-- **Attribution**: All claims must be properly attributed to their sources.
-- **Disclosure**: Users must disclose any conflicts of interest or biases that may affect their use of the wiki's content.
+- Maintain transparency in all operations and decision-making processes.
+- Clearly document the use of tools and data.
 
-## Legal Use
+### Accountability
 
-### Compliance with Laws
-
-- **Regulations**: The use of the wiki's content must comply with all applicable laws and regulations.
-- **Intellectual Property**: Users must respect the intellectual property rights of others, including copyright and patent laws.
-
-### Licensing
-
-- **Content License**: The wiki's content is licensed under [specify license, e.g., Creative Commons Attribution 4.0 International]. Users must comply with the terms of this license.
-- **Third-Party Content**: Content from third-party sources must be used in accordance with the terms of their respective licenses.
-
-## Responsible Use Guidelines
-
-### Accuracy and Reliability
-
-- **Evidence-Based Claims**: All claims must be supported by reliable evidence and properly cited.
-- **Verification**: Users must verify the accuracy of claims before using them in decision-making or public communications.
-
-### Context and Scope
-
-- **Appropriate Use**: Claims must be used within their intended context and scope. Users must not extrapolate or generalize claims beyond their supported scope.
-- **Qualifiers**: Users must consider any qualifiers or limitations associated with claims.
-
-### Updates and Revisions
-
-- **Current Content**: Users must ensure they are using the most current version of the wiki's content.
-- **Changes**: Users must be aware of any updates or revisions to claims and adjust their use accordingly.
-
-## Enforcement
-
-### Monitoring and Reporting
-
-- **Monitoring**: The wiki's governance committee monitors compliance with the responsible use policy.
-- **Reporting**: Users must report any violations of the policy to the governance committee.
-
-### Consequences of Non-Compliance
-
-- **Warnings**: Users who violate the policy may receive warnings or temporary restrictions on their access to the wiki.
-- **Suspension**: Repeated or serious violations may result in the suspension or termination of a user's access to the wiki.
-- **Legal Action**: In cases of illegal use, the governance committee may pursue legal action against the user.
+- Ensure accountability for all actions taken within the system.
+- Maintain audit trails for all operations.
 
 ## Related Pages
 
-- [Evidence Standards](./evidence-standards.md)
-- [Citation and Provenance Rules](./citation-and-provenance-rules.md)
-- [Human Review Checkpoints](./human-review-checkpoints.md)
+- [Evidence Standards](evidence-standards.md)
+- [Citation and Provenance Rules](citation-and-provenance-rules.md)
+- [Verification and Contradiction Metadata](verification-and-contradiction-metadata.md)
+
+## Open Questions or Review Notes
+
+- Review the need for additional guidelines as the system evolves.
+- Assess the integration of new compliance tools.
+
+## References
+
+- [System Architecture Documentation](system-architecture.md)
+- [Operational Workflows](workflow-index.md)

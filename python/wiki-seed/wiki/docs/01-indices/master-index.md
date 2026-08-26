@@ -1,98 +1,160 @@
 ---
 id: master-index
 title: Master Index
-description: Serve as the main navigation and retrieval surface for the wiki.
+description: Central index page listing all categories and key pages in the wiki.
 slug: /indices/master-index
 sidebar_label: Master Index
 page_type: index
 entity_class: index
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-26
+curator: system
 ---
 
-# Overview
+# Master Index
 
-The Master Index serves as the primary navigation hub for the wiki, providing quick access to all major categories and indices. It is designed to help users and agents efficiently locate the information they need.
+Welcome to the Master Index of the Computational Toxicology Wiki. This page provides an overview of all top-level categories and key pages in the wiki, organized to facilitate navigation and retrieval.
 
-# Categories
+## Top-Level Categories
 
-## System Pages
+### 00-System
+Pages defining the mission, architecture, and operational rules of the wiki.
 
-- [Wiki Mission and Scope](../00-system/wiki-mission-and-scope.md)
-- [Computational Toxicology System Overview](../00-system/computational-toxicology-system-overview.md)
-- [Agent Roles and Capabilities](../00-system/agent-roles-and-capabilities.md)
+- [Wiki Mission and Scope](00-system/wiki-mission-and-scope.md)
+- [Computational Toxicology System Overview](00-system/computational-toxicology-system-overview.md)
+- [Agent Roles and Capabilities](00-system/agent-roles-and-capabilities.md)
 
-## Indices
+### 01-Indices
+Navigation pages for discovering canonical content.
 
-- [Chemical Index](./chemical-index.md)
-- [Toxicological Endpoint Index](./toxicological-endpoint-index.md)
-- [Assay Index](./assay-index.md)
-- [Dataset Index](./dataset-index.md)
-- [Model Index](./model-index.md)
-- [Literature Index](./literature-index.md)
+- [Chemical Index](01-indices/chemical-index.md)
+- [Endpoint Index](01-indices/endpoint-index.md)
+- [Assay Index](01-indices/assay-index.md)
+- [Dataset Index](01-indices/dataset-index.md)
+- [Model Index](01-indices/model-index.md)
+- [Evidence Claim Index](01-indices/evidence-claim-index.md)
+- [Workflow Index](01-indices/workflow-index.md)
 
-## Concepts
+### 02-Concepts
+Definitions and explanations of key terms and methods in computational toxicology.
 
-- [Concept Index](../02-concepts/concept-index.md)
+- [Adverse Outcome Pathway](02-concepts/adverse-outcome-pathway.md)
+- [Bioactivity](02-concepts/bioactivity.md)
+- [Dose-Response Relationship](02-concepts/dose-response-relationship.md)
+- [Mechanism of Action](02-concepts/mechanism-of-action.md)
+- [Weight of Evidence](02-concepts/weight-of-evidence.md)
 
-## Chemicals
+### 03-Chemicals
+Canonical pages for chemicals, including identifiers, evidence links, and endpoint summaries.
 
-- [Chemical Index](./chemical-index.md)
+- [Acetaminophen](03-chemicals/acetaminophen.md)
+- [Bisphenol A](03-chemicals/bisphenol-a.md)
+- [Glyphosate](03-chemicals/glyphosate.md)
+- [Perfluorooctanoic Acid](03-chemicals/perfluorooctanoic-acid.md)
 
-## Biology
+### 04-Biology
+Pages covering biological targets, pathways, tissues, and species relevant to toxicology.
 
-- [Biology Index](../04-biology/biology-index.md)
+*(Pages to be added as the wiki expands.)*
 
-## Toxicological Endpoints
+### 05-Toxicological-Endpoints
+Pages describing adverse outcomes, hazard classes, and evidence summaries.
 
-- [Toxicological Endpoint Index](./toxicological-endpoint-index.md)
+- [Carcinogenicity](05-toxicological-endpoints/carcinogenicity.md)
+- [Endocrine Disruption](05-toxicological-endpoints/endocrine-disruption.md)
+- [Neurotoxicity](05-toxicological-endpoints/neurotoxicity.md)
 
-## Assays
+### 06-Assays
+Pages for experimental and in silico assays, including their interpretation and limitations.
 
-- [Assay Index](./assay-index.md)
+- [Ames Test](06-assays/ames-test.md)
+- [Comet Assay](06-assays/comet-assay.md)
+- [Estrogen Receptor Transactivation Assay](06-assays/estrogen-receptor-transactivation-assay.md)
 
-## Datasets
+### 07-Datasets
+Pages documenting data resources, schemas, provenance, and access routes.
 
-- [Dataset Index](./dataset-index.md)
+- [Comparative Toxicogenomics Database](07-datasets/comparative-toxicogenomics-database.md)
+- [Tox21](07-datasets/tox21.md)
+- [ToxCast](07-datasets/toxcast.md)
 
-## Models and Methods
+### 08-Models-and-Methods
+Pages for computational models, analytical methods, and decision frameworks.
 
-- [Model Index](./model-index.md)
+*(Pages to be added as the wiki expands.)*
 
-## Literature
+### 09-Literature
+Source-oriented pages for papers, reviews, and reports.
 
-- [Literature Index](./literature-index.md)
+*(Pages to be added as the wiki expands.)*
 
-## Evidence
+### 10-Evidence
+Claim-centric pages, evidence tables, and structured records.
 
-- [Evidence Index](../10-evidence/evidence-index.md)
+*(Pages to be added as the wiki expands.)*
 
-## Workflows
+### 11-Workflows
+Procedural pages describing repeatable human or agent workflows.
 
-- [Workflow Index](../11-workflows/workflow-index.md)
+- [Chemical Hazard Assessment Workflow](11-workflows/chemical-hazard-assessment-workflow.md)
+- [Literature Review Workflow](11-workflows/literature-review-workflow.md)
 
-## Agent Operations
+### 12-Agent-Operations
+Operational records of agent tasks, tool calls, and execution logs.
 
-- [Agent Operation Index](../12-agent-operations/agent-operation-index.md)
+- [Agent Task Template](12-agent-operations/agent-task-template.md)
 
-## Projects
+### 13-Projects
+Pages organizing work around bounded initiatives and deliverables.
 
-- [Project Index](../13-projects/project-index.md)
+*(Pages to be added as the wiki expands.)*
 
-## Quality and Governance
+### 14-Quality-and-Governance
+Policy pages defining evidence standards, citation rules, and review criteria.
 
-- [Quality and Governance Index](../14-quality-and-governance/quality-and-governance-index.md)
+- [Evidence Standards](14-quality-and-governance/evidence-standards.md)
+- [Citation and Provenance Rules](14-quality-and-governance/citation-and-provenance-rules.md)
+- [Human Review Checkpoints](14-quality-and-governance/human-review-checkpoints.md)
 
-## Glossary
+### 15-Glossary
+Lightweight definition pages and terminology support.
 
-- [Glossary Index](../15-glossary/glossary-index.md)
+- [Glossary](15-glossary/glossary.md)
+- [Acronyms](15-glossary/acronyms.md)
 
-# Search and Navigation
+## Quick Links
 
-Use the search bar at the top of the page to quickly find specific topics or pages. Alternatively, browse through the categories and indices listed above to locate the information you need.
+### By Entity Type
 
-# Related Pages
+- [Chemicals](01-indices/chemical-index.md)
+- [Endpoints](01-indices/endpoint-index.md)
+- [Assays](01-indices/assay-index.md)
+- [Datasets](01-indices/dataset-index.md)
+- [Models](01-indices/model-index.md)
 
-- [Chemical Index](./chemical-index.md)
-- [Toxicological Endpoint Index](./toxicological-endpoint-index.md)
-- [Assay Index](./assay-index.md)
+### By Workflow
+
+- [Workflows](01-indices/workflow-index.md)
+- [Evidence Claims](01-indices/evidence-claim-index.md)
+
+### By Governance
+
+- [Quality and Governance](14-quality-and-governance)
+
+---
+
+## Notes
+
+This index is dynamically updated as new pages are added to the wiki. For the most current list of pages, refer to the sidebar navigation or use the search function.
+
+---
+
+## Related Pages
+
+- [Chemical Index](chemical-index.md)
+- [Endpoint Index](endpoint-index.md)
+- [Assay Index](assay-index.md)
+- [Dataset Index](dataset-index.md)
+- [Model Index](model-index.md)
+- [Workflow Index](workflow-index.md)
+- [Evidence Claim Index](evidence-claim-index.md)

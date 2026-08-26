@@ -72,6 +72,6 @@ mitigation: "Clearly label historical data and provide context for changes in st
 
 ## Related Pages
 
-- [Evidence Standards](#)
+- [Evidence Standards](../14-quality-and-governance/evidence-standards.md)
 - [Update and Review Policy](#)
-- [Quality and Governance](#)
+- [Quality and Governance](../14-quality-and-governance/)

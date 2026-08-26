@@ -1,51 +1,79 @@
 ---
 id: evidence-claim-index
 title: Evidence Claim Index
-description: Index page listing canonical evidence claim pages and key subgroups.
+description: Index page listing evidence claim pages.
 slug: /indices/evidence-claim-index
 sidebar_label: Evidence Claim Index
 page_type: index
-entity_class: index
+entity_class: evidence
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-26
+curator: system
 ---
 
-## Overview
+# Evidence Claim Index
 
-This page serves as a navigational hub for evidence claims across the wiki. It organizes and links to canonical evidence claim pages, making it easier to retrieve and verify structured claims.
+This page serves as a navigational hub for all evidence claim pages in the wiki. Evidence claims are organized by type and indexed for quick retrieval.
 
-## Scope and Notes
+## Index of Evidence Claims
 
-This index focuses solely on navigation. For substantive content, refer to the linked evidence claim pages.
+### Alphabetical List
 
-## Key Evidence Claim Groups
+*(Pages to be added as the wiki expands.)*
 
-### Core Evidence Claims
+### By Claim Type
 
-- [Bisphenol A Evidence Claims](../10-evidence/bisphenol-a-evidence.md)
-- [Aryl Hydrocarbon Receptor Evidence Claims](../10-evidence/aryl-hydrocarbon-receptor-evidence.md)
+#### Result Claims
 
-### Endpoint-Specific Evidence Claims
+*(Pages to be added as the wiki expands.)*
 
-- [Hepatotoxicity Evidence Claims](../10-evidence/hepatotoxicity-evidence.md)
-- [Neurotoxicity Evidence Claims](../10-evidence/neurotoxicity-evidence.md)
+#### Interpretation Claims
 
-### Assay-Specific Evidence Claims
+*(Pages to be added as the wiki expands.)*
 
-- [Tox21 Assay Evidence Claims](../10-evidence/tox21-assay-evidence.md)
-- [OECD Assay Evidence Claims](../10-evidence/oecd-assay-evidence.md)
+#### Summary Claims
+
+*(Pages to be added as the wiki expands.)*
+
+## Key Subgroups
+
+### High-Priority Claims
+
+Claims prioritized for detailed documentation and verification:
+
+*(Pages to be added as the wiki expands.)*
+
+### Data-Rich Claims
+
+Claims with extensive evidence support:
+
+*(Pages to be added as the wiki expands.)*
+
+### Regulatory-Focused Claims
+
+Claims with significant regulatory interest:
+
+*(Pages to be added as the wiki expands.)*
+
+## Related Indices
+
+- [Chemical Index](chemical-index.md)
+- [Endpoint Index](endpoint-index.md)
+- [Assay Index](assay-index.md)
+- [Dataset Index](dataset-index.md)
+
+---
+
+## Notes
+
+This index will be dynamically updated as new evidence claim pages are added to the wiki. For the most current list, refer to the sidebar navigation or use the search function.
+
+---
 
 ## Related Pages
 
-- [Master Index](../01-indices/master-index.md)
-- [Chemical Index](../01-indices/chemical-index.md)
-- [Evidence Standards](../14-quality-and-governance/evidence-standards.md)
-
-## Open Questions or Review Notes
-
-- This index is a draft and will be expanded as more evidence claim pages are created.
-- Consider adding a search or filter functionality for larger-scale implementations.
-
-## References
-
-No references are included in this index page. For detailed evidence, refer to the linked evidence claim pages.
+- [Master Index](master-index.md)
+- [Chemical Index](chemical-index.md)
+- [Endpoint Index](endpoint-index.md)
+- [Assay Index](assay-index.md)
+- [Dataset Index](dataset-index.md)

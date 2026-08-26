@@ -1,99 +1,113 @@
 ---
 id: identifier-systems
 title: Identifier Systems
-description: Index page providing a list of identifier systems used in the wiki.
+description: Glossary page explaining identifier systems used for chemicals and other entities.
 slug: /glossary/identifier-systems
 sidebar_label: Identifier Systems
 page_type: index
 entity_class: index
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-26
 ---
 
-# Identifier Systems
+# Overview
 
-This page provides a list of identifier systems used throughout the wiki. These systems are essential for uniquely identifying chemicals, assays, datasets, and other entities.
+This page explains the identifier systems used for chemicals and other entities in the wiki. It provides a quick reference for understanding and interpreting identifiers across different pages and systems.
 
-## Overview
+# Chemical Identifier Systems
 
-Identifier systems ensure that entities are uniquely and consistently identified across the wiki. This page lists the systems used and provides brief descriptions of each.
+## CAS Registry Number
 
-## Chemical Identifier Systems
+- **Description**: A unique numerical identifier assigned by the Chemical Abstracts Service (CAS) to every chemical substance described in the open scientific literature.
+- **Format**: A sequence of up to 10 digits, separated by hyphens into three parts.
+- **Example**: Bisphenol A is identified as `50-99-9`.
+- **Usage**: Widely used in chemical databases and literature.
 
-### CAS Registry Number
+## InChI (International Chemical Identifier)
 
-- **Description**: A unique numerical identifier assigned by the Chemical Abstracts Service (CAS) to every chemical substance.
-- **Example**: 7440-44-0 (Benzene)
-- **Use**: Widely used for chemicals in scientific literature and databases.
+- **Description**: A textual identifier for chemical substances that describes the structure of a chemical compound.
+- **Format**: A string of characters that encodes the structure of a molecule.
+- **Example**: The InChI for Bisphenol A is `InChI=1S/C15H16O2/c1-16-13-8-6-11(7-9-13)15(10-14(16)12(17)5-3-1-4-12)18-2/h1-10,17H,11H2`.
+- **Usage**: Used for unique identification of chemical structures in databases and software.
 
-### InChI
+## SMILES (Simplified Molecular Input Line Entry System)
 
-- **Description**: International Chemical Identifier, a textual representation of a chemical structure.
-- **Example**: InChI=1S/C6H6/c1-2-4-6-5-3-1/h1-6H
-- **Use**: Useful for searching and comparing chemical structures.
+- **Description**: A specification in the form of a line notation for describing the structure of chemical molecules using short ASCII strings.
+- **Format**: A string of characters that encodes the structure of a molecule.
+- **Example**: The SMILES for Bisphenol A is `Oc1ccc(O)c(cc1)-C(=O)c2cc(O)cc2`.
+- **Usage**: Used for representing chemical structures in databases and software.
 
-### SMILES
+## ChEBI ID
 
-- **Description**: Simplified Molecular Input Line Entry System, a string representation of a chemical structure.
-- **Example**: c1ccccc1 (Benzene)
-- **Use**: Commonly used in computational chemistry and cheminformatics.
+- **Description**: A unique identifier assigned by the Chemical Entities of Biological Interest (ChEBI) database to chemical entities.
+- **Format**: A numerical identifier prefixed with `CHEBI:`.
+- **Example**: Bisphenol A is identified as `CHEBI:3484`.
+- **Usage**: Used in biological and chemical databases.
 
-### IUPAC Name
+# Biological Identifier Systems
 
-- **Description**: International Union of Pure and Applied Chemistry name, a systematic name for a chemical compound.
-- **Example**: Benzene
-- **Use**: Provides a standardized name for chemicals.
+## NCBI Taxonomy ID
 
-## Biological Identifier Systems
+- **Description**: A unique identifier assigned by the National Center for Biotechnology Information (NCBI) to taxonomic entities.
+- **Format**: A numerical identifier.
+- **Example**: The NCBI Taxonomy ID for Homo sapiens (human) is `9606`.
+- **Usage**: Used for identifying species in biological databases.
 
-### Gene Symbols
+## Gene Ontology (GO) ID
 
-- **Description**: Short forms of gene names, often derived from the gene's function or the disease it causes.
-- **Example**: TP53 (Tumor Protein p53)
-- **Use**: Used to identify genes in biological research.
+- **Description**: A unique identifier assigned by the Gene Ontology Consortium to terms in the Gene Ontology database.
+- **Format**: A numerical identifier prefixed with `GO:`.
+- **Example**: The GO ID for "estrogen receptor activity" is `GO:0003707`.
+- **Usage**: Used for describing gene functions and biological processes.
 
-### Protein Identifiers
+## Uberon ID
 
-- **Description**: Unique identifiers for proteins, often assigned by databases like UniProt.
-- **Example**: P04637 (TP53_HUMAN)
-- **Use**: Used to identify proteins in biological research.
+- **Description**: A unique identifier assigned by the Uberon Consortium to anatomical entities.
+- **Format**: A numerical identifier prefixed with `UBERON:`.
+- **Example**: The Uberon ID for "liver" is `UBERON:0002107`.
+- **Usage**: Used for describing anatomical structures in biological databases.
 
-### Taxonomic Identifiers
+# Toxicological Identifier Systems
 
-- **Description**: Unique identifiers for species, assigned by the NCBI Taxonomy database.
-- **Example**: 9606 (Homo sapiens)
-- **Use**: Used to identify species in biological research.
+## AOP Wiki ID
 
-## Assay and Dataset Identifier Systems
+- **Description**: A unique identifier assigned by the Adverse Outcome Pathway (AOP) Wiki to AOPs.
+- **Format**: A numerical identifier prefixed with `AOP:`.
+- **Example**: The AOP Wiki ID for "Estrogen Receptor Pathway" is `AOP:1`.
+- **Usage**: Used for identifying and describing AOPs in toxicological databases.
 
-### Assay Identifiers
+## ToxPi ID
 
-- **Description**: Unique identifiers for assays, often assigned by databases like PubChem or Tox21.
-- **Example**: AID 12345 (PubChem BioAssay)
-- **Use**: Used to identify assays in scientific research.
+- **Description**: A unique identifier assigned by the ToxPi project to toxicological networks.
+- **Format**: A numerical identifier.
+- **Example**: The ToxPi ID for a specific toxicological network might be `12345`.
+- **Usage**: Used for identifying and describing toxicological networks.
 
-### Dataset Identifiers
+# General Identifier Systems
 
-- **Description**: Unique identifiers for datasets, often assigned by repositories like Figshare or Zenodo.
-- **Example**: 10.5281/zenodo.1234567
-- **Use**: Used to identify datasets in scientific research.
+## NCIT (National Cancer Institute Thesaurus) ID
 
-## Ontology and Vocabulary Identifier Systems
+- **Description**: A unique identifier assigned by the National Cancer Institute to terms in the NCIT database.
+- **Format**: A numerical identifier prefixed with `NCIT:`.
+- **Example**: The NCIT ID for "Bisphenol A" is `NCIT:C835`.
+- **Usage**: Used for describing terms related to cancer and toxicology.
 
-### Ontology Terms
+## SNOMED CT ID
 
-- **Description**: Unique identifiers for terms in ontologies, often assigned by the Ontology Lookup Service.
-- **Example**: GO:0008150 (Biological Process)
-- **Use**: Used to identify terms in ontologies.
+- **Description**: A unique identifier assigned by SNOMED International to terms in the SNOMED CT database.
+- **Format**: A numerical identifier prefixed with `SNOMEDCT:`.
+- **Example**: The SNOMED CT ID for "Bisphenol A" might be `SNOMEDCT:123456`.
+- **Usage**: Used for describing clinical and toxicological terms.
 
-### Vocabulary Terms
+## MeSH (Medical Subject Headings) ID
 
-- **Description**: Unique identifiers for terms in controlled vocabularies, often assigned by the National Cancer Institute Thesaurus.
-- **Example**: NCIT:C2914 (Chemical)
-- **Use**: Used to identify terms in controlled vocabularies.
+- **Description**: A unique identifier assigned by the National Library of Medicine to terms in the MeSH database.
+- **Format**: A numerical identifier prefixed with `D`.
+- **Example**: The MeSH ID for "Bisphenol A" is `D016000`.
+- **Usage**: Used for describing medical and toxicological terms in literature.
 
-## Related Pages
+# Related Pages
 
-- [Glossary](./glossary.md)
 - [Acronyms](./acronyms.md)
 - [Ontology Crosswalks](./ontology-crosswalks.md)
+- [Chemical Index](../../01-indices/chemical-index.md)

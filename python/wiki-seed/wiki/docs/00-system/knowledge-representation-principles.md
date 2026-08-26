@@ -80,6 +80,6 @@ notes: Supports the toxicity claim for Example Chemical.
 
 ## Related Pages
 
-- [Ontology Alignment Policy](#)
+- [Ontology Alignment Policy](./ontology-alignment-policy.md)
 - [Update and Review Policy](#)
-- [Evidence Standards](#)
+- [Evidence Standards](../14-quality-and-governance/evidence-standards.md)

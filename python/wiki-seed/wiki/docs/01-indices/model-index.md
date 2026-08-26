@@ -1,51 +1,79 @@
 ---
 id: model-index
 title: Model Index
-description: Index page listing canonical model pages and key subgroups.
+description: Index page listing model and method pages.
 slug: /indices/model-index
 sidebar_label: Model Index
 page_type: index
-entity_class: index
+entity_class: model
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-26
+curator: system
 ---
 
-# Overview
+# Model Index
 
-The Model Index provides a comprehensive listing of all canonical model pages within the wiki. It is organized to facilitate easy navigation and retrieval of model-specific information.
+This page serves as a navigational hub for all model and method pages in the wiki. Models and methods are organized by type and indexed for quick retrieval.
 
-# Model Categories
+## Index of Models and Methods
 
-## By Type
+### Alphabetical List
 
-- [Computational Models](../08-models-and-methods/computational-models.md)
-- [Statistical Models](../08-models-and-methods/statistical-models.md)
-- [Machine Learning Models](../08-models-and-methods/machine-learning-models.md)
-- [Mechanistic Models](../08-models-and-methods/mechanistic-models.md)
+*(Pages to be added as the wiki expands.)*
 
-## By Domain
+### By Model Type
 
-- [Toxicokinetic Models](../08-models-and-methods/toxicokinetic-models.md)
-- [Toxicodynamic Models](../08-models-and-methods/toxicodynamic-models.md)
-- [Exposure Models](../08-models-and-methods/exposure-models.md)
-- [Risk Assessment Models](../08-models-and-methods/risk-assessment-models.md)
+#### Computational Models
 
-## By Application
+*(Pages to be added as the wiki expands.)*
 
-- [Predictive Toxicology Models](../08-models-and-methods/predictive-toxicology-models.md)
-- [Dose-Response Models](../08-models-and-methods/dose-response-models.md)
-- [ADME Models](../08-models-and-methods/adme-models.md)
-- [Network Models](../08-models-and-methods/network-models.md)
+#### Analytical Methods
 
-# Key Models
+*(Pages to be added as the wiki expands.)*
 
-- [QSAR Models](../08-models-and-methods/qsar-models.md)
-- [PBPK Models](../08-models-and-methods/pbpk-models.md)
-- [Bayesian Models](../08-models-and-methods/bayesian-models.md)
-- [Deep Learning Models](../08-models-and-methods/deep-learning-models.md)
+#### Decision Frameworks
 
-# Related Pages
+*(Pages to be added as the wiki expands.)*
 
-- [Chemical Index](./chemical-index.md)
-- [Assay Index](./assay-index.md)
-- [Master Index](./master-index.md)
+## Key Subgroups
+
+### High-Priority Models
+
+Models prioritized for detailed documentation and integration:
+
+*(Pages to be added as the wiki expands.)*
+
+### Data-Rich Models
+
+Models with extensive dataset coverage:
+
+*(Pages to be added as the wiki expands.)*
+
+### Regulatory-Focused Models
+
+Models with significant regulatory interest:
+
+*(Pages to be added as the wiki expands.)*
+
+## Related Indices
+
+- [Chemical Index](chemical-index.md)
+- [Endpoint Index](endpoint-index.md)
+- [Assay Index](assay-index.md)
+- [Dataset Index](dataset-index.md)
+
+---
+
+## Notes
+
+This index will be dynamically updated as new model and method pages are added to the wiki. For the most current list, refer to the sidebar navigation or use the search function.
+
+---
+
+## Related Pages
+
+- [Master Index](master-index.md)
+- [Chemical Index](chemical-index.md)
+- [Endpoint Index](endpoint-index.md)
+- [Assay Index](assay-index.md)
+- [Dataset Index](dataset-index.md)

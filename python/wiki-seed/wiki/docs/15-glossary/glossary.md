@@ -1,106 +1,95 @@
 ---
 id: glossary
 title: Glossary
-description: Index page providing a glossary of terms used in the wiki.
+description: A glossary of terms used in the wiki, providing lightweight definitions and references to canonical pages.
 slug: /glossary/glossary
 sidebar_label: Glossary
 page_type: index
 entity_class: index
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-26
 ---
 
-# Glossary
+# Overview
 
-This page provides a glossary of terms used throughout the wiki. For detailed definitions and explanations, refer to the respective concept pages.
+This glossary provides lightweight definitions for specialized terms used across the wiki. For detailed explanations, refer to the canonical concept pages linked within each entry.
 
-## Overview
+## A
 
-The glossary serves as a quick reference for common terms and acronyms used in the wiki. It is not intended to replace detailed concept pages but to provide a lightweight lookup for recurring specialized terms.
+### Adverse Outcome Pathway (AOP)
+A conceptual framework linking a molecular initiating event to an adverse outcome at the individual or population level. See [Adverse Outcome Pathway](../02-concepts/adverse-outcome-pathway.md) for details.
 
-## Terms
+## B
 
-### A
+### Bisphenol A (BPA)
+An organic compound used to make polycarbonate plastics and epoxy resins. See [Bisphenol A](../03-chemicals/bisphenol-a.md) for details.
 
-- **Adverse Outcome Pathway (AOP)**: A conceptual framework linking a molecular initiating event to an adverse outcome.
-- **Assay**: A test or analysis used to measure the presence, amount, or activity of a substance or biological entity.
+## C
 
-### B
+### Carcinogenicity
+The ability of a substance to cause cancer. See [Carcinogenicity](../05-toxicological-endpoints/carcinogenicity.md) for details.
 
-- **Bioassay**: A biological assay used to measure the effect of a substance on living organisms or their components.
-- **Biomarker**: A measurable indicator of a biological state or condition.
+### Computational Toxicology
+The use of computational methods to predict toxicological properties of chemicals. See [Computational Toxicology](../02-concepts/computational-toxicology.md) for details.
 
-### C
+## D
 
-- **Chemical**: A substance with a defined molecular structure.
-- **Citation**: A reference to a source that supports a claim.
+### Dose-Response Relationship
+The relationship between the dose of a substance and the response it elicits. See [Dose-Response Relationship](../02-concepts/dose-response-relationship.md) for details.
 
-### D
+### Developmental Toxicity
+Adverse effects on the developing organism that may result from exposure to a substance during pregnancy or early life. See [Developmental Toxicity](../05-toxicological-endpoints/developmental-toxicity.md) for details.
 
-- **Dataset**: A structured collection of data used for analysis or research.
-- **Dose-Response Relationship**: The relationship between the dose of a substance and its effect on a biological system.
+## E
 
-### E
+### Estrogen Receptor
+A protein that binds estrogen and mediates its effects in cells. See [Estrogen Receptor](../04-biology/estrogen-receptor.md) for details.
 
-- **Endpoint**: A measurable effect or outcome used to assess the impact of a substance.
-- **Evidence**: Information or data that supports a claim.
+## G
 
-### G
+### Glossary
+A collection of terms and their definitions, providing quick lookup for specialized terminology. See [Glossary](../15-glossary/glossary.md) for details.
 
-- **Governance**: The rules, standards, and processes that ensure the quality and reliability of the wiki's content.
+## M
 
-### H
+### Meta-Analysis
+A statistical method for combining the results of multiple scientific studies. See [Meta-Analysis](../02-concepts/meta-analysis.md) for details.
 
-- **Human Review**: A process where subject matter experts review content for accuracy and reliability.
+## Q
 
-### I
+### Quantitative Structure-Activity Relationship (QSAR)
+A method for predicting the biological activity of chemicals based on their molecular structure. See [QSAR](../08-models-and-methods/qsar.md) for details.
 
-- **Identifier**: A unique code or name used to identify a chemical, assay, or other entity.
+## R
 
-### L
+### Randomized Controlled Trial (RCT)
+A study design in which participants are randomly assigned to receive one of two or more interventions. See [Randomized Controlled Trial](../02-concepts/randomized-controlled-trial.md) for details.
 
-- **Literature**: Published sources such as papers, reviews, and reports.
+## T
 
-### M
+### Tox21
+A collaborative effort between multiple federal agencies to develop and validate high-throughput screening assays for toxicological research. See [Tox21 Dataset](../07-datasets/tox21.md) for details.
 
-- **Model**: A computational or theoretical representation of a biological system or process.
+### Toxicological Endpoint
+A measurable biological effect used to assess the toxicity of a substance. See [Toxicological Endpoints](../05-toxicological-endpoints/) for details.
 
-### O
+## W
 
-- **Ontology**: A structured framework for organizing and categorizing knowledge.
-
-### P
-
-- **Provenance**: The origin and history of a claim or dataset.
-
-### Q
-
-- **Quality**: The degree to which content meets the wiki's standards for accuracy, reliability, and relevance.
-
-### R
-
-- **Responsible Use**: The ethical and legal use of the wiki's content.
-
-### S
-
-- **Source**: A published or unpublished document, dataset, or other material that supports a claim.
-- **Species**: A distinct group of living organisms.
-
-### T
-
-- **Target**: A biological molecule or structure that interacts with a substance.
-- **Toxicology**: The study of the adverse effects of substances on living organisms.
-
-### V
-
-- **Verification**: The process of checking a claim against its supporting evidence.
-
-### W
-
-- **Workflow**: A sequence of steps or processes used to achieve a specific goal.
+### Workflow
+A sequence of steps or processes designed to achieve a specific goal. See [Workflows](../11-workflows/) for details.
 
 ## Related Pages
 
-- [Acronyms](./acronyms.md)
-- [Identifier Systems](./identifier-systems.md)
-- [Ontology Crosswalks](./ontology-crosswalks.md)
+- [Wiki Mission and Scope](../00-system/wiki-mission-and-scope.md)
+- [Master Index](../01-indices/master-index.md)
+- [Evidence Standards](../14-quality-and-governance/evidence-standards.md)
+- [Agent Task Template](../12-agent-operations/agent-task-template.md)
+
+## Open Questions
+
+- How should new terms be proposed and added to the glossary?
+- What mechanisms should be in place for ensuring definitions remain up-to-date?
+
+## References
+
+- [Wiki Specification Reference](../00-system/wiki-specification-reference.md)
