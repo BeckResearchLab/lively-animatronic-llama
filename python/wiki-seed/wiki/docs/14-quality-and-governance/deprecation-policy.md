@@ -1,77 +1,71 @@
 ---
 id: deprecation-policy
 title: Deprecation Policy
-description: Define the policy for deprecating wiki content.
+description: Governance page defining the policy for deprecating outdated content.
 slug: /quality/deprecation-policy
 sidebar_label: Deprecation Policy
-page_type: index
-entity_class: index
+page_type: governance
+entity_class: governance_rule
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-26
 ---
 
-# Deprecation Policy
+# Overview
 
-This policy defines the procedures for deprecating content in the wiki. It ensures that outdated or inaccurate content is properly identified and removed or replaced.
+This page defines the policy for deprecating outdated content in the wiki. It ensures that the wiki remains accurate, relevant, and free of obsolete or misleading information. The policy covers procedures for identifying, marking, and removing deprecated content.
 
-## Purpose
-
-The purpose of this policy is to establish a structured approach for managing deprecated content in the wiki.
-
-## Scope
-
-This policy applies to all content in the wiki, including claims, citations, and metadata. It covers the processes for identifying, marking, and removing deprecated content.
-
-## Deprecation Process
-
-1. **Identification**: Identify content that is outdated, inaccurate, or no longer relevant.
-
-2. **Marking**: Mark deprecated content with a clear indication that it is no longer valid.
-
-3. **Replacement**: Provide replacement content or links to updated information where possible.
-
-4. **Removal**: Remove deprecated content after a specified period, unless it is retained for historical or reference purposes.
+# Identifying Deprecated Content
 
 ## Criteria for Deprecation
 
-- **Outdated Information**: Content that is no longer accurate due to new evidence or changes in standards.
-- **Inaccurate Information**: Content that has been found to be incorrect or misleading.
-- **Irrelevant Information**: Content that is no longer relevant to the wiki's scope or objectives.
+Content may be deprecated if it meets one or more of the following criteria:
 
-## Documentation
+- **Outdated Information**: The content is no longer accurate or relevant due to new evidence or changes in scientific understanding.
+- **Obsolete Methods**: The content describes methods or approaches that are no longer used or recommended.
+- **Inaccessible Sources**: The content relies on sources that are no longer accessible or allowed under the current source policy.
+- **Contradicted Claims**: The content contains claims that have been contradicted by stronger evidence.
+- **Policy Violations**: The content violates governance policies, such as evidence standards or citation rules.
 
-- Document all deprecated content, including the rationale, date of deprecation, and any replacement content.
-- Maintain a log of all deprecations, including the date, author, and rationale.
+## Deprecation Review
 
-## Examples
+- Deprecated content must be reviewed by a subject matter expert.
+- Review must ensure that the content meets the criteria for deprecation.
+- Review must identify any supported claims that should be preserved.
 
-### Deprecation Notice Example
+# Marking Deprecated Content
 
-```yaml
-deprecation_id: dep-example-001
-page_id: example-chemical
-claim_id: clm-example-001
-deprecated_on: 2026-08-19
-deprecated_by: "editor@example.com"
-rationale: "New study contradicts previous toxicity claim."
-replacement: "clm-example-002"
-notes: "Updated claim reflects new data."
-```
+## Deprecation Status
 
-### Deprecation Log Example
+- Deprecated content must be marked with a `status` of `deprecated` in the frontmatter.
+- Deprecated content must include a deprecation notice explaining why the content was deprecated.
+- Deprecated content must include a link to the most recent or accurate version of the content.
 
-```yaml
-deprecation_id: dep-example-002
-page_id: outdated-chemical
-deprecated_on: 2026-08-19
-deprecated_by: "editor@example.com"
-rationale: "Chemical no longer relevant to wiki scope."
-replacement: null
-notes: "Content removed as it is outside the current scope."
-```
+## Deprecation Notice
 
-## Related Pages
+A deprecation notice must include the following information:
 
-- [Update and Review Policy](#)
-- [Versioning and Audit Policy](#)
-- [Quality and Governance](#)
+- **Reason for Deprecation**: A clear explanation of why the content was deprecated.
+- **Effective Date**: The date when the content was deprecated.
+- **Replacement Content**: A link to the most recent or accurate version of the content.
+- **Preserved Claims**: A list of any supported claims that were preserved.
+
+# Removing Deprecated Content
+
+## Content Removal
+
+- Deprecated content may be removed after a specified period (e.g., 1 year).
+- Removal must be approved by a designated review owner.
+- Removal must ensure that any preserved claims are migrated to the replacement content.
+
+## Backup and Archival
+
+- Deprecated content must be backed up before removal.
+- Backups must be archived in a designated location.
+- Backups must be retained for a specified period (e.g., 5 years).
+
+# Related Pages
+
+- [Update Policy](./update-policy.md)
+- [Ontology Policy](./ontology-policy.md)
+- [Evidence Standards](./evidence-standards.md)
+- [Agent Capabilities](../../00-system/agent-capabilities.md)

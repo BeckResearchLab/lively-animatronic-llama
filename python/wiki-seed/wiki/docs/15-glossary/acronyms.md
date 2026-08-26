@@ -1,121 +1,111 @@
 ---
 id: acronyms
 title: Acronyms
-description: Index page providing a list of acronyms used in the wiki.
+description: Glossary page listing acronyms and abbreviations used in the wiki.
 slug: /glossary/acronyms
 sidebar_label: Acronyms
 page_type: index
 entity_class: index
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-26
 ---
 
-# Acronyms
+# Overview
 
-This page provides a list of acronyms used throughout the wiki. For detailed explanations, refer to the respective concept or glossary pages.
+This page provides a list of acronyms and abbreviations used in the wiki. It serves as a quick reference for understanding and interpreting terminology across different pages.
 
-## Overview
+# Acronyms and Abbreviations
 
-The acronyms listed here are commonly used in the wiki. This page serves as a quick reference for understanding these acronyms without navigating to detailed pages.
-
-## Acronyms
-
-### A
+## General Terms
 
 - **AOP**: Adverse Outcome Pathway
-- **API**: Application Programming Interface
-
-### B
-
-- **BMD**: Benchmark Dose
-- **BMDL**: Benchmark Dose Lower Confidence Limit
-
-### C
-
-- **CAS**: Chemical Abstracts Service
-- **CC**: Creative Commons
-- **CDK**: Chemical Development Kit
-
-### D
-
-- **DOI**: Digital Object Identifier
-- **DSSTox**: Distributed Structure-Searchable Toxicity
-
-### E
-
-- **EC**: Effective Concentration
-- **EC50**: Median Effective Concentration
-
-### G
-
-- **GHS**: Globally Harmonized System of Classification and Labelling of Chemicals
-
-### H
-
-- **HER**: Human Estrogen Receptor
-- **HERG**: Human Ether-à-go-go-Related Gene
-
-### I
-
-- **IC50**: Median Inhibitory Concentration
-- **IUPAC**: International Union of Pure and Applied Chemistry
-
-### L
-
-- **LD50**: Lethal Dose 50
-- **LOAEL**: Lowest Observed Adverse Effect Level
-
-### M
-
-- **MOA**: Mode of Action
-- **NOAEL**: No Observed Adverse Effect Level
-
-### O
-
-- **OECD**: Organisation for Economic Co-operation and Development
-- **Ontology**: A structured framework for organizing and categorizing knowledge.
-
-### P
-
-- **PC**: Personal Computer
-- **PMID**: PubMed Identifier
-
-### Q
-
+- **HTS**: High-Throughput Screening
 - **QSAR**: Quantitative Structure-Activity Relationship
+- **IATA**: Integrated Approaches to Testing and Assessment
+- **WoE**: Weight of Evidence
+- **TTC**: Threshold of Toxicological Concern
+- **BMD**: Benchmark Dose
+- **NOAEL**: No Observed Adverse Effect Level
+- **LOAEL**: Lowest Observed Adverse Effect Level
+- **LD50**: Lethal Dose 50
+- **IC50**: Half Maximal Inhibitory Concentration
+- **EC50**: Half Maximal Effective Concentration
+- **LC50**: Lethal Concentration 50
+- **TD50**: Toxic Dose 50
 
-### R
+## Chemical-Specific Terms
 
-- **REACH**: Registration, Evaluation, Authorisation and Restriction of Chemicals
-- **RfD**: Reference Dose
+- **BPA**: Bisphenol A
+- **DES**: Diethylstilbestrol
+- **PCBs**: Polychlorinated Biphenyls
+- **PBDEs**: Polybrominated Diphenyl Ethers
+- **PFAS**: Per- and Polyfluoroalkyl Substances
+- **PCDDs**: Polychlorinated Dibenzo-p-Dioxins
+- **PCDFs**: Polychlorinated Dibenzofurans
+- **PAHs**: Polycyclic Aromatic Hydrocarbons
+- **VOCs**: Volatile Organic Compounds
+- **SVOCs**: Semi-Volatile Organic Compounds
 
-### S
+## Biological Terms
 
-- **SD**: Structure Datafile
-- **SMILES**: Simplified Molecular Input Line Entry System
+- **ERα**: Estrogen Receptor Alpha
+- **ERβ**: Estrogen Receptor Beta
+- **AhR**: Aryl Hydrocarbon Receptor
+- **PXR**: Pregnane X Receptor
+- **CAR**: Constitutive Androstane Receptor
+- **PPAR**: Peroxisome Proliferator-Activated Receptor
+- **NF-κB**: Nuclear Factor Kappa-Light-Chain-Enhancer of Activated B Cells
+- **MAPK**: Mitogen-Activated Protein Kinase
+- **JAK**: Janus Kinase
+- **STAT**: Signal Transducer and Activator of Transcription
+- **ROS**: Reactive Oxygen Species
+- **RNS**: Reactive Nitrogen Species
 
-### T
+## Toxicological Terms
 
-- **TCID50**: Tissue Culture Infectious Dose 50
+- **Carcinogenicity**: Ability to cause cancer
+- **Mutagenicity**: Ability to cause mutations
+- **Teratogenicity**: Ability to cause birth defects
+- **Neurotoxicity**: Ability to cause damage to the nervous system
+- **Hepatotoxicity**: Ability to cause damage to the liver
+- **Nephrotoxicity**: Ability to cause damage to the kidneys
+- **Immunotoxicity**: Ability to cause damage to the immune system
+- **Dermatotoxicity**: Ability to cause damage to the skin
+- **Oculotoxicity**: Ability to cause damage to the eyes
+- **Pulmonotoxicity**: Ability to cause damage to the lungs
+
+## Dataset and Database Terms
+
 - **Tox21**: Toxicology in the 21st Century
-
-### U
-
-- **UN**: United Nations
-- **URL**: Uniform Resource Locator
-
-### V
-
-- **VCF**: Variant Call Format
-- **VOC**: Volatile Organic Compound
-
-### W
-
+- **CTS**: Chemical Toxicity Summary
+- **OECD**: Organisation for Economic Co-operation and Development
+- **EPA**: Environmental Protection Agency
+- **FDA**: Food and Drug Administration
 - **WHO**: World Health Organization
-- **Wiki**: A collaborative website that allows users to create, edit, and link pages easily.
+- **IARC**: International Agency for Research on Cancer
+- **REACH**: Registration, Evaluation, Authorisation and Restriction of Chemicals
+- **PubChem**: Chemical database maintained by the NIH
+- **ChEMBL**: Chemical database maintained by the EMBL-EBI
+- **CAS**: Chemical Abstracts Service
+- **DTXSID**: EPA Substance Registry Services Identifier
 
-## Related Pages
+## Modeling and Analysis Terms
 
-- [Glossary](./glossary.md)
+- **ML**: Machine Learning
+- **DL**: Deep Learning
+- **RF**: Random Forest
+- **SVM**: Support Vector Machine
+- **PCA**: Principal Component Analysis
+- **k-NN**: k-Nearest Neighbors
+- **ANN**: Artificial Neural Network
+- **CNN**: Convolutional Neural Network
+- **RNN**: Recurrent Neural Network
+- **LSTM**: Long Short-Term Memory
+- **GRU**: Gated Recurrent Unit
+- **GNN**: Graph Neural Network
+
+# Related Pages
+
 - [Identifier Systems](./identifier-systems.md)
 - [Ontology Crosswalks](./ontology-crosswalks.md)
+- [Concept Index](../../01-indices/concept-index.md)

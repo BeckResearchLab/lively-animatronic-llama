@@ -1,70 +1,224 @@
 ---
 id: pbpk-modeling
-title: PBPK Modeling
-description: Concept page defining the principles and applications of PBPK modeling in computational toxicology.
+title: Physiologically Based Pharmacokinetic (PBPK) Modeling
+description: Concept page defining PBPK modeling and its role in computational toxicology.
 slug: /concepts/pbpk-modeling
 sidebar_label: PBPK Modeling
 page_type: concept
 entity_class: concept
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-25
 ---
 
-## Overview
+# Overview
 
-Physiologically Based Pharmacokinetic (PBPK) modeling is a computational method used to predict the absorption, distribution, metabolism, and excretion (ADME) of chemicals in the body. PBPK models are widely used in computational toxicology to assess the potential hazards of chemicals and support regulatory decisions.
+Physiologically Based Pharmacokinetic (PBPK) modeling is a computational approach used to simulate the absorption, distribution, metabolism, and excretion (ADME) of chemicals within the body. This method integrates physiological, biochemical, and chemical-specific parameters to predict the concentration-time profiles of substances in various tissues and organs. PBPK modeling is widely applied in computational toxicology to assess the potential toxicity of chemicals and to support regulatory decision-making.
 
-## Scope and Notes
+# Key Claims or Definitions
 
-This page defines the principles and applications of PBPK modeling. It does not cover the development or implementation of PBPK models, which are addressed in separate pages.
+## Definition of PBPK Modeling
 
-## Key Claims or Definitions
+**Claim ID:** clm-pbpk-001
 
-### Definition of PBPK Modeling
+**Statement:** PBPK modeling is a mathematical approach that simulates the behavior of chemicals in the body by integrating physiological and biochemical parameters.
 
-PBPK modeling is a method that:
+**Subject:** PBPK Modeling
+**Predicate:** defines
+**Object:** Mathematical simulation of chemical behavior
 
-1. Uses mathematical models to simulate the ADME processes of chemicals in the body.
-2. Incorporates physiological and anatomical data to predict the behavior of chemicals.
-3. Supports the assessment of chemical hazards and regulatory decisions.
+**Qualifiers:**
+- **Scope:** Computational toxicology
+- **System:** In silico
 
-### Key Components of PBPK Modeling
+**Citations:**
+- cit-001
 
-1. **Physiological Data**: Data on physiological processes (e.g., blood flow, tissue volumes).
-2. **Anatomical Data**: Data on anatomical structures (e.g., organ sizes, tissue compositions).
-3. **Chemical-Specific Data**: Data on the properties of the chemical (e.g., solubility, permeability).
-4. **Model**: The mathematical representation of ADME processes.
-5. **Validation**: Assessment of the model's performance and reliability.
-6. **Prediction**: Use of the model to predict the behavior of chemicals in the body.
+**Verification Status:** supported
+**Confidence:** high
 
-## Evidence or Details
+---
 
-### Principles of PBPK Modeling
+## Applications in Toxicology
 
-1. **Physiological Basis**: PBPK models are based on physiological and anatomical data, making them mechanistic and transparent.
-2. **Chemical-Specific Parameters**: Models incorporate chemical-specific data to predict the behavior of individual chemicals.
-3. **Model Development**: PBPK models are developed using data from experiments, literature, and other sources.
-4. **Model Validation**: Models are validated using experimental data to ensure their accuracy and reliability.
-5. **Prediction**: Validated models are used to predict the behavior of chemicals in the body under various conditions.
+**Claim ID:** clm-pbpk-002
 
-### Applications of PBPK Modeling
+**Statement:** PBPK models are used to predict tissue-level chemical concentrations based on dosing parameters, facilitating the interpretation of in vitro assay results in an in vivo context.
 
-- **Toxicity Assessment**: Predicting the toxicity of chemicals based on their ADME properties.
-- **Dose-Response Relationships**: Assessing the relationship between dose and response for chemicals.
-- **Regulatory Decision-Making**: Supporting regulatory decisions by providing data on chemical behavior.
-- **Risk Assessment**: Evaluating the potential risks of chemicals to human health and the environment.
+**Subject:** PBPK Modeling
+**Predicate:** facilitates
+**Object:** Interpretation of in vitro assay results
 
-## Related Pages
+**Qualifiers:**
+- **Scope:** Toxicology
+- **System:** In silico
 
-- [Computational Models](../08-models-and-methods/computational-models.md)
-- [Physiological Data](../04-biology/physiological-data.md)
-- [Model Validation](model-validation.md)
+**Citations:**
+- cit-002
 
-## Open Questions or Review Notes
+**Verification Status:** supported
+**Confidence:** high
 
-- How should PBPK models be validated when experimental data is limited?
-- What role should human experts play in the interpretation of PBPK model predictions?
+---
 
-## References
+## Advantages of PBPK Modeling
 
-- [Wiki Specification Reference](../00-system/wiki-specification-reference.md)
+**Claim ID:** clm-pbpk-003
+
+**Statement:** PBPK modeling provides a mechanistic understanding of chemical behavior, allowing for the extrapolation of data across species and the prediction of chemical interactions.
+
+**Subject:** PBPK Modeling
+**Predicate:** provides
+**Object:** Mechanistic understanding of chemical behavior
+
+**Qualifiers:**
+- **Scope:** Computational toxicology
+- **System:** In silico
+
+**Citations:**
+- cit-003
+
+**Verification Status:** supported
+**Confidence:** high
+
+---
+
+## Limitations of PBPK Modeling
+
+**Claim ID:** clm-pbpk-004
+
+**Statement:** PBPK models require extensive data on physiological and biochemical parameters, which may limit their applicability for chemicals with insufficient data.
+
+**Subject:** PBPK Modeling
+**Predicate:** requires
+**Object:** Extensive data on physiological and biochemical parameters
+
+**Qualifiers:**
+- **Scope:** Computational toxicology
+- **System:** In silico
+
+**Citations:**
+- cit-004
+
+**Verification Status:** supported
+**Confidence:** high
+
+---
+
+# Evidence or Details
+
+## Mechanistic Basis
+
+PBPK models are built on the principles of mass balance and physiological processes. They divide the body into compartments representing organs and tissues, each with its own physiological and biochemical properties. These compartments are connected by blood flow, allowing the model to simulate the movement of chemicals throughout the body. The key parameters include:
+
+- **Physiological Parameters:** Organ volumes, blood flow rates, and tissue composition.
+- **Biochemical Parameters:** Protein binding, metabolic rates, and enzyme activities.
+- **Chemical-Specific Parameters:** Partition coefficients, solubility, and reactivity.
+
+These parameters are integrated into a system of differential equations that describe the rate of change of chemical concentrations in each compartment over time.
+
+## Integration with In Vitro to In Vivo Extrapolation (IVIVE)
+
+PBPK modeling is often combined with IVIVE to bridge the gap between in vitro assay results and in vivo outcomes. This approach is particularly useful in regulatory toxicology, where it helps to prioritize chemicals for further testing and assess potential risks. For example, PBPK models can estimate the equivalent administered dose (EAD) needed to achieve in vitro bioactivity concentrations within the body, facilitating margin-of-exposure screening.
+
+## Regulatory Applications
+
+Regulatory agencies, such as the U.S. Environmental Protection Agency (EPA) and the European Medicines Agency (EMA), recognize the value of PBPK modeling in supporting regulatory decisions. PBPK models can be used for:
+
+- **Species Extrapolation:** Predicting chemical behavior in humans based on animal data.
+- **Exposure Route Extrapolation:** Assessing the effects of different exposure routes (e.g., oral, inhalation, dermal).
+- **Read-Across:** Applying data from one chemical to predict the behavior of structurally similar chemicals.
+- **Dose Extrapolation:** Estimating effects at low doses based on high-dose data.
+
+## Challenges and Considerations
+
+Despite its advantages, PBPK modeling faces several challenges:
+
+- **Data Requirements:** The need for extensive physiological and biochemical data can limit the applicability of PBPK models, particularly for novel chemicals.
+- **Model Complexity:** Developing and validating PBPK models requires specialized knowledge and computational resources.
+- **Uncertainty:** Predictions are subject to uncertainty, particularly when data are limited or assumptions are made about parameter values.
+- **Validation:** PBPK models must be validated against experimental data to ensure their reliability.
+
+# Related Pages
+
+- [In Vitro to In Vivo Extrapolation (IVIVE)](02-concepts/ivive.md)
+- [Quantitative Structure-Activity Relationship (QSAR)](02-concepts/qsar.md)
+- [ToxCast](07-datasets/toxcast.md)
+
+# Open Questions or Review Notes
+
+- How can the data requirements for PBPK modeling be reduced to improve its applicability to novel chemicals?
+- What are the best practices for validating PBPK models, particularly in the absence of experimental data?
+- How can PBPK modeling be integrated with other computational approaches, such as machine learning, to enhance its predictive power?
+
+# References
+
+```yaml
+citation_id: cit-001
+title: Application of an Accessible Interface for Pharmacokinetic Modeling and In Vitro to In Vivo Extrapolation
+authors:
+  - David E. Hines
+  - Shannon Bell
+  - Xiaoqing Chang
+  - Kamel Mansouri
+  - David Allen
+  - Nicole Kleinstreuer
+year: 2022
+container: Frontiers in Pharmacology
+doi: 10.3389/fphar.2022.864742
+url: https://doi.org/10.3389/fphar.2022.864742
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: Introduction
+notes: Defines PBPK modeling and its role in computational toxicology.
+---
+citation_id: cit-002
+title: Advancing Toxicity Predictions: A Review on In Vitro to In Vivo Extrapolation in Next-Generation Risk Assessment
+authors:
+  - Lin, Y.-J.
+  - Lin, Z.
+year: 2020
+container: Journal of Hazardous Materials
+doi: 10.1016/j.jhazmat.2020.122856
+url: https://doi.org/10.1016/j.jhazmat.2020.122856
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: Section 3
+notes: Discusses the application of PBPK modeling in interpreting in vitro assay results.
+---
+citation_id: cit-003
+title: Integration of Machine Learning With PBPK and QSAR Modeling Approaches to Facilitate Drug Discovery and Development
+authors:
+  - Xinyue Chen
+  - Zhoumeng Lin
+year: 2026
+container: CPT: Pharmacometrics & Systems Pharmacology
+doi: 10.1002/psp4.70228
+url: https://doi.org/10.1002/psp4.70228
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: Introduction
+notes: Highlights the advantages of PBPK modeling in providing mechanistic insights.
+---
+citation_id: cit-004
+title: Clinical Study Design and Modeling Approaches to Study Secretion of Drugs in Human Milk
+authors:
+  - Prerna Dodeja
+  - Nupur Chaphekar
+  - Taylor Laffey
+  - Hamdan Albukhaytan
+  - Steve Caritis
+  - Imam Shaik
+  - Raman Venkataramanan
+year: 2026
+container: Frontiers in Pediatrics
+doi: 10.3389/fped.2026.1843294
+url: https://doi.org/10.3389/fped.2026.1843294
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: Discussion
+notes: Discusses the limitations of PBPK modeling, including data requirements.
+```

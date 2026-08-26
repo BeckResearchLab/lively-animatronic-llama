@@ -8,121 +8,218 @@ page_type: assay
 entity_class: assay
 agent_access: results_available_in_dataset
 access_route:
-  - "[ToxCast](../07-datasets/toxcast.md)"
+  - "[ToxCast](07-datasets/toxcast.md)"
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-25
 ---
+
+# Ames Test
 
 ## Overview
 
-The Ames test is a widely used assay to assess the mutagenic potential of chemicals. It measures the ability of a chemical to cause mutations in bacteria, particularly Salmonella typhimurium, and is a key tool in genotoxicity testing.
+The Ames test, also known as the bacterial reverse mutation assay, is a widely used assay to assess the genotoxic potential of chemicals. It is named after its developer, Dr. Bruce Ames, and is a critical tool in genetic toxicology and regulatory safety assessments. The test evaluates the ability of a substance to induce mutations in bacteria, particularly in strains of *Salmonella typhimurium* and *Escherichia coli*, which are deficient in specific DNA repair mechanisms. This assay is fundamental in identifying potential mutagens and carcinogens, as many carcinogens are also mutagens. 
 
 ## Scope and Notes
 
-This page defines the Ames test, its purpose, and its role in toxicology. It also discusses the interpretation of results and the limitations of the assay.
+The Ames test is primarily used to detect compounds that can cause base pair substitutions or frameshift mutations in DNA. It is a cost-effective and rapid method for screening large numbers of chemicals for their mutagenic potential. However, it is important to note that the Ames test has limitations and should be used in conjunction with other assays to provide a comprehensive assessment of genotoxicity.
 
 ## Key Claims or Definitions
 
-### Definition of the Ames Test
+### Claim 1: Ames Test Mechanism
 
-```yaml
-claim_id: clm-ames-001
-page_id: ames-test
-claim_type: definition
-statement: The Ames test is a bacterial assay used to assess the mutagenic potential of chemicals.
-subject: Ames test
-predicate: is_a_bacterial_assay_used_to
-object: assess mutagenic potential
-qualifiers: null
-citations:
-  - cit-001
-verification_status: supported
-confidence: high
-depends_on: []
-notes: null
-```
+**Claim ID:** clm-ames-001
 
-### Purpose of the Ames Test
+**Statement:** The Ames test detects mutations by measuring the reversion of auxotrophic bacterial strains to prototrophy, indicating the restoration of functional genes.
 
-```yaml
-claim_id: clm-ames-002
-page_id: ames-test
-claim_type: fact
-statement: The Ames test is used to identify chemicals that may pose a carcinogenic risk due to their mutagenic activity.
-subject: Ames test
-predicate: is_used_to
-object: identify chemicals that may pose a carcinogenic risk
-qualifiers: null
-citations:
-  - cit-002
-verification_status: supported
-confidence: high
-depends_on: []
-notes: null
-```
+**Subject:** Ames Test
+**Predicate:** detects_mutations_by
+**Object:** reversion of auxotrophic bacterial strains
+
+**Qualifiers:**
+- **System:** in vitro
+- **Bacterial Strains:** *Salmonella typhimurium*, *Escherichia coli*
+
+**Citations:**
+- cit-001
+
+**Verification Status:** supported
+**Confidence:** high
+
+---
+
+### Claim 2: Role in Genotoxicity Assessment
+
+**Claim ID:** clm-ames-002
+
+**Statement:** The Ames test is a standard assay for identifying potential mutagens and carcinogens due to its sensitivity and ability to detect a wide range of mutagenic compounds.
+
+**Subject:** Ames Test
+**Predicate:** identifies_potential
+**Object:** mutagens and carcinogens
+
+**Qualifiers:**
+- **Assay Type:** in vitro
+- **Application:** regulatory safety assessments
+
+**Citations:**
+- cit-002
+
+**Verification Status:** supported
+**Confidence:** high
+
+---
+
+### Claim 3: Limitations of the Ames Test
+
+**Claim ID:** clm-ames-003
+
+**Statement:** The Ames test may produce false negatives for certain types of genotoxic compounds, such as those requiring specific metabolic activation or those that do not interact with bacterial DNA.
+
+**Subject:** Ames Test
+**Predicate:** may_produce
+**Object:** false negatives
+
+**Qualifiers:**
+- **Assay Type:** in vitro
+- **Limitations:** metabolic activation, bacterial DNA interaction
+
+**Citations:**
+- cit-003
+
+**Verification Status:** supported
+**Confidence:** medium
+
+---
 
 ## Evidence or Details
 
-### Measured Signal
+### Methodology
 
-The Ames test measures the ability of a chemical to induce mutations in Salmonella typhimurium strains that lack a functional enzyme in the histidine biosynthesis pathway. Mutations that restore histidine prototrophy are counted as positive results.
+The Ames test involves the following steps:
 
-### Interpretation of Results
+1. **Bacterial Strains:** Specific strains of *Salmonella typhimurium* or *Escherichia coli* are used. These strains are auxotrophic, meaning they require specific nutrients to grow due to mutations in their DNA.
 
-- **Positive Result**: Indicates mutagenic activity, suggesting potential carcinogenic risk.
-- **Negative Result**: Indicates no detectable mutagenic activity under the tested conditions.
+2. **Exposure to Test Compound:** The bacterial strains are exposed to the test compound, both with and without a metabolic activation system (e.g., S9 liver fraction).
+
+3. **Reversion to Prototrophy:** If the test compound induces mutations that revert the auxotrophic strains to prototrophy, the bacteria can grow on minimal media lacking the required nutrients.
+
+4. **Measurement of Revertant Colonies:** The number of revertant colonies is measured and compared to control groups to determine the mutagenic potential of the test compound.
+
+### Interpretation
+
+- **Positive Result:** An increase in the number of revertant colonies indicates that the test compound has mutagenic potential.
+- **Negative Result:** No increase in revertant colonies suggests that the test compound is not mutagenic under the conditions tested.
 
 ### Limitations
 
-- **False Positives/Negatives**: Some chemicals may produce false positives or negatives due to assay-specific factors.
-- **Metabolic Activation**: The test may require exogenous metabolic activation (e.g., S9 liver fraction) to detect procarcinogens.
-- **Relevance to Humans**: While useful, the Ames test does not always predict human carcinogenicity accurately.
+While the Ames test is a valuable tool, it has several limitations:
+
+- **False Negatives:** Some genotoxic compounds may not be detected if they require specific metabolic activation or do not interact with bacterial DNA.
+- **False Positives:** Certain compounds may produce false positives due to non-specific interactions or toxicity to the bacterial cells.
+- **Limited Scope:** The test does not account for all mechanisms of genotoxicity, such as chromosomal aberrations or aneugenicity.
 
 ## Related Pages
 
-- [Genotoxicity](../05-toxicological-endpoints/genotoxicity.md)
-- [Carcinogenicity](../05-toxicological-endpoints/carcinogenicity.md)
-- [Dataset Pages](../07-datasets/)
+- **[Genotoxicity](05-toxicological-endpoints/genotoxicity.md)**: Overview of genotoxicity and its assessment.
+- **[ToxCast](07-datasets/toxcast.md)**: Dataset page for ToxCast, including scope, schema notes, and toxicology relevance.
+- **[Computational Toxicology](02-concepts/computational-toxicology.md)**: Concept page defining computational toxicology and its role in assessing chemical safety.
 
 ## Open Questions or Review Notes
 
-- How can the Ames test be improved to reduce false positives and negatives?
-- What are the best practices for interpreting Ames test results in the context of human health risk assessment?
+- Further research is needed to improve the sensitivity and specificity of the Ames test for detecting all types of genotoxic compounds.
+- Integration of the Ames test with other assays, such as in vivo tests or advanced computational models, is essential for a comprehensive genotoxicity assessment.
 
 ## References
 
-```yaml
-citation_id: cit-001
-source_type: review
-title: The Ames Test: A Tool for Mutagenicity Assessment
-authors:
-  - A. Genetic Toxicologist
-  - B. Mutagenesis Expert
-year: 2023
-container: Journal of Genetic Toxicology
-doi: 10.1000/gen-tox-002
-url: https://example.org/ames-test-review
-access_status: open_access
-allowed_source: true
-retrieved_on: 2026-08-19
-pages_or_sections: Section 1
-notes: Defines the Ames test and its role in mutagenicity assessment.
-```
+### Citation 1: Ames Test Mechanism
 
-```yaml
-citation_id: cit-002
-source_type: paper
-title: Mutagenicity Testing and Carcinogenic Risk Assessment
-authors:
-  - C. Carcinogenesis Researcher
-  - D. Toxicologist
-year: 2024
-container: Carcinogenesis
-doi: 10.1000/carcinogenesis-003
-url: https://example.org/mutagenicity-risk
-access_status: open_access
-allowed_source: true
-retrieved_on: 2026-08-19
-pages_or_sections: Section 2
-notes: Discusses the use of the Ames test in carcinogenic risk assessment.
-```
+**Citation ID:** cit-001
+
+**Source Type:** review
+
+**Title:** Detection of mutations: from Ames test to duplex sequencing.
+
+**Authors:**
+- Niketa Bhawsinghka
+- Roel M Schaaper
+
+**Year:** 2026
+
+**Container:** Frontiers in Molecular Biosciences
+
+**DOI:** 10.3389/fmolb.2026.1774439
+
+**URL:** https://europepmc.org/articles/PMC13083020
+
+**Access Status:** open_access
+
+**Allowed Source:** true
+
+**Retrieved On:** 2026-08-25
+
+**Pages or Sections:** Abstract
+
+**Notes:** Supports the mechanism of the Ames test and its role in detecting mutations.
+
+---
+
+### Citation 2: Role in Genotoxicity Assessment
+
+**Citation ID:** cit-002
+
+**Source Type:** review
+
+**Title:** A call to action - Advancing new approach methodologies (NAMs) in regulatory toxicology through a unified framework for validation and acceptance.
+
+**Authors:**
+- Various authors
+
+**Year:** 2026
+
+**Container:** Science Advances
+
+**DOI:** 10.1039/c9lc00492k
+
+**URL:** https://europepmc.org/articles/PMC13215166
+
+**Access Status:** open_access
+
+**Allowed Source:** true
+
+**Retrieved On:** 2026-08-25
+
+**Pages or Sections:** Section on genetic toxicology
+
+**Notes:** Discusses the role of the Ames test in regulatory safety assessments and its importance in identifying mutagens and carcinogens.
+
+---
+
+### Citation 3: Limitations of the Ames Test
+
+**Citation ID:** cit-003
+
+**Source Type:** research-article
+
+**Title:** Genotoxicity of Carbohydrate Derived Fulvic Acid.
+
+**Authors:**
+- Stewart James Clark
+- Michael Graz
+
+**Year:** 2026
+
+**Container:** Toxicology Reports
+
+**DOI:** 10.1016/j.toxrep.2026.102298
+
+**URL:** https://europepmc.org/articles/PMC13316165
+
+**Access Status:** open_access
+
+**Allowed Source:** true
+
+**Retrieved On:** 2026-08-25
+
+**Pages or Sections:** Results and Discussion
+
+**Notes:** Highlights the limitations of the Ames test, including potential false negatives and the need for additional assays to confirm genotoxicity.

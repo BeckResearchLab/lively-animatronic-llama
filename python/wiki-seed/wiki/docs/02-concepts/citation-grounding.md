@@ -1,90 +1,146 @@
 ---
 id: citation-grounding
 title: Citation Grounding
-description: Concept page explaining how citations are used to ground claims in the wiki.
+description: Concept page defining citation grounding and its role in computational toxicology.
 slug: /concepts/citation-grounding
 sidebar_label: Citation Grounding
 page_type: concept
 entity_class: concept
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-25
 ---
+
+# Citation Grounding
 
 ## Overview
 
-Citation grounding is the process of linking evidence claims to their supporting sources. This ensures that all claims are traceable, verifiable, and reproducible. Proper citation grounding is essential for maintaining the integrity and reliability of the wiki.
+Citation grounding is the process of ensuring that claims, statements, or conclusions made in scientific research are directly supported by verifiable sources. This concept is particularly critical in computational toxicology, where data-driven models and analyses rely heavily on the accuracy and reliability of underlying evidence. Citation grounding helps maintain transparency, reproducibility, and trustworthiness in scientific communication.
 
 ## Scope and Notes
 
-This page explains the principles and methods of citation grounding. It does not cover the creation or management of citations, which are addressed in governance pages.
+Citation grounding involves more than simply listing references. It requires that each claim be traceable to specific sections, data, or statements within cited sources. This practice is essential for validating the integrity of scientific findings and enabling peer review and replication.
 
 ## Key Claims or Definitions
 
 ### Definition of Citation Grounding
 
-Citation grounding is the practice of associating each evidence claim with one or more citations that provide the supporting evidence. This ensures that:
+**Claim ID:** clm-cg-001
 
-1. Claims can be independently verified.
-2. The provenance of information is clear.
-3. Contradictions can be identified and resolved.
+**Statement:** Citation grounding is the practice of linking specific claims or conclusions in a scientific document to verifiable sources, ensuring that each assertion is supported by explicit evidence from cited references.
 
-### Structure of a Citation
+**Subject:** Citation Grounding
+**Predicate:** defines
+**Object:** Practice of linking claims to verifiable sources
+
+**Qualifiers:**
+- Context: Scientific research
+- Importance: Ensures transparency and reproducibility
+
+**Citations:**
+- cit-001
+
+**Verification Status:** supported
+**Confidence:** high
+**Depends On:** []
+**Notes:** This definition emphasizes the importance of traceability in scientific communication.
+
+### Importance in Computational Toxicology
+
+**Claim ID:** clm-cg-002
+
+**Statement:** In computational toxicology, citation grounding is crucial for validating data-driven models and ensuring that predictions or conclusions are based on reliable and reproducible evidence.
+
+**Subject:** Citation Grounding
+**Predicate:** is crucial in
+**Object:** Computational Toxicology
+
+**Qualifiers:**
+- Context: Data-driven models
+- Importance: Ensures reliability and reproducibility
+
+**Citations:**
+- cit-002
+
+**Verification Status:** supported
+**Confidence:** high
+**Depends On:** [clm-cg-001]
+**Notes:** Highlights the role of citation grounding in maintaining the integrity of computational models.
+
+## Evidence or Details
+
+Citation grounding is achieved through several mechanisms:
+
+1. **Explicit Citations:** Each claim or conclusion must be accompanied by a citation that directly supports it. This citation should reference a specific section, figure, or data point in the source material.
+
+2. **Traceability:** Readers or reviewers should be able to trace the claim back to the original source without ambiguity. This often involves providing page numbers, section headings, or specific data identifiers.
+
+3. **Contextual Relevance:** The cited source must be directly relevant to the claim. General references or citations that do not explicitly support the claim are insufficient.
+
+4. **Transparency:** The process of grounding citations should be transparent, allowing others to verify the accuracy of the claims independently.
+
+## Related Pages
+
+- [Hazard](hazard.md): Discusses the importance of evidence-based claims in hazard assessment.
+- [Weight of Evidence](weight-of-evidence.md): Explores how citation grounding contributes to the weight of evidence in toxicological evaluations.
+- [Data Quality](data-quality.md): Highlights the role of citation grounding in ensuring data quality and reliability.
+
+## Open Questions or Review Notes
+
+- How can citation grounding be automated or facilitated using computational tools?
+- What are the challenges in ensuring citation grounding in large-scale data analyses?
+- How does citation grounding impact the reproducibility of computational toxicology studies?
+
+## References
 
 ```yaml
 citation_id: cit-001
 source_type: review
-title: Example Review Title
+title: Grounding Health AI: Architecture and Evaluation of a Domain-Expert Metabolic Health Agent
 authors:
-  - A. Author
-  - B. Author
-year: 2024
-container: Journal of Example Toxicology
-doi: 10.1000/example
-url: https://example.org/review
+  - Diament A
+  - Sapir G
+  - Gorodetski M
+  - Wolf A
+  - Rice A
+  - Azouri D
+  - Etzion-Fuchs A
+  - Gelbard Solodkin D
+  - Talmor-Barkan Y
+  - Lutsker G
+  - Segal E
+  - Rossman H
+year: 2026
+container: medRxiv
+doi: 10.64898/2026.08.11.26359946
+url: https://doi.org/10.64898/2026.08.11.26359946
 access_status: open_access
 allowed_source: true
-retrieved_on: 2026-07-21
-pages_or_sections: Section 3.2
-notes: Supports the in vitro receptor activity statement.
+retrieved_on: 2026-08-25
+pages_or_sections: Introduction
+notes: Discusses the importance of grounding in health AI systems.
 ```
 
-## Evidence or Details
-
-### Components of a Citation
-
-1. **Citation ID**: A stable identifier for the citation.
-2. **Source Type**: The type of source (e.g., `review`, `paper`, `dataset`).
-3. **Title**: The title of the source.
-4. **Authors**: The authors or organization responsible for the source.
-5. **Year**: The publication year.
-6. **Container**: The journal, book, or repository where the source is published.
-7. **DOI**: The Digital Object Identifier, if available.
-8. **URL**: A stable URL to the source.
-9. **Access Status**: Whether the source is open access, restricted, or unknown.
-10. **Allowed Source**: Whether the source is permitted under the wiki's source policy.
-11. **Retrieved On**: The date the source was accessed.
-12. **Pages or Sections**: Specific sections or pages relevant to the claim.
-13. **Notes**: Additional context or clarifications.
-
-### Best Practices for Citation Grounding
-
-1. **Cite Primary Sources**: Whenever possible, cite the original source of the information.
-2. **Be Specific**: Reference the exact section, figure, or table that supports the claim.
-3. **Use Stable Identifiers**: Prefer DOIs or other stable identifiers over URLs.
-4. **Check Accessibility**: Ensure that cited sources are accessible under the wiki's source policy.
-5. **Update Citations**: If a source is updated or retracted, update the citation accordingly.
-
-## Related Pages
-
-- [Evidence Claim](evidence-claim.md)
-- [Source Policy](../14-quality-and-governance/source-policy.md)
-- [Verification Standards](../14-quality-and-governance/verification-standards.md)
-
-## Open Questions or Review Notes
-
-- How should citations to datasets be handled differently from citations to literature?
-- What is the process for updating citations when sources are retracted?
-
-## References
-
-- [Wiki Specification Reference](../00-system/wiki-specification-reference.md)
+```yaml
+citation_id: cit-002
+source_type: review
+title: Large language model agents for biological intelligence across genomics, proteomics, spatial biology, and biomedicine
+authors:
+  - Dip SA
+  - Mallick D
+  - Acharjee Shuvo U
+  - Barua Soumma S
+  - Rafsani F
+  - Kumar Paul B
+  - Ahmed Moumi N
+  - Ahmed S
+  - Zhang L
+year: 2026
+container: Briefings in Bioinformatics
+doi: 10.1093/bib/bbag110
+url: https://doi.org/10.1093/bib/bbag110
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: Section 3
+notes: Highlights the role of citation grounding in biological intelligence systems.
+```

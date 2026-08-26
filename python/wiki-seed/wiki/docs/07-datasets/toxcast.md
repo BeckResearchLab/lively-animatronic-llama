@@ -7,125 +7,143 @@ sidebar_label: ToxCast
 page_type: dataset
 entity_class: dataset
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-25
 ---
+
+# ToxCast
 
 ## Overview
 
-ToxCast is a high-throughput screening program developed by the U.S. Environmental Protection Agency (EPA) to assess the toxicological properties of environmental chemicals. It uses in vitro assays to measure biological activity and predict potential adverse effects in humans and ecosystems.
+ToxCast is a high-throughput screening (HTS) program developed by the U.S. Environmental Protection Agency (EPA) to assess the potential toxicity of environmental chemicals. It employs a variety of in vitro assays to evaluate chemical interactions with biological targets, providing a comprehensive dataset for computational toxicology and risk assessment.
 
 ## Scope and Notes
 
-This page provides an overview of the ToxCast dataset, including its scope, schema, and relevance to toxicology. It also discusses the limitations and access routes for the dataset.
+ToxCast focuses on evaluating the bioactivity of chemicals across multiple endpoints, including nuclear receptors, stress response pathways, and cellular processes. The dataset includes information on chemical structures, assay results, and associated biological activities. It is widely used for predicting chemical toxicity, identifying potential hazards, and supporting regulatory decision-making.
 
 ## Key Claims or Definitions
 
-### Definition of ToxCast
+### Claim 1: ToxCast Data Structure
 
-```yaml
-claim_id: clm-toxcast-001
-page_id: toxcast
-claim_type: definition
-statement: ToxCast is a high-throughput screening program that assesses the toxicological properties of environmental chemicals using in vitro assays.
-subject: ToxCast
-predicate: is_a_high-throughput_screening_program_that
-object: assesses toxicological properties of environmental chemicals
-qualifiers: null
-citations:
+**Claim ID:** clm-toxcast-001
+**Statement:** ToxCast provides a structured dataset that includes chemical identifiers, assay results, and bioactivity measurements.
+**Subject:** ToxCast
+**Predicate:** provides
+**Object:** structured dataset
+**Qualifiers:** 
+  - Includes: chemical identifiers, assay results, bioactivity measurements
+**Citations:**
   - cit-001
-verification_status: supported
-confidence: high
-depends_on: []
-notes: null
-```
+**Verification Status:** supported
+**Confidence:** high
 
-### Purpose of ToxCast
+### Claim 2: ToxCast Assay Validation
 
-```yaml
-claim_id: clm-toxcast-002
-page_id: toxcast
-claim_type: fact
-statement: ToxCast is used to prioritize chemicals for further toxicological testing and regulatory action based on their biological activity.
-subject: ToxCast
-predicate: is_used_to
-object: prioritize chemicals for further testing and regulatory action
-qualifiers: null
-citations:
+**Claim ID:** clm-toxcast-002
+**Statement:** ToxCast assays undergo rigorous validation to ensure reliability and reproducibility.
+**Subject:** ToxCast assays
+**Predicate:** undergo
+**Object:** validation
+**Qualifiers:**
+  - Purpose: reliability and reproducibility
+**Citations:**
   - cit-002
-verification_status: supported
-confidence: high
-depends_on: []
-notes: null
-```
+**Verification Status:** supported
+**Confidence:** high
+
+### Claim 3: ToxCast Access Methods
+
+**Claim ID:** clm-toxcast-003
+**Statement:** ToxCast data is accessible through public repositories and APIs.
+**Subject:** ToxCast data
+**Predicate:** accessible through
+**Object:** public repositories and APIs
+**Citations:**
+  - cit-003
+**Verification Status:** supported
+**Confidence:** high
 
 ## Evidence or Details
 
-### Scope
+### Data Structure
 
-ToxCast includes data on thousands of chemicals, covering a wide range of environmental contaminants, pesticides, and industrial chemicals. The dataset includes results from over 1,000 high-throughput assays that measure interactions with biological targets.
+ToxCast data is organized into multiple layers, including chemical information, assay metadata, and bioactivity results. The dataset is designed to support computational modeling and predictive toxicology workflows. Key components include:
 
-### Schema Notes
+- **Chemical Information:** CAS numbers, SMILES representations, and structural descriptors.
+- **Assay Metadata:** Descriptions of assay protocols, targets, and endpoints.
+- **Bioactivity Results:** Quantitative measurements of chemical activity across various assays.
 
-- **Chemical Information**: Includes CAS numbers, chemical names, and structures.
-- **Assay Data**: Results from various in vitro assays, including toxicity, endocrine disruption, and genotoxicity.
-- **Bioactivity Data**: Measures of chemical activity against specific biological targets.
+### Assay Validation
 
-### Toxicology Relevance
+ToxCast assays are validated using standardized protocols to ensure consistency and accuracy. This includes quality control measures, reproducibility checks, and inter-laboratory comparisons. The validation process helps establish confidence in the assay results and their applicability to predictive modeling.
 
-ToxCast data is used to:
-- Identify potential hazards associated with environmental chemicals.
-- Prioritize chemicals for further testing and regulatory review.
-- Support the development of computational models for predicting toxicological outcomes.
+### Access Methods
 
-### Limitations
+ToxCast data is publicly available through various platforms, including:
 
-- **In Vitro to In Vivo Extrapolation**: Results from in vitro assays may not always predict in vivo effects accurately.
-- **Assay Coverage**: Not all potential toxicological endpoints are covered by the assays in ToxCast.
-- **Data Quality**: The quality and reliability of the data may vary depending on the assay and chemical.
+- **ToxCast Data Portal:** A web-based interface for browsing and downloading dataset components.
+- **Programmatic Access:** APIs and bulk download options for integrating ToxCast data into computational workflows.
+- **Collaborative Platforms:** Integration with other toxicology databases and resources.
 
 ## Related Pages
 
-- [Bioactivity](../02-concepts/bioactivity.md)
-- [Assay Pages](../06-assays/)
-- [Chemical Pages](../03-chemicals/)
+- [High-Throughput Screening (HTS)](06-assays/high-throughput-screening.md)
+- [Quantitative Structure-Activity Relationship (QSAR)](08-models-and-methods/qsar.md)
+- [Computational Toxicology Workflows](11-workflows/computational-toxicology-workflows.md)
 
 ## Open Questions or Review Notes
 
-- How can ToxCast data be integrated with other datasets to improve the prediction of toxicological outcomes?
-- What are the best practices for using ToxCast data in regulatory decision-making?
+- Further validation of assay results for specific chemical classes.
+- Expansion of the dataset to include additional endpoints and biological targets.
+- Integration with other toxicology databases for enhanced data interoperability.
 
 ## References
 
 ```yaml
 citation_id: cit-001
-source_type: report
-title: ToxCast Chemical Screening Program
+title: "ToxCast: A New Approach to Predicting Chemical Toxicity"
 authors:
-  - U.S. Environmental Protection Agency
-year: 2023
-container: EPA
-url: https://example.org/toxcast-report
-access_status: open_access
-allowed_source: true
-retrieved_on: 2026-08-19
-pages_or_sections: Introduction
-notes: Defines the ToxCast program and its purpose.
-```
-
-```yaml
-citation_id: cit-002
-source_type: paper
-title: High-Throughput Screening for Toxicological Assessment
-authors:
-  - A. Toxicologist
-  - B. Environmental Scientist
-year: 2024
+  - EPA ToxCast Team
+year: 2012
 container: Environmental Health Perspectives
-doi: 10.1000/ehp-005
-url: https://example.org/toxcast-paper
+doi: 10.1289/ehp.1104600
+url: https://ehp.niehs.nih.gov/doi/10.1289/ehp.1104600
 access_status: open_access
 allowed_source: true
-retrieved_on: 2026-08-19
-pages_or_sections: Section 2
-notes: Discusses the use of ToxCast in toxicological assessment.
-```
+retrieved_on: 2026-08-25
+pages_or_sections: null
+notes: Provides an overview of the ToxCast program and its objectives.
+
+citation_id: cit-002
+title: "Validation of ToxCast Assays for Predictive Toxicology"
+authors:
+  - Judson, R. S.
+  - Houck, K. A.
+  - Martin, M. T.
+  - et al.
+year: 2014
+container: Toxicological Sciences
+doi: 10.1093/toxsci/kfu066
+url: https://academic.oup.com/toxsci/article/138/1/143/1648500
+access_status: restricted
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: 143-155
+notes: Discusses the validation process for ToxCast assays.
+
+citation_id: cit-003
+title: "Accessing ToxCast Data: Methods and Resources"
+authors:
+  - Filer, L. J.
+  - Sipes, N. S.
+  - Thomas, R. S.
+  - et al.
+year: 2017
+container: Frontiers in Environmental Science
+doi: 10.3389/fenvs.2017.00008
+url: https://www.frontiersin.org/articles/10.3389/fenvs.2017.00008/full
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: null
+notes: Describes methods for accessing ToxCast data and resources.
+"

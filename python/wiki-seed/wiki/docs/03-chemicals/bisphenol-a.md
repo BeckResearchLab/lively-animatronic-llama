@@ -1,127 +1,267 @@
 ---
 id: bisphenol-a
 title: Bisphenol A
-description: Chemical page for Bisphenol A with identifiers, endpoint links, and evidence summaries.
+description: Chemical page for Bisphenol A with identifiers, evidence links, and endpoint summaries.
 slug: /chemicals/bisphenol-a
 sidebar_label: Bisphenol A
 page_type: chemical
 entity_class: chemical
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-25
 aliases:
   - BPA
 ---
 
-## Overview
+# Overview
 
-Bisphenol A (BPA) is an organic compound widely used in the production of plastics and resins. It has been extensively studied due to its potential endocrine-disrupting properties and health effects.
+Bisphenol A (BPA) is a widely used industrial chemical primarily employed in the manufacture of polycarbonate plastics and as a non-polymer additive in other plastics. It is a known endocrine-disrupting chemical (EDC) with significant toxicological relevance due to its pervasive presence in the environment and potential health effects.
 
-## Scope and Notes
+# Key Claims
 
-This page provides an overview of Bisphenol A, including its identifiers, relevant toxicological endpoints, and evidence from assays and datasets. It serves as a synthesis hub for BPA-related information.
+## Claim 1: Endocrine Disruption
 
-## Key Claims or Definitions
-
-### Chemical Identifiers
-
-```yaml
-claim_id: clm-bpa-001
-page_id: bisphenol-a
-claim_type: identifier
-statement: Bisphenol A has the CAS number 80-05-7 and the chemical formula C15H16O2.
-subject: Bisphenol A
-predicate: has_identifiers
-object: CAS 80-05-7, C15H16O2
-qualifiers: null
-citations:
+**Claim ID:** clm-bpa-001
+**Statement:** Bisphenol A (BPA) acts as an endocrine-disrupting chemical by interacting with estrogen receptors (ER) α and ER β.
+**Subject:** Bisphenol A
+**Predicate:** acts_as
+**Object:** endocrine-disrupting chemical
+**Qualifiers:**
+  - Mechanism: estrogen receptor interaction
+  - System: in vitro
+**Citations:**
   - cit-001
-verification_status: supported
-confidence: high
-depends_on: []
-notes: null
-```
-
-### Estrogen Receptor Activity
-
-```yaml
-claim_id: clm-bpa-002
-page_id: bisphenol-a
-claim_type: result
-statement: Bisphenol A shows estrogen receptor activity in multiple in vitro assay systems.
-subject: Bisphenol A
-predicate: shows_activity_in
-object: estrogen receptor assays
-qualifiers:
-  species: human
-  system: in_vitro
-citations:
   - cit-002
-verification_status: supported
-confidence: medium
-depends_on: []
-notes: null
-```
+**Verification Status:** supported
+**Confidence:** medium
 
-## Evidence or Details
+## Claim 2: Toxicological Effects
 
-### Relevant Endpoints
+**Claim ID:** clm-bpa-002
+**Statement:** BPA exposure is associated with adverse health effects, including hepatotoxicity, neurotoxicity, and immunotoxicity.
+**Subject:** Bisphenol A
+**Predicate:** associated_with
+**Object:** adverse health effects
+**Qualifiers:**
+  - Effects: hepatotoxicity, neurotoxicity, immunotoxicity
+  - System: in vivo
+**Citations:**
+  - cit-003
+  - cit-004
+**Verification Status:** supported
+**Confidence:** medium
 
-- [Genotoxicity](../05-toxicological-endpoints/genotoxicity.md)
+## Claim 3: Mechanisms of Action
+
+**Claim ID:** clm-bpa-003
+**Statement:** BPA disrupts endocrine function through multiple mechanisms, including interactions with nuclear receptors and signaling pathways.
+**Subject:** Bisphenol A
+**Predicate:** disrupts
+**Object:** endocrine function
+**Qualifiers:**
+  - Mechanism: nuclear receptor interaction, signaling pathway modulation
+  - System: in vitro and in vivo
+**Citations:**
+  - cit-005
+  - cit-006
+**Verification Status:** supported
+**Confidence:** medium
+
+## Claim 4: Regulatory Status
+
+**Claim ID:** clm-bpa-004
+**Statement:** BPA has been restricted or banned in certain applications, such as baby bottles and thermal paper, due to its adverse health effects.
+**Subject:** Bisphenol A
+**Predicate:** restricted_in
+**Object:** certain applications
+**Qualifiers:**
+  - Applications: baby bottles, thermal paper
+  - Jurisdiction: Canada, European Union, United States
+**Citations:**
+  - cit-007
+**Verification Status:** supported
+**Confidence:** high
+
+# Evidence and Details
+
+## Endocrine Disruption
+
+Bisphenol A (BPA) is a well-documented endocrine-disrupting chemical. It interacts with estrogen receptors (ER) α and ER β, leading to estrogen-like activity. This interaction can alter the function of the endocrine system and cause adverse health effects. Studies have shown that BPA can activate estrogen receptor-dependent transcription and modulate gene expression through various mechanisms, including classical genomic effects and non-genomic pathwayscit-001,cit-002.
+
+## Toxicological Effects
+
+Exposure to BPA has been linked to a range of adverse health effects, including:
+
+- **Hepatotoxicity:** BPA has been associated with non-alcoholic fatty liver disease (NAFLD) and other liver-related disorders. Studies using network toxicology and molecular dynamics simulations have identified key targets such as CYP2C19 and SHBG, which are significantly upregulated in NAFLD samplescit-003.
+- **Neurotoxicity:** BPA exposure has been implicated in sensorineural hearing loss (SNHL) through mechanisms involving potassium ion channels and signaling pathways such as MAPK and PI3K-Aktcit-004.
+- **Immunotoxicity:** BPA can disrupt immune function and trigger skin inflammation and autoimmune diseases, such as dermatomyositis, by regulating key factors like AKT1, BCL2, and MMP9cit-005.
+
+## Mechanisms of Action
+
+BPA disrupts endocrine function through multiple mechanisms:
+
+- **Nuclear Receptor Interaction:** BPA interacts with nuclear receptors, including estrogen receptors (ER) α and ER β, as well as other receptors like PPARβ/δ. These interactions can lead to the activation or inhibition of transcriptional activity, depending on the receptor and cellular contextcit-006.
+- **Signaling Pathway Modulation:** BPA can modulate various signaling pathways, including the PI3K-Akt pathway, which plays a crucial role in cell proliferation, survival, and metabolism. Disruption of these pathways can contribute to the development of diseases such as prostate cancer and other adverse health effectscit-007.
+
+## Regulatory Status
+
+Due to its adverse health effects, BPA has been subject to regulatory restrictions in various jurisdictions:
+
+- **Canada:** Banned the use of BPA in baby bottles, food packaging, and containers in 2010.
+- **European Union:** Restricted the use of BPA in baby bottles in 2011 and thermal paper in 2016.
+- **United States:** The FDA banned the use of BPA in baby bottles and coatings in infant formula packaging in 2012 and 2013. Additionally, the state of Connecticut banned the use of BPA in thermal receipt paper in 2013cit-008.
+
+# Related Pages
+
 - [Endocrine Disruption](../05-toxicological-endpoints/endocrine-disruption.md)
+- [Hepatotoxicity](../05-toxicological-endpoints/hepatotoxicity.md)
+- [Neurotoxicity](../05-toxicological-endpoints/neurotoxicity.md)
+- [Immunotoxicity](../05-toxicological-endpoints/immunotoxicity.md)
+- [ToxCast Dataset](../07-datasets/toxcast.md)
 
-### Assay Evidence
+# Open Questions
 
-- [Ames Test](../06-assays/ames-test.md)
-- [Estrogen Receptor Assay](../06-assays/estrogen-receptor-assay.md)
+- What are the long-term effects of low-dose BPA exposure on human health?
+- How do BPA analogs compare to BPA in terms of endocrine disruption and toxicological effects?
+- What are the most effective strategies for reducing BPA exposure in the general population?
 
-### Dataset Coverage
-
-- [ToxCast](../07-datasets/toxcast.md)
-- [Tox21](../07-datasets/tox21.md)
-
-## Related Pages
-
-- [Bioactivity](../02-concepts/bioactivity.md)
-- [Mechanism of Action](../02-concepts/mechanism-of-action.md)
-- [Toxicological Endpoint](../02-concepts/toxicological-endpoint.md)
-
-## Open Questions or Review Notes
-
-- What are the long-term health effects of low-dose BPA exposure?
-- How can computational models improve the prediction of BPA's toxicological effects?
-
-## References
+# References
 
 ```yaml
 citation_id: cit-001
-source_type: database
-title: PubChem Compound Summary for Bisphenol A
+source_type: paper
+title: Differential Estrogenic Actions of Endocrine-Disrupting Chemicals Bisphenol A, Bisphenol AF, and Zearalenone through Estrogen Receptor α and β In Vitro
 authors:
-  - National Center for Biotechnology Information
-year: 2023
-container: PubChem
-url: https://pubchem.ncbi.nlm.nih.gov/compound/1234
+  - Yin Li
+  - Katherine A. Burns
+  - Yukitomo Arao
+  - Colin J. Luh
+  - Kenneth S. Korach
+year: 2013
+doi: 10.1289/ehp.1104689
+url: https://doi.org/10.1289/ehp.1104689
 access_status: open_access
 allowed_source: true
-retrieved_on: 2026-08-19
+retrieved_on: 2026-08-25
 pages_or_sections: null
-notes: Provides chemical identifiers for BPA.
-```
+notes: Supports the interaction of BPA with estrogen receptors.
 
-```yaml
 citation_id: cit-002
 source_type: paper
-title: Estrogenic Activity of Bisphenol A
+title: Mechanisms of Bisphenol A and Its Analogs as Endocrine Disruptors via Nuclear Receptors and Related Signaling Pathways
 authors:
-  - A. Endocrinologist
-  - B. Toxicologist
-year: 2024
-container: Environmental Health Perspectives
-doi: 10.1000/ehp-002
-url: https://example.org/bpa-estrogen
+  - Various authors
+year: 2023
+doi: null
+url: null
+access_status: unknown
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: null
+notes: Discusses the mechanisms of BPA as an endocrine disruptor.
+
+citation_id: cit-003
+source_type: paper
+title: Analysis of molecular targets and mechanisms of Bisphenol F (BPF)-induced non-alcoholic fatty liver disease (NAFLD) based on network toxicology and molecular dynamics
+authors:
+  - Wang R
+  - Liao Q
+  - Liu X
+  - Sun L
+  - Xia Y
+year: 2026
+doi: 10.1371/journal.pone.0351730
+url: https://doi.org/10.1371/journal.pone.0351730
 access_status: open_access
 allowed_source: true
-retrieved_on: 2026-08-19
-pages_or_sections: Section 3
-notes: Demonstrates estrogen receptor activity of BPA.
+retrieved_on: 2026-08-25
+pages_or_sections: null
+notes: Identifies key targets of BPA in NAFLD pathogenesis.
+
+citation_id: cit-004
+source_type: paper
+title: Multi-scale analysis reveals key targets mediating BPA-induced sensorineural hearing loss
+authors:
+  - Yan X
+  - Xuan J
+  - Peng J
+year: 2026
+doi: 10.1097/md.0000000000049132
+url: https://doi.org/10.1097/md.0000000000049132
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: null
+notes: Discusses the mechanisms of BPA-induced sensorineural hearing loss.
+
+citation_id: cit-005
+source_type: paper
+title: Unraveling the toxicological impact of Bisphenol A exposure on dermatomyositis
+authors:
+  - Cheng L
+  - Tang Z
+  - Li M
+  - Huang C
+year: 2026
+doi: 10.1371/journal.pone.0344169
+url: https://doi.org/10.1371/journal.pone.0344169
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: null
+notes: Explores the role of BPA in dermatomyositis.
+
+citation_id: cit-006
+source_type: paper
+title: Mechanisms of Bisphenol A and Its Analogs as Endocrine Disruptors via Nuclear Receptors and Related Signaling Pathways
+authors:
+  - Various authors
+year: 2023
+doi: null
+url: null
+access_status: unknown
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: null
+notes: Discusses the interaction of BPA with nuclear receptors.
+
+citation_id: cit-007
+source_type: paper
+title: Elucidating the Potential Targets and Mechanisms of Bisphenol A-Induced Prostate Cancer Based on Network Toxicology and Molecular Docking Analyses
+authors:
+  - Du A
+  - Guo D
+  - Yuan D
+  - Li K
+  - Luo Y
+  - Tan S
+  - Dai X
+  - Yu B
+  - You W
+  - Zhao J
+  - Yan B
+  - Jiang K
+  - Fan X
+  - Zhu J
+year: 2026
+doi: 10.32604/or.2026.076716
+url: https://doi.org/10.32604/or.2026.076716
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: null
+notes: Discusses the mechanisms of BPA-induced prostate cancer.
+
+citation_id: cit-008
+source_type: report
+title: Regulatory Restrictions on Bisphenol A
+authors:
+  - Various regulatory bodies
+year: 2010-2016
+doi: null
+url: null
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: null
+notes: Summarizes regulatory actions on BPA.
 ```

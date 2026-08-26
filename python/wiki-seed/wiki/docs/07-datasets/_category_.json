@@ -3,6 +3,6 @@
   "position": 7,
   "link": {
     "type": "generated-index",
-    "description": "Datasets and databases used in computational toxicology, including ChEMBL, PubChem, and ToxCast."
+    "description": "Information on datasets used for modeling and analysis."
   }
 }

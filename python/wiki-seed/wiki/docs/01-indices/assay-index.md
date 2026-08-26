@@ -1,51 +1,103 @@
 ---
 id: assay-index
 title: Assay Index
-description: Index page listing canonical assay pages and key subgroups.
+description: Index page listing assay pages and key subgroups.
 slug: /indices/assay-index
 sidebar_label: Assay Index
 page_type: index
-entity_class: index
+entity_class: assay
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-26
+curator: system
 ---
 
-# Overview
+# Assay Index
 
-The Assay Index provides a comprehensive listing of all canonical assay pages within the wiki. It is organized to facilitate easy navigation and retrieval of assay-specific information.
+This page serves as a navigational hub for all assay pages in the wiki. Assays are organized by type and indexed for quick retrieval.
 
-# Assay Categories
+## Index of Assays
 
-## By Type
+### Alphabetical List
 
-- [In Vitro Assays](../06-assays/in-vitro-assays.md)
-- [In Vivo Assays](../06-assays/in-vivo-assays.md)
-- [In Silico Assays](../06-assays/in-silico-assays.md)
-- [High-Throughput Screening Assays](../06-assays/high-throughput-screening-assays.md)
+- [Aryl Hydrocarbon Receptor Activation Assay](06-assays/ahr-activation-assay.md)
+- [Ames Test](06-assays/ames-test.md)
+- [Comet Assay](06-assays/comet-assay.md)
+- [Estrogen Receptor Transactivation Assay](06-assays/estrogen-receptor-transactivation-assay.md)
+- [hERG Inhibition Assay](06-assays/herg-inhibition-assay.md)
+- [Micronucleus Assay](06-assays/micronucleus-assay.md)
+- [Mitochondrial Membrane Potential Assay](06-assays/mitochondrial-membrane-potential-assay.md)
+- [Molecular Docking](06-assays/molecular-docking.md)
+- [Nrf2 Reporter Assay](06-assays/nrf2-reporter-assay.md)
+- [QSAR Prediction](06-assays/qsar-prediction.md)
 
-## By Endpoint
+### By Assay Type
 
-- [Genotoxicity Assays](../06-assays/genotoxicity-assays.md)
-- [Carcinogenicity Assays](../06-assays/carcinogenicity-assays.md)
-- [Neurotoxicity Assays](../06-assays/neurotoxicity-assays.md)
-- [Immunotoxicity Assays](../06-assays/immunotoxicity-assays.md)
+#### Genetic Toxicology
 
-## By Technology
+- [Ames Test](06-assays/ames-test.md)
+- [Comet Assay](06-assays/comet-assay.md)
+- [Micronucleus Assay](06-assays/micronucleus-assay.md)
 
-- [PCR-Based Assays](../06-assays/pcr-based-assays.md)
-- [ELISA Assays](../06-assays/elisa-assays.md)
-- [Mass Spectrometry Assays](../06-assays/mass-spectrometry-assays.md)
-- [Microarray Assays](../06-assays/microarray-assays.md)
+#### Receptor Activation
 
-# Key Assays
+- [Aryl Hydrocarbon Receptor Activation Assay](06-assays/ahr-activation-assay.md)
+- [Estrogen Receptor Transactivation Assay](06-assays/estrogen-receptor-transactivation-assay.md)
+- [Nrf2 Reporter Assay](06-assays/nrf2-reporter-assay.md)
 
-- [Ames Test](../06-assays/ames-test.md)
-- [Comet Assay](../06-assays/comet-assay.md)
-- [MTT Assay](../06-assays/mtt-assay.md)
-- [qPCR Assay](../06-assays/qpcr-assay.md)
+#### Cardiovascular
 
-# Related Pages
+- [hERG Inhibition Assay](06-assays/herg-inhibition-assay.md)
 
-- [Chemical Index](./chemical-index.md)
-- [Toxicological Endpoint Index](./toxicological-endpoint-index.md)
-- [Master Index](./master-index.md)
+#### Metabolic
+
+- [Mitochondrial Membrane Potential Assay](06-assays/mitochondrial-membrane-potential-assay.md)
+
+#### In Silico
+
+- [Molecular Docking](06-assays/molecular-docking.md)
+- [QSAR Prediction](06-assays/qsar-prediction.md)
+
+## Key Subgroups
+
+### High-Priority Assays
+
+Assays prioritized for detailed documentation and interpretation:
+
+- [Ames Test](06-assays/ames-test.md)
+- [Estrogen Receptor Transactivation Assay](06-assays/estrogen-receptor-transactivation-assay.md)
+- [QSAR Prediction](06-assays/qsar-prediction.md)
+
+### Data-Rich Assays
+
+Assays with extensive dataset coverage:
+
+- [Ames Test](06-assays/ames-test.md)
+- [Estrogen Receptor Transactivation Assay](06-assays/estrogen-receptor-transactivation-assay.md)
+
+### Regulatory-Focused Assays
+
+Assays with significant regulatory interest:
+
+- [Ames Test](06-assays/ames-test.md)
+- [hERG Inhibition Assay](06-assays/herg-inhibition-assay.md)
+
+## Related Indices
+
+- [Chemical Index](chemical-index.md)
+- [Endpoint Index](endpoint-index.md)
+- [Dataset Index](dataset-index.md)
+
+---
+
+## Notes
+
+This index is dynamically updated as new assay pages are added to the wiki. For the most current list, refer to the sidebar navigation or use the search function.
+
+---
+
+## Related Pages
+
+- [Master Index](master-index.md)
+- [Chemical Index](chemical-index.md)
+- [Endpoint Index](endpoint-index.md)
+- [Dataset Index](dataset-index.md)

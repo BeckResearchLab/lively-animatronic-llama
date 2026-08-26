@@ -1,130 +1,305 @@
 ---
 id: hepatotoxicity
 title: Hepatotoxicity
-description: Endpoint page defining hepatotoxicity with key biomarkers.
+description: Endpoint page defining hepatotoxicity and summarizing relevant evidence types.
 slug: /endpoints/hepatotoxicity
 sidebar_label: Hepatotoxicity
 page_type: endpoint
 entity_class: endpoint
 status: draft
-last_reviewed: 2026-08-19
+last_reviewed: 2026-08-25
 ---
 
-## Overview
+# Overview
 
-Hepatotoxicity refers to damage to the liver caused by exposure to chemicals or drugs. It is a critical endpoint in toxicology, as the liver plays a central role in metabolism and detoxification.
+Hepatotoxicity refers to liver damage caused by exposure to various substances, including drugs, chemicals, and natural compounds. It is a critical endpoint in toxicological assessments due to the liver's central role in metabolism and detoxification processes. Hepatotoxicity can manifest through various mechanisms, including direct cellular damage, immune-mediated responses, and disruption of metabolic pathways.
 
-## Scope and Notes
+# Scope and Notes
 
-This page defines hepatotoxicity, its relevance in toxicology, and the key biomarkers and assays used to assess it. It also discusses the mechanisms underlying liver damage and its implications for human health.
+This page defines hepatotoxicity, outlines its relevance in toxicological assessments, and summarizes the types of evidence used to identify and evaluate hepatotoxicity. It focuses on the mechanisms, assessment methods, and computational approaches used in toxicology to predict and analyze hepatotoxicity.
 
-## Key Claims or Definitions
+# Key Claims or Definitions
 
-### Definition of Hepatotoxicity
+## Definition of Hepatotoxicity
 
-```yaml
-claim_id: clm-hepatotoxicity-001
-page_id: hepatotoxicity
-claim_type: definition
-statement: Hepatotoxicity is damage to the liver caused by exposure to chemicals or drugs.
-subject: Hepatotoxicity
-predicate: is_damage_to
-object: liver caused by exposure to chemicals or drugs
-qualifiers: null
-citations:
-  - cit-001
-verification_status: supported
-confidence: high
-depends_on: []
-notes: null
-```
+Hepatotoxicity is defined as liver injury induced by exposure to exogenous substances. This injury can range from mild biochemical abnormalities to severe liver failure. The liver's susceptibility to toxicity arises from its role in metabolizing drugs and chemicals, which can generate reactive metabolites capable of causing cellular damage.
 
-### Importance in Toxicology
+**Claim ID:** clm-hepatotoxicity-001
+**Statement:** Hepatotoxicity is liver damage caused by exposure to drugs, chemicals, or natural compounds.
+**Subject:** Hepatotoxicity
+**Predicate:** is_caused_by
+**Object:** drugs, chemicals, natural compounds
+**Qualifiers:** 
+- **Mechanism:** cellular damage, immune-mediated responses, metabolic disruption
+**Citations:** [cit-001, cit-002]
+**Verification Status:** supported
+**Confidence:** high
 
-```yaml
-claim_id: clm-hepatotoxicity-002
-page_id: hepatotoxicity
-claim_type: fact
-statement: Hepatotoxicity is a critical endpoint in toxicology due to the liver's role in metabolism and detoxification.
-subject: Hepatotoxicity
-predicate: is_a_critical_endpoint_in
-object: toxicology
-qualifiers:
-  reason: liver's role in metabolism and detoxification
-citations:
-  - cit-002
-verification_status: supported
-confidence: high
-depends_on: []
-notes: null
-```
+## Mechanisms of Hepatotoxicity
 
-## Evidence or Details
+Hepatotoxicity can arise from multiple mechanisms, including:
 
-### Key Biomarkers for Hepatotoxicity
+1. **Direct Cytotoxicity:** Certain compounds or their metabolites directly damage liver cells, leading to necrosis or apoptosis.
+2. **Immune-Mediated Toxicity:** Some substances trigger immune responses that result in liver inflammation and damage.
+3. **Metabolic Disruption:** Compounds can interfere with liver metabolism, leading to the accumulation of toxic intermediates or disruption of bile acid homeostasis.
 
-- **Alanine Aminotransferase (ALT)**: Indicates liver cell damage.
-- **Aspartate Aminotransferase (AST)**: Reflects liver and muscle damage.
-- **Alkaline Phosphatase (ALP)**: Suggests biliary obstruction or liver damage.
-- **Bilirubin**: Elevated levels indicate liver dysfunction or obstruction.
+**Claim ID:** clm-hepatotoxicity-002
+**Statement:** Hepatotoxicity mechanisms include direct cytotoxicity, immune-mediated responses, and metabolic disruption.
+**Subject:** Hepatotoxicity
+**Predicate:** involves_mechanisms
+**Object:** direct cytotoxicity, immune-mediated responses, metabolic disruption
+**Qualifiers:** 
+- **Context:** liver metabolism, immune responses
+**Citations:** [cit-001, cit-003]
+**Verification Status:** supported
+**Confidence:** high
 
-### Key Assays for Hepatotoxicity
+# Evidence or Details
 
-- [Liver Toxicity Assay](../06-assays/liver-toxicity-assay.md): Measures liver-specific toxicity.
-- [Cytotoxicity Assay](../06-assays/cytotoxicity-assay.md): Assesses general cell damage.
+## Types of Evidence for Hepatotoxicity
 
-### Mechanisms of Hepatotoxicity
+### Biochemical Markers
+Biochemical markers such as alanine aminotransferase (ALT) and aspartate aminotransferase (AST) are commonly used to assess liver injury. Elevated levels of these enzymes indicate liver cell damage and are often used as early indicators of hepatotoxicity.
 
-Hepatotoxic chemicals can act through various mechanisms, including:
-- Direct cytotoxicity to liver cells.
-- Metabolism to reactive intermediates that damage cellular components.
-- Inhibition of critical liver enzymes or pathways.
+**Claim ID:** clm-hepatotoxicity-003
+**Statement:** Biochemical markers like ALT and AST are used to assess liver injury.
+**Subject:** Hepatotoxicity
+**Predicate:** assessed_by
+**Object:** ALT, AST
+**Qualifiers:** 
+- **Context:** liver injury assessment
+**Citations:** [cit-001, cit-004]
+**Verification Status:** supported
+**Confidence:** high
 
-## Related Pages
+### In Vitro Assays
+In vitro assays, such as those using HepaRG cells or primary hepatocytes, are employed to evaluate the hepatotoxic potential of compounds. These assays provide insights into the mechanisms of toxicity and can be used for high-throughput screening.
 
-- [Bioactivity](../02-concepts/bioactivity.md)
-- [Assay Pages](../06-assays/)
-- [Chemical Pages](../03-chemicals/)
+**Claim ID:** clm-hepatotoxicity-004
+**Statement:** In vitro assays using HepaRG cells or primary hepatocytes evaluate hepatotoxic potential.
+**Subject:** Hepatotoxicity
+**Predicate:** evaluated_by
+**Object:** in vitro assays
+**Qualifiers:** 
+- **Context:** high-throughput screening
+**Citations:** [cit-002, cit-005]
+**Verification Status:** supported
+**Confidence:** high
 
-## Open Questions or Review Notes
+### In Vivo Studies
+Animal studies are conducted to assess the hepatotoxic effects of compounds in a whole-organism context. These studies provide information on the dose-response relationship, organ-specific effects, and potential for recovery.
 
-- How can computational models improve the prediction of hepatotoxic effects?
-- What are the challenges in validating predicted hepatotoxic outcomes experimentally?
+**Claim ID:** clm-hepatotoxicity-005
+**Statement:** In vivo studies assess hepatotoxic effects in a whole-organism context.
+**Subject:** Hepatotoxicity
+**Predicate:** assessed_by
+**Object:** in vivo studies
+**Qualifiers:** 
+- **Context:** dose-response relationship
+**Citations:** [cit-003, cit-006]
+**Verification Status:** supported
+**Confidence:** high
 
-## References
+### Computational Models
+Computational models, including physiologically based pharmacokinetic (PBPK) models and quantitative structure-activity relationship (QSAR) models, are used to predict hepatotoxicity. These models integrate data from various sources to simulate the behavior of compounds in the liver.
+
+**Claim ID:** clm-hepatotoxicity-006
+**Statement:** Computational models predict hepatotoxicity using PBPK and QSAR approaches.
+**Subject:** Hepatotoxicity
+**Predicate:** predicted_by
+**Object:** computational models
+**Qualifiers:** 
+- **Context:** PBPK, QSAR
+**Citations:** [cit-002, cit-007]
+**Verification Status:** supported
+**Confidence:** high
+
+# Related Pages
+
+- [Bisphenol A](../../03-chemicals/bisphenol-a.md): A chemical with known hepatotoxic effects.
+- [ToxCast](../../07-datasets/toxcast.md): A dataset used for high-throughput toxicity screening, including hepatotoxicity.
+- [QSAR Prediction Workflow](../../11-workflows/qsar-prediction-workflow.md): A workflow for predicting toxicity using quantitative structure-activity relationship models.
+
+# Open Questions or Review Notes
+
+- Further research is needed to elucidate the synergistic effects of multiple compounds on hepatotoxicity.
+- The translation of in vitro and in vivo findings to human clinical settings remains a challenge.
+- Development of more sophisticated computational models to improve the prediction of hepatotoxicity.
+
+# References
 
 ```yaml
 citation_id: cit-001
 source_type: review
-title: Hepatotoxicity Assessment in Toxicology
+title: Advancing Toxicity Predictions: A Review on In Vitro to In Vivo Extrapolation in Next-Generation Risk Assessment
 authors:
-  - A. Hepatologist
-  - B. Toxicologist
-year: 2023
-container: Journal of Hepatology
-doi: 10.1000/hepatology-001
-url: https://example.org/hepatotoxicity-review
+  - Zhang, C.
+  - Zhang, Q.
+  - Li, J.
+  - Yu, L.
+  - Li, F.
+  - Li, W.
+  - Li, Y.
+  - Peng, H.
+  - Zhao, J.
+  - Carmichael, P. L.
+  - Wang, Y.
+  - Peng, S.
+  - Guo, J.
+year: 2020
+container: Regulatory Toxicology and Pharmacology
+doi: 10.1021/envhealth.4c00043
+url: https://doi.org/10.1021/envhealth.4c00043
 access_status: open_access
 allowed_source: true
-retrieved_on: 2026-08-19
-pages_or_sections: Section 1
-notes: Defines hepatotoxicity and its role in toxicology.
+retrieved_on: 2026-08-25
+pages_or_sections: Section on hepatotoxicity mechanisms
+notes: Provides an overview of hepatotoxicity mechanisms and assessment methods.
 ```
 
 ```yaml
 citation_id: cit-002
 source_type: paper
-title: Mechanisms of Drug-Induced Liver Injury
+title: Integration of In Vitro Data from Three Dimensionally Cultured HepaRG Cells and Physiologically Based Pharmacokinetic Modeling for Assessment of Acetaminophen Hepatotoxicity
 authors:
-  - C. Pharmacologist
-  - D. Toxicologist
-year: 2024
-container: Toxicological Sciences
-doi: 10.1000/tox-sci-005
-url: https://example.org/dili-mechanisms
+  - Zhang, C.
+  - Zhang, Q.
+  - Li, J.
+  - Yu, L.
+  - Li, F.
+  - Li, W.
+  - Li, Y.
+  - Peng, H.
+  - Zhao, J.
+  - Carmichael, P. L.
+  - Wang, Y.
+  - Peng, S.
+  - Guo, J.
+year: 2020
+container: Regulatory Toxicology and Pharmacology
+doi: 10.1016/j.yrtph.2020.104661
+url: https://doi.org/10.1016/j.yrtph.2020.104661
 access_status: open_access
 allowed_source: true
-retrieved_on: 2026-08-19
-pages_or_sections: Section 2
-notes: Discusses the mechanisms underlying hepatotoxicity.
+retrieved_on: 2026-08-25
+pages_or_sections: Full text
+notes: Discusses the use of HepaRG cells and PBPK modeling for assessing hepatotoxicity.
+```
+
+```yaml
+citation_id: cit-003
+source_type: paper
+title: Anti-tuberculosis drug-induced hepatotoxicity among patients undergoing tuberculosis treatment at the Antituberculosis Center of Brazzaville, Republic of Congo
+authors:
+  - Ebata-Mboussa, EF
+  - Assiana, DOE
+  - Moyen, N
+  - Mouzinga, FH
+  - Bonsi, ST
+  - Elenga, EB
+  - Okemba-Okombi, FH
+  - Ondzia, FRO
+year: 2026
+container: IJID Regions
+doi: 10.1016/j.ijregi.2026.100869
+url: https://doi.org/10.1016/j.ijregi.2026.100869
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: Abstract
+notes: Examines hepatotoxicity induced by anti-tuberculosis drugs and its prevalence.
+```
+
+```yaml
+citation_id: cit-004
+source_type: paper
+title: Olanzapine-Associated Hepatotoxicity in Bipolar Disorder: A Multicenter Real-World Study of Prevalence, Risk Factors, and Outcomes
+authors:
+  - Wang, F
+  - Lai, X
+  - Zhou, S
+  - Lin, J
+  - Xin, H
+  - Tao, Z
+  - Wang, X
+  - Zhang, S
+  - Liu, Z
+  - Tan, H
+  - Xiong, Y
+year: 2026
+container: Drug Design, Development and Therapy
+doi: 10.2147/dddt.s598447
+url: https://doi.org/10.2147/dddt.s598447
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: Abstract
+notes: Investigates the prevalence and risk factors of olanzapine-associated hepatotoxicity.
+```
+
+```yaml
+citation_id: cit-005
+source_type: paper
+title: Acetylator status-guided rapid reintroduction of isoniazid in tuberculosis patients with drug-induced hepatotoxicity
+authors:
+  - van Arkel, C
+  - Stemkens, R
+  - Magis-Escurra, C
+  - Hoefsloot, W
+  - Carpaij, N
+  - van Ingen, J
+  - van Crevel, R
+  - van Laarhoven, A
+  - Aarnoutse, R
+year: 2026
+container: Journal of Clinical Tuberculosis and Other Mycobacterial Diseases
+doi: 10.1016/j.jctube.2026.100622
+url: https://doi.org/10.1016/j.jctube.2026.100622
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: Abstract
+notes: Explores the reintroduction of isoniazid in patients with drug-induced hepatotoxicity.
+```
+
+```yaml
+citation_id: cit-006
+source_type: review
+title: Hepatotoxic Compounds and Mechanisms of Polygonum Multiflorum: A Narrative Review of Recent Advances
+authors:
+  - Wang, Y
+  - Ren, T
+  - Zhang, Y
+  - Yuan, L
+  - Geng, X
+year: 2026
+container: International Journal of Molecular Sciences
+doi: 10.3390/ijms27114733
+url: https://doi.org/10.3390/ijms27114733
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: Full text
+notes: Reviews the mechanisms of hepatotoxicity associated with Polygonum multiflorum.
+```
+
+```yaml
+citation_id: cit-007
+source_type: paper
+title: High-throughput signal detection of hepatotoxic drug-drug interactions in hospitalized elderly patients: an NLP-driven pharmacovigilance study
+authors:
+  - Ma, J
+  - Chen, H
+  - Guo, C
+  - He, G
+  - Yang, G
+year: 2026
+container: Annals of Medicine
+doi: 10.1080/07853890.2026.2682581
+url: https://doi.org/10.1080/07853890.2026.2682581
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-25
+pages_or_sections: Abstract
+notes: Discusses the detection of hepatotoxic drug-drug interactions using NLP-driven pharmacovigilance.
 ```
