@@ -21,7 +21,8 @@ class ResearchState(TypedDict):
     revision_number: int
     next_step: str
     current_sub_task: str
-
+    citations: Annotated[List[dict], operator.add] 
+    
 # --- 2. Initialize Chains and Agents ---
 
 supervisor_chain = create_supervisor_chain()
@@ -60,13 +61,19 @@ def research_node(state: ResearchState) -> dict:
         # Call it directly and expect a dict return value.
         result = researcher_agent({"input": sub_task})
         findings = result.get("output", "Research completed")
+        citations = result.get("citations", [])
+        raw_results = result.get("raw_results", [])
         print(f"Found: {str(findings)[:100]}...")
     except Exception as e:
         print(f"Research error: {e}")
         findings = f"Research on {sub_task} - information gathered"
+        citations = []
+        raw_results = []
     
     return {
-        "research_findings": [findings]
+        "research_findings": [findings],
+        "citations": citations,
+        "raw_results": raw_results
     }
 
 def write_node(state: ResearchState) -> dict:
@@ -94,13 +101,15 @@ def critique_node(state: ResearchState) -> dict:
         print("✓ Draft APPROVED")
         return {
             "critique_notes": "APPROVED",
-            "next_step": "END"
+            "next_step": "END",
+            "citations": state.get("citations", [])
         }
     else:
         print("✗ Revisions needed")
         return {
             "critique_notes": critique,
-            "next_step": "writer"
+            "next_step": "writer",
+            "citations": state.get("citations", [])
         }
 
 # --- 4. Build the Graph ---
