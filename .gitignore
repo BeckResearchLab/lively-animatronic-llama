@@ -1,2 +1,13 @@
+<<<<<<< HEAD
+.env
+.venv
+node_modules
+
+data/*
+pdfs/*
+artifacts/*
+wiki/*
+=======
 /private
 *.pdf
+>>>>>>> brl/main
