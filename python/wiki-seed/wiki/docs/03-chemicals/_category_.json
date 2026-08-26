@@ -1,8 +1,0 @@
-{
-  "label": "Chemicals",
-  "position": 3,
-  "link": {
-    "type": "generated-index",
-    "description": "Chemical entity pages, including substances, mixtures, metabolites, and chemical classes."
-  }
-}
