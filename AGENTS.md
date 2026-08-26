@@ -26,4 +26,9 @@ In addition to these, you may come across a new term that does not have a common
 - [Tech Glossary](@{REF}:/glossary/tech_glossary.md)
 
 # General rules
+
 - Never call the glob tool with the exact same search pattern twice in a row.
+- Use available skills proactively when the task matches them.
+- Choose the most relevant skill automatically based on the request.
+- Do not require the user to name a skill unless the task is ambiguous.
+- For any request involving PDFs, scan the PDF content, extract relevant information, and use the PDF skill by default.
