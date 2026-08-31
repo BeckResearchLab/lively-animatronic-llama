@@ -22,6 +22,8 @@ from workflow import (
     initial_state,
     log,
     run_agent,
+    _prune_pathway_steps,
+    _trim_to_one_new_step,
 )
 from read_across import enrich_read_across_state
 from similarity_scoring import similarity_scoring_node
@@ -33,6 +35,9 @@ READ_ACROSS_FINALIZE_MIN_ANALOGS = int(os.environ.get("AOP_READ_ACROSS_FINALIZE_
 READ_ACROSS_FINALIZE_MIN_TOP_SIM = float(os.environ.get("AOP_READ_ACROSS_FINALIZE_MIN_TOP_SIM", "0.40"))
 AOP_FORCE_FINALIZE_MIN_CONFIDENCE = float(os.environ.get("AOP_FORCE_FINALIZE_MIN_CONFIDENCE", "0.50"))
 AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH = int(os.environ.get("AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH", "2"))
+
+DIRECT_AO_CONFIDENCE_THRESHOLD = float(os.environ.get("DIRECT_AO_CONFIDENCE_THRESHOLD", "0.60"))
+MIN_KE_BEFORE_AO = int(os.environ.get("MIN_KE_BEFORE_AO", "2"))
 
 #Tracking for workflow execution times and success rates
 class WorkflowMonitor:
@@ -204,25 +209,30 @@ def finalize_aop_node(state: AOPState) -> AOPState:
         return state
 
     ra = _read_across_summary(state)
-    target_profile = state.get("data", {}).get("target_profile", {}) if isinstance(state.get("data", {}), dict) else {}
+    data = state.setdefault("data", {}) if isinstance(state.get("data", {}), dict) else {}
+    target_profile = data.get("target_profile", {}) if isinstance(data, dict) else {}
+    previous_pathway = state.get("AOP_pathways", []) if isinstance(state.get("AOP_pathways", []), list) else []
+
     prompt = (
         f"Chemical: {state.get('chemical', '')}\n"
-        f"Current pathway: {json.dumps(state.get('AOP_pathways', []), indent=2)}\n"
+        f"Current pathway: {json.dumps(previous_pathway, indent=2)}\n"
         f"Current candidates: {json.dumps(state.get('candidates', []), indent=2)}\n"
         f"Similarity scores: {json.dumps(state.get('similarity_scores', []), indent=2)}\n"
         f"Read-across summary: {ra.get('summary', '')}\n"
         f"Read-across analogs: {json.dumps(ra.get('analogs', [])[:5], indent=2)}\n"
         f"Target profile: {json.dumps(target_profile, indent=2)}\n\n"
-        "You are the aop-constructor agent. The workflow already has strong ADMET and read-across support.\n"
-        "If the evidence supports a terminal adverse outcome, return a complete pathway ending in AO.\n"
-        "Do not invent unsupported steps, but DO allow a shorter scientifically supported pathway when the evidence is strong.\n"
+        "You are the aop-constructor agent.\n"
+        "Return ONLY the single next pathway step needed to close the pathway to AO.\n"
+        "Do not restate earlier steps.\n"
+        "Do not return the full pathway.\n"
+        "If the evidence supports a terminal adverse outcome, return exactly one AO step.\n"
         "Return ONLY structured JSON matching this schema:\n"
         '{"selected_candidate":{"name":"...","type":"KE|AO","confidence":0.0,"similarity":0.0,"reasoning":""},'
         '"updated_pathway":[{"event":"...","type":"MIE|KE|AO","score":0.0,"provenance":[]}],'
         '"uncertainty":0.0,"decision_risk":"low|medium|high","next_action":"expand|prune|branch|terminate",'
-        '"is_ao_reached":false,"termination_reason":"","decision_reason":"","rejected_candidates":[] }\n'
+        '"is_ao_reached":false,"termination_reason":"","decision_reason":"","rejected_candidates":[]}\n'
         "Favor a direct closure to the adverse outcome if the pathway already contains the necessary key events.\n"
-        "IMPORTANT: Be aggressive in closing pathways to AO when the evidence is strong. If the pathway contains sufficient key events and the read-across evidence supports it, add the AO step."
+        f"MINIMUM REQUIREMENTS FOR DIRECT AO: {MIN_KE_BEFORE_AO} intermediate KEs and confidence > {DIRECT_AO_CONFIDENCE_THRESHOLD}"
     )
 
     try:
@@ -234,39 +244,53 @@ def finalize_aop_node(state: AOPState) -> AOPState:
         log(f"finalize_aop_node failed: {e}")
         return state
 
-    updated_pathway = decision.updated_pathway or state.get("AOP_pathways", [])
+    updated_pathway = decision.updated_pathway or []
     if not isinstance(updated_pathway, list):
-        updated_pathway = state.get("AOP_pathways", [])
+        updated_pathway = []
 
-    last_is_ao = bool(
-        updated_pathway
-        and isinstance(updated_pathway[-1], dict)
-        and str(updated_pathway[-1].get("type", "")).upper() == "AO"
-    )
+    # We only want the AO step from the constructor here.
+    ao_step = None
+    for step in reversed(updated_pathway):
+        if isinstance(step, dict) and str(step.get("type", "")).upper() == "AO":
+            ao_step = step
+            break
+
+    if ao_step is None and updated_pathway:
+        last_step = updated_pathway[-1]
+        if isinstance(last_step, dict) and str(last_step.get("type", "")).upper() == "AO":
+            ao_step = last_step
+
     has_aop_evidence = any(
-        isinstance(step, dict)
-        and str(step.get("source", step.get("provenance_source", ""))).lower() == "aop_expert"
-        for step in updated_pathway
+        isinstance(step, dict) and str(step.get("source", step.get("provenance_source", ""))).lower() == "aop_expert"
+        for step in previous_pathway
     ) or any(
         isinstance(candidate, dict) and str(candidate.get("source", "")).lower() == "aop_expert"
         for candidate in state.get("candidates", [])
     )
-    decision_is_ao = bool((decision.is_ao_reached or last_is_ao) and has_aop_evidence)
 
-    if decision_is_ao:
-        state["AOP_pathways"] = updated_pathway
+    ao_present = ao_step is not None
+    decision_is_ao = bool((decision.is_ao_reached or ao_present) and has_aop_evidence)
+
+    if decision_is_ao and ao_step is not None:
+        final_pathway = list(previous_pathway)
+
+        # Append AO only if it is not already the last step.
+        if not final_pathway or str(final_pathway[-1].get("type", "")).upper() != "AO":
+            final_pathway.append(ao_step)
+
+        state["AOP_pathways"] = final_pathway
         state["is_ao_reached"] = True
         state["next_action"] = "terminate"
         state["termination_reason"] = decision.termination_reason or "AO reached from strong ADMET + read-across evidence"
         state["decision_reason"] = decision.decision_reason or state.get("decision_reason", "")
         state["rejected_candidates"] = decision.rejected_candidates or state.get("rejected_candidates", [])
-        state["current_node_type"] = (
-            updated_pathway[-1].get("type", state.get("current_node_type", "MIE"))
-            if updated_pathway and isinstance(updated_pathway[-1], dict)
-            else state.get("current_node_type", "MIE")
+        state["current_node_type"] = "AO"
+
+        local_breakdown = build_local_confidence_breakdown(state, final_pathway)
+        state["confidence_score"] = max(
+            float(state.get("confidence_score", 0.0) or 0.0),
+            float(local_breakdown["local_confidence_score"]),
         )
-        local_breakdown = build_local_confidence_breakdown(state, updated_pathway)
-        state["confidence_score"] = max(float(state.get("confidence_score", 0.0) or 0.0), float(local_breakdown["local_confidence_score"]))
         state["confidence_breakdown"] = local_breakdown
         state["uncertainty"] = float(max(0.0, min(1.0, 1.0 - state["confidence_score"])))
         state["decision_risk"] = "low" if state["confidence_score"] >= 0.75 else ("medium" if state["confidence_score"] >= 0.5 else "high")
@@ -282,6 +306,7 @@ def finalize_aop_node(state: AOPState) -> AOPState:
             read_across_confidence=ra.get("confidence", 0.0),
             read_across_analogs=[a.get("name", "unknown") for a in ra.get("analogs", [])[:5] if isinstance(a, dict)],
         )
+
     return state
 
 # Loops unless AO is reached or termination conditions are met
