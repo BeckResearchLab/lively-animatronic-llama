@@ -1,0 +1,132 @@
+[
+  {
+    "chemical": "metformin",
+    "signature": "mitochondrial complex i inhibition > increased amp atp ratio > ampk activation > lactic acidosis",
+    "tokens": [
+      "acidosis",
+      "activation",
+      "amp",
+      "ampk",
+      "atp",
+      "complex",
+      "i",
+      "increased",
+      "inhibition",
+      "lactic",
+      "mitochondrial",
+      "ratio"
+    ],
+    "length": 4,
+    "final_ao": true,
+    "confidence_score": 0.830875247036538,
+    "termination_reason": "The pathway has reached the terminal Adverse Outcome (Lactic Acidosis) as specified in the target profile liabilities, following a logical sequence of MIE and KEs.",
+    "timestamp": 1788283894.0120184
+  },
+  {
+    "chemical": "toluene",
+    "signature": "reduced cognitive function",
+    "tokens": [
+      "cognitive",
+      "function",
+      "reduced"
+    ],
+    "length": 1,
+    "final_ao": false,
+    "confidence_score": 0.7913125,
+    "termination_reason": "AO reached prematurely; pathway is still too shallow.",
+    "timestamp": 1788287232.4565039
+  },
+  {
+    "chemical": "toluene",
+    "signature": "cns depression > altered neuronal excitability > neuronal dysfunction > impaired cognitive function",
+    "tokens": [
+      "altered",
+      "cns",
+      "cognitive",
+      "depression",
+      "dysfunction",
+      "excitability",
+      "function",
+      "impaired",
+      "neuronal"
+    ],
+    "length": 4,
+    "final_ao": true,
+    "confidence_score": 0.8558187332868077,
+    "termination_reason": "The pathway has reached a terminal Adverse Outcome (AO) supported by a sequence of MIE and KEs with confidence > 0.6.",
+    "timestamp": 1788291927.295179
+  },
+  {
+    "chemical": "aspirin",
+    "signature": "inhibition of prostaglandin synthesis > decreased thromboxane a2 txa2 synthesis > decreased platelet aggregation > reduced bleeding time",
+    "tokens": [
+      "a2",
+      "aggregation",
+      "bleeding",
+      "decreased",
+      "inhibition",
+      "platelet",
+      "prostaglandin",
+      "reduced",
+      "synthesis",
+      "thromboxane",
+      "time",
+      "txa2"
+    ],
+    "length": 4,
+    "final_ao": true,
+    "confidence_score": 0.8371893508360441,
+    "termination_reason": "No meaningful pathway progress; stopping to avoid critic loop",
+    "timestamp": 1788297399.0060213
+  },
+  {
+    "chemical": "daridorexant",
+    "signature": "cyp3a4 inhibition > altered drug metabolism",
+    "tokens": [
+      "altered",
+      "cyp3a4",
+      "drug",
+      "inhibition",
+      "metabolism"
+    ],
+    "length": 2,
+    "final_ao": false,
+    "confidence_score": 0.8108000354528926,
+    "termination_reason": "No meaningful pathway progress; stopping to avoid critic loop",
+    "timestamp": 1788297612.3893228
+  },
+  {
+    "chemical": "aspirin",
+    "signature": "cox 1 inhibition > decreased prostaglandin synthesis > decreased gastric mucus production > gastric ulceration",
+    "tokens": [
+      "1",
+      "cox",
+      "decreased",
+      "gastric",
+      "inhibition",
+      "mucus",
+      "production",
+      "prostaglandin",
+      "synthesis",
+      "ulceration"
+    ],
+    "length": 4,
+    "final_ao": true,
+    "confidence_score": 0.8970575019940727,
+    "termination_reason": "No meaningful pathway progress; stopping to avoid critic loop",
+    "timestamp": 1788299935.3107574
+  },
+  {
+    "chemical": "daridorexant",
+    "signature": "cyp3a4 inhibition",
+    "tokens": [
+      "cyp3a4",
+      "inhibition"
+    ],
+    "length": 1,
+    "final_ao": false,
+    "confidence_score": 0.0,
+    "termination_reason": "Pathway is still too shallow",
+    "timestamp": 1788301309.1550891
+  }
+]

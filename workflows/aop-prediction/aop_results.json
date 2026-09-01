@@ -1,0 +1,92 @@
+{
+  "chemical": "daridorexant",
+  "pathway": [
+    {
+      "event": "CYP3A4 Inhibition",
+      "type": "MIE",
+      "score": 0.7,
+      "provenance": [
+        "MIEs"
+      ],
+      "reasoning": "Daridorexant is primarily metabolized by CYP3A4; potential for drug-drug interactions via competitive inhibition of the same enzyme."
+    }
+  ],
+  "final_ao": false,
+  "confidence_score": 0.0,
+  "confidence_breakdown": {},
+  "uncertainty": 0.0,
+  "decision_risk": "medium",
+  "next_action": "expand",
+  "decision_reason": "",
+  "iteration_count": 1,
+  "termination_reason": "Pathway is still too shallow",
+  "MIEs": [
+    {
+      "name": "CYP3A4 Inhibition",
+      "confidence": 0.7,
+      "reasoning": "Daridorexant is primarily metabolized by CYP3A4; potential for drug-drug interactions via competitive inhibition of the same enzyme."
+    }
+  ],
+  "similarity_scores": [],
+  "candidates": [],
+  "provenance": [
+    {
+      "node": "Initial_ADMET",
+      "agent": "admet_mie",
+      "reason": "Target profile and initial MIEs extracted",
+      "timestamp": 1788301308.2669199,
+      "source_hint": "daridorexant"
+    },
+    {
+      "node": "candidate_gen",
+      "agent": "aop_expert",
+      "reason": "No supported downstream KE/AO candidates returned; read-across retained as supporting evidence only",
+      "timestamp": 1788301309.1507788,
+      "source_hint": "daridorexant",
+      "read_across_summary": ""
+    },
+    {
+      "node": "Similarity_Scoring",
+      "agent": "admet_mie",
+      "reason": "No candidates to score",
+      "timestamp": 1788301309.151569,
+      "no_candidates": true
+    },
+    {
+      "node": "expand",
+      "agent": "aop_constructor",
+      "reason": "No candidates available; returning to AOP-Expert for another evidence pass",
+      "timestamp": 1788301309.152427,
+      "pathway_review": {
+        "should_expand": true,
+        "reason": "No meaningful pathway progress; stopping to avoid critic loop",
+        "template_overlap": 0.0,
+        "pathway_uniqueness": 1.0,
+        "generic_score": 1.0
+      }
+    },
+    {
+      "node": "critic",
+      "agent": "internal_critic",
+      "reason": "Local verification checkpoint",
+      "timestamp": 1788301309.1534512,
+      "critic_flags": {
+        "template_overlap": 0.4,
+        "pathway_uniqueness": 0.6,
+        "generic_score": 0.0,
+        "template_reuse": false,
+        "premature_termination": true
+      },
+      "critic_reason": "Pathway is still too shallow"
+    }
+  ],
+  "no_candidate_cycles": 2,
+  "critic_flags": {
+    "template_overlap": 0.4,
+    "pathway_uniqueness": 0.6,
+    "generic_score": 0.0,
+    "template_reuse": false,
+    "premature_termination": true
+  },
+  "critic_reason": "Pathway is still too shallow"
+}
