@@ -21,19 +21,17 @@ OLLAMA_EMBED_DIM = 768
 
 WORKING_DIR = "./rag_storage"
 
-
-os.environ.setdefault("LLM_BINDING", "ollama")
-os.environ.setdefault("LLM_BINDING_HOST", "http://ollama-host:11434")
-os.environ.setdefault("LLM_MODEL", "your-llm-model")
-os.environ.setdefault("EMBEDDING_BINDING", "ollama")
-os.environ.setdefault("EMBEDDING_BINDING_HOST", "http://ollama-host:11434")
-os.environ.setdefault("EMBEDDING_MODEL", "your-embedding-model")
-os.environ.setdefault("EMBEDDING_DIM", 1024)
-os.environ.setdefault("EMBEDDING_TOKEN_LIMIT", 8192)
+# os.environ.setdefault("LLM_BINDING", "ollama")
+# os.environ.setdefault("LLM_BINDING_HOST", "http://ollama-host:11434")
+# os.environ.setdefault("LLM_MODEL", "your-llm-model")
+# os.environ.setdefault("EMBEDDING_BINDING", "ollama")
+# os.environ.setdefault("EMBEDDING_BINDING_HOST", "http://ollama-host:11434")
+# os.environ.setdefault("EMBEDDING_MODEL", "your-embedding-model")
+# os.environ.setdefault("EMBEDDING_DIM", 1024)
+# os.environ.setdefault("EMBEDDING_TOKEN_LIMIT", 8192)
+# os.environ.setdefault("WORKING_DIR", WORKING_DIR)
 
 # LightRAG reads connection info from env vars
-os.environ.setdefault("WORKING_DIR", WORKING_DIR)
-
 os.environ.setdefault("MONGO_URI", MONGO_URI)
 os.environ.setdefault("MONGO_DATABASE", MONGO_DATABASE)
 os.environ.setdefault("NEO4J_URI", NEO4J_URI)
@@ -41,10 +39,10 @@ os.environ.setdefault("NEO4J_USERNAME", NEO4J_USERNAME)
 os.environ.setdefault("NEO4J_PASSWORD", NEO4J_PASSWORD)
 os.environ.setdefault("QDRANT_URL", QDRANT_URL)
 
-os.environ.setdefault("LIGHTRAG_KV_STORAGE", "MongoKVStorage")
-os.environ.setdefault("LIGHTRAG_DOC_STATUS_STORAGE", "MongoDocStatusStorage")
-os.environ.setdefault("LIGHTRAG_GRAPH_STORAGE", "Neo4JStorage")
-os.environ.setdefault("LIGHTRAG_VECTOR_STORAGE", "QdrantVectorDBStorage")
+# os.environ.setdefault("LIGHTRAG_KV_STORAGE", "MongoKVStorage")
+# os.environ.setdefault("LIGHTRAG_DOC_STATUS_STORAGE", "MongoDocStatusStorage")
+# os.environ.setdefault("LIGHTRAG_GRAPH_STORAGE", "Neo4JStorage")
+# os.environ.setdefault("LIGHTRAG_VECTOR_STORAGE", "QdrantVectorDBStorage")
 
 
 # noqa: E402 means don't worry about the import not being at the top of the file (this is required since we need to set env vars before importing)
