@@ -1,0 +1,272 @@
+{
+  "chemical": "metformin",
+  "pathway": [
+    {
+      "event": "Lactic Acidosis",
+      "type": "AO",
+      "score": 0.95,
+      "provenance": [
+        "aop_expert"
+      ],
+      "reasoning": "The inhibition of Mitochondrial Complex I leads to an increase in the NADH/NAD+ ratio and a shift toward anaerobic glycolysis, resulting in the accumulation of lactate, which is documented as a known liability (Lactic acidosis risk) for biguanides."
+    }
+  ],
+  "final_ao": true,
+  "confidence_score": 0.8892342629282286,
+  "confidence_breakdown": {
+    "mie_foundation": 0.81,
+    "pathway_confidence": 0.95,
+    "similarity_consistency": 0.7748950861881905,
+    "pathway_length_penalty": 1.0,
+    "pathway_uniqueness": 1.0,
+    "weights": {
+      "mie_foundation": 0.3,
+      "pathway_confidence": 0.4,
+      "similarity_consistency": 0.15,
+      "pathway_length": 0.05,
+      "pathway_uniqueness": 0.1
+    },
+    "local_confidence_score": 0.8892342629282286
+  },
+  "uncertainty": 0.1107657370717714,
+  "decision_risk": "low",
+  "next_action": "expand",
+  "decision_reason": "The candidate 'Lactic Acidosis' directly matches the liability listed in the target profile and is biologically linked to the MIE (Mitochondrial Complex I Inhibition) via the shift to anaerobic glycolysis.",
+  "iteration_count": 3,
+  "termination_reason": "Pathway is still too shallow",
+  "MIEs": [
+    {
+      "name": "Mitochondrial Complex I Inhibition",
+      "confidence": 0.9,
+      "reasoning": "Metformin is known to inhibit the mitochondrial respiratory chain complex I, leading to an increase in the AMP/ATP ratio, which triggers the activation of AMPK."
+    }
+  ],
+  "similarity_scores": [
+    {
+      "name": "Lactic Acidosis",
+      "similarity": 0.725,
+      "reasoning": "candidate name overlaps target profile; candidate reasoning overlaps target profile; candidate text overlaps target profile terms; candidate confidence carried forward"
+    },
+    {
+      "name": "Decreased Hepatic Gluconeogenesis",
+      "similarity": 0.25,
+      "reasoning": "candidate reasoning overlaps target profile; candidate text overlaps target profile terms; candidate confidence carried forward"
+    },
+    {
+      "name": "Increased Glucose Uptake in Skeletal Muscle",
+      "similarity": 0.24500000000000005,
+      "reasoning": "candidate reasoning overlaps target profile; candidate text overlaps target profile terms; candidate confidence carried forward"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Lactic Acidosis",
+      "type": "AO",
+      "confidence": 0.95,
+      "similarity": 0.725,
+      "reasoning": "The inhibition of Mitochondrial Complex I leads to an increase in the NADH/NAD+ ratio and a shift toward anaerobic glycolysis, resulting in the accumulation of lactate, which is documented as a known liability (Lactic acidosis risk) for biguanides.",
+      "source": "aop_expert",
+      "similarity_reasoning": "candidate name overlaps target profile; candidate reasoning overlaps target profile; candidate text overlaps target profile terms; candidate confidence carried forward"
+    }
+  ],
+  "provenance": [
+    {
+      "node": "Initial_ADMET",
+      "agent": "admet_mie",
+      "reason": "Target profile and initial MIEs extracted",
+      "timestamp": 1788278030.149119,
+      "source_hint": "metformin"
+    },
+    {
+      "node": "candidate_gen",
+      "agent": "aop_expert",
+      "reason": "Generated 3 candidates",
+      "timestamp": 1788278041.562215,
+      "source_hint": "metformin",
+      "pathway_review": {
+        "should_expand": true,
+        "reason": "Pathway is still too shallow",
+        "template_overlap": 0.0,
+        "pathway_uniqueness": 1.0,
+        "generic_score": 1.0
+      },
+      "read_across_summary": "",
+      "read_across_analogs": [],
+      "read_across_endpoints": []
+    },
+    {
+      "node": "Similarity_Scoring",
+      "agent": "admet_mie",
+      "reason": "Scored 3 candidates",
+      "timestamp": 1788278062.8791816
+    },
+    {
+      "node": "expand",
+      "agent": "aop_constructor",
+      "reason": "AOP Constructor selected the next pathway step",
+      "timestamp": 1788278097.4967146,
+      "confidence": 0.95,
+      "similarity": 0.62,
+      "selected_candidate": {
+        "name": "Increased AMP/ATP ratio",
+        "type": "KE",
+        "confidence": 0.95,
+        "similarity": 0.62,
+        "reasoning": "Inhibition of Mitochondrial Complex I leads to a decrease in ATP production and a corresponding increase in the AMP/ATP ratio, which is the documented trigger for AMPK activation."
+      }
+    },
+    {
+      "node": "expand",
+      "agent": "internal_critic",
+      "reason": "Forced expansion due to generic or template-like pathway",
+      "timestamp": 1788278097.4967182,
+      "pathway_review": {
+        "should_expand": true,
+        "reason": "Pathway is still too shallow",
+        "template_overlap": 0.0,
+        "pathway_uniqueness": 1.0,
+        "generic_score": 1.0
+      }
+    },
+    {
+      "node": "critic",
+      "agent": "internal_critic",
+      "reason": "Local verification checkpoint",
+      "timestamp": 1788278097.4979062,
+      "critic_flags": {
+        "template_overlap": 0.1111111111111111,
+        "pathway_uniqueness": 0.8888888888888888,
+        "generic_score": 0.0,
+        "template_reuse": false,
+        "premature_termination": false
+      },
+      "critic_reason": "Pathway is still too shallow"
+    },
+    {
+      "node": "candidate_gen",
+      "agent": "aop_expert",
+      "reason": "Generated 3 candidates",
+      "timestamp": 1788278110.813704,
+      "source_hint": "metformin",
+      "pathway_review": {
+        "should_expand": true,
+        "reason": "Pathway is still too shallow",
+        "template_overlap": 0.1111111111111111,
+        "pathway_uniqueness": 0.8888888888888888,
+        "generic_score": 0.0
+      },
+      "read_across_summary": "",
+      "read_across_analogs": [],
+      "read_across_endpoints": []
+    },
+    {
+      "node": "Similarity_Scoring",
+      "agent": "admet_mie",
+      "reason": "Scored 3 candidates",
+      "timestamp": 1788278135.2973526
+    },
+    {
+      "node": "expand",
+      "agent": "aop_constructor",
+      "reason": "AOP Constructor selected the next pathway step",
+      "timestamp": 1788278174.3591905,
+      "confidence": 0.95,
+      "similarity": 0.72,
+      "selected_candidate": {
+        "name": "AMPK Activation",
+        "type": "KE",
+        "confidence": 0.95,
+        "similarity": 0.72,
+        "reasoning": "The increase in the AMP/ATP ratio is the direct biochemical trigger for the activation of AMP-activated protein kinase (AMPK), as documented in the mechanism of action for biguanides in the AOP-Wiki."
+      }
+    },
+    {
+      "node": "expand",
+      "agent": "internal_critic",
+      "reason": "Forced expansion due to generic or template-like pathway",
+      "timestamp": 1788278174.3591936,
+      "pathway_review": {
+        "should_expand": true,
+        "reason": "Pathway is still too shallow",
+        "template_overlap": 0.1111111111111111,
+        "pathway_uniqueness": 0.8888888888888888,
+        "generic_score": 0.0
+      }
+    },
+    {
+      "node": "critic",
+      "agent": "internal_critic",
+      "reason": "Local verification checkpoint",
+      "timestamp": 1788278174.3603635,
+      "critic_flags": {
+        "template_overlap": 0.09090909090909091,
+        "pathway_uniqueness": 0.9090909090909091,
+        "generic_score": 0.0,
+        "template_reuse": false,
+        "premature_termination": false
+      },
+      "critic_reason": "Pathway is still too shallow"
+    },
+    {
+      "node": "candidate_gen",
+      "agent": "aop_expert",
+      "reason": "Generated 3 candidates",
+      "timestamp": 1788278212.060889,
+      "source_hint": "metformin",
+      "pathway_review": {
+        "should_expand": true,
+        "reason": "Pathway is still too shallow",
+        "template_overlap": 0.09090909090909091,
+        "pathway_uniqueness": 0.9090909090909091,
+        "generic_score": 0.0
+      },
+      "read_across_summary": "",
+      "read_across_analogs": [],
+      "read_across_endpoints": []
+    },
+    {
+      "node": "Similarity_Scoring",
+      "agent": "admet_mie",
+      "reason": "Scored 3 candidates",
+      "timestamp": 1788278237.570092
+    },
+    {
+      "node": "expand",
+      "agent": "aop_constructor",
+      "reason": "AOP Constructor selected the next pathway step",
+      "timestamp": 1788278268.386665,
+      "confidence": 0.95,
+      "similarity": 0.725,
+      "selected_candidate": {
+        "name": "Lactic Acidosis",
+        "type": "AO",
+        "confidence": 0.95,
+        "similarity": 0.725,
+        "reasoning": "The inhibition of Mitochondrial Complex I leads to an increase in the NADH/NAD+ ratio and a shift toward anaerobic glycolysis, resulting in the accumulation of lactate, which is documented as a known liability (Lactic acidosis risk) for biguanides."
+      }
+    },
+    {
+      "node": "critic",
+      "agent": "internal_critic",
+      "reason": "Local verification checkpoint",
+      "timestamp": 1788278268.387857,
+      "critic_flags": {
+        "template_overlap": 0.0,
+        "pathway_uniqueness": 1.0,
+        "generic_score": 0.0,
+        "template_reuse": false,
+        "premature_termination": true
+      },
+      "critic_reason": "Pathway is still too shallow"
+    }
+  ],
+  "no_candidate_cycles": 0,
+  "critic_flags": {
+    "template_overlap": 0.0,
+    "pathway_uniqueness": 1.0,
+    "generic_score": 0.0,
+    "template_reuse": false,
+    "premature_termination": true
+  },
+  "critic_reason": "Pathway is still too shallow"
+}

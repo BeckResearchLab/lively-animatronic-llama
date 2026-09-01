@@ -735,6 +735,22 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     review = pathway_review(state)
     read_across = state.get("data", {}).get("read_across", {}) if isinstance(state.get("data", {}), dict) else {}
     previous_pathway = state.get("AOP_pathways", [])
+    
+    # If pathway is empty but we have MIEs, add the highest confidence MIE as the first step
+    if not previous_pathway and state.get("MIEs"):
+        mies = state["MIEs"]
+        if isinstance(mies, list) and mies:
+            # Sort by confidence and pick the highest
+            sorted_mies = sorted(mies, key=lambda x: float(x.get("confidence", 0.0)), reverse=True)
+            top_mie = sorted_mies[0]
+            previous_pathway = [{
+                "event": top_mie.get("name", "Unknown MIE"),
+                "type": "MIE",
+                "score": float(top_mie.get("confidence", 0.0)),
+                "provenance": ["MIEs"],
+                "reasoning": top_mie.get("reasoning", "")
+            }]
+            state["AOP_pathways"] = previous_pathway
 
     if not candidates or all(_is_placeholder_candidate(c) for c in candidates):
         state["is_ao_reached"] = False
@@ -812,16 +828,6 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     print(f"\n{'='*60}")
     print(f"PATHWAY EXPANSION RESULTS FOR: {state.get('chemical', '')}")
     print(f"{'='*60}")
-    print(f"\nCurrent AOP Pathway:")
-    for i, step in enumerate(state["AOP_pathways"], 1):
-        event_type = step.get('type', 'Unknown')
-        event_desc = step.get('description', 'No description')
-        event_score = step.get('score', 0.0)
-        print(f"  {i}. {event_type}: {event_desc}")
-        print(f"     Score: {event_score}")
-        if event_type == 'MIE':
-            print(f"     MIE: {step.get('event', 'Unknown')}")
-
     if decision.selected_candidate:
         print(f"\nSelected candidate for next step:")
         print(f"  Name: {decision.selected_candidate.name}")
@@ -984,8 +990,3 @@ def save_results_to_files(result: AOPState):
             "termination_reason": result.get("termination_reason", ""),
             "timestamp": time.time(),
         })
-
-
-# NOTE: build_workflow() is now implemented in orchestrator.py as AOPOrchestrator._build_graph()
-# NOTE: main() is now implemented in orchestrator.py as AOPOrchestrator.run()
-# NOTE: Use orchestrator.py for the main entry point

@@ -34,7 +34,8 @@ READ_ACROSS_FINALIZE_CONFIDENCE = float(os.environ.get("AOP_READ_ACROSS_FINALIZE
 READ_ACROSS_FINALIZE_MIN_ANALOGS = int(os.environ.get("AOP_READ_ACROSS_FINALIZE_MIN_ANALOGS", "1"))
 READ_ACROSS_FINALIZE_MIN_TOP_SIM = float(os.environ.get("AOP_READ_ACROSS_FINALIZE_MIN_TOP_SIM", "0.40"))
 AOP_FORCE_FINALIZE_MIN_CONFIDENCE = float(os.environ.get("AOP_FORCE_FINALIZE_MIN_CONFIDENCE", "0.50"))
-AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH = int(os.environ.get("AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH", "2"))
+AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH = int(os.environ.get("AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH", "3"))
+
 
 DIRECT_AO_CONFIDENCE_THRESHOLD = float(os.environ.get("DIRECT_AO_CONFIDENCE_THRESHOLD", "0.60"))
 MIN_KE_BEFORE_AO = int(os.environ.get("MIN_KE_BEFORE_AO", "2"))
@@ -189,7 +190,7 @@ def _should_attempt_finalize(state: AOPState) -> bool:
     
     has_read_across_evidence = ra["analog_count"] >= max(1, READ_ACROSS_FINALIZE_MIN_ANALOGS // 2)
     has_good_similarity = ra["top_similarity"] >= max(0.3, READ_ACROSS_FINALIZE_MIN_TOP_SIM * 0.6)
-    has_sufficient_pathway = pathway_length >= max(2, AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH // 2)
+    has_sufficient_pathway = pathway_length >= AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH
     has_high_confidence = confidence_score >= max(0.5, AOP_FORCE_FINALIZE_MIN_CONFIDENCE * 0.7)
     
     # Attempt finalization if:
@@ -357,7 +358,8 @@ def adaptive_route_after_critic(state: AOPState):
     elif pathway_length < 3 and iteration_count < 2:
         return "candidate_gen"
     else:
-        return "candidate_gen"
+        # Default to terminate if we can't determine next action
+        return END
 
 # Builds and runs the AOP workflow, optionally with monitoring
 class AOPOrchestrator:
