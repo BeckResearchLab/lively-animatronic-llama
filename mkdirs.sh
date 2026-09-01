@@ -17,6 +17,3 @@ mkdir artifacts/workflows/rag-runs
 mkdir artifacts/workflows/wiki-seed
 mkdir artifacts/shared
 mkdir artifacts/tmp
-
-# Wiki
-mkdir wiki

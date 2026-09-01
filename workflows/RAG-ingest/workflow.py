@@ -73,13 +73,14 @@ def build_graph():
     )
 
     builder.add_edge("branch", "lightrag-branch-start")
-    builder.add_edge("branch", "wiki-branch-start")
+    # builder.add_edge("branch", "wiki-branch-start")
 
     builder.add_conditional_edges(
         "lightrag-branch-start",
         routers.check_lightrag_done_ingesting,
         {
-            True: END,
+            # True: END,
+            True: "wiki-branch-start",
             False: "doc-batch-lightrag",
         }
     )

@@ -237,6 +237,7 @@ def wiki_verify(state: RAGIngestionState):
 def prepare_lightrag(state: RAGIngestionState):
     print("WARNING: lightrag preparation is a stub, just passing full text + YAML frontmatter")
 
+# TODO: use the server endpoint?
 def insert_into_lightrag(state: RAGIngestionState):
     new_summaries = state["summaries"]["wiki"].copy()
     response = asyncio.run(ainsert_into_lightrag(state["manifest"]["full_text"]))
