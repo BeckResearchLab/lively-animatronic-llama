@@ -24,6 +24,7 @@ This page serves as a navigational hub for all assay pages in the wiki. Assays a
 - [Comet Assay](06-assays/comet-assay.md)
 - [Estrogen Receptor Transactivation Assay](06-assays/estrogen-receptor-transactivation-assay.md)
 - [hERG Inhibition Assay](06-assays/herg-inhibition-assay.md)
+- [In-Vitro Systems](06-assays/in-vitro-systems.md)
 - [Micronucleus Assay](06-assays/micronucleus-assay.md)
 - [Mitochondrial Membrane Potential Assay](06-assays/mitochondrial-membrane-potential-assay.md)
 - [Molecular Docking](06-assays/molecular-docking.md)
@@ -54,8 +55,15 @@ This page serves as a navigational hub for all assay pages in the wiki. Assays a
 
 #### In Silico
 
+- [Carcinogenicity Profilers](06-assays/carcinogenicity-profilers.md)
 - [Molecular Docking](06-assays/molecular-docking.md)
+- [Mutagenicity Profilers](06-assays/mutagenicity-profilers.md)
 - [QSAR Prediction](06-assays/qsar-prediction.md)
+- [Skin Sensitisation Profilers](06-assays/skin-sensitisation-profilers.md)
+
+#### In Vitro Systems
+
+- [In-Vitro Systems](06-assays/in-vitro-systems.md)
 
 ## Key Subgroups
 
@@ -65,6 +73,7 @@ Assays prioritized for detailed documentation and interpretation:
 
 - [Ames Test](06-assays/ames-test.md)
 - [Estrogen Receptor Transactivation Assay](06-assays/estrogen-receptor-transactivation-assay.md)
+- [In-Vitro Systems](06-assays/in-vitro-systems.md)
 - [QSAR Prediction](06-assays/qsar-prediction.md)
 
 ### Data-Rich Assays

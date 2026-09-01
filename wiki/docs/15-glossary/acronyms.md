@@ -24,9 +24,9 @@ This page provides a list of acronyms and abbreviations used in the wiki. It ser
 - **IATA**: Integrated Approaches to Testing and Assessment
 - **WoE**: Weight of Evidence
 - **TTC**: Threshold of Toxicological Concern
-- **BMD**: Benchmark Dose
-- **NOAEL**: No Observed Adverse Effect Level
-- **LOAEL**: Lowest Observed Adverse Effect Level
+- **BMD**: Benchmark Dose. See [Benchmark Dose Modeling](../../08-models-and-methods/benchmark-dose-modeling.md)
+- **NOAEL**: No Observed Adverse Effect Level. See [Points of Departure](../../08-models-and-methods/points-of-departure.md)
+- **LOAEL**: Lowest Observed Adverse Effect Level. See [Points of Departure](../../08-models-and-methods/points-of-departure.md)
 - **LD50**: Lethal Dose 50
 - **IC50**: Half Maximal Inhibitory Concentration
 - **EC50**: Half Maximal Effective Concentration

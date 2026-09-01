@@ -6,8 +6,9 @@ slug: /concepts/read-across
 sidebar_label: Read-Across
 page_type: concept
 entity_class: concept
-status: draft
-last_reviewed: 2026-08-25
+status: active
+last_reviewed: 2026-08-08
+verification_status: partially_verified
 ---
 
 # Overview
@@ -22,6 +23,18 @@ Read-across is defined as the use of data from one or more source chemicals to p
 
 > **Claim**: Read-across is a method used to predict the toxicological properties of a target chemical based on the properties of similar source chemicals.
 > **Citation**: [cit-001](#citation-001)
+
+> **Additional Claim**: Read-across is an approach used in chemical risk assessment for screening, classification, prioritization, and hazard assessment of substances based on toxicological data of similar chemicals.
+> **Citation**: [EFSA Read-Across Guidance (2025)](@{LINK}/literature/guidance-on-the-use-of-read-across-for-chemical-safety-assessment-in-food-and-feed.md)
+> **Verification Status**: ✅ Supported
+
+> **Additional Claim**: Read-across is one of the most common alternatives to animal testing, providing opportunities for predicting toxicological responses for data-poor chemicals.
+> **Citation**: [EFSA Read-Across Guidance (2025)](@{LINK}/literature/guidance-on-the-use-of-read-across-for-chemical-safety-assessment-in-food-and-feed.md)
+> **Verification Status**: ⚠️ Overstated - The claim is supported but the "most common" qualifier is not explicitly stated in the source
+> **Recommendation**: Remove or qualify the "most common" assertion
+
+> **Additional Claim**: Omics technologies enable insights into complex biological responses and can be used for read-across and biomarker development.
+> **Citation**: [NAM Regulatory Toxicology (2023)](09-literature/nam-regulatory-toxicology-2023.md)
 
 ## Methodology
 
@@ -86,6 +99,52 @@ Several computational tools and databases support the read-across process, inclu
 
 > **Claim**: Computational tools such as the OECD QSAR Toolbox, EPA's GenRA, and the Danish QSAR Database support the read-across process.
 > **Citation**: [cit-005](#citation-005)
+
+# Related Frameworks and Methods
+
+### Major Read-Across Frameworks
+
+- [EFSA 2025 Guidance](@{LINK}/models-and-methods/efsa-2025-guidance): EFSA's seven-step workflow for food and feed safety
+- [ECHA RAAF](@{LINK}/models-and-methods/echra-raaf): ECHA's scenario-based framework for REACH compliance
+- [GRAP Principles](@{LINK}/models-and-methods/grap-principles): Best-practice principles for international harmonization
+
+### Supporting Concepts
+
+- [Hazard](hazard.md)
+- [Risk Assessment](risk-assessment.md)
+- [QSAR Models](qsar-models.md)
+- [ToxCast](toxcast.md)
+- [NAMs Integration](@{LINK}/concepts/nams-integration)
+- [AOP Frameworks](@{LINK}/concepts/aop-frameworks)
+- [Weight-of-Evidence](@{LINK}/concepts/weight-of-evidence)
+
+## Key Frameworks Comparison
+
+> **Claim**: EFSA, ECHA RAAF, and GRAP represent the three major read-across frameworks, each with distinct approaches and regulatory contexts.
+> **Citation**: [cit-006](#citation-006)
+
+### Framework Characteristics
+
+| Framework | Primary Focus | Structure | NAM Integration | Uncertainty Handling | Regulatory Context |
+|-----------|--------------|-----------|-----------------|---------------------|-------------------|
+| **EFSA 2025** | Food/feed safety | Seven-step workflow | Strong encouragement | Dedicated analysis | EFSA evaluations |
+| **ECHA RAAF** | Industrial chemicals | Scenario-based elements | Compatible | Integrated into elements | REACH compliance |
+| **GRAP** | International harmonization | Principle-based | Encouraged | Explicit requirements | Framework-agnostic |
+
+### Common Elements
+
+All three frameworks emphasize:
+- **Mechanistic similarity** as the foundation for valid read-across
+- **Transparency** in documentation and reporting
+- **Uncertainty assessment** as a critical component
+- **Weight-of-evidence** approaches for data integration
+- **Regulatory acceptability** through structured methodologies
+
+### Distinct Features
+
+- **EFSA**: Strong focus on food safety, explicit NAM integration, dedicated uncertainty analysis
+- **RAAF**: REACH-specific, scenario-based structure, integrated uncertainty assessment
+- **GRAP**: International principles, bioactivity emphasis, standardized reporting formats
 
 # Related Pages
 
@@ -200,4 +259,24 @@ allowed_source: true
 retrieved_on: 2026-08-25
 pages_or_sections: Computational Tools
 notes: Discusses computational tools and databases that support the read-across process.
+```
+
+### Citation 006
+
+```yaml
+citation_id: cit-006
+source_type: review
+title: Good Read-across Practices
+authors:
+  - Thomas Hartung
+  - Costanza Rovida
+year: 2025
+container: Frontiers in Toxicology
+doi: 10.3389/ftox.2025.1690491
+url: https://doi.org/10.3389/ftox.2025.1690491
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-08
+pages_or_sections: Overview
+notes: Provides comparative analysis of EFSA 2025 guidance, ECHA RAAF, and GRAP principles.
 ```

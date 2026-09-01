@@ -75,6 +75,38 @@ The Tox21 dataset includes bioactivity data from over 10,000 chemicals tested ac
 **Verification Status**: supported
 **Confidence**: high
 
+### Claim 4: Tox21 Dataset Structure
+
+**Claim ID**: clm-tox21-004
+**Statement**: The Tox21 challenge dataset includes 12,707 chemical compounds and 12 toxic effects, with high-throughput screening assay measurements.
+**Subject**: Tox21 Dataset
+**Predicate**: includes_data_from
+**Object**: 12,707 chemical compounds and 12 toxic effects
+**Qualifiers**: 
+  - Data Type: High-throughput screening assay measurements
+  - Chemical Count: 12,707 compounds
+  - Toxic Effects: 12 endpoints
+**Citations**: 
+  - cit-004
+**Verification Status**: unverified
+**Confidence**: high
+
+### Claim 5: Tox21 Assay Selection
+
+**Claim ID**: clm-tox21-005
+**Statement**: 1092 assays with biological targets were selected from 1473 assays for toxicity prediction modeling.
+**Subject**: Tox21 Dataset
+**Predicate**: includes_selected_assays
+**Object**: 1092 assays with biological targets
+**Qualifiers**: 
+  - Original assay count: 1473
+  - Selection criteria: Biological targets
+  - Structural diversity: Mean Tanimoto coefficient of 0.085 ± 0.058
+**Citations**: 
+  - cit-003
+**Verification Status**: unverified
+**Confidence**: high
+
 ## Evidence or Details
 
 ### Data Structure
@@ -105,6 +137,7 @@ The Tox21 dataset is publicly available through various platforms, including:
 
 ## Related Pages
 
+- **[DeepTox](../../08-models-and-methods/deeptox.md)**: Deep learning-based toxicity prediction model that won the Tox21 Data Challenge
 - **[ToxCast](toxcast.md)**: Related dataset for high-throughput toxicity screening.
 - **[Quantitative Structure-Activity Relationship (QSAR)](qsar.md)**: Methodology for toxicity prediction using chemical structure.
 - **[High-Throughput Screening](high-throughput-screening.md)**: Overview of HTS assays and their role in toxicology.
@@ -149,4 +182,38 @@ allowed_source: true
 retrieved_on: 2026-08-25
 pages_or_sections: null
 notes: Discusses the validation and use of Tox21 data in machine learning models for toxicity prediction.
+
+citation_id: cit-003
+source_type: paper
+title: Identification of Optimal Machine Learning Algorithms and Molecular Fingerprints for Explainable Toxicity Prediction Models Using ToxCast/Tox21 Bioassay Data
+authors:
+  - Magnus Gray
+  - Leihong Wu
+year: 2025
+container: Chemical Research in Toxicology
+doi: 10.1021/acs.chemrestox.5c00289
+url: https://doi.org/10.1021/acs.chemrestox.5c00289
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-08
+pages_or_sections: Assay selection and data preprocessing
+notes: Provides details on assay selection and structural diversity analysis for ToxCast/Tox21 data.
+
+citation_id: cit-004
+source_type: paper
+title: DeepTox: Toxicity Prediction Using Deep Learning
+authors:
+  - Andreas Mayr
+  - Günter Klambauer
+  - Thomas Unterthiner
+  - Sepp Hochreiter
+year: 2015
+container: Frontiers in Environmental Science
+doi: 10.3389/fenvs.2015.00080
+url: https://doi.org/10.3389/fenvs.2015.00080
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-08
+pages_or_sections: Dataset description
+notes: Describes the Tox21 challenge dataset used in the DeepTox evaluation.
 ```

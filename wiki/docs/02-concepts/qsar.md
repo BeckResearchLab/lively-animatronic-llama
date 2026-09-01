@@ -6,8 +6,9 @@ slug: /concepts/qsar
 sidebar_label: QSAR
 page_type: concept
 entity_class: concept
-status: draft
-last_reviewed: 2026-08-25
+status: active
+last_reviewed: 2026-08-08
+verification_status: verified
 ---
 
 # Overview
@@ -66,19 +67,20 @@ Quantitative Structure-Activity Relationship (QSAR) is a computational method us
 
 **Claim ID:** clm-qsar-003
 
-**Statement:** QSAR modeling involves the use of machine learning algorithms, such as support vector machines (SVM), random forests, and neural networks, to derive predictive models from chemical descriptors.
+**Statement:** QSAR modeling involves the use of machine learning algorithms, such as support vector machines (SVM), random forests, neural networks, and k-nearest neighbors, to derive predictive models from chemical descriptors.
 
 **Subject:** QSAR modeling
 **Predicate:** involves
 **Object:** machine learning algorithms
 
 **Qualifiers:**
-- **Algorithms:** SVM, random forests, neural networks
+- **Algorithms:** SVM, random forests, neural networks, k-nearest neighbors
 - **Input:** chemical descriptors
 
 **Citations:**
 - cit-005
 - cit-006
+- cit-ml-chemoinformatics-2024
 
 **Verification Status:** supported
 **Confidence:** high
@@ -102,9 +104,13 @@ Quantitative Structure-Activity Relationship (QSAR) is a computational method us
 **Citations:**
 - cit-007
 - cit-008
+- cit-nam-regulatory-2023
 
 **Verification Status:** supported
 **Confidence:** high
+
+> **Additional Claim:** For wider acceptance of QSAR models, it is imperative to demonstrate robustness, reproducibility, biological relevance, and fitness for intended purpose.
+> **Citation:** [NAM Regulatory Toxicology (2023)](09-literature/nam-regulatory-toxicology-2023.md)
 
 ---
 
@@ -112,7 +118,7 @@ Quantitative Structure-Activity Relationship (QSAR) is a computational method us
 
 ## Mechanistic Insights
 
-QSAR models provide insights into the mechanisms underlying chemical toxicity by identifying structural features or molecular descriptors that contribute to adverse effects. For example, specific functional groups or electronic properties may be associated with increased toxicity, guiding the design of safer chemicals.
+QSAR models provide insights into the mechanisms underlying chemical toxicity by identifying structural features or molecular descriptors that contribute to adverse effects. For example, specific functional groups or electronic properties may be associated with increased toxicity, guiding the design of safer chemicals. Molecular descriptors can be categorized into 0D (constitutional), 1D (structural fragments), 2D (topological), 3D (geometric), and 4D (time-dependent) types, each capturing different aspects of molecular structure that may relate to biological activity.
 
 ## Integration with Other Methods
 
