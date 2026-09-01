@@ -1,0 +1,1238 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/docs",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/docs",
+          "mainDocId": "intro",
+          "docs": [
+            {
+              "id": "agent-operations/agent-task-template",
+              "path": "/docs/agent-operations/agent-task-template",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "agent-operations/aop-2018-ingestion-audit",
+              "path": "/docs/agent-operations/aop-2018-ingestion-audit",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "agent-operations/omics-ingestion-operation-summary",
+              "path": "/docs/agent-operations/omics-ingestion-operation-summary",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "agent-operations/verification-audit-2026-08-08",
+              "path": "/docs/agent-operations/verification-audit-2026-08-08",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "agent-operations/verification-report-2026-08-08",
+              "path": "/docs/agent-operations/verification-report-2026-08-08",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "agent-operations/verification-summary-2026-08-08",
+              "path": "/docs/agent-operations/verification-summary-2026-08-08",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "agent-operations/wiki-ingestion-2026-08-08",
+              "path": "/docs/agent-operations/wiki-ingestion-2026-08-08",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "agent-operations/wiki-ingestion-2026-08-08-summary",
+              "path": "/docs/agent-operations/wiki-ingestion-2026-08-08-summary",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "agent-operations/wiki-verification-2026-08-08",
+              "path": "/docs/agent-operations/wiki-verification-2026-08-08",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "agent-operations/wiki-write-operation-2026-08-08",
+              "path": "/docs/agent-operations/wiki-write-operation-2026-08-08",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "agent-operations/wiki-write-summary-2026-08-08",
+              "path": "/docs/agent-operations/wiki-write-summary-2026-08-08",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/ahr-activation-assay",
+              "path": "/docs/assays/ahr-activation-assay",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/ames-test",
+              "path": "/docs/assays/ames-test",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/carcinogenicity-profilers",
+              "path": "/docs/assays/carcinogenicity-profilers",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/comet-assay",
+              "path": "/docs/assays/comet-assay",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/estrogen-receptor-transactivation-assay",
+              "path": "/docs/assays/estrogen-receptor-transactivation-assay",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/herg-inhibition-assay",
+              "path": "/docs/assays/herg-inhibition-assay",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/hts",
+              "path": "/docs/assays/hts",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/in-vitro-systems",
+              "path": "/docs/assays/in-vitro-systems",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/micronucleus-assay",
+              "path": "/docs/assays/micronucleus-assay",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/mitochondrial-membrane-potential-assay",
+              "path": "/docs/assays/mitochondrial-membrane-potential-assay",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/molecular-docking",
+              "path": "/docs/assays/molecular-docking",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/mutagenicity-profilers",
+              "path": "/docs/assays/mutagenicity-profilers",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/nrf2-reporter-assay",
+              "path": "/docs/assays/nrf2-reporter-assay",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/qsar-prediction",
+              "path": "/docs/assays/qsar-prediction",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "assays/skin-sensitisation-profilers",
+              "path": "/docs/assays/skin-sensitisation-profilers",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/2026-08-08-aop-ingestion-summary",
+              "path": "/docs/audit_records/2026-08-08-aop-ingestion-summary",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/2026-08-08-nam-framework-verification",
+              "path": "/docs/audit_records/2026-08-08-nam-framework-verification",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/2026-08-08-nam-verification-audit",
+              "path": "/docs/audit_records/2026-08-08-nam-verification-audit",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/2026-08-08-omics-ingestion-audit",
+              "path": "/docs/audit-records/2026-08-08-omics-ingestion-audit",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/2026-08-08-pbpk-nam-ingestion",
+              "path": "/docs/audit-records/2026-08-08-pbpk-nam-ingestion",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/2026-08-08-pbpk-nam-verification",
+              "path": "/docs/audit_records/2026-08-08-pbpk-nam-verification",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/2026-08-08-pbpk-nam-verification-report",
+              "path": "/docs/audit_records/2026-08-08-pbpk-nam-verification-report",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/2026-08-08-verification-completion-summary",
+              "path": "/docs/audit_records/2026-08-08-verification-completion-summary",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/2026-08-08-verification-operation",
+              "path": "/docs/audit_records/2026-08-08-verification-operation",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/2026-08-08-verification-report",
+              "path": "/docs/audit_records/2026-08-08-verification-report",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/2026-08-08-verification-summary",
+              "path": "/docs/audit_records/2026-08-08-verification-summary",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/audit-2026-08-08-aop-dev",
+              "path": "/docs/audit_records/audit-2026-08-08-aop-dev",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/audit-2026-08-08-nam-framework",
+              "path": "/docs/audit_records/audit-2026-08-08-nam-framework",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit_records/audit-deeptox-2026-08-08",
+              "path": "/docs/audit-records/audit-deeptox-ingestion-2026-08-08",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit/audit-chemical-databases-2024",
+              "path": "/docs/audit/audit-chemical-databases-2024",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit/audit-literature-ml-chemoinformatics-2024",
+              "path": "/docs/audit/audit-literature-ml-chemoinformatics-2024",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit/audit-ml-algorithms-2024",
+              "path": "/docs/audit/audit-ml-algorithms-2024",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "audit/audit-molecular-descriptors-2024",
+              "path": "/docs/audit/audit-molecular-descriptors-2024",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "biology/estrogen-receptors",
+              "path": "/docs/biology/estrogen-receptors",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "biology/gpcrs-kinases",
+              "path": "/docs/biology/gpcrs-kinases",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/acetaminophen",
+              "path": "/docs/chemicals/acetaminophen",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/aflatoxin-b1",
+              "path": "/docs/chemicals/aflatoxin-b1",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/arsenic",
+              "path": "/docs/chemicals/arsenic",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/benzo-a-pyrene",
+              "path": "/docs/chemicals/benzo-a-pyrene",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/bisphenol-a",
+              "path": "/docs/chemicals/bisphenol-a",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/bisphenol-a-analogs",
+              "path": "/docs/chemicals/bisphenol-a-analogs",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/bisphenol-af",
+              "path": "/docs/chemicals/bisphenol-af",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/cadmium",
+              "path": "/docs/chemicals/cadmium",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/cerapp",
+              "path": "/docs/chemicals/cerapp",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/diethylhexyl-phthalate",
+              "path": "/docs/chemicals/diethylhexyl-phthalate",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/glyphosate",
+              "path": "/docs/chemicals/glyphosate",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/perfluorooctanoic-acid",
+              "path": "/docs/chemicals/perfluorooctanoic-acid",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "chemicals/tricosan",
+              "path": "/docs/chemicals/tricosan",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/adverse-outcome-pathway",
+              "path": "/docs/concepts/adverse-outcome-pathway",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/aop-framework",
+              "path": "/docs/concepts/aop-framework",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/aop-frameworks",
+              "path": "/docs/concepts/aop-frameworks",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/applicability-domain",
+              "path": "/docs/concepts/applicability-domain",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/bioactivity",
+              "path": "/docs/concepts/bioactivity",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/citation-grounding",
+              "path": "/docs/concepts/citation-grounding",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/dataset-profiling",
+              "path": "/docs/concepts/dataset-profiling",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/dose-response-relationship",
+              "path": "/docs/concepts/dose-response-relationship",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/evidence-claim",
+              "path": "/docs/concepts/evidence-claim",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/exposure",
+              "path": "/docs/concepts/exposure",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/general-toxicology",
+              "path": "/docs/concepts/general-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/hazard",
+              "path": "/docs/concepts/hazard",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/human-review-checkpoint",
+              "path": "/docs/concepts/human-review-checkpoint",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/key-event-relationships",
+              "path": "/docs/concepts/key-event-relationships",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/mechanism-of-action",
+              "path": "/docs/concepts/mechanism-of-action",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/mixture-toxicity",
+              "path": "/docs/concepts/mixture-toxicity",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/model-validation",
+              "path": "/docs/concepts/model-validation",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/molecular-descriptors",
+              "path": "/docs/concepts/molecular-descriptors",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/nam-standardization",
+              "path": "/docs/concepts/nam-standardization",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/nam-validation",
+              "path": "/docs/concepts/nam-validation",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/nams-integration",
+              "path": "/docs/concepts/nams-integration",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/new-approach-methodologies",
+              "path": "/docs/concepts/new-approach-methodologies",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/ngra",
+              "path": "/docs/concepts/ngra",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/non-animal-approaches",
+              "path": "/docs/concepts/non-animal-approaches",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/pbpk-modeling",
+              "path": "/docs/concepts/pbpk-modeling",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/qivive",
+              "path": "/docs/concepts/qivive",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/qsar",
+              "path": "/docs/concepts/qsar",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/quantitative-adverse-outcome-pathways",
+              "path": "/docs/concepts/quantitative-adverse-outcome-pathways",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/reach-framework",
+              "path": "/docs/concepts/reach-framework",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/read-across",
+              "path": "/docs/concepts/read-across",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/regulatory-frameworks-nams",
+              "path": "/docs/concepts/regulatory-frameworks-nams",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/regulatory-initiatives",
+              "path": "/docs/concepts/regulatory-initiatives",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/regulatory-toxicology",
+              "path": "/docs/concepts/regulatory-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/risk",
+              "path": "/docs/concepts/risk",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/tiered-approach-chemical-safety",
+              "path": "/docs/concepts/tiered-approach-chemical-safety",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/toxicological-endpoint",
+              "path": "/docs/concepts/toxicological-endpoint",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/uncertainty",
+              "path": "/docs/concepts/uncertainty",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "concepts/weight-of-evidence",
+              "path": "/docs/concepts/weight-of-evidence",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "datasets/comparative-toxicogenomics-database",
+              "path": "/docs/datasets/comparative-toxicogenomics-database",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "datasets/comptox-chemicals-dashboard",
+              "path": "/docs/datasets/comptox-chemicals-dashboard",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "datasets/pubchem-bioassay",
+              "path": "/docs/datasets/pubchem-bioassay",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "datasets/quantitative-adverse-outcome-pathways-data",
+              "path": "/docs/datasets/quantitative-adverse-outcome-pathways-data",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "datasets/tox21",
+              "path": "/docs/datasets/tox21",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "datasets/toxcast",
+              "path": "/docs/datasets/toxcast",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "evidence/ev-chem-databases-2024",
+              "path": "/docs/evidence/ev-chem-databases-2024",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "evidence/ev-ml-algorithms-2024",
+              "path": "/docs/evidence/ev-ml-algorithms-2024",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "evidence/ev-molecular-descriptors-2024",
+              "path": "/docs/evidence/ev-molecular-descriptors-2024",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "glossary/acronyms",
+              "path": "/docs/glossary/acronyms",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "glossary/glossary",
+              "path": "/docs/glossary/glossary",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "glossary/identifier-systems",
+              "path": "/docs/glossary/identifier-systems",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "glossary/ontology-crosswalks",
+              "path": "/docs/glossary/ontology-crosswalks",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "indices/assay-index",
+              "path": "/docs/indices/assay-index",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "indices/chemical-index",
+              "path": "/docs/indices/chemical-index",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "indices/dataset-index",
+              "path": "/docs/indices/dataset-index",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "indices/endpoint-index",
+              "path": "/docs/indices/endpoint-index",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "indices/evidence-claim-index",
+              "path": "/docs/indices/evidence-claim-index",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "indices/master-index",
+              "path": "/docs/indices/master-index",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "indices/model-index",
+              "path": "/docs/indices/model-index",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "indices/workflow-index",
+              "path": "/docs/indices/workflow-index",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "intro",
+              "path": "/docs/",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/aop-multifaceted-framework-2018",
+              "path": "/docs/literature/aop-multifaceted-framework-2018",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/assessment_of_performance_of_profilers_oecd_qsar_toolbox",
+              "path": "/docs/literature/assessment_of_performance_of_profilers_oecd_qsar_toolbox",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/big-data-predictive-toxicology-2026",
+              "path": "/docs/literature/big-data-predictive-toxicology-2026",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/bpa-mechanisms-2025",
+              "path": "/docs/literature/bpa-mechanisms-2025",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/deeptox-2015",
+              "path": "/docs/literature/deeptox-2015",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/differential-estrogenic-actions-2012",
+              "path": "/docs/literature/differential-estrogenic-actions-2012",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/ecetoc-wr-38-qao-workshop",
+              "path": "/docs/literature/ecetoc-wr-38-qao-workshop",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/framework-reach-2022",
+              "path": "/docs/literature/framework-reach-2022",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/good-read-across-practices-2025",
+              "path": "/docs/literature/good-read-across-practices-2025",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/guidance-on-the-use-of-read-across-for-chemical-safety-assessment-in-food-and-feed",
+              "path": "/docs/literature/guidance-on-the-use-of-read-across-for-chemical-safety-assessment-in-food-and-feed",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/ivive-pbpk-interface-2022",
+              "path": "/docs/literature/ivive-pbpk-interface-2022",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/ivive-review-2024",
+              "path": "/docs/literature/ivive-review-2024",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/machine-learning-chemoinformatics-2024",
+              "path": "/docs/literature/machine-learning-chemoinformatics-2024",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/nam-regulatory-toxicology-2023",
+              "path": "/docs/literature/nam-regulatory-toxicology-2023",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/omics-mixtures-toxicogenomics-2019",
+              "path": "/docs/literature/omics-mixtures-toxicogenomics-2019",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/optimal-ml-algorithms-toxicity-2025",
+              "path": "/docs/literature/optimal-ml-algorithms-toxicity-2025",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/pbpk-nam-risk-assessment-2026",
+              "path": "/docs/literature/pbpk-nam-risk-assessment-2026",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/qsar-workflow-2024",
+              "path": "/docs/literature/qsar-workflow-2024",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "literature/standardizing-benchmark-dose-2014",
+              "path": "/docs/literature/standardizing-benchmark-dose-2014",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/benchmark-dose-modeling",
+              "path": "/docs/models/benchmark-dose-modeling",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/big-data-toxicology",
+              "path": "/docs/models-and-methods/big-data-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/challenges-omics-methods",
+              "path": "/docs/models-and-methods/challenges-omics-methods",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/computational-tools-toxicology",
+              "path": "/docs/models-and-methods/computational-tools-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/data-integration-challenges",
+              "path": "/docs/models-and-methods/data-integration-challenges",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/data-integration-toxicology",
+              "path": "/docs/models-and-methods/data-integration-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/data-quality-toxicology",
+              "path": "/docs/models-and-methods/data-quality-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/data-scarce-to-data-rich",
+              "path": "/docs/models-and-methods/data-scarce-to-data-rich",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/data-visualization-toxicology",
+              "path": "/docs/models-and-methods/data-visualization-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/deeptox",
+              "path": "/docs/models-and-methods/deeptox",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/echra-raaf",
+              "path": "/docs/models-and-methods/echra-raaf",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/efsa-2025-guidance",
+              "path": "/docs/models-and-methods/efsa-2025-guidance",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/efsa-read-across-requirements",
+              "path": "/docs/models-and-methods/efsa-read-across-requirements",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/explainable-ai",
+              "path": "/docs/models-and-methods/explainable-ai",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/future-directions-ivive",
+              "path": "/docs/models-and-methods/future-directions-ivive",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/genomics-toxicology",
+              "path": "/docs/models-and-methods/genomics-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/grap-principles",
+              "path": "/docs/models-and-methods/grap-principles",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/ivive",
+              "path": "/docs/models-and-methods/ivive",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/ivive-limitations",
+              "path": "/docs/models-and-methods/ivive-limitations",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/knime",
+              "path": "/docs/models-and-methods/knime",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/laboratory-automation-toxicology",
+              "path": "/docs/models-and-methods/laboratory-automation-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/ml-in-toxicology",
+              "path": "/docs/models-and-methods/ml-in-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/molecular-fingerprints",
+              "path": "/docs/models-and-methods/molecular-fingerprints",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/oecd-qsar-toolbox",
+              "path": "/docs/models/oecd-qsar-toolbox",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/omics-technologies-toxicology",
+              "path": "/docs/models-and-methods/omics-technologies-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/opera-models",
+              "path": "/docs/models-and-methods/opera-models",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/pbtk-models",
+              "path": "/docs/models-and-methods/pbtk-models",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/points-of-departure",
+              "path": "/docs/models/points-of-departure",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/proteomics-toxicology",
+              "path": "/docs/models-and-methods/proteomics-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/quantitative-adverse-outcome-pathways-modeling",
+              "path": "/docs/models-and-methods/quantitative-adverse-outcome-pathways-modeling",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/read-across-analogue-approach",
+              "path": "/docs/models-and-methods/read-across-analogue-approach",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/read-across-category-approach",
+              "path": "/docs/models-and-methods/read-across-category-approach",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/read-across-data-gap-filling",
+              "path": "/docs/models-and-methods/read-across-data-gap-filling",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/read-across-methods",
+              "path": "/docs/models-and-methods/read-across-methods",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/read-across-regulatory-acceptability",
+              "path": "/docs/models-and-methods/read-across-regulatory-acceptability",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/read-across-regulatory-applications",
+              "path": "/docs/models-and-methods/read-across-regulatory-applications",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/read-across-workflow",
+              "path": "/docs/models-and-methods/read-across-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/structural-alerts",
+              "path": "/docs/models/structural-alerts",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/systems-toxicology",
+              "path": "/docs/models-and-methods/systems-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "models-and-methods/transcriptomics-toxicology",
+              "path": "/docs/models-and-methods/transcriptomics-toxicology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/biosecurity-and-dual-use-considerations",
+              "path": "/docs/quality/biosecurity-and-dual-use-considerations",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/citation-and-provenance-rules",
+              "path": "/docs/system/citation-and-provenance-rules",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/dataset-quality-standard",
+              "path": "/docs/quality/dataset-quality-standard",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/deprecation-policy",
+              "path": "/docs/quality/deprecation-policy",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/evidence-standards",
+              "path": "/docs/quality/evidence-standards",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/human-review-checkpoints",
+              "path": "/docs/quality/human-review-checkpoints",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/model-validation-standard",
+              "path": "/docs/quality/model-validation-standard",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/regulatory-interpretation-disclaimer",
+              "path": "/docs/quality/regulatory-interpretation-disclaimer",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/responsible-use-policy",
+              "path": "/docs/system/responsible-use-policy",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/study-quality-assessment-rubric",
+              "path": "/docs/quality/study-quality-assessment-rubric",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/uncertainty-representation",
+              "path": "/docs/quality/uncertainty-representation",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/uncertainty-representation-standard",
+              "path": "/docs/quality/uncertainty-representation-standard",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "quality-and-governance/versioning-and-audit-policy",
+              "path": "/docs/quality/versioning-and-audit-policy",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "system/agent-roles-and-capabilities",
+              "path": "/docs/system/agent-roles-and-capabilities",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "system/computational-toxicology-system-overview",
+              "path": "/docs/system/computational-toxicology-system-overview",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "system/knowledge-representation-principles",
+              "path": "/docs/system/knowledge-representation-principles",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "system/known-limitations-of-the-wiki",
+              "path": "/docs/system/known-limitations-of-the-wiki",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "system/ontology-alignment-policy",
+              "path": "/docs/system/ontology-alignment-policy",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "system/update-and-review-policy",
+              "path": "/docs/system/update-and-review-policy",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "system/wiki-mission-and-scope",
+              "path": "/docs/system/wiki-mission-and-scope",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "system/wiki-operation-summary-20260808",
+              "path": "/docs/system/wiki-operation-summary-20260808",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "toxicological-endpoints/carcinogenicity",
+              "path": "/docs/endpoints/carcinogenicity",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "toxicological-endpoints/cardiotoxicity",
+              "path": "/docs/endpoints/cardiotoxicity",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "toxicological-endpoints/developmental-toxicity",
+              "path": "/docs/endpoints/developmental-toxicity",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "toxicological-endpoints/endocrine-disruption",
+              "path": "/docs/endpoints/endocrine-disruption",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "toxicological-endpoints/genotoxicity",
+              "path": "/docs/endpoints/genotoxicity",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "toxicological-endpoints/hepatotoxicity",
+              "path": "/docs/endpoints/hepatotoxicity",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "toxicological-endpoints/mitochondrial-toxicity",
+              "path": "/docs/endpoints/mitochondrial-toxicity",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "toxicological-endpoints/neurotoxicity",
+              "path": "/docs/endpoints/neurotoxicity",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "toxicological-endpoints/reproductive-toxicity",
+              "path": "/docs/endpoints/reproductive-toxicity",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "toxicological-endpoints/skin-sensitization",
+              "path": "/docs/endpoints/skin-sensitization",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "toxicological-endpoints/toxicity-endpoints",
+              "path": "/docs/toxicological-endpoints/toxicity-endpoints",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "verification_reports/2026-08-08-nam-regulatory-toxicology-verification",
+              "path": "/docs/verification_reports/2026-08-08-nam-regulatory-toxicology-verification",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "verification_reports/2026-08-08-nam-verification-summary",
+              "path": "/docs/verification_reports/2026-08-08-nam-verification-summary",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "verification_reports/2026-08-08-verification-completion-summary",
+              "path": "/docs/verification_reports/2026-08-08-verification-completion-summary",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "verification_reports/verification_report_2026-08-08",
+              "path": "/docs/verification_reports/verification_report_2026-08-08",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/aop-development-workflow",
+              "path": "/docs/workflows/aop-development-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/chemical-hazard-assessment-workflow",
+              "path": "/docs/workflows/chemical-hazard-assessment-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/contradiction-resolution-workflow",
+              "path": "/docs/workflows/contradiction-resolution-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/dataset-profiling-workflow",
+              "path": "/docs/workflows/dataset-profiling-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/evidence-extraction-workflow",
+              "path": "/docs/workflows/evidence-extraction-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/evidence-synthesis-workflow",
+              "path": "/docs/workflows/evidence-synthesis-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/human-review-escalation-workflow",
+              "path": "/docs/workflows/human-review-escalation-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/knowledge-graph-update-workflow",
+              "path": "/docs/workflows/knowledge-graph-update-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/literature-review-workflow",
+              "path": "/docs/workflows/literature-review-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/molecular-docking-workflow",
+              "path": "/docs/workflows/molecular-docking-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/profiler-improvement",
+              "path": "/docs/workflows/profiler-improvement",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/qsar-prediction-workflow",
+              "path": "/docs/workflows/qsar-prediction-workflow",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "workflows/quantitative-adverse-outcome-pathways-implementation",
+              "path": "/docs/workflows/quantitative-adverse-outcome-pathways-implementation",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/system",
+              "path": "/docs/category/system",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/indices",
+              "path": "/docs/category/indices",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/concepts",
+              "path": "/docs/category/concepts",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/chemicals",
+              "path": "/docs/category/chemicals",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/biology",
+              "path": "/docs/category/biology",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/toxicological-endpoints",
+              "path": "/docs/category/toxicological-endpoints",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/assays",
+              "path": "/docs/category/assays",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/datasets",
+              "path": "/docs/category/datasets",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/models-and-methods",
+              "path": "/docs/category/models-and-methods",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/literature",
+              "path": "/docs/category/literature",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/evidence",
+              "path": "/docs/category/evidence",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/workflows",
+              "path": "/docs/category/workflows",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/agent-operations",
+              "path": "/docs/category/agent-operations",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/quality-and-governance",
+              "path": "/docs/category/quality-and-governance",
+              "sidebar": "wikiSidebar"
+            },
+            {
+              "id": "/category/glossary",
+              "path": "/docs/category/glossary",
+              "sidebar": "wikiSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "wikiSidebar": {
+              "link": {
+                "path": "/docs/",
+                "label": "intro"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

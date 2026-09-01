@@ -1,0 +1,33 @@
+{
+  "id": "glossary/identifier-systems",
+  "title": "Identifier Systems",
+  "description": "Glossary page explaining identifier systems used for chemicals and other entities.",
+  "source": "@site/docs/15-glossary/identifier-systems.md",
+  "sourceDirName": "15-glossary",
+  "slug": "/glossary/identifier-systems",
+  "permalink": "/docs/glossary/identifier-systems",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "identifier-systems",
+    "title": "Identifier Systems",
+    "description": "Glossary page explaining identifier systems used for chemicals and other entities.",
+    "slug": "/glossary/identifier-systems",
+    "sidebar_label": "Identifier Systems",
+    "page_type": "index",
+    "entity_class": "index",
+    "status": "draft",
+    "last_reviewed": "2026-08-26T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Glossary",
+    "permalink": "/docs/glossary/glossary"
+  },
+  "next": {
+    "title": "Ontology Crosswalks",
+    "permalink": "/docs/glossary/ontology-crosswalks"
+  }
+}

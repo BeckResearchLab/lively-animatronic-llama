@@ -1,0 +1,34 @@
+{
+  "id": "indices/master-index",
+  "title": "Master Index",
+  "description": "Central index page listing all categories and key pages in the wiki.",
+  "source": "@site/docs/01-indices/master-index.md",
+  "sourceDirName": "01-indices",
+  "slug": "/indices/master-index",
+  "permalink": "/docs/indices/master-index",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "master-index",
+    "title": "Master Index",
+    "description": "Central index page listing all categories and key pages in the wiki.",
+    "slug": "/indices/master-index",
+    "sidebar_label": "Master Index",
+    "page_type": "index",
+    "entity_class": "index",
+    "status": "draft",
+    "last_reviewed": "2026-08-26T00:00:00.000Z",
+    "curator": "system"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Evidence Claim Index",
+    "permalink": "/docs/indices/evidence-claim-index"
+  },
+  "next": {
+    "title": "Model Index",
+    "permalink": "/docs/indices/model-index"
+  }
+}

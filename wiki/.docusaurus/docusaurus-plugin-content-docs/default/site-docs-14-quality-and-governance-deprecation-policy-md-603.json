@@ -1,0 +1,33 @@
+{
+  "id": "quality-and-governance/deprecation-policy",
+  "title": "Deprecation Policy",
+  "description": "Governance page defining the policy for deprecating outdated content.",
+  "source": "@site/docs/14-quality-and-governance/deprecation-policy.md",
+  "sourceDirName": "14-quality-and-governance",
+  "slug": "/quality/deprecation-policy",
+  "permalink": "/docs/quality/deprecation-policy",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "deprecation-policy",
+    "title": "Deprecation Policy",
+    "description": "Governance page defining the policy for deprecating outdated content.",
+    "slug": "/quality/deprecation-policy",
+    "sidebar_label": "Deprecation Policy",
+    "page_type": "governance",
+    "entity_class": "governance_rule",
+    "status": "draft",
+    "last_reviewed": "2026-08-26T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Dataset Quality Standard",
+    "permalink": "/docs/quality/dataset-quality-standard"
+  },
+  "next": {
+    "title": "Evidence Standards",
+    "permalink": "/docs/quality/evidence-standards"
+  }
+}

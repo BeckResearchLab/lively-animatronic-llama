@@ -1,0 +1,38 @@
+{
+  "id": "evidence/ev-ml-algorithms-2024",
+  "title": "ML Algorithms Evidence from ML Chemoinformatics Review (2024)",
+  "description": "Evidence record for machine learning algorithms mentioned in the 2024 ML chemoinformatics review",
+  "source": "@site/docs/10-evidence/ev-ml-algorithms-2024.md",
+  "sourceDirName": "10-evidence",
+  "slug": "/evidence/ev-ml-algorithms-2024",
+  "permalink": "/docs/evidence/ev-ml-algorithms-2024",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ev-ml-algorithms-2024",
+    "title": "ML Algorithms Evidence from ML Chemoinformatics Review (2024)",
+    "description": "Evidence record for machine learning algorithms mentioned in the 2024 ML chemoinformatics review",
+    "slug": "/evidence/ev-ml-algorithms-2024",
+    "sidebar_label": "ML Algorithms (2024)",
+    "page_type": "evidence",
+    "entity_class": "evidence",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "verified",
+    "aliases": [
+      "ML Chemoinformatics Algorithms 2024",
+      "Chemoinformatics Algorithms Evidence 2024"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Chemical Databases (2024)",
+    "permalink": "/docs/evidence/ev-chem-databases-2024"
+  },
+  "next": {
+    "title": "Molecular Descriptors (2024)",
+    "permalink": "/docs/evidence/ev-molecular-descriptors-2024"
+  }
+}

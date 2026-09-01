@@ -1,0 +1,33 @@
+{
+  "id": "quality-and-governance/citation-and-provenance-rules",
+  "title": "Citation and Provenance Rules",
+  "description": "Rules for citation and provenance in the wiki.",
+  "source": "@site/docs/14-quality-and-governance/citation-and-provenance-rules.md",
+  "sourceDirName": "14-quality-and-governance",
+  "slug": "/system/citation-and-provenance-rules",
+  "permalink": "/docs/system/citation-and-provenance-rules",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "citation-and-provenance-rules",
+    "title": "Citation and Provenance Rules",
+    "description": "Rules for citation and provenance in the wiki.",
+    "slug": "/system/citation-and-provenance-rules",
+    "sidebar_label": "Citation and Provenance Rules",
+    "page_type": "governance",
+    "entity_class": "governance_rule",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Biosecurity and Dual-Use Considerations",
+    "permalink": "/docs/quality/biosecurity-and-dual-use-considerations"
+  },
+  "next": {
+    "title": "Dataset Quality Standard",
+    "permalink": "/docs/quality/dataset-quality-standard"
+  }
+}

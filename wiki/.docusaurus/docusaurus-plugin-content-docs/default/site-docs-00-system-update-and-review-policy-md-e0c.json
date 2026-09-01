@@ -1,0 +1,33 @@
+{
+  "id": "system/update-and-review-policy",
+  "title": "Update and Review Policy",
+  "description": "Define the policy for updating and reviewing wiki content.",
+  "source": "@site/docs/00-system/update-and-review-policy.md",
+  "sourceDirName": "00-system",
+  "slug": "/system/update-and-review-policy",
+  "permalink": "/docs/system/update-and-review-policy",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "update-and-review-policy",
+    "title": "Update and Review Policy",
+    "description": "Define the policy for updating and reviewing wiki content.",
+    "slug": "/system/update-and-review-policy",
+    "sidebar_label": "Update and Review Policy",
+    "page_type": "index",
+    "entity_class": "index",
+    "status": "draft",
+    "last_reviewed": "2026-08-19T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Ontology Alignment Policy",
+    "permalink": "/docs/system/ontology-alignment-policy"
+  },
+  "next": {
+    "title": "Mission and Scope",
+    "permalink": "/docs/system/wiki-mission-and-scope"
+  }
+}

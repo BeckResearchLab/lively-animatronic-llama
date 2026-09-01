@@ -1,0 +1,34 @@
+{
+  "id": "models-and-methods/read-across-workflow",
+  "title": "Read-Across Workflow",
+  "description": "Comprehensive workflow for conducting read-across assessments",
+  "source": "@site/docs/08-models-and-methods/read-across-workflow.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/read-across-workflow",
+  "permalink": "/docs/models-and-methods/read-across-workflow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "read-across-workflow",
+    "title": "Read-Across Workflow",
+    "description": "Comprehensive workflow for conducting read-across assessments",
+    "slug": "/models-and-methods/read-across-workflow",
+    "sidebar_label": "Read-Across Workflow",
+    "page_type": "workflow",
+    "entity_class": "workflow",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "verified"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Regulatory Applications",
+    "permalink": "/docs/models-and-methods/read-across-regulatory-applications"
+  },
+  "next": {
+    "title": "Structural Alerts",
+    "permalink": "/docs/models/structural-alerts"
+  }
+}

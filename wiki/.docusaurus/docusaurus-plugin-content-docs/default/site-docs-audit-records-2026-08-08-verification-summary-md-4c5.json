@@ -1,0 +1,23 @@
+{
+  "id": "audit_records/2026-08-08-verification-summary",
+  "title": "AOP Development Pages Verification Summary",
+  "description": "Operation Details",
+  "source": "@site/docs/audit_records/2026-08-08-verification-summary.md",
+  "sourceDirName": "audit_records",
+  "slug": "/audit_records/2026-08-08-verification-summary",
+  "permalink": "/docs/audit_records/2026-08-08-verification-summary",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "NAM Framework Content Verification Report",
+    "permalink": "/docs/audit_records/2026-08-08-verification-report"
+  },
+  "next": {
+    "title": "DeepTox Ingestion Audit",
+    "permalink": "/docs/audit-records/audit-deeptox-ingestion-2026-08-08"
+  }
+}

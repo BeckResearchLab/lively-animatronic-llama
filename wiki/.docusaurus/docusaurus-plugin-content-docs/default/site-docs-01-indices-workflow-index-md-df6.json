@@ -1,0 +1,35 @@
+{
+  "id": "indices/workflow-index",
+  "title": "Workflow Index",
+  "description": "Index page listing canonical workflow pages and key subgroups.",
+  "source": "@site/docs/01-indices/workflow-index.md",
+  "sourceDirName": "01-indices",
+  "slug": "/indices/workflow-index",
+  "permalink": "/docs/indices/workflow-index",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "workflow-index",
+    "title": "Workflow Index",
+    "description": "Index page listing canonical workflow pages and key subgroups.",
+    "slug": "/indices/workflow-index",
+    "sidebar_label": "Workflow Index",
+    "page_type": "index",
+    "entity_class": "index",
+    "status": "verified",
+    "last_reviewed": "2026-08-26T00:00:00.000Z",
+    "verification_date": "2026-08-08T00:00:00.000Z",
+    "verification_status": "all_claims_supported"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Model Index",
+    "permalink": "/docs/indices/model-index"
+  },
+  "next": {
+    "title": "Welcome to the Computational Toxicology Wiki",
+    "permalink": "/docs/"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "id": "agent-operations/omics-ingestion-operation-summary",
+  "title": "Omics Ingestion Operation Summary",
+  "description": "Summary of the omics-related content ingestion operation",
+  "source": "@site/docs/12-agent-operations/omics-ingestion-operation-summary.md",
+  "sourceDirName": "12-agent-operations",
+  "slug": "/agent-operations/omics-ingestion-operation-summary",
+  "permalink": "/docs/agent-operations/omics-ingestion-operation-summary",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "omics-ingestion-operation-summary",
+    "title": "Omics Ingestion Operation Summary",
+    "description": "Summary of the omics-related content ingestion operation",
+    "slug": "/agent-operations/omics-ingestion-operation-summary",
+    "page_type": "operation_record",
+    "entity_class": "operation",
+    "status": "completed",
+    "last_reviewed": "2026-08-08T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "AOP 2018 Ingestion Audit",
+    "permalink": "/docs/agent-operations/aop-2018-ingestion-audit"
+  },
+  "next": {
+    "title": "Verification Audit Record - 2026-08-08",
+    "permalink": "/docs/agent-operations/verification-audit-2026-08-08"
+  }
+}

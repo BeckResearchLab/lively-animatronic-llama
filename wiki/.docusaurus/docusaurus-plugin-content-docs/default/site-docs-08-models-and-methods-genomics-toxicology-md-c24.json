@@ -1,0 +1,39 @@
+{
+  "id": "models-and-methods/genomics-toxicology",
+  "title": "Genomics in Toxicology",
+  "description": "Overview of genomics applications in toxicology",
+  "source": "@site/docs/08-models-and-methods/genomics-toxicology.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/genomics-toxicology",
+  "permalink": "/docs/models-and-methods/genomics-toxicology",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "genomics-toxicology",
+    "title": "Genomics in Toxicology",
+    "description": "Overview of genomics applications in toxicology",
+    "slug": "/models-and-methods/genomics-toxicology",
+    "sidebar_label": "Genomics in Toxicology",
+    "page_type": "canonical",
+    "entity_class": "method",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "unverified",
+    "aliases": [
+      "Toxicology Genomics",
+      "DNA Sequencing in Toxicology",
+      "Epigenomics in Toxicology"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Future Directions for IVIVE",
+    "permalink": "/docs/models-and-methods/future-directions-ivive"
+  },
+  "next": {
+    "title": "GRAP Principles",
+    "permalink": "/docs/models-and-methods/grap-principles"
+  }
+}

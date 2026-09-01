@@ -1,0 +1,33 @@
+{
+  "id": "toxicological-endpoints/neurotoxicity",
+  "title": "Neurotoxicity",
+  "description": "Endpoint page defining neurotoxicity and summarizing relevant evidence types.",
+  "source": "@site/docs/05-toxicological-endpoints/neurotoxicity.md",
+  "sourceDirName": "05-toxicological-endpoints",
+  "slug": "/endpoints/neurotoxicity",
+  "permalink": "/docs/endpoints/neurotoxicity",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "neurotoxicity",
+    "title": "Neurotoxicity",
+    "description": "Endpoint page defining neurotoxicity and summarizing relevant evidence types.",
+    "slug": "/endpoints/neurotoxicity",
+    "sidebar_label": "Neurotoxicity",
+    "page_type": "endpoint",
+    "entity_class": "endpoint",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Mitochondrial Toxicity",
+    "permalink": "/docs/endpoints/mitochondrial-toxicity"
+  },
+  "next": {
+    "title": "Reproductive Toxicity",
+    "permalink": "/docs/endpoints/reproductive-toxicity"
+  }
+}

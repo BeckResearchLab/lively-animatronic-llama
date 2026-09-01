@@ -1,0 +1,36 @@
+{
+  "id": "literature/ivive-pbpk-interface-2022",
+  "title": "Application of an Accessible Interface for Pharmacokinetic Modeling and In Vitro to In Vivo Extrapolation",
+  "description": "Literature page for the paper on IVIVE and PBPK modeling interface",
+  "source": "@site/docs/09-literature/ivive-pbpk-interface-2022.md",
+  "sourceDirName": "09-literature",
+  "slug": "/literature/ivive-pbpk-interface-2022",
+  "permalink": "/docs/literature/ivive-pbpk-interface-2022",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ivive-pbpk-interface-2022",
+    "title": "Application of an Accessible Interface for Pharmacokinetic Modeling and In Vitro to In Vivo Extrapolation",
+    "description": "Literature page for the paper on IVIVE and PBPK modeling interface",
+    "date": 2022,
+    "doi": "10.3389/fphar.2022.864742",
+    "slug": "/literature/ivive-pbpk-interface-2022",
+    "sidebar_label": "IVIVE-PBPK Interface (2022)",
+    "page_type": "literature",
+    "entity_class": "source",
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "unverified"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "EFSA Read-Across Guidance (2025)",
+    "permalink": "/docs/literature/guidance-on-the-use-of-read-across-for-chemical-safety-assessment-in-food-and-feed"
+  },
+  "next": {
+    "title": "IVIVE Review (2024)",
+    "permalink": "/docs/literature/ivive-review-2024"
+  }
+}

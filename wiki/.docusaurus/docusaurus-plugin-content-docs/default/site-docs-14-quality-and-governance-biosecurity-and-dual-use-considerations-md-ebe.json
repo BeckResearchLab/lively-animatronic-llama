@@ -1,0 +1,33 @@
+{
+  "id": "quality-and-governance/biosecurity-and-dual-use-considerations",
+  "title": "Biosecurity and Dual-Use Considerations",
+  "description": "Document biosecurity and dual-use considerations for the wiki.",
+  "source": "@site/docs/14-quality-and-governance/biosecurity-and-dual-use-considerations.md",
+  "sourceDirName": "14-quality-and-governance",
+  "slug": "/quality/biosecurity-and-dual-use-considerations",
+  "permalink": "/docs/quality/biosecurity-and-dual-use-considerations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "biosecurity-and-dual-use-considerations",
+    "title": "Biosecurity and Dual-Use Considerations",
+    "description": "Document biosecurity and dual-use considerations for the wiki.",
+    "slug": "/quality/biosecurity-and-dual-use-considerations",
+    "sidebar_label": "Biosecurity and Dual-Use Considerations",
+    "page_type": "index",
+    "entity_class": "index",
+    "status": "draft",
+    "last_reviewed": "2026-08-19T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Quality and Governance",
+    "permalink": "/docs/category/quality-and-governance"
+  },
+  "next": {
+    "title": "Citation and Provenance Rules",
+    "permalink": "/docs/system/citation-and-provenance-rules"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "concepts/aop-frameworks",
+  "title": "Adverse Outcome Pathway Frameworks",
+  "description": "Overview of adverse outcome pathway frameworks and their integration with read-across assessments",
+  "source": "@site/docs/02-concepts/aop-frameworks.md",
+  "sourceDirName": "02-concepts",
+  "slug": "/concepts/aop-frameworks",
+  "permalink": "/docs/concepts/aop-frameworks",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "aop-frameworks",
+    "title": "Adverse Outcome Pathway Frameworks",
+    "description": "Overview of adverse outcome pathway frameworks and their integration with read-across assessments",
+    "slug": "/concepts/aop-frameworks",
+    "sidebar_label": "AOP Frameworks",
+    "page_type": "concept",
+    "entity_class": "concept",
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "AOP Framework",
+    "permalink": "/docs/concepts/aop-framework"
+  },
+  "next": {
+    "title": "Applicability Domain",
+    "permalink": "/docs/concepts/applicability-domain"
+  }
+}

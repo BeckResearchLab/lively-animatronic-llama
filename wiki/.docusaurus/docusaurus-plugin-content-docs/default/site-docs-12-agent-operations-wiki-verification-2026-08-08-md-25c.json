@@ -1,0 +1,23 @@
+{
+  "id": "agent-operations/wiki-verification-2026-08-08",
+  "title": "Wiki Verification Operation Report - 2026-08-08",
+  "description": "Executive Summary",
+  "source": "@site/docs/12-agent-operations/wiki-verification-2026-08-08.md",
+  "sourceDirName": "12-agent-operations",
+  "slug": "/agent-operations/wiki-verification-2026-08-08",
+  "permalink": "/docs/agent-operations/wiki-verification-2026-08-08",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Wiki Ingestion 2026-08-08",
+    "permalink": "/docs/agent-operations/wiki-ingestion-2026-08-08"
+  },
+  "next": {
+    "title": "Wiki Write Operation 2026-08-08",
+    "permalink": "/docs/agent-operations/wiki-write-operation-2026-08-08"
+  }
+}

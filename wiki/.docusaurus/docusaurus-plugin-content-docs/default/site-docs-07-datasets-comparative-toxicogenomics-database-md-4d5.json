@@ -1,0 +1,33 @@
+{
+  "id": "datasets/comparative-toxicogenomics-database",
+  "title": "Comparative Toxicogenomics Database",
+  "description": "Dataset page for the Comparative Toxicogenomics Database, including scope, schema notes, and toxicology relevance.",
+  "source": "@site/docs/07-datasets/comparative-toxicogenomics-database.md",
+  "sourceDirName": "07-datasets",
+  "slug": "/datasets/comparative-toxicogenomics-database",
+  "permalink": "/docs/datasets/comparative-toxicogenomics-database",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "comparative-toxicogenomics-database",
+    "title": "Comparative Toxicogenomics Database",
+    "description": "Dataset page for the Comparative Toxicogenomics Database, including scope, schema notes, and toxicology relevance.",
+    "slug": "/datasets/comparative-toxicogenomics-database",
+    "sidebar_label": "Comparative Toxicogenomics Database",
+    "page_type": "dataset",
+    "entity_class": "dataset",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Datasets",
+    "permalink": "/docs/category/datasets"
+  },
+  "next": {
+    "title": "CompTox Chemicals Dashboard",
+    "permalink": "/docs/datasets/comptox-chemicals-dashboard"
+  }
+}

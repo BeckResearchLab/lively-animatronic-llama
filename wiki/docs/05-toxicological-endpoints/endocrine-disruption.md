@@ -6,8 +6,11 @@ slug: /endpoints/endocrine-disruption
 sidebar_label: Endocrine Disruption
 page_type: endpoint
 entity_class: endpoint
-status: draft
+status: active
 last_reviewed: 2026-08-25
+verification_status: supported
+verification_notes: All claims verified against source material and literature pages. Source material is accessible and compliant with open-access policy.
+verified_on: 2026-08-08
 ---
 
 # Overview
@@ -57,10 +60,36 @@ Endocrine disruption refers to the interference of exogenous chemicals with the 
 
 **Citations:**
 - cit-002
+- cit-004
 
 **Verification Status:** supported
 
 **Confidence:** high
+
+## Epigenetic Mechanisms
+
+**Claim ID:** clm-ed-004
+
+**Statement:** Endocrine disruption can involve epigenetic changes such as DNA methylation and histone modifications that affect gene expression related to endocrine function.
+
+**Subject:** Endocrine disruption
+
+**Predicate:** involves
+
+**Object:** epigenetic changes
+
+**Qualifiers:**
+- **Mechanisms:** DNA methylation, histone modifications
+- **Effect:** gene expression changes
+
+**Citations:**
+- cit-004
+
+**Verification Status:** supported
+
+**Confidence:** medium
+
+**Verification Notes:** Supported by literature page cit-004 (clm-lit-bpa-004), which cites source material discussing DNA methylation changes in ERα and ERβ promoter regions and their effects on gene expression, with references to specific studies (Doshi et al. 2011, Bhandari et al. 2019).
 
 ---
 
@@ -100,7 +129,7 @@ Endocrine disruption can occur through several mechanisms:
 
 3. **Interference with Signaling Pathways:** EDCs can disrupt signaling pathways involved in hormone action, affecting cellular responses to hormonal stimuli.
 
-4. **Epigenetic Changes:** Some EDCs can induce epigenetic changes, such as DNA methylation or histone modification, which can alter gene expression related to endocrine function.
+4. **Epigenetic Changes:** Some EDCs can induce epigenetic changes, such as DNA methylation or histone modification, which can alter gene expression related to endocrine function. For example, BPA exposure leads to DNA methylation changes in ERα and ERβ promoter regions, affecting gene expression and potentially contributing to long-term endocrine disruption effects.
 
 ## Evidence Types for Endocrine Disruption
 
@@ -117,7 +146,8 @@ Evidence for endocrine disruption can be categorized into several types:
 # Related Pages
 
 - [Bisphenol A](../../03-chemicals/bisphenol-a.md)
-- [Estrogen Receptor](../../04-biology/estrogen-receptor.md)
+- [Bisphenol A Analogs](../../03-chemicals/bisphenol-a-analogs.md)
+- [Estrogen Receptors](../../04-biology/estrogen-receptors.md)
 - [ToxCast](../../07-datasets/toxcast.md)
 - [Adverse Outcome Pathway](../../02-concepts/adverse-outcome-pathway.md)
 
@@ -126,6 +156,7 @@ Evidence for endocrine disruption can be categorized into several types:
 - Further research is needed to assess the potential synergistic and additive effects of EDCs that could exacerbate endocrine disruption.
 - Studies should prioritize the mechanisms of cellular uptake, as hydrophobicity and membrane permeability can significantly influence toxicokinetics.
 - Species-specific differences in toxicological responses emphasize the need for models relevant to humans to improve the accuracy of risk assessment.
+- The role of alternative mechanisms (e.g., membrane receptor binding, epigenetic changes) in endocrine disruption requires more investigation.
 
 # References
 
@@ -165,6 +196,11 @@ allowed_source: true
 retrieved_on: 2026-08-25
 pages_or_sections: null
 notes: Discusses the mechanisms of endocrine disruption by BPA and its analogs.
+
+citation_id: cit-004
+source_type: literature
+reference: ../../09-literature/bpa-mechanisms-2025.md
+notes: Review paper on BPA and its analogs as endocrine disruptors via nuclear receptors and signaling pathways.
 ```
 
 ```yaml

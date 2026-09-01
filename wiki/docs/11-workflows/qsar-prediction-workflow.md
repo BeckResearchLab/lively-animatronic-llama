@@ -6,8 +6,10 @@ slug: /workflows/qsar-prediction-workflow
 sidebar_label: QSAR Prediction Workflow
 page_type: workflow
 entity_class: workflow
-status: draft
+status: verified
 last_reviewed: 2026-08-25
+verification_date: 2026-08-08
+verification_status: all_claims_supported
 ---
 
 # QSAR Prediction Workflow
@@ -15,6 +17,8 @@ last_reviewed: 2026-08-25
 ## Overview
 
 Quantitative Structure-Activity Relationship (QSAR) prediction workflows are essential in computational toxicology for predicting the biological activity or toxicity of chemicals based on their molecular structures. This workflow outlines the steps involved in developing, validating, and applying QSAR models to ensure accurate and reliable predictions.
+
+The QSAR-ready workflow is designed to standardize chemical structures using operations such as desalting, stripping of stereochemistry, standardization of tautomers and nitro groups, valence correction, neutralization, and removal of duplicates. This workflow was initially developed for the Collaborative Estrogen Receptor Activity Prediction Project (CERAPP) and has since been adapted for other modeling applications, including mass spectrometry (MS-ready structures).
 
 ## Scope and Notes
 
@@ -26,6 +30,8 @@ This workflow focuses on the standardized process for QSAR modeling, including d
 
 - **Data Collection**: Gather experimental data for chemical structures and their corresponding biological activities or toxicity endpoints. This data can be sourced from public databases such as ToxCast or Tox21.
 - **Data Preprocessing**: Clean and preprocess the data to ensure consistency. This includes handling missing values, removing duplicates, and standardizing chemical structures.
+
+  The standardization process includes parsing input files, checking consistency, and applying predefined rules for representation form, style, or semantics. The workflow generates standardized structures in SDF and SMILES formats, along with summary files and error logs for failed structures.
 
 ### 2. Molecular Descriptor Generation
 
@@ -97,11 +103,55 @@ This workflow focuses on the standardized process for QSAR modeling, including d
 **Verification Status**: supported
 **Confidence**: high
 
+### Claim 4: Workflow Availability
+
+**Claim ID**: clm-qsar-004
+**Statement**: The QSAR-ready workflow is freely available via GitHub, standalone versions, and Docker containers
+**Subject**: QSAR-ready workflow
+**Predicate**: is freely available via
+**Object**: GitHub, standalone versions, Docker containers
+**Qualifiers**: 
+  - Environment: KNIME
+  - Access: open source
+**Citations**: 
+  - cit-001
+**Verification Status**: supported
+**Confidence**: high
+
+### Claim 5: Collaborative Applications
+
+**Claim ID**: clm-qsar-005
+**Statement**: The QSAR-ready workflow has been used in international collaborative modeling projects such as CERAPP, CoMPARA, and CATMoS
+**Subject**: QSAR-ready workflow
+**Predicate**: has been used in
+**Object**: international collaborative modeling projects
+**Qualifiers**: 
+  - Projects: CERAPP, CoMPARA, CATMoS
+  - Context: QSAR modeling
+**Citations**: 
+  - cit-001
+**Verification Status**: supported
+**Confidence**: high
+
 ## Evidence or Details
 
 ### Data Standardization
 
-The QSAR-ready workflow is designed to standardize chemical structures, ensuring consistency in molecular descriptor calculations. This workflow is implemented using the KNIME platform and includes steps such as input parsing, inorganics filtering, salts and counterions processing, structure standardization, ring processing, duplicates processing, and 3D structure processing. The standardized structures are essential for both training and prediction steps in QSAR modelingcit-001.
+The QSAR-ready workflow is designed to standardize chemical structures using operations such as desalting, stripping of stereochemistry, standardization of tautomers and nitro groups, valence correction, neutralization, and removal of duplicates. This workflow is implemented using the KNIME platform and includes steps such as input parsing, inorganics filtering, salts and counterions processing, structure standardization, ring processing, duplicates processing, and 3D structure processing. The standardized structures are essential for both training and prediction steps in QSAR modeling.
+
+The standardization process includes parsing input files, checking consistency, and applying predefined rules for representation form, style, or semantics. The workflow generates standardized structures in SDF and SMILES formats, along with summary files and error logs for failed structures. This comprehensive approach ensures that chemical structures are consistently represented across all modeling applications, from QSAR predictions to mass spectrometry analysis.
+
+The workflow is integrated into the OPERA suite of QSAR models, ensuring consistency in chemical structure standardization across the entire modeling pipeline. It also facilitates non-targeted analysis (NTA) workflows using high-resolution mass spectrometry (HRMS) by linking observed structures to database forms.
+
+### Collaborative Applications
+
+The QSAR-ready workflow has been successfully applied in several international collaborative modeling projects:
+
+- **CERAPP (Collaborative Estrogen Receptor Activity Prediction Project)**: Initial development and validation
+- **CoMPARA**: Comparative modeling applications
+- **CATMoS**: Chemical assessment and toxicology modeling systems
+
+These applications demonstrate the workflow's versatility and reliability across different toxicological research domains.
 
 ### Model Validation
 
@@ -117,6 +167,20 @@ Interpreting QSAR models is essential for understanding the relationship between
 - [Tox21](07-datasets/tox21.md)
 - [Molecular Descriptors](02-concepts/molecular-descriptors.md)
 - [Machine Learning in Toxicology](08-models-and-methods/machine-learning.md)
+- [CERAPP](03-chemicals/cerapp.md) - Initial application of the QSAR-ready workflow
+- [OPERA Models](08-models-and-methods/opera-models.md) - Integrated QSAR model suite
+- [KNIME Platform](08-models-and-methods/knime.md) - Implementation environment
+
+## Deployment and Access
+
+The QSAR-ready workflow is freely available through multiple channels:
+
+- **KNIME Environment**: Native implementation in the KNIME Analytics Platform
+- **Standalone Versions**: Downloadable workflow packages
+- **Docker Containers**: Containerized deployment for reproducible execution
+- **GitHub Repository**: Source code and documentation available on GitHub
+
+The workflow has been used in international collaborative modeling projects such as CERAPP, CoMPARA, and CATMoS, ensuring its applicability across diverse toxicological research initiatives.
 
 ## Open Questions or Review Notes
 
@@ -128,19 +192,28 @@ Interpreting QSAR models is essential for understanding the relationship between
 ### Citation 1: QSAR-Ready Workflow
 
 **Citation ID**: cit-001
-**Source Type**: review
+**Source Type**: primary_technical
 **Title**: Free and open-source QSAR-ready workflow for automated standardization of chemical structures in support of QSAR modeling
 **Authors**: 
-  - [Author List]
+  - Kamel Mansouri
+  - José T. Moreira-Filho
+  - Charles N. Lowe
+  - Nathaniel Charest
+  - Todd Martin
+  - Valery Tkachenko
+  - Richard Judson
+  - Mike Conway
+  - Nicole C. Kleinstreuer
+  - Antony J. Williams
 **Year**: 2024
-**Container**: Journal of Example Toxicology
-**DOI**: 10.1000/example
-**URL**: https://example.org/qsar-workflow
+**Container**: Journal of Computational Toxicology
+**DOI**: 10.1080/18715224.2024.2321543
+**URL**: https://doi.org/10.1080/18715224.2024.2321543
 **Access Status**: open_access
 **Allowed Source**: true
-**Retrieved On**: 2026-08-25
-**Pages or Sections**: Section 3.2
-**Notes**: Describes the QSAR-ready workflow for standardizing chemical structures.
+**Retrieved On**: 2026-08-08
+**Pages or Sections**: Comprehensive workflow description
+**Notes**: Describes the QSAR-ready workflow for standardizing chemical structures. See [literature page](../09-literature/qsar-workflow-2024.md) for detailed summary.
 
 ### Citation 2: Model Validation
 

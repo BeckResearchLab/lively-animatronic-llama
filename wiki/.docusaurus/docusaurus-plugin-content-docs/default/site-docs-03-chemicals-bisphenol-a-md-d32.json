@@ -1,0 +1,39 @@
+{
+  "id": "chemicals/bisphenol-a",
+  "title": "Bisphenol A",
+  "description": "Chemical page for Bisphenol A with identifiers, evidence links, and endpoint summaries.",
+  "source": "@site/docs/03-chemicals/bisphenol-a.md",
+  "sourceDirName": "03-chemicals",
+  "slug": "/chemicals/bisphenol-a",
+  "permalink": "/docs/chemicals/bisphenol-a",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "bisphenol-a",
+    "title": "Bisphenol A",
+    "description": "Chemical page for Bisphenol A with identifiers, evidence links, and endpoint summaries.",
+    "slug": "/chemicals/bisphenol-a",
+    "sidebar_label": "Bisphenol A",
+    "page_type": "chemical",
+    "entity_class": "chemical",
+    "status": "active",
+    "last_reviewed": "2026-08-25T00:00:00.000Z",
+    "verification_status": "supported",
+    "verification_notes": "All claims verified against source material and literature pages. Source material is accessible and compliant with open-access policy.",
+    "verified_on": "2026-08-08T00:00:00.000Z",
+    "aliases": [
+      "BPA"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Bisphenol A Analogs",
+    "permalink": "/docs/chemicals/bisphenol-a-analogs"
+  },
+  "next": {
+    "title": "Bisphenol AF",
+    "permalink": "/docs/chemicals/bisphenol-af"
+  }
+}

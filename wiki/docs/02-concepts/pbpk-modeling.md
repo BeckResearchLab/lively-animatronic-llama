@@ -138,6 +138,176 @@ Despite its advantages, PBPK modeling faces several challenges:
 - **Uncertainty:** Predictions are subject to uncertainty, particularly when data are limited or assumptions are made about parameter values.
 - **Validation:** PBPK models must be validated against experimental data to ensure their reliability.
 
+---
+
+## Integration with Adverse Outcome Pathways
+
+**Claim ID:** clm-pbpk-aop-integration-002
+
+**Statement:** PBPK models integrate systems data (physiology) and biochemical parameters such as metabolism and excretion, including mechanisms like saturation of enzymes or presence of specific receptors.
+
+**Subject:** PBPK models
+**Predicate:** integrate
+**Object:** systems data and biochemical parameters
+
+**Qualifiers:**
+- **Parameters:** metabolism, excretion, enzyme saturation, receptor presence
+- **Context:** AOP development
+
+**Citations:**
+- cit-pbpk-nam-2026
+
+**Verification Status:** supported
+**Confidence:** high
+
+---
+
+**Claim ID:** clm-pbpk-aop-risk-002
+
+**Statement:** PBPK models are being integrated with adverse outcome pathways (AOPs) to improve overall risk assessment in the context of new approach methodology (NAM).
+
+**Subject:** PBPK models
+**Predicate:** being_integrated_with
+**Object:** adverse outcome pathways (AOPs)
+
+**Qualifiers:**
+- **Context:** risk assessment
+- **Framework:** new approach methodology (NAM)
+
+**Citations:**
+- cit-pbpk-nam-2026
+
+**Verification Status:** supported
+**Confidence:** high
+
+---
+
+## Multi-Compartment PBPK Models
+
+**Claim ID:** clm-pbpk-multicompartment-002
+
+**Statement:** Multi-compartment PBPK models provide detailed information about various tissues and include intrinsic physiological processes such as liver metabolism, gut metabolism, kidney transporters, and elimination.
+
+**Subject:** Multi-compartment PBPK models
+**Predicate:** provide
+**Object:** detailed tissue information
+
+**Qualifiers:**
+- **Processes:** liver metabolism, gut metabolism, kidney transporters, elimination
+- **Context:** tissue-specific analysis
+
+**Citations:**
+- cit-pbpk-nam-2026
+
+**Verification Status:** supported
+**Confidence:** high
+
+---
+
+## Applications in Different Populations
+
+**Claim ID:** clm-pbpk-populations-002
+
+**Statement:** PBPK models can be extended for different human populations and diseased patients, with a focus on organ-specific models for AOP development.
+
+**Subject:** PBPK models
+**Predicate:** can_be_extended_for
+**Object:** different human populations and diseased patients
+
+**Qualifiers:**
+- **Focus:** organ-specific models
+- **Context:** AOP development
+
+**Citations:**
+- cit-pbpk-nam-2026
+
+**Verification Status:** supported
+**Confidence:** high
+
+---
+
+**Claim ID:** clm-pbpk-sensitive-populations-002
+
+**Statement:** PBPK models are being utilized for sensitive populations such as infants and patients suffering from renal or kidney diseases.
+
+**Subject:** PBPK models
+**Predicate:** being_utilized_for
+**Object:** sensitive populations
+
+**Qualifiers:**
+- **Populations:** infants, renal disease patients, kidney disease patients
+- **Context:** risk assessment
+
+**Citations:**
+- cit-pbpk-nam-2026
+
+**Verification Status:** supported
+**Confidence:** high
+
+---
+
+## Organ-Specific PBPK Models
+
+**Claim ID:** clm-pbpk-organ-specific-002
+
+**Statement:** Organ-specific PBPK models are next-generation kinetic models that evaluate kinetics inside specific organs, such as the liver, heart, brain, and kidney.
+
+**Subject:** Organ-specific PBPK models
+**Predicate:** are
+**Object:** next-generation kinetic models
+
+**Qualifiers:**
+- **Organs:** liver, heart, brain, kidney
+- **Context:** kinetic evaluation
+
+**Citations:**
+- cit-pbpk-nam-2026
+
+**Verification Status:** supported
+**Confidence:** high
+
+---
+
+**Claim ID:** clm-pbpk-clinical-insights-002
+
+**Statement:** PBPK models can provide valuable clinical insights about dosage design in diseased patients, such as those with renal failure.
+
+**Subject:** PBPK models
+**Predicate:** can_provide
+**Object:** clinical insights about dosage design
+
+**Qualifiers:**
+- **Context:** diseased patients
+- **Examples:** renal failure patients
+
+**Citations:**
+- cit-pbpk-nam-2026
+
+**Verification Status:** supported
+**Confidence:** high
+
+---
+
+## PBPK Models for Internal Concentration Quantification
+
+**Claim ID:** clm-pbpk-internal-concentration-002
+
+**Statement:** PBPK models help quantify kinetics for evaluating internal concentration at the MIE site, which can affect cellular biology and cause adverse effects.
+
+**Subject:** PBPK models
+**Predicate:** help_quantify
+**Object:** kinetics for internal concentration evaluation
+
+**Qualifiers:**
+- **Context:** MIE site evaluation
+- **Effect:** cellular biology, adverse effects
+
+**Citations:**
+- cit-pbpk-nam-2026
+
+**Verification Status:** supported
+**Confidence:** high
+
 # Related Pages
 
 - [In Vitro to In Vivo Extrapolation (IVIVE)](02-concepts/ivive.md)
@@ -221,4 +391,19 @@ allowed_source: true
 retrieved_on: 2026-08-25
 pages_or_sections: Discussion
 notes: Discusses the limitations of PBPK modeling, including data requirements.
+---
+citation_id: cit-pbpk-nam-2026
+source_type: review
+title: "The Role of Physiologically Based Pharmacokinetic Model (PBPK) New Approach Methodology in Pharmaceuticals and Environmental Chemical Risk Assessment"
+authors:
+  - [Author list not specified]
+year: 2026
+container: International Journal of Environmental Research and Public Health (IJERPH)
+doi: 10.3390/ijerph20043473
+url: https://doi.org/10.3390/ijerph20043473
+access_status: open_access
+allowed_source: true
+retrieved_on: 2026-08-08
+pages_or_sections: null
+notes: Review article on PBPK models and their integration with adverse outcome pathways and risk assessment
 ```

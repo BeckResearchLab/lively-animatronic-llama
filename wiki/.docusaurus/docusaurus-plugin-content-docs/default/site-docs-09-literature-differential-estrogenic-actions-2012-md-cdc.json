@@ -1,0 +1,46 @@
+{
+  "id": "literature/differential-estrogenic-actions-2012",
+  "title": "Differential Estrogenic Actions of Endocrine-Disrupting Chemicals Bisphenol A, Bisphenol AF, and Zearalenone through Estrogen Receptor α and β In Vitro",
+  "description": "Literature page for the 2012 paper on estrogenic actions of BPA, BPAF, and Zearalenone through ERα and ERβ",
+  "source": "@site/docs/09-literature/differential-estrogenic-actions-2012.md",
+  "sourceDirName": "09-literature",
+  "slug": "/literature/differential-estrogenic-actions-2012",
+  "permalink": "/docs/literature/differential-estrogenic-actions-2012",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "differential-estrogenic-actions-2012",
+    "title": "Differential Estrogenic Actions of Endocrine-Disrupting Chemicals Bisphenol A, Bisphenol AF, and Zearalenone through Estrogen Receptor α and β In Vitro",
+    "description": "Literature page for the 2012 paper on estrogenic actions of BPA, BPAF, and Zearalenone through ERα and ERβ",
+    "date_published": "2012-01-01T00:00:00.000Z",
+    "slug": "/literature/differential-estrogenic-actions-2012",
+    "sidebar_label": "Differential Estrogenic Actions (2012)",
+    "page_type": "literature",
+    "source_type": "paper",
+    "authors": [
+      "Yin Li",
+      "Katherine A. Burns",
+      "Yukitomo Arao",
+      "Colin J. Luh",
+      "Kenneth S. Korach"
+    ],
+    "year": 2012,
+    "doi": "10.1289/ehp.1104689",
+    "url": "https://doi.org/10.1289/ehp.1104689",
+    "access_status": "open_access",
+    "allowed_source": true,
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "unverified"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "DeepTox (2015)",
+    "permalink": "/docs/literature/deeptox-2015"
+  },
+  "next": {
+    "title": "ECETOC WR 38 qAOP Workshop",
+    "permalink": "/docs/literature/ecetoc-wr-38-qao-workshop"
+  }
+}

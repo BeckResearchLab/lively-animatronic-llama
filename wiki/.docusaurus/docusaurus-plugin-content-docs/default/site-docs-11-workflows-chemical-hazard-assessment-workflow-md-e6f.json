@@ -1,0 +1,33 @@
+{
+  "id": "workflows/chemical-hazard-assessment-workflow",
+  "title": "Chemical Hazard Assessment Workflow",
+  "description": "Workflow page describing the repeatable process for chemical hazard assessment in computational toxicology.",
+  "source": "@site/docs/11-workflows/chemical-hazard-assessment-workflow.md",
+  "sourceDirName": "11-workflows",
+  "slug": "/workflows/chemical-hazard-assessment-workflow",
+  "permalink": "/docs/workflows/chemical-hazard-assessment-workflow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "chemical-hazard-assessment-workflow",
+    "title": "Chemical Hazard Assessment Workflow",
+    "description": "Workflow page describing the repeatable process for chemical hazard assessment in computational toxicology.",
+    "slug": "/workflows/chemical-hazard-assessment-workflow",
+    "sidebar_label": "Chemical Hazard Assessment Workflow",
+    "page_type": "workflow",
+    "entity_class": "workflow",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "AOP Development Workflow",
+    "permalink": "/docs/workflows/aop-development-workflow"
+  },
+  "next": {
+    "title": "Contradiction Resolution Workflow",
+    "permalink": "/docs/workflows/contradiction-resolution-workflow"
+  }
+}

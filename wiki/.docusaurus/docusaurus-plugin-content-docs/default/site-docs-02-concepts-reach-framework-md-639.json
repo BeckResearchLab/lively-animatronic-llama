@@ -1,0 +1,40 @@
+{
+  "id": "concepts/reach-framework",
+  "title": "REACH Framework",
+  "description": "Canonical page for the REACH chemical safety assessment framework",
+  "source": "@site/docs/02-concepts/reach-framework.md",
+  "sourceDirName": "02-concepts",
+  "slug": "/concepts/reach-framework",
+  "permalink": "/docs/concepts/reach-framework",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "reach-framework",
+    "title": "REACH Framework",
+    "description": "Canonical page for the REACH chemical safety assessment framework",
+    "slug": "/concepts/reach-framework",
+    "sidebar_label": "REACH Framework",
+    "page_type": "concept",
+    "entity_class": "concept",
+    "status": "verified",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "verified",
+    "aliases": [
+      "REACH regulation",
+      "REACH chemical safety assessment",
+      "Registration, Evaluation, Authorisation and Restriction of Chemicals",
+      "REACH framework"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Quantitative AOPs",
+    "permalink": "/docs/concepts/quantitative-adverse-outcome-pathways"
+  },
+  "next": {
+    "title": "Read-Across",
+    "permalink": "/docs/concepts/read-across"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "biology/gpcrs-kinases",
+  "title": "GPCRs and Kinases in Toxicology",
+  "description": "Canonical page for G protein-coupled receptors and kinases as biological targets in toxicology",
+  "source": "@site/docs/04-biology/gpcrs-kinases.md",
+  "sourceDirName": "04-biology",
+  "slug": "/biology/gpcrs-kinases",
+  "permalink": "/docs/biology/gpcrs-kinases",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "gpcrs-kinases",
+    "title": "GPCRs and Kinases in Toxicology",
+    "description": "Canonical page for G protein-coupled receptors and kinases as biological targets in toxicology",
+    "slug": "/biology/gpcrs-kinases",
+    "sidebar_label": "GPCRs and Kinases",
+    "page_type": "biological-target",
+    "entity_class": "biological_target",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "verified",
+    "aliases": [
+      "GPCRs in Toxicology",
+      "Kinases in Toxicology",
+      "G Protein-Coupled Receptors",
+      "Protein Kinases",
+      "Signal Transduction Targets"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Estrogen Receptors",
+    "permalink": "/docs/biology/estrogen-receptors"
+  },
+  "next": {
+    "title": "Toxicological Endpoints",
+    "permalink": "/docs/category/toxicological-endpoints"
+  }
+}

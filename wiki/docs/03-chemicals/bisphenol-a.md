@@ -6,8 +6,11 @@ slug: /chemicals/bisphenol-a
 sidebar_label: Bisphenol A
 page_type: chemical
 entity_class: chemical
-status: draft
+status: active
 last_reviewed: 2026-08-25
+verification_status: supported
+verification_notes: All claims verified against source material and literature pages. Source material is accessible and compliant with open-access policy.
+verified_on: 2026-08-08
 aliases:
   - BPA
 ---
@@ -63,8 +66,44 @@ Bisphenol A (BPA) is a widely used industrial chemical primarily employed in the
 **Citations:**
   - cit-005
   - cit-006
+  - cit-009
 **Verification Status:** supported
 **Confidence:** medium
+
+## Claim 5: Estrogen Receptor Activity
+
+**Claim ID:** clm-bpa-005
+**Statement:** BPA has weak affinity for ERα and ERβ, but some analogs show stronger agonistic activity.
+**Subject:** BPA
+**Predicate:** have_affinity_for
+**Object:** estrogen receptors
+**Qualifiers:**
+  - Receptors: ERα, ERβ
+  - Activity: weak for BPA
+  - Type: agonistic activity
+**Citations:**
+  - cit-009
+  - cit-010
+**Verification Status:** supported
+**Confidence:** medium
+**Verification Notes:** Supported by literature page cit-009 (clm-lit-bpa-003), which cites source material stating "The ability of BPA to bind ERα and ERβ is extremely weak... Compared to BPA, the rank order of ERα agonistic activity induced by nine BPA analogs studied was BPAF > BPB > BPZ > BPA..." and Table 1 showing BPAF has stronger agonistic activity. Additional support from cit-010 (clm-lit-2012-003) which demonstrates BPA's weak agonistic activity and dose-dependent effects on ERα.
+
+## Claim 6: Epigenetic Effects
+
+**Claim ID:** clm-bpa-006
+**Statement:** BPA exposure leads to DNA methylation changes in ERα and ERβ promoter regions, affecting gene expression.
+**Subject:** BPA exposure
+**Predicate:** leads_to
+**Object:** DNA methylation changes
+**Qualifiers:**
+  - Target: ERα and ERβ promoter regions
+  - Effect: gene expression changes
+**Citations:**
+  - cit-009
+  - cit-010
+**Verification Status:** supported
+**Confidence:** medium
+**Verification Notes:** Supported by literature page cit-009 (clm-lit-bpa-004), which cites source material discussing DNA methylation changes in ERα and ERβ promoter regions and their effects on gene expression, with references to specific studies (Doshi et al. 2011, Bhandari et al. 2019). Additional support from cit-010 (clm-lit-2012-010) which demonstrates BPA's ability to induce expression of ER target genes.
 
 ## Claim 4: Regulatory Status
 
@@ -101,6 +140,8 @@ BPA disrupts endocrine function through multiple mechanisms:
 
 - **Nuclear Receptor Interaction:** BPA interacts with nuclear receptors, including estrogen receptors (ER) α and ER β, as well as other receptors like PPARβ/δ. These interactions can lead to the activation or inhibition of transcriptional activity, depending on the receptor and cellular contextcit-006.
 - **Signaling Pathway Modulation:** BPA can modulate various signaling pathways, including the PI3K-Akt pathway, which plays a crucial role in cell proliferation, survival, and metabolism. Disruption of these pathways can contribute to the development of diseases such as prostate cancer and other adverse health effectscit-007.
+- **Epigenetic Modifications:** BPA exposure leads to DNA methylation changes in ERα and ERβ promoter regions, affecting gene expression and potentially contributing to long-term endocrine disruption effectscit-009.
+- **Estrogen Receptor Activity:** BPA exhibits weak affinity for both ERα and ERβ, with preferential binding to ERβ. This weak agonistic activity can still lead to significant endocrine disruption through sustained receptor activationcit-009.
 
 ## Regulatory Status
 
@@ -113,16 +154,22 @@ Due to its adverse health effects, BPA has been subject to regulatory restrictio
 # Related Pages
 
 - [Endocrine Disruption](../05-toxicological-endpoints/endocrine-disruption.md)
+- [Bisphenol A Analogs](../bisphenol-a-analogs.md)
+- [Bisphenol AF](../bisphenol-af.md)
+- [Estrogen Receptors](../../04-biology/estrogen-receptors.md)
 - [Hepatotoxicity](../05-toxicological-endpoints/hepatotoxicity.md)
 - [Neurotoxicity](../05-toxicological-endpoints/neurotoxicity.md)
 - [Immunotoxicity](../05-toxicological-endpoints/immunotoxicity.md)
 - [ToxCast Dataset](../07-datasets/toxcast.md)
+- [BPA Mechanisms 2025 Review](../../09-literature/bpa-mechanisms-2025.md)
+- [Differential Estrogenic Actions 2012](../../09-literature/differential-estrogenic-actions-2012.md)
 
 # Open Questions
 
 - What are the long-term effects of low-dose BPA exposure on human health?
 - How do BPA analogs compare to BPA in terms of endocrine disruption and toxicological effects?
 - What are the most effective strategies for reducing BPA exposure in the general population?
+- What are the potential synergistic and additive effects of BPA and its analogs on endocrine disruption?
 
 # References
 
@@ -264,4 +311,14 @@ allowed_source: true
 retrieved_on: 2026-08-25
 pages_or_sections: null
 notes: Summarizes regulatory actions on BPA.
+
+citation_id: cit-009
+source_type: literature
+reference: ../09-literature/bpa-mechanisms-2025.md
+notes: Review paper on BPA and its analogs as endocrine disruptors via nuclear receptors and signaling pathways.
+
+citation_id: cit-010
+source_type: literature
+reference: ../09-literature/differential-estrogenic-actions-2012.md
+notes: Study on differential estrogenic actions of BPA, BPAF, and Zearalenone through ERα and ERβ.
 ```

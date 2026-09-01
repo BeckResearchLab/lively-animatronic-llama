@@ -1,3 +1,7 @@
+---
+slug: /
+sidebar_position: 1
+---
 # Welcome to the Computational Toxicology Wiki
 
 This wiki serves as the central knowledge substrate for the computational toxicology system, providing structured information on chemicals, biological targets, toxicological endpoints, assays, datasets, models, literature, evidence, workflows, and more.

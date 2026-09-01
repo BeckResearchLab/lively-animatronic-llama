@@ -1,0 +1,39 @@
+{
+  "id": "models-and-methods/omics-technologies-toxicology",
+  "title": "Omics Technologies in Toxicology",
+  "description": "Concept page defining omics technologies and their applications in toxicology",
+  "source": "@site/docs/08-models-and-methods/omics-technologies-toxicology.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/omics-technologies-toxicology",
+  "permalink": "/docs/models-and-methods/omics-technologies-toxicology",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "omics-technologies-toxicology",
+    "title": "Omics Technologies in Toxicology",
+    "description": "Concept page defining omics technologies and their applications in toxicology",
+    "slug": "/models-and-methods/omics-technologies-toxicology",
+    "sidebar_label": "Omics Technologies in Toxicology",
+    "page_type": "concept",
+    "entity_class": "concept",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "verified",
+    "aliases": [
+      "Toxicology Omics",
+      "Omics in Toxicology",
+      "Genomics, Proteomics, Metabolomics in Toxicology"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "OECD QSAR Toolbox",
+    "permalink": "/docs/models/oecd-qsar-toolbox"
+  },
+  "next": {
+    "title": "OPERA Models",
+    "permalink": "/docs/models-and-methods/opera-models"
+  }
+}

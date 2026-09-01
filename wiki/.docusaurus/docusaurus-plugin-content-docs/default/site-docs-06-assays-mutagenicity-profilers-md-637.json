@@ -1,0 +1,37 @@
+{
+  "id": "assays/mutagenicity-profilers",
+  "title": "Mutagenicity Profilers",
+  "description": "Assay page for mutagenicity profilers in the OECD QSAR Toolbox, including performance metrics and limitations.",
+  "source": "@site/docs/06-assays/mutagenicity-profilers.md",
+  "sourceDirName": "06-assays",
+  "slug": "/assays/mutagenicity-profilers",
+  "permalink": "/docs/assays/mutagenicity-profilers",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "mutagenicity-profilers",
+    "title": "Mutagenicity Profilers",
+    "description": "Assay page for mutagenicity profilers in the OECD QSAR Toolbox, including performance metrics and limitations.",
+    "slug": "/assays/mutagenicity-profilers",
+    "sidebar_label": "Mutagenicity Profilers",
+    "page_type": "assay",
+    "entity_class": "assay",
+    "agent_access": "results_available_in_dataset",
+    "access_route": [
+      "[OECD QSAR Toolbox](08-models-and-methods/oecd-qsar-toolbox.md)"
+    ],
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Molecular Docking",
+    "permalink": "/docs/assays/molecular-docking"
+  },
+  "next": {
+    "title": "NRF2 Reporter Assay",
+    "permalink": "/docs/assays/nrf2-reporter-assay"
+  }
+}

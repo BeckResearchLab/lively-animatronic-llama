@@ -1,0 +1,23 @@
+{
+  "id": "audit/audit-literature-ml-chemoinformatics-2024",
+  "title": "Audit Record: Literature Page Verification",
+  "description": "Audit Metadata",
+  "source": "@site/docs/10-audit/audit-literature-ml-chemoinformatics-2024.md",
+  "sourceDirName": "10-audit",
+  "slug": "/audit/audit-literature-ml-chemoinformatics-2024",
+  "permalink": "/docs/audit/audit-literature-ml-chemoinformatics-2024",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Audit Record: Chemical Databases Evidence Page Verification",
+    "permalink": "/docs/audit/audit-chemical-databases-2024"
+  },
+  "next": {
+    "title": "Audit Record: ML Algorithms Evidence Page Verification",
+    "permalink": "/docs/audit/audit-ml-algorithms-2024"
+  }
+}

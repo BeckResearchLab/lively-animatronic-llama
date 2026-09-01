@@ -1,0 +1,33 @@
+{
+  "id": "concepts/toxicological-endpoint",
+  "title": "Toxicological Endpoint",
+  "description": "Concept page defining toxicological endpoints and their role in computational toxicology.",
+  "source": "@site/docs/02-concepts/toxicological-endpoint.md",
+  "sourceDirName": "02-concepts",
+  "slug": "/concepts/toxicological-endpoint",
+  "permalink": "/docs/concepts/toxicological-endpoint",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "toxicological-endpoint",
+    "title": "Toxicological Endpoint",
+    "description": "Concept page defining toxicological endpoints and their role in computational toxicology.",
+    "slug": "/concepts/toxicological-endpoint",
+    "sidebar_label": "Toxicological Endpoint",
+    "page_type": "concept",
+    "entity_class": "concept",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Tiered Approach in Chemical Safety Assessment",
+    "permalink": "/docs/concepts/tiered-approach-chemical-safety"
+  },
+  "next": {
+    "title": "Uncertainty",
+    "permalink": "/docs/concepts/uncertainty"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "audit_records/2026-08-08-verification-operation",
+  "title": "Wiki Verification Operation Report",
+  "description": "Operation Header",
+  "source": "@site/docs/audit_records/2026-08-08-verification-operation.md",
+  "sourceDirName": "audit_records",
+  "slug": "/audit_records/2026-08-08-verification-operation",
+  "permalink": "/docs/audit_records/2026-08-08-verification-operation",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "PBPK NAM Risk Assessment Verification - Completion Summary",
+    "permalink": "/docs/audit_records/2026-08-08-verification-completion-summary"
+  },
+  "next": {
+    "title": "NAM Framework Content Verification Report",
+    "permalink": "/docs/audit_records/2026-08-08-verification-report"
+  }
+}

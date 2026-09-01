@@ -1,0 +1,37 @@
+{
+  "id": "assays/ames-test",
+  "title": "Ames Test",
+  "description": "Assay page for the Ames test, including measured signal, interpretation, and limitations.",
+  "source": "@site/docs/06-assays/ames-test.md",
+  "sourceDirName": "06-assays",
+  "slug": "/assays/ames-test",
+  "permalink": "/docs/assays/ames-test",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ames-test",
+    "title": "Ames Test",
+    "description": "Assay page for the Ames test, including measured signal, interpretation, and limitations.",
+    "slug": "/assays/ames-test",
+    "sidebar_label": "Ames Test",
+    "page_type": "assay",
+    "entity_class": "assay",
+    "agent_access": "results_available_in_dataset",
+    "access_route": [
+      "[ToxCast](07-datasets/toxcast.md)"
+    ],
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "AhR Activation Assay",
+    "permalink": "/docs/assays/ahr-activation-assay"
+  },
+  "next": {
+    "title": "Carcinogenicity Profilers",
+    "permalink": "/docs/assays/carcinogenicity-profilers"
+  }
+}

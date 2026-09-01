@@ -1,0 +1,33 @@
+{
+  "id": "agent-operations/wiki-write-operation-2026-08-08",
+  "title": "Wiki Write Operation - 2026-08-08",
+  "description": "Agent operation record for the wiki write operation based on IVIVE review ingestion",
+  "source": "@site/docs/12-agent-operations/wiki-write-operation-2026-08-08.md",
+  "sourceDirName": "12-agent-operations",
+  "slug": "/agent-operations/wiki-write-operation-2026-08-08",
+  "permalink": "/docs/agent-operations/wiki-write-operation-2026-08-08",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "wiki-write-operation-2026-08-08",
+    "title": "Wiki Write Operation - 2026-08-08",
+    "description": "Agent operation record for the wiki write operation based on IVIVE review ingestion",
+    "slug": "/agent-operations/wiki-write-operation-2026-08-08",
+    "sidebar_label": "Wiki Write Operation 2026-08-08",
+    "page_type": "agent_operation",
+    "entity_class": "operation_record",
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Wiki Verification Operation Report - 2026-08-08",
+    "permalink": "/docs/agent-operations/wiki-verification-2026-08-08"
+  },
+  "next": {
+    "title": "Wiki Write Operation Summary - 2026-08-08",
+    "permalink": "/docs/agent-operations/wiki-write-summary-2026-08-08"
+  }
+}

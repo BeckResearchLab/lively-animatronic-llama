@@ -1,0 +1,33 @@
+{
+  "id": "system/ontology-alignment-policy",
+  "title": "Ontology Alignment Policy",
+  "description": "Define the policy for aligning the wiki's ontology with external standards.",
+  "source": "@site/docs/00-system/ontology-alignment-policy.md",
+  "sourceDirName": "00-system",
+  "slug": "/system/ontology-alignment-policy",
+  "permalink": "/docs/system/ontology-alignment-policy",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ontology-alignment-policy",
+    "title": "Ontology Alignment Policy",
+    "description": "Define the policy for aligning the wiki's ontology with external standards.",
+    "slug": "/system/ontology-alignment-policy",
+    "sidebar_label": "Ontology Alignment Policy",
+    "page_type": "index",
+    "entity_class": "index",
+    "status": "draft",
+    "last_reviewed": "2026-08-19T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Known Limitations of the Wiki",
+    "permalink": "/docs/system/known-limitations-of-the-wiki"
+  },
+  "next": {
+    "title": "Update and Review Policy",
+    "permalink": "/docs/system/update-and-review-policy"
+  }
+}
