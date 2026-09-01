@@ -1,0 +1,35 @@
+{
+  "id": "models-and-methods/knime",
+  "title": "KNIME",
+  "description": "KNIME platform for data integration and workflow automation in computational toxicology",
+  "source": "@site/docs/08-models-and-methods/knime.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/knime",
+  "permalink": "/docs/models-and-methods/knime",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "knime",
+    "title": "KNIME",
+    "description": "KNIME platform for data integration and workflow automation in computational toxicology",
+    "slug": "/models-and-methods/knime",
+    "sidebar_label": "KNIME",
+    "page_type": "tool",
+    "entity_class": "tool",
+    "status": "verified",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_date": "2026-08-08T00:00:00.000Z",
+    "verification_status": "all_claims_supported"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "IVIVE",
+    "permalink": "/docs/models-and-methods/ivive"
+  },
+  "next": {
+    "title": "Laboratory Automation in Toxicology",
+    "permalink": "/docs/models-and-methods/laboratory-automation-toxicology"
+  }
+}

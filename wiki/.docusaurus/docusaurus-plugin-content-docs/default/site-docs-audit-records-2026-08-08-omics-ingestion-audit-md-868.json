@@ -1,0 +1,32 @@
+{
+  "id": "audit_records/2026-08-08-omics-ingestion-audit",
+  "title": "Omics Ingestion Audit Record",
+  "description": "Audit record for the ingestion of omics-related content from the 2019 review paper",
+  "source": "@site/docs/audit_records/2026-08-08-omics-ingestion-audit.md",
+  "sourceDirName": "audit_records",
+  "slug": "/audit-records/2026-08-08-omics-ingestion-audit",
+  "permalink": "/docs/audit-records/2026-08-08-omics-ingestion-audit",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "2026-08-08-omics-ingestion-audit",
+    "title": "Omics Ingestion Audit Record",
+    "description": "Audit record for the ingestion of omics-related content from the 2019 review paper",
+    "slug": "/audit-records/2026-08-08-omics-ingestion-audit",
+    "page_type": "audit_record",
+    "entity_class": "audit",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Audit Record: NAM Regulatory Toxicology Verification",
+    "permalink": "/docs/audit_records/2026-08-08-nam-verification-audit"
+  },
+  "next": {
+    "title": "PBPK NAM Risk Assessment Ingestion Audit",
+    "permalink": "/docs/audit-records/2026-08-08-pbpk-nam-ingestion"
+  }
+}

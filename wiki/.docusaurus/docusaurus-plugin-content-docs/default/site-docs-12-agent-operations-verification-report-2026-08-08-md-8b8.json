@@ -1,0 +1,23 @@
+{
+  "id": "agent-operations/verification-report-2026-08-08",
+  "title": "Verification Report - 2026-08-08",
+  "description": "Operation Overview",
+  "source": "@site/docs/12-agent-operations/verification-report-2026-08-08.md",
+  "sourceDirName": "12-agent-operations",
+  "slug": "/agent-operations/verification-report-2026-08-08",
+  "permalink": "/docs/agent-operations/verification-report-2026-08-08",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Verification Audit Record - 2026-08-08",
+    "permalink": "/docs/agent-operations/verification-audit-2026-08-08"
+  },
+  "next": {
+    "title": "Verification Summary - 2026-08-08",
+    "permalink": "/docs/agent-operations/verification-summary-2026-08-08"
+  }
+}

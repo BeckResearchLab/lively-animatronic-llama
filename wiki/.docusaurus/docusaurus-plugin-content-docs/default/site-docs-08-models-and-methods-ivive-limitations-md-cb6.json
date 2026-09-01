@@ -1,0 +1,39 @@
+{
+  "id": "models-and-methods/ivive-limitations",
+  "title": "Limitations of In Vitro to In Vivo Extrapolation (IVIVE)",
+  "description": "Canonical page for current limitations and challenges in IVIVE methods",
+  "source": "@site/docs/08-models-and-methods/ivive-limitations.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/ivive-limitations",
+  "permalink": "/docs/models-and-methods/ivive-limitations",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ivive-limitations",
+    "title": "Limitations of In Vitro to In Vivo Extrapolation (IVIVE)",
+    "description": "Canonical page for current limitations and challenges in IVIVE methods",
+    "slug": "/models-and-methods/ivive-limitations",
+    "sidebar_label": "IVIVE Limitations",
+    "page_type": "model",
+    "entity_class": "method",
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "unverified",
+    "aliases": [
+      "IVIVE Limitations",
+      "Limitations of IVIVE",
+      "Challenges in IVIVE"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "GRAP Principles",
+    "permalink": "/docs/models-and-methods/grap-principles"
+  },
+  "next": {
+    "title": "IVIVE",
+    "permalink": "/docs/models-and-methods/ivive"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "models-and-methods/molecular-fingerprints",
+  "title": "Molecular Fingerprints in Toxicology",
+  "description": "Canonical page for molecular fingerprints used in computational toxicology",
+  "source": "@site/docs/08-models-and-methods/molecular-fingerprints.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/molecular-fingerprints",
+  "permalink": "/docs/models-and-methods/molecular-fingerprints",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "molecular-fingerprints",
+    "title": "Molecular Fingerprints in Toxicology",
+    "description": "Canonical page for molecular fingerprints used in computational toxicology",
+    "slug": "/models-and-methods/molecular-fingerprints",
+    "sidebar_label": "Molecular Fingerprints",
+    "page_type": "model",
+    "entity_class": "method",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "partially_verified",
+    "aliases": [
+      "Molecular Fingerprints",
+      "Chemical Fingerprints",
+      "Fingerprint Methods"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "ML in Toxicology",
+    "permalink": "/docs/models-and-methods/ml-in-toxicology"
+  },
+  "next": {
+    "title": "OECD QSAR Toolbox",
+    "permalink": "/docs/models/oecd-qsar-toolbox"
+  }
+}

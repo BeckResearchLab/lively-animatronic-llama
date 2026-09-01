@@ -1,0 +1,36 @@
+{
+  "id": "workflows/aop-development-workflow",
+  "title": "AOP Development Workflow",
+  "description": "Workflow page describing the systematic process for developing and evaluating adverse outcome pathways",
+  "source": "@site/docs/11-workflows/aop-development-workflow.md",
+  "sourceDirName": "11-workflows",
+  "slug": "/workflows/aop-development-workflow",
+  "permalink": "/docs/workflows/aop-development-workflow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "aop-development-workflow",
+    "title": "AOP Development Workflow",
+    "description": "Workflow page describing the systematic process for developing and evaluating adverse outcome pathways",
+    "slug": "/workflows/aop-development-workflow",
+    "sidebar_label": "AOP Development Workflow",
+    "page_type": "workflow",
+    "entity_class": "workflow",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verified_on": "2026-08-08T00:00:00.000Z",
+    "verification_status": "supported",
+    "verification_notes": "All claims verified against \"A Pragmatic Approach to Adverse Outcome Pathway Development and Evaluation\" (DOI: 10.1093/toxsci/kfab113)"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Workflows",
+    "permalink": "/docs/category/workflows"
+  },
+  "next": {
+    "title": "Chemical Hazard Assessment Workflow",
+    "permalink": "/docs/workflows/chemical-hazard-assessment-workflow"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "agent-operations/wiki-ingestion-2026-08-08-summary",
+  "title": "Wiki Ingestion Operation Summary - 2026-08-08",
+  "description": "Operation Overview",
+  "source": "@site/docs/12-agent-operations/wiki-ingestion-2026-08-08-summary.md",
+  "sourceDirName": "12-agent-operations",
+  "slug": "/agent-operations/wiki-ingestion-2026-08-08-summary",
+  "permalink": "/docs/agent-operations/wiki-ingestion-2026-08-08-summary",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Verification Summary - 2026-08-08",
+    "permalink": "/docs/agent-operations/verification-summary-2026-08-08"
+  },
+  "next": {
+    "title": "Wiki Ingestion 2026-08-08",
+    "permalink": "/docs/agent-operations/wiki-ingestion-2026-08-08"
+  }
+}

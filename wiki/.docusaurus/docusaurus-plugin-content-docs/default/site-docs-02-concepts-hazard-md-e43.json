@@ -1,0 +1,33 @@
+{
+  "id": "concepts/hazard",
+  "title": "Hazard",
+  "description": "Definition of hazard in the context of computational toxicology.",
+  "source": "@site/docs/02-concepts/hazard.md",
+  "sourceDirName": "02-concepts",
+  "slug": "/concepts/hazard",
+  "permalink": "/docs/concepts/hazard",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "hazard",
+    "title": "Hazard",
+    "description": "Definition of hazard in the context of computational toxicology.",
+    "slug": "/concepts/hazard",
+    "sidebar_label": "Hazard",
+    "page_type": "concept",
+    "entity_class": "concept",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "General Toxicology",
+    "permalink": "/docs/concepts/general-toxicology"
+  },
+  "next": {
+    "title": "Human Review Checkpoint",
+    "permalink": "/docs/concepts/human-review-checkpoint"
+  }
+}

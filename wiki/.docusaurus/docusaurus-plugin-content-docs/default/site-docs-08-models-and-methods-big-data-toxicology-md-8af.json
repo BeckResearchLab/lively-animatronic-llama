@@ -1,0 +1,39 @@
+{
+  "id": "models-and-methods/big-data-toxicology",
+  "title": "Big Data in Toxicology",
+  "description": "Concept page defining big data characteristics and challenges in toxicology",
+  "source": "@site/docs/08-models-and-methods/big-data-toxicology.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/big-data-toxicology",
+  "permalink": "/docs/models-and-methods/big-data-toxicology",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "big-data-toxicology",
+    "title": "Big Data in Toxicology",
+    "description": "Concept page defining big data characteristics and challenges in toxicology",
+    "slug": "/models-and-methods/big-data-toxicology",
+    "sidebar_label": "Big Data in Toxicology",
+    "page_type": "concept",
+    "entity_class": "concept",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "verified",
+    "aliases": [
+      "Big Data Toxicology",
+      "Big Data in Predictive Toxicology",
+      "Toxicology Big Data"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Benchmark Dose Modeling",
+    "permalink": "/docs/models/benchmark-dose-modeling"
+  },
+  "next": {
+    "title": "Challenges in Omics Methods",
+    "permalink": "/docs/models-and-methods/challenges-omics-methods"
+  }
+}

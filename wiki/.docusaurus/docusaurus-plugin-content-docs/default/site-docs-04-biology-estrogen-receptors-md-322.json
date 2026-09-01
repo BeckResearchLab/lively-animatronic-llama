@@ -1,0 +1,43 @@
+{
+  "id": "biology/estrogen-receptors",
+  "title": "Estrogen Receptors",
+  "description": "Biological page for estrogen receptors with mechanisms, endpoints, and evidence links",
+  "source": "@site/docs/04-biology/estrogen-receptors.md",
+  "sourceDirName": "04-biology",
+  "slug": "/biology/estrogen-receptors",
+  "permalink": "/docs/biology/estrogen-receptors",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "estrogen-receptors",
+    "title": "Estrogen Receptors",
+    "description": "Biological page for estrogen receptors with mechanisms, endpoints, and evidence links",
+    "slug": "/biology/estrogen-receptors",
+    "sidebar_label": "Estrogen Receptors",
+    "page_type": "biological_target",
+    "entity_class": "receptor",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "supported",
+    "verification_notes": "All claims verified against literature page cit-001. Source material is accessible and compliant with open-access policy.",
+    "verified_on": "2026-08-08T00:00:00.000Z",
+    "aliases": [
+      "ER",
+      "Estrogen receptor alpha",
+      "Estrogen receptor beta",
+      "ERα",
+      "ERβ"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Biology",
+    "permalink": "/docs/category/biology"
+  },
+  "next": {
+    "title": "GPCRs and Kinases",
+    "permalink": "/docs/biology/gpcrs-kinases"
+  }
+}

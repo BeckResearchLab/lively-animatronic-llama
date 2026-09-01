@@ -1,0 +1,33 @@
+{
+  "id": "workflows/molecular-docking-workflow",
+  "title": "Molecular Docking Workflow",
+  "description": "Workflow page describing the repeatable molecular docking process for computational toxicology.",
+  "source": "@site/docs/11-workflows/molecular-docking-workflow.md",
+  "sourceDirName": "11-workflows",
+  "slug": "/workflows/molecular-docking-workflow",
+  "permalink": "/docs/workflows/molecular-docking-workflow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "molecular-docking-workflow",
+    "title": "Molecular Docking Workflow",
+    "description": "Workflow page describing the repeatable molecular docking process for computational toxicology.",
+    "slug": "/workflows/molecular-docking-workflow",
+    "sidebar_label": "Molecular Docking Workflow",
+    "page_type": "workflow",
+    "entity_class": "workflow",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Literature Review Workflow",
+    "permalink": "/docs/workflows/literature-review-workflow"
+  },
+  "next": {
+    "title": "Profiler Improvement",
+    "permalink": "/docs/workflows/profiler-improvement"
+  }
+}

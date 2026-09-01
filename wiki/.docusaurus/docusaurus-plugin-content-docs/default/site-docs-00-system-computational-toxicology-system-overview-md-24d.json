@@ -1,0 +1,33 @@
+{
+  "id": "system/computational-toxicology-system-overview",
+  "title": "Computational Toxicology System Overview",
+  "description": "Provides an overview of the computational toxicology system and its components.",
+  "source": "@site/docs/00-system/computational-toxicology-system-overview.md",
+  "sourceDirName": "00-system",
+  "slug": "/system/computational-toxicology-system-overview",
+  "permalink": "/docs/system/computational-toxicology-system-overview",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "computational-toxicology-system-overview",
+    "title": "Computational Toxicology System Overview",
+    "description": "Provides an overview of the computational toxicology system and its components.",
+    "slug": "/system/computational-toxicology-system-overview",
+    "sidebar_label": "System Overview",
+    "page_type": "index",
+    "entity_class": "system",
+    "status": "draft",
+    "last_reviewed": "2026-08-26T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Agent Roles",
+    "permalink": "/docs/system/agent-roles-and-capabilities"
+  },
+  "next": {
+    "title": "Knowledge Representation Principles",
+    "permalink": "/docs/system/knowledge-representation-principles"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "glossary/ontology-crosswalks",
+  "title": "Ontology Crosswalks",
+  "description": "Glossary page providing crosswalks between ontologies and vocabularies.",
+  "source": "@site/docs/15-glossary/ontology-crosswalks.md",
+  "sourceDirName": "15-glossary",
+  "slug": "/glossary/ontology-crosswalks",
+  "permalink": "/docs/glossary/ontology-crosswalks",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ontology-crosswalks",
+    "title": "Ontology Crosswalks",
+    "description": "Glossary page providing crosswalks between ontologies and vocabularies.",
+    "slug": "/glossary/ontology-crosswalks",
+    "sidebar_label": "Ontology Crosswalks",
+    "page_type": "index",
+    "entity_class": "index",
+    "status": "draft",
+    "last_reviewed": "2026-08-26T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Identifier Systems",
+    "permalink": "/docs/glossary/identifier-systems"
+  },
+  "next": {
+    "title": "AOP Development Ingestion Audit Record",
+    "permalink": "/docs/audit_records/audit-2026-08-08-aop-dev"
+  }
+}

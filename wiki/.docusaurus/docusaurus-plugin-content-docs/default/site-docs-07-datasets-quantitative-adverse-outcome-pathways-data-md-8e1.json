@@ -1,0 +1,40 @@
+{
+  "id": "datasets/quantitative-adverse-outcome-pathways-data",
+  "title": "Quantitative AOP Data Requirements and Resources",
+  "description": "Canonical page for data requirements, sources, and management in quantitative adverse outcome pathway development",
+  "source": "@site/docs/07-datasets/quantitative-adverse-outcome-pathways-data.md",
+  "sourceDirName": "07-datasets",
+  "slug": "/datasets/quantitative-adverse-outcome-pathways-data",
+  "permalink": "/docs/datasets/quantitative-adverse-outcome-pathways-data",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "quantitative-adverse-outcome-pathways-data",
+    "title": "Quantitative AOP Data Requirements and Resources",
+    "description": "Canonical page for data requirements, sources, and management in quantitative adverse outcome pathway development",
+    "slug": "/datasets/quantitative-adverse-outcome-pathways-data",
+    "sidebar_label": "qAOP Data",
+    "page_type": "dataset",
+    "entity_class": "dataset",
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "unverified",
+    "aliases": [
+      "qAOP data",
+      "Quantitative AOP data",
+      "qAOP datasets",
+      "Quantitative AOP datasets"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "PubChem BioAssay",
+    "permalink": "/docs/datasets/pubchem-bioassay"
+  },
+  "next": {
+    "title": "Tox21",
+    "permalink": "/docs/datasets/tox21"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "chemicals/bisphenol-af",
+  "title": "Bisphenol AF",
+  "description": "Chemical page for Bisphenol AF with identifiers, evidence links, and endpoint summaries",
+  "source": "@site/docs/03-chemicals/bisphenol-af.md",
+  "sourceDirName": "03-chemicals",
+  "slug": "/chemicals/bisphenol-af",
+  "permalink": "/docs/chemicals/bisphenol-af",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "bisphenol-af",
+    "title": "Bisphenol AF",
+    "description": "Chemical page for Bisphenol AF with identifiers, evidence links, and endpoint summaries",
+    "slug": "/chemicals/bisphenol-af",
+    "sidebar_label": "Bisphenol AF",
+    "page_type": "chemical",
+    "entity_class": "chemical",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "unverified",
+    "aliases": [
+      "BPAF",
+      "Bisphenol AF"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Bisphenol A",
+    "permalink": "/docs/chemicals/bisphenol-a"
+  },
+  "next": {
+    "title": "Cadmium",
+    "permalink": "/docs/chemicals/cadmium"
+  }
+}

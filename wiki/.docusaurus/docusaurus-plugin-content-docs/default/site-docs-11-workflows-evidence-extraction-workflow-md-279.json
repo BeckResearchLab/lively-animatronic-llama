@@ -1,0 +1,33 @@
+{
+  "id": "workflows/evidence-extraction-workflow",
+  "title": "Evidence Extraction Workflow",
+  "description": "Workflow page describing the repeatable evidence extraction process for computational toxicology.",
+  "source": "@site/docs/11-workflows/evidence-extraction-workflow.md",
+  "sourceDirName": "11-workflows",
+  "slug": "/workflows/evidence-extraction-workflow",
+  "permalink": "/docs/workflows/evidence-extraction-workflow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "evidence-extraction-workflow",
+    "title": "Evidence Extraction Workflow",
+    "description": "Workflow page describing the repeatable evidence extraction process for computational toxicology.",
+    "slug": "/workflows/evidence-extraction-workflow",
+    "sidebar_label": "Evidence Extraction Workflow",
+    "page_type": "workflow",
+    "entity_class": "workflow",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Dataset Profiling Workflow",
+    "permalink": "/docs/workflows/dataset-profiling-workflow"
+  },
+  "next": {
+    "title": "Evidence Synthesis Workflow",
+    "permalink": "/docs/workflows/evidence-synthesis-workflow"
+  }
+}

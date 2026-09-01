@@ -1,0 +1,37 @@
+{
+  "id": "assays/mitochondrial-membrane-potential-assay",
+  "title": "Mitochondrial Membrane Potential Assay",
+  "description": "Assay page for the Mitochondrial Membrane Potential Assay, including measured signal, interpretation, and limitations.",
+  "source": "@site/docs/06-assays/mitochondrial-membrane-potential-assay.md",
+  "sourceDirName": "06-assays",
+  "slug": "/assays/mitochondrial-membrane-potential-assay",
+  "permalink": "/docs/assays/mitochondrial-membrane-potential-assay",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "mitochondrial-membrane-potential-assay",
+    "title": "Mitochondrial Membrane Potential Assay",
+    "description": "Assay page for the Mitochondrial Membrane Potential Assay, including measured signal, interpretation, and limitations.",
+    "slug": "/assays/mitochondrial-membrane-potential-assay",
+    "sidebar_label": "Mitochondrial Membrane Potential Assay",
+    "page_type": "assay",
+    "entity_class": "assay",
+    "agent_access": "results_available_in_dataset",
+    "access_route": [
+      "[ToxCast](07-datasets/toxcast.md)"
+    ],
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Micronucleus Assay",
+    "permalink": "/docs/assays/micronucleus-assay"
+  },
+  "next": {
+    "title": "Molecular Docking",
+    "permalink": "/docs/assays/molecular-docking"
+  }
+}

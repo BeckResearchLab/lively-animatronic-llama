@@ -1,0 +1,40 @@
+{
+  "id": "concepts/aop-framework",
+  "title": "Adverse Outcome Pathway (AOP) Framework",
+  "description": "Canonical page for the Adverse Outcome Pathway Framework in computational toxicology",
+  "source": "@site/docs/02-concepts/aop-framework.md",
+  "sourceDirName": "02-concepts",
+  "slug": "/concepts/aop-framework",
+  "permalink": "/docs/concepts/aop-framework",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "aop-framework",
+    "title": "Adverse Outcome Pathway (AOP) Framework",
+    "description": "Canonical page for the Adverse Outcome Pathway Framework in computational toxicology",
+    "slug": "/concepts/aop-framework",
+    "sidebar_label": "AOP Framework",
+    "page_type": "concept",
+    "entity_class": "concept",
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "unverified",
+    "aliases": [
+      "AOP Framework",
+      "Adverse Outcome Pathway Framework",
+      "AOPs",
+      "Adverse Outcome Pathways"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Adverse Outcome Pathway",
+    "permalink": "/docs/concepts/adverse-outcome-pathway"
+  },
+  "next": {
+    "title": "AOP Frameworks",
+    "permalink": "/docs/concepts/aop-frameworks"
+  }
+}

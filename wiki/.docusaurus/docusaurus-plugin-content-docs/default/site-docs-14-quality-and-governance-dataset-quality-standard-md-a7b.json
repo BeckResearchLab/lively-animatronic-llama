@@ -1,0 +1,33 @@
+{
+  "id": "quality-and-governance/dataset-quality-standard",
+  "title": "Dataset Quality Standard",
+  "description": "Define the standard for assessing the quality of datasets used in the wiki.",
+  "source": "@site/docs/14-quality-and-governance/dataset-quality-standard.md",
+  "sourceDirName": "14-quality-and-governance",
+  "slug": "/quality/dataset-quality-standard",
+  "permalink": "/docs/quality/dataset-quality-standard",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "dataset-quality-standard",
+    "title": "Dataset Quality Standard",
+    "description": "Define the standard for assessing the quality of datasets used in the wiki.",
+    "slug": "/quality/dataset-quality-standard",
+    "sidebar_label": "Dataset Quality Standard",
+    "page_type": "index",
+    "entity_class": "index",
+    "status": "draft",
+    "last_reviewed": "2026-08-19T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Citation and Provenance Rules",
+    "permalink": "/docs/system/citation-and-provenance-rules"
+  },
+  "next": {
+    "title": "Deprecation Policy",
+    "permalink": "/docs/quality/deprecation-policy"
+  }
+}

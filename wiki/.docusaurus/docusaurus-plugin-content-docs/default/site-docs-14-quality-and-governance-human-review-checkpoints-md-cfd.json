@@ -1,0 +1,33 @@
+{
+  "id": "quality-and-governance/human-review-checkpoints",
+  "title": "Human Review Checkpoints",
+  "description": "Defines human review checkpoints for the wiki.",
+  "source": "@site/docs/14-quality-and-governance/human-review-checkpoints.md",
+  "sourceDirName": "14-quality-and-governance",
+  "slug": "/quality/human-review-checkpoints",
+  "permalink": "/docs/quality/human-review-checkpoints",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "human-review-checkpoints",
+    "title": "Human Review Checkpoints",
+    "description": "Defines human review checkpoints for the wiki.",
+    "slug": "/quality/human-review-checkpoints",
+    "sidebar_label": "Human Review Checkpoints",
+    "page_type": "governance",
+    "entity_class": "governance_rule",
+    "status": "draft",
+    "last_reviewed": "2026-08-26T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Evidence Standards",
+    "permalink": "/docs/quality/evidence-standards"
+  },
+  "next": {
+    "title": "Model Validation Standard",
+    "permalink": "/docs/quality/model-validation-standard"
+  }
+}

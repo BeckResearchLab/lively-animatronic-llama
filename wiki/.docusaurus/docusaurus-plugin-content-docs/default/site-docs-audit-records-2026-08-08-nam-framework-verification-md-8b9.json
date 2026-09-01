@@ -1,0 +1,23 @@
+{
+  "id": "audit_records/2026-08-08-nam-framework-verification",
+  "title": "Verification Audit Record for NAM Framework Pages",
+  "description": "Verification Run Details",
+  "source": "@site/docs/audit_records/2026-08-08-nam-framework-verification.md",
+  "sourceDirName": "audit_records",
+  "slug": "/audit_records/2026-08-08-nam-framework-verification",
+  "permalink": "/docs/audit_records/2026-08-08-nam-framework-verification",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Audit Record: NAM Framework Ingestion and Wiki Integration",
+    "permalink": "/docs/audit_records/audit-2026-08-08-nam-framework"
+  },
+  "next": {
+    "title": "Audit Record: NAM Regulatory Toxicology Verification",
+    "permalink": "/docs/audit_records/2026-08-08-nam-verification-audit"
+  }
+}

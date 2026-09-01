@@ -1,0 +1,23 @@
+{
+  "id": "audit/audit-molecular-descriptors-2024",
+  "title": "Audit Record: Molecular Descriptors Canonical Page Verification",
+  "description": "Audit Metadata",
+  "source": "@site/docs/10-audit/audit-molecular-descriptors-2024.md",
+  "sourceDirName": "10-audit",
+  "slug": "/audit/audit-molecular-descriptors-2024",
+  "permalink": "/docs/audit/audit-molecular-descriptors-2024",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Audit Record: ML Algorithms Evidence Page Verification",
+    "permalink": "/docs/audit/audit-ml-algorithms-2024"
+  },
+  "next": {
+    "title": "Evidence",
+    "permalink": "/docs/category/evidence"
+  }
+}

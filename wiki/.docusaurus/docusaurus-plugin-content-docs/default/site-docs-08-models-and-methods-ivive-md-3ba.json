@@ -1,0 +1,38 @@
+{
+  "id": "models-and-methods/ivive",
+  "title": "In Vitro to In Vivo Extrapolation (IVIVE)",
+  "description": "Canonical page for In Vitro to In Vivo Extrapolation methods in computational toxicology",
+  "source": "@site/docs/08-models-and-methods/ivive.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/ivive",
+  "permalink": "/docs/models-and-methods/ivive",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "ivive",
+    "title": "In Vitro to In Vivo Extrapolation (IVIVE)",
+    "description": "Canonical page for In Vitro to In Vivo Extrapolation methods in computational toxicology",
+    "slug": "/models-and-methods/ivive",
+    "sidebar_label": "IVIVE",
+    "page_type": "model",
+    "entity_class": "method",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "unverified",
+    "aliases": [
+      "IVIVE",
+      "In Vitro to In Vivo Extrapolation"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "IVIVE Limitations",
+    "permalink": "/docs/models-and-methods/ivive-limitations"
+  },
+  "next": {
+    "title": "KNIME",
+    "permalink": "/docs/models-and-methods/knime"
+  }
+}

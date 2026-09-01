@@ -1,0 +1,33 @@
+{
+  "id": "models-and-methods/grap-principles",
+  "title": "GRAP Principles for Read-Across",
+  "description": "Overview of the Good Read-Across Practices (GRAP) principles for scientific rigor and regulatory acceptance",
+  "source": "@site/docs/08-models-and-methods/grap-principles.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/grap-principles",
+  "permalink": "/docs/models-and-methods/grap-principles",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "grap-principles",
+    "title": "GRAP Principles for Read-Across",
+    "description": "Overview of the Good Read-Across Practices (GRAP) principles for scientific rigor and regulatory acceptance",
+    "slug": "/models-and-methods/grap-principles",
+    "sidebar_label": "GRAP Principles",
+    "page_type": "method",
+    "entity_class": "framework",
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Genomics in Toxicology",
+    "permalink": "/docs/models-and-methods/genomics-toxicology"
+  },
+  "next": {
+    "title": "IVIVE Limitations",
+    "permalink": "/docs/models-and-methods/ivive-limitations"
+  }
+}

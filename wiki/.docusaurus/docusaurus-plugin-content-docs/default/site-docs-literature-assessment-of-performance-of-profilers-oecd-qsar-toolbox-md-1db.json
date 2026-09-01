@@ -1,0 +1,23 @@
+{
+  "id": "literature/assessment_of_performance_of_profilers_oecd_qsar_toolbox",
+  "title": "Assessment of Performance of the Profilers Provided in the OECD QSAR Toolbox for Category Formation of Chemicals",
+  "description": "Metadata",
+  "source": "@site/docs/literature/assessment_of_performance_of_profilers_oecd_qsar_toolbox.md",
+  "sourceDirName": "literature",
+  "slug": "/literature/assessment_of_performance_of_profilers_oecd_qsar_toolbox",
+  "permalink": "/docs/literature/assessment_of_performance_of_profilers_oecd_qsar_toolbox",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "DeepTox Ingestion Audit",
+    "permalink": "/docs/audit-records/audit-deeptox-ingestion-2026-08-08"
+  },
+  "next": {
+    "title": "Verification Report: NAM Regulatory Toxicology (2023) Integration",
+    "permalink": "/docs/verification_reports/2026-08-08-nam-regulatory-toxicology-verification"
+  }
+}

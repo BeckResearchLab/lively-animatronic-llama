@@ -1,0 +1,33 @@
+{
+  "id": "workflows/dataset-profiling-workflow",
+  "title": "Dataset Profiling Workflow",
+  "description": "Workflow page describing the repeatable dataset profiling process for computational toxicology.",
+  "source": "@site/docs/11-workflows/dataset-profiling-workflow.md",
+  "sourceDirName": "11-workflows",
+  "slug": "/workflows/dataset-profiling-workflow",
+  "permalink": "/docs/workflows/dataset-profiling-workflow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "dataset-profiling-workflow",
+    "title": "Dataset Profiling Workflow",
+    "description": "Workflow page describing the repeatable dataset profiling process for computational toxicology.",
+    "slug": "/workflows/dataset-profiling-workflow",
+    "sidebar_label": "Dataset Profiling Workflow",
+    "page_type": "workflow",
+    "entity_class": "workflow",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Contradiction Resolution Workflow",
+    "permalink": "/docs/workflows/contradiction-resolution-workflow"
+  },
+  "next": {
+    "title": "Evidence Extraction Workflow",
+    "permalink": "/docs/workflows/evidence-extraction-workflow"
+  }
+}

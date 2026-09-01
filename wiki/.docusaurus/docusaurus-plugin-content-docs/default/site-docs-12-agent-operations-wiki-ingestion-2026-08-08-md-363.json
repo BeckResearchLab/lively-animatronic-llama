@@ -1,0 +1,33 @@
+{
+  "id": "agent-operations/wiki-ingestion-2026-08-08",
+  "title": "Wiki Ingestion Operation 2026-08-08",
+  "description": "Agent operation record for ingesting benchmark dose modeling paper and creating related wiki pages.",
+  "source": "@site/docs/12-agent-operations/wiki-ingestion-2026-08-08.md",
+  "sourceDirName": "12-agent-operations",
+  "slug": "/agent-operations/wiki-ingestion-2026-08-08",
+  "permalink": "/docs/agent-operations/wiki-ingestion-2026-08-08",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "wiki-ingestion-2026-08-08",
+    "title": "Wiki Ingestion Operation 2026-08-08",
+    "description": "Agent operation record for ingesting benchmark dose modeling paper and creating related wiki pages.",
+    "slug": "/agent-operations/wiki-ingestion-2026-08-08",
+    "sidebar_label": "Wiki Ingestion 2026-08-08",
+    "page_type": "agent_operation",
+    "entity_class": "operation_record",
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Wiki Ingestion Operation Summary - 2026-08-08",
+    "permalink": "/docs/agent-operations/wiki-ingestion-2026-08-08-summary"
+  },
+  "next": {
+    "title": "Wiki Verification Operation Report - 2026-08-08",
+    "permalink": "/docs/agent-operations/wiki-verification-2026-08-08"
+  }
+}

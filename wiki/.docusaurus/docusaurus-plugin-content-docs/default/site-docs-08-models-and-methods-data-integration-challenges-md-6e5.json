@@ -1,0 +1,39 @@
+{
+  "id": "models-and-methods/data-integration-challenges",
+  "title": "Data Integration Challenges in Toxicology",
+  "description": "Concept page defining challenges in integrating toxicology data from diverse sources",
+  "source": "@site/docs/08-models-and-methods/data-integration-challenges.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/data-integration-challenges",
+  "permalink": "/docs/models-and-methods/data-integration-challenges",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "data-integration-challenges",
+    "title": "Data Integration Challenges in Toxicology",
+    "description": "Concept page defining challenges in integrating toxicology data from diverse sources",
+    "slug": "/models-and-methods/data-integration-challenges",
+    "sidebar_label": "Data Integration Challenges",
+    "page_type": "concept",
+    "entity_class": "concept",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "verified",
+    "aliases": [
+      "Toxicology Data Integration Challenges",
+      "Data Integration Problems in Toxicology",
+      "Integrating Toxicology Data"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Computational Tools in Toxicology",
+    "permalink": "/docs/models-and-methods/computational-tools-toxicology"
+  },
+  "next": {
+    "title": "Data Integration in Toxicology",
+    "permalink": "/docs/models-and-methods/data-integration-toxicology"
+  }
+}

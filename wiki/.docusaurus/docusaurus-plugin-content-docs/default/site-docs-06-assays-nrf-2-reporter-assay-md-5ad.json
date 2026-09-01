@@ -1,0 +1,37 @@
+{
+  "id": "assays/nrf2-reporter-assay",
+  "title": "NRF2 Reporter Assay",
+  "description": "Assay page for the NRF2 Reporter Assay, including measured signal, interpretation, and limitations.",
+  "source": "@site/docs/06-assays/nrf2-reporter-assay.md",
+  "sourceDirName": "06-assays",
+  "slug": "/assays/nrf2-reporter-assay",
+  "permalink": "/docs/assays/nrf2-reporter-assay",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "nrf2-reporter-assay",
+    "title": "NRF2 Reporter Assay",
+    "description": "Assay page for the NRF2 Reporter Assay, including measured signal, interpretation, and limitations.",
+    "slug": "/assays/nrf2-reporter-assay",
+    "sidebar_label": "NRF2 Reporter Assay",
+    "page_type": "assay",
+    "entity_class": "assay",
+    "agent_access": "results_available_in_dataset",
+    "access_route": [
+      "[ToxCast](07-datasets/toxcast.md)"
+    ],
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Mutagenicity Profilers",
+    "permalink": "/docs/assays/mutagenicity-profilers"
+  },
+  "next": {
+    "title": "QSAR Prediction",
+    "permalink": "/docs/assays/qsar-prediction"
+  }
+}

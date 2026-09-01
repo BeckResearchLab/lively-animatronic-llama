@@ -1,0 +1,33 @@
+{
+  "id": "models-and-methods/structural-alerts",
+  "title": "Structural Alerts",
+  "description": "Model page for structural alerts in computational toxicology, including their predictivity and impact on profiler performance.",
+  "source": "@site/docs/08-models-and-methods/structural-alerts.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models/structural-alerts",
+  "permalink": "/docs/models/structural-alerts",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "structural-alerts",
+    "title": "Structural Alerts",
+    "description": "Model page for structural alerts in computational toxicology, including their predictivity and impact on profiler performance.",
+    "slug": "/models/structural-alerts",
+    "sidebar_label": "Structural Alerts",
+    "page_type": "model",
+    "entity_class": "method",
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Read-Across Workflow",
+    "permalink": "/docs/models-and-methods/read-across-workflow"
+  },
+  "next": {
+    "title": "Systems Toxicology",
+    "permalink": "/docs/models-and-methods/systems-toxicology"
+  }
+}

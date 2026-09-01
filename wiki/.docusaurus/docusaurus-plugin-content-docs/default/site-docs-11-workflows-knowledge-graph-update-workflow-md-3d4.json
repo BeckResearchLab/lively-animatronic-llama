@@ -1,0 +1,33 @@
+{
+  "id": "workflows/knowledge-graph-update-workflow",
+  "title": "Knowledge Graph Update Workflow",
+  "description": "Workflow page detailing the process for updating the knowledge graph in the computational toxicology wiki.",
+  "source": "@site/docs/11-workflows/knowledge-graph-update-workflow.md",
+  "sourceDirName": "11-workflows",
+  "slug": "/workflows/knowledge-graph-update-workflow",
+  "permalink": "/docs/workflows/knowledge-graph-update-workflow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "knowledge-graph-update-workflow",
+    "title": "Knowledge Graph Update Workflow",
+    "description": "Workflow page detailing the process for updating the knowledge graph in the computational toxicology wiki.",
+    "slug": "/workflows/knowledge-graph-update-workflow",
+    "sidebar_label": "Knowledge Graph Update Workflow",
+    "page_type": "workflow",
+    "entity_class": "workflow",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Human Review Escalation Workflow",
+    "permalink": "/docs/workflows/human-review-escalation-workflow"
+  },
+  "next": {
+    "title": "Literature Review Workflow",
+    "permalink": "/docs/workflows/literature-review-workflow"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "quality-and-governance/study-quality-assessment-rubric",
+  "title": "Study Quality Assessment Rubric",
+  "description": "Provide a rubric for assessing the quality of studies cited in the wiki.",
+  "source": "@site/docs/14-quality-and-governance/study-quality-assessment-rubric.md",
+  "sourceDirName": "14-quality-and-governance",
+  "slug": "/quality/study-quality-assessment-rubric",
+  "permalink": "/docs/quality/study-quality-assessment-rubric",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "study-quality-assessment-rubric",
+    "title": "Study Quality Assessment Rubric",
+    "description": "Provide a rubric for assessing the quality of studies cited in the wiki.",
+    "slug": "/quality/study-quality-assessment-rubric",
+    "sidebar_label": "Study Quality Assessment Rubric",
+    "page_type": "index",
+    "entity_class": "index",
+    "status": "draft",
+    "last_reviewed": "2026-08-19T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Responsible Use Policy",
+    "permalink": "/docs/system/responsible-use-policy"
+  },
+  "next": {
+    "title": "Uncertainty Representation Standard",
+    "permalink": "/docs/quality/uncertainty-representation-standard"
+  }
+}

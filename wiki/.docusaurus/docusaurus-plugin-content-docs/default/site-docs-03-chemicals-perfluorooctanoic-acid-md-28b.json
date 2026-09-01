@@ -1,0 +1,36 @@
+{
+  "id": "chemicals/perfluorooctanoic-acid",
+  "title": "Perfluorooctanoic Acid",
+  "description": "Chemical page for Perfluorooctanoic Acid with identifiers, endpoint links, and evidence summaries.",
+  "source": "@site/docs/03-chemicals/perfluorooctanoic-acid.md",
+  "sourceDirName": "03-chemicals",
+  "slug": "/chemicals/perfluorooctanoic-acid",
+  "permalink": "/docs/chemicals/perfluorooctanoic-acid",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "perfluorooctanoic-acid",
+    "title": "Perfluorooctanoic Acid",
+    "description": "Chemical page for Perfluorooctanoic Acid with identifiers, endpoint links, and evidence summaries.",
+    "slug": "/chemicals/perfluorooctanoic-acid",
+    "sidebar_label": "Perfluorooctanoic Acid",
+    "page_type": "chemical",
+    "entity_class": "chemical",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z",
+    "aliases": [
+      "PFOA"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Glyphosate",
+    "permalink": "/docs/chemicals/glyphosate"
+  },
+  "next": {
+    "title": "Triclosan",
+    "permalink": "/docs/chemicals/tricosan"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "models-and-methods/transcriptomics-toxicology",
+  "title": "Transcriptomics in Toxicology",
+  "description": "Overview of transcriptomics applications in toxicology",
+  "source": "@site/docs/08-models-and-methods/transcriptomics-toxicology.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/transcriptomics-toxicology",
+  "permalink": "/docs/models-and-methods/transcriptomics-toxicology",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "transcriptomics-toxicology",
+    "title": "Transcriptomics in Toxicology",
+    "description": "Overview of transcriptomics applications in toxicology",
+    "slug": "/models-and-methods/transcriptomics-toxicology",
+    "sidebar_label": "Transcriptomics in Toxicology",
+    "page_type": "canonical",
+    "entity_class": "method",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "unverified",
+    "aliases": [
+      "Toxicology Transcriptomics",
+      "Gene Expression in Toxicology",
+      "RNA-Seq in Toxicology"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Systems Toxicology",
+    "permalink": "/docs/models-and-methods/systems-toxicology"
+  },
+  "next": {
+    "title": "Literature",
+    "permalink": "/docs/category/literature"
+  }
+}

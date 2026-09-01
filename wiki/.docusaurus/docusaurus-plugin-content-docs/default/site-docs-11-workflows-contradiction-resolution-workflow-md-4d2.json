@@ -1,0 +1,33 @@
+{
+  "id": "workflows/contradiction-resolution-workflow",
+  "title": "Contradiction Resolution Workflow",
+  "description": "Workflow page describing the process for resolving contradictions in computational toxicology.",
+  "source": "@site/docs/11-workflows/contradiction-resolution-workflow.md",
+  "sourceDirName": "11-workflows",
+  "slug": "/workflows/contradiction-resolution-workflow",
+  "permalink": "/docs/workflows/contradiction-resolution-workflow",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "contradiction-resolution-workflow",
+    "title": "Contradiction Resolution Workflow",
+    "description": "Workflow page describing the process for resolving contradictions in computational toxicology.",
+    "slug": "/workflows/contradiction-resolution-workflow",
+    "sidebar_label": "Contradiction Resolution Workflow",
+    "page_type": "workflow",
+    "entity_class": "workflow",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Chemical Hazard Assessment Workflow",
+    "permalink": "/docs/workflows/chemical-hazard-assessment-workflow"
+  },
+  "next": {
+    "title": "Dataset Profiling Workflow",
+    "permalink": "/docs/workflows/dataset-profiling-workflow"
+  }
+}

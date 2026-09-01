@@ -1,0 +1,37 @@
+{
+  "id": "assays/micronucleus-assay",
+  "title": "Micronucleus Assay",
+  "description": "Assay page for the Micronucleus Assay, including measured signal, interpretation, and limitations.",
+  "source": "@site/docs/06-assays/micronucleus-assay.md",
+  "sourceDirName": "06-assays",
+  "slug": "/assays/micronucleus-assay",
+  "permalink": "/docs/assays/micronucleus-assay",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "micronucleus-assay",
+    "title": "Micronucleus Assay",
+    "description": "Assay page for the Micronucleus Assay, including measured signal, interpretation, and limitations.",
+    "slug": "/assays/micronucleus-assay",
+    "sidebar_label": "Micronucleus Assay",
+    "page_type": "assay",
+    "entity_class": "assay",
+    "agent_access": "results_available_in_dataset",
+    "access_route": [
+      "[ToxCast](07-datasets/toxcast.md)"
+    ],
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "In-Vitro Systems",
+    "permalink": "/docs/assays/in-vitro-systems"
+  },
+  "next": {
+    "title": "Mitochondrial Membrane Potential Assay",
+    "permalink": "/docs/assays/mitochondrial-membrane-potential-assay"
+  }
+}

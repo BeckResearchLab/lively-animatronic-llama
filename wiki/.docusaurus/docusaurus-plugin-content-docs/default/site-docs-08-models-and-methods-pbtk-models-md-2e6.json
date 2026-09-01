@@ -1,0 +1,40 @@
+{
+  "id": "models-and-methods/pbtk-models",
+  "title": "Physiologically-Based Toxicokinetic (PBTK) Models",
+  "description": "Canonical page for Physiologically-Based Toxicokinetic Models in computational toxicology",
+  "source": "@site/docs/08-models-and-methods/pbtk-models.md",
+  "sourceDirName": "08-models-and-methods",
+  "slug": "/models-and-methods/pbtk-models",
+  "permalink": "/docs/models-and-methods/pbtk-models",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "pbtk-models",
+    "title": "Physiologically-Based Toxicokinetic (PBTK) Models",
+    "description": "Canonical page for Physiologically-Based Toxicokinetic Models in computational toxicology",
+    "slug": "/models-and-methods/pbtk-models",
+    "sidebar_label": "PBTK Models",
+    "page_type": "model",
+    "entity_class": "method",
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "unverified",
+    "aliases": [
+      "PBTK Models",
+      "Physiologically-Based Toxicokinetic Models",
+      "PBPK Models",
+      "Physiologically-Based Pharmacokinetic Models"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "OPERA Models",
+    "permalink": "/docs/models-and-methods/opera-models"
+  },
+  "next": {
+    "title": "Points of Departure",
+    "permalink": "/docs/models/points-of-departure"
+  }
+}

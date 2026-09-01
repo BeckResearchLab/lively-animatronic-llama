@@ -1,0 +1,39 @@
+{
+  "id": "toxicological-endpoints/toxicity-endpoints",
+  "title": "Toxicity Endpoints",
+  "description": "Canonical page for toxicity endpoints predicted using IVIVE and computational toxicology methods",
+  "source": "@site/docs/05-toxicological-endpoints/toxicity-endpoints.md",
+  "sourceDirName": "05-toxicological-endpoints",
+  "slug": "/toxicological-endpoints/toxicity-endpoints",
+  "permalink": "/docs/toxicological-endpoints/toxicity-endpoints",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "toxicity-endpoints",
+    "title": "Toxicity Endpoints",
+    "description": "Canonical page for toxicity endpoints predicted using IVIVE and computational toxicology methods",
+    "slug": "/toxicological-endpoints/toxicity-endpoints",
+    "sidebar_label": "Toxicity Endpoints",
+    "page_type": "endpoint",
+    "entity_class": "endpoint",
+    "status": "draft",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "unverified",
+    "aliases": [
+      "Toxicity Endpoints",
+      "Adverse Outcomes",
+      "Toxicological Endpoints"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Skin Sensitization",
+    "permalink": "/docs/endpoints/skin-sensitization"
+  },
+  "next": {
+    "title": "Assays",
+    "permalink": "/docs/category/assays"
+  }
+}

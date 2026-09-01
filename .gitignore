@@ -12,10 +12,11 @@ node_modules
 .venv
 node_modules
 
+
 data/*
 pdfs/*
 artifacts/*
-wiki/*
+wiki/docs.bak
 /private
 *.pdf
 .DS_Store

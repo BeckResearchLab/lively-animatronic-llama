@@ -1,0 +1,33 @@
+{
+  "id": "concepts/dose-response-relationship",
+  "title": "Dose-Response Relationship",
+  "description": "Definition of dose-response relationship in the context of computational toxicology.",
+  "source": "@site/docs/02-concepts/dose-response-relationship.md",
+  "sourceDirName": "02-concepts",
+  "slug": "/concepts/dose-response-relationship",
+  "permalink": "/docs/concepts/dose-response-relationship",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "dose-response-relationship",
+    "title": "Dose-Response Relationship",
+    "description": "Definition of dose-response relationship in the context of computational toxicology.",
+    "slug": "/concepts/dose-response-relationship",
+    "sidebar_label": "Dose-Response Relationship",
+    "page_type": "concept",
+    "entity_class": "concept",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Dataset Profiling",
+    "permalink": "/docs/concepts/dataset-profiling"
+  },
+  "next": {
+    "title": "Evidence Claim",
+    "permalink": "/docs/concepts/evidence-claim"
+  }
+}

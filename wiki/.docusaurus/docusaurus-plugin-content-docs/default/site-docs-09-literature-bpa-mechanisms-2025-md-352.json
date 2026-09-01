@@ -1,0 +1,40 @@
+{
+  "id": "literature/bpa-mechanisms-2025",
+  "title": "Mechanisms of Bisphenol A and Its Analogs as Endocrine Disruptors via Nuclear Receptors and Related Signaling Pathways",
+  "description": "Literature page for the 2025 review paper on BPA and its analogs as endocrine disruptors",
+  "source": "@site/docs/09-literature/bpa-mechanisms-2025.md",
+  "sourceDirName": "09-literature",
+  "slug": "/literature/bpa-mechanisms-2025",
+  "permalink": "/docs/literature/bpa-mechanisms-2025",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "bpa-mechanisms-2025",
+    "title": "Mechanisms of Bisphenol A and Its Analogs as Endocrine Disruptors via Nuclear Receptors and Related Signaling Pathways",
+    "description": "Literature page for the 2025 review paper on BPA and its analogs as endocrine disruptors",
+    "slug": "/literature/bpa-mechanisms-2025",
+    "sidebar_label": "BPA Mechanisms 2025",
+    "page_type": "literature",
+    "source_type": "review",
+    "status": "active",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "supported",
+    "verification_notes": "All claims verified against source material. Source is accessible and compliant with open-access policy.",
+    "verified_on": "2026-08-08T00:00:00.000Z",
+    "aliases": [
+      "BPA analogs endocrine disruption mechanisms",
+      "BPA nuclear receptor signaling pathways"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Big Data in Predictive Toxicology (2026)",
+    "permalink": "/docs/literature/big-data-predictive-toxicology-2026"
+  },
+  "next": {
+    "title": "DeepTox (2015)",
+    "permalink": "/docs/literature/deeptox-2015"
+  }
+}

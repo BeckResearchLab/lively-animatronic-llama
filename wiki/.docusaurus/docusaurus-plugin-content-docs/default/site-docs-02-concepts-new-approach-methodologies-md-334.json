@@ -1,0 +1,40 @@
+{
+  "id": "concepts/new-approach-methodologies",
+  "title": "New Approach Methodologies (NAMs)",
+  "description": "Canonical page for New Approach Methodologies in toxicology",
+  "source": "@site/docs/02-concepts/new-approach-methodologies.md",
+  "sourceDirName": "02-concepts",
+  "slug": "/concepts/new-approach-methodologies",
+  "permalink": "/docs/concepts/new-approach-methodologies",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "new-approach-methodologies",
+    "title": "New Approach Methodologies (NAMs)",
+    "description": "Canonical page for New Approach Methodologies in toxicology",
+    "slug": "/concepts/new-approach-methodologies",
+    "sidebar_label": "New Approach Methodologies (NAMs)",
+    "page_type": "concept",
+    "entity_class": "concept",
+    "status": "verified",
+    "last_reviewed": "2026-08-08T00:00:00.000Z",
+    "verification_status": "verified",
+    "aliases": [
+      "NAMs",
+      "New Approach Methodologies",
+      "Alternative toxicology methods",
+      "Non-animal toxicology approaches"
+    ]
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "NAMs Integration",
+    "permalink": "/docs/concepts/nams-integration"
+  },
+  "next": {
+    "title": "NGRA",
+    "permalink": "/docs/concepts/ngra"
+  }
+}

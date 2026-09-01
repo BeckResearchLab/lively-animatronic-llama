@@ -1,0 +1,33 @@
+{
+  "id": "quality-and-governance/responsible-use-policy",
+  "title": "Responsible Use Policy",
+  "description": "Policy defining the responsible use of the wiki and its tools.",
+  "source": "@site/docs/14-quality-and-governance/responsible-use-policy.md",
+  "sourceDirName": "14-quality-and-governance",
+  "slug": "/system/responsible-use-policy",
+  "permalink": "/docs/system/responsible-use-policy",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "responsible-use-policy",
+    "title": "Responsible Use Policy",
+    "description": "Policy defining the responsible use of the wiki and its tools.",
+    "slug": "/system/responsible-use-policy",
+    "sidebar_label": "Responsible Use Policy",
+    "page_type": "governance",
+    "entity_class": "governance_rule",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Regulatory Interpretation Disclaimer",
+    "permalink": "/docs/quality/regulatory-interpretation-disclaimer"
+  },
+  "next": {
+    "title": "Study Quality Assessment Rubric",
+    "permalink": "/docs/quality/study-quality-assessment-rubric"
+  }
+}

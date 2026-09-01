@@ -1,0 +1,33 @@
+{
+  "id": "toxicological-endpoints/skin-sensitization",
+  "title": "Skin Sensitization",
+  "description": "Endpoint page defining skin sensitization and summarizing relevant evidence types.",
+  "source": "@site/docs/05-toxicological-endpoints/skin-sensitization.md",
+  "sourceDirName": "05-toxicological-endpoints",
+  "slug": "/endpoints/skin-sensitization",
+  "permalink": "/docs/endpoints/skin-sensitization",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "skin-sensitization",
+    "title": "Skin Sensitization",
+    "description": "Endpoint page defining skin sensitization and summarizing relevant evidence types.",
+    "slug": "/endpoints/skin-sensitization",
+    "sidebar_label": "Skin Sensitization",
+    "page_type": "endpoint",
+    "entity_class": "endpoint",
+    "status": "draft",
+    "last_reviewed": "2026-08-25T00:00:00.000Z"
+  },
+  "sidebar": "wikiSidebar",
+  "previous": {
+    "title": "Reproductive Toxicity",
+    "permalink": "/docs/endpoints/reproductive-toxicity"
+  },
+  "next": {
+    "title": "Toxicity Endpoints",
+    "permalink": "/docs/toxicological-endpoints/toxicity-endpoints"
+  }
+}
