@@ -1,132 +1,201 @@
 [
   {
-    "chemical": "metformin",
-    "signature": "mitochondrial complex i inhibition > increased amp atp ratio > ampk activation > lactic acidosis",
+    "chemical": "penicillin",
+    "signature": "haptenization of endogenous proteins > activation of t cells > production of ige antibodies > binding of ige to fc ri receptors on mast cells and basophils > degranulation of mast cells and basophils > anaphylaxis",
     "tokens": [
-      "acidosis",
       "activation",
-      "amp",
-      "ampk",
-      "atp",
-      "complex",
-      "i",
-      "increased",
-      "inhibition",
-      "lactic",
-      "mitochondrial",
-      "ratio"
-    ],
-    "length": 4,
-    "final_ao": true,
-    "confidence_score": 0.830875247036538,
-    "termination_reason": "The pathway has reached the terminal Adverse Outcome (Lactic Acidosis) as specified in the target profile liabilities, following a logical sequence of MIE and KEs.",
-    "timestamp": 1788283894.0120184
-  },
-  {
-    "chemical": "toluene",
-    "signature": "reduced cognitive function",
-    "tokens": [
-      "cognitive",
-      "function",
-      "reduced"
-    ],
-    "length": 1,
-    "final_ao": false,
-    "confidence_score": 0.7913125,
-    "termination_reason": "AO reached prematurely; pathway is still too shallow.",
-    "timestamp": 1788287232.4565039
-  },
-  {
-    "chemical": "toluene",
-    "signature": "cns depression > altered neuronal excitability > neuronal dysfunction > impaired cognitive function",
-    "tokens": [
-      "altered",
-      "cns",
-      "cognitive",
-      "depression",
-      "dysfunction",
-      "excitability",
-      "function",
-      "impaired",
-      "neuronal"
-    ],
-    "length": 4,
-    "final_ao": true,
-    "confidence_score": 0.8558187332868077,
-    "termination_reason": "The pathway has reached a terminal Adverse Outcome (AO) supported by a sequence of MIE and KEs with confidence > 0.6.",
-    "timestamp": 1788291927.295179
-  },
-  {
-    "chemical": "aspirin",
-    "signature": "inhibition of prostaglandin synthesis > decreased thromboxane a2 txa2 synthesis > decreased platelet aggregation > reduced bleeding time",
-    "tokens": [
-      "a2",
-      "aggregation",
-      "bleeding",
-      "decreased",
-      "inhibition",
-      "platelet",
-      "prostaglandin",
-      "reduced",
-      "synthesis",
-      "thromboxane",
-      "time",
-      "txa2"
-    ],
-    "length": 4,
-    "final_ao": true,
-    "confidence_score": 0.8371893508360441,
-    "termination_reason": "No meaningful pathway progress; stopping to avoid critic loop",
-    "timestamp": 1788297399.0060213
-  },
-  {
-    "chemical": "daridorexant",
-    "signature": "cyp3a4 inhibition > altered drug metabolism",
-    "tokens": [
-      "altered",
-      "cyp3a4",
-      "drug",
-      "inhibition",
-      "metabolism"
-    ],
-    "length": 2,
-    "final_ao": false,
-    "confidence_score": 0.8108000354528926,
-    "termination_reason": "No meaningful pathway progress; stopping to avoid critic loop",
-    "timestamp": 1788297612.3893228
-  },
-  {
-    "chemical": "aspirin",
-    "signature": "cox 1 inhibition > decreased prostaglandin synthesis > decreased gastric mucus production > gastric ulceration",
-    "tokens": [
-      "1",
-      "cox",
-      "decreased",
-      "gastric",
-      "inhibition",
-      "mucus",
+      "anaphylaxis",
+      "antibodies",
+      "basophils",
+      "binding",
+      "cells",
+      "degranulation",
+      "endogenous",
+      "fc",
+      "haptenization",
+      "ige",
+      "mast",
+      "on",
       "production",
-      "prostaglandin",
-      "synthesis",
-      "ulceration"
+      "proteins",
+      "receptors",
+      "ri",
+      "t"
     ],
-    "length": 4,
+    "length": 6,
     "final_ao": true,
-    "confidence_score": 0.8970575019940727,
+    "confidence_score": 0.7850129665679946,
     "termination_reason": "No meaningful pathway progress; stopping to avoid critic loop",
-    "timestamp": 1788299935.3107574
+    "timestamp": 1788369672.1481354
   },
   {
     "chemical": "daridorexant",
-    "signature": "cyp3a4 inhibition",
+    "signature": "cyp3a4 inhibition induction",
     "tokens": [
       "cyp3a4",
+      "induction",
       "inhibition"
     ],
     "length": 1,
     "final_ao": false,
     "confidence_score": 0.0,
     "termination_reason": "Pathway is still too shallow",
-    "timestamp": 1788301309.1550891
+    "timestamp": 1788369789.0985482
+  },
+  {
+    "chemical": "daridorexant",
+    "signature": "cyp3a4 inhibition induction",
+    "tokens": [
+      "cyp3a4",
+      "induction",
+      "inhibition"
+    ],
+    "length": 1,
+    "final_ao": false,
+    "confidence_score": 0.0,
+    "termination_reason": "Pathway is still too shallow",
+    "timestamp": 1788370915.9778874
+  },
+  {
+    "chemical": "naproxen",
+    "signature": "cox 1 inhibition in gastric mucosa > decreased prostaglandin e2 synthesis in gastric mucosa > decreased gastric mucus secretion > gastric mucosal erosion > gastric ulceration",
+    "tokens": [
+      "1",
+      "cox",
+      "decreased",
+      "e2",
+      "erosion",
+      "gastric",
+      "inhibition",
+      "mucosa",
+      "mucosal",
+      "mucus",
+      "prostaglandin",
+      "secretion",
+      "synthesis",
+      "ulceration"
+    ],
+    "length": 5,
+    "final_ao": true,
+    "confidence_score": 0.875160997979116,
+    "termination_reason": "The pathway has reached the terminal adverse outcome (Gastric ulceration) following a logical sequence of key events starting from COX-1 inhibition.",
+    "timestamp": 1788371520.0519805
+  },
+  {
+    "chemical": "triclosan",
+    "signature": "thyroid hormone receptor antagonism > altered gene expression in thyroid responsive tissues > altered gene expression in thyroid responsive tissues > impaired growth and development",
+    "tokens": [
+      "altered",
+      "antagonism",
+      "development",
+      "expression",
+      "gene",
+      "growth",
+      "hormone",
+      "impaired",
+      "receptor",
+      "responsive",
+      "thyroid",
+      "tissues"
+    ],
+    "length": 4,
+    "final_ao": true,
+    "confidence_score": 0.7912781764743385,
+    "termination_reason": "No meaningful pathway progress; stopping to avoid critic loop",
+    "timestamp": 1788373155.5344582
+  },
+  {
+    "chemical": "triclosan",
+    "signature": "thyroid hormone receptor antagonism > altered gene expression in thyroid responsive tissues > altered thyroid hormone transport > altered thyroid gland morphology > impaired neurodevelopment",
+    "tokens": [
+      "altered",
+      "antagonism",
+      "expression",
+      "gene",
+      "gland",
+      "hormone",
+      "impaired",
+      "morphology",
+      "neurodevelopment",
+      "receptor",
+      "responsive",
+      "thyroid",
+      "tissues",
+      "transport"
+    ],
+    "length": 5,
+    "final_ao": true,
+    "confidence_score": 0.7312649702051315,
+    "termination_reason": "The pathway has reached a terminal adverse outcome (Impaired neurodevelopment) supported by the sequence of thyroid hormone receptor antagonism and subsequent key events.",
+    "timestamp": 1788374154.7604597
+  },
+  {
+    "chemical": "bisphenol b",
+    "signature": "binding to estrogen receptor > increased estrogen receptor mediated gene expression > increased vitellogenin production > increased vitellogenin protein levels in liver > increased vitellogenin protein levels in plasma > reproductive impairment",
+    "tokens": [
+      "binding",
+      "estrogen",
+      "expression",
+      "gene",
+      "impairment",
+      "increased",
+      "levels",
+      "liver",
+      "mediated",
+      "plasma",
+      "production",
+      "protein",
+      "receptor",
+      "reproductive",
+      "vitellogenin"
+    ],
+    "length": 6,
+    "final_ao": true,
+    "confidence_score": 0.7672817598416515,
+    "termination_reason": "The pathway has progressed from MIE through multiple KEs (ER binding -> gene expression -> vitellogenin production/accumulation/secretion) to a terminal Adverse Outcome (Reproductive Impairment) consistent with AOP 15 for ER agonists.",
+    "timestamp": 1788374873.8920596
+  },
+  {
+    "chemical": "melamine",
+    "signature": "crystal formation in renal tubules > renal tubular epithelial cell injury > inflammation of the renal tubules > kidney failure",
+    "tokens": [
+      "cell",
+      "crystal",
+      "epithelial",
+      "failure",
+      "formation",
+      "inflammation",
+      "injury",
+      "kidney",
+      "renal",
+      "tubular",
+      "tubules"
+    ],
+    "length": 4,
+    "final_ao": true,
+    "confidence_score": 0.8835559016228016,
+    "termination_reason": "The pathway has progressed from MIE (crystal formation) through multiple KEs (epithelial injury and inflammation) to the terminal adverse outcome (kidney failure), completing the biological chain of events.",
+    "timestamp": 1788376678.818439
+  },
+  {
+    "chemical": "toluene",
+    "signature": "cns depression via membrane fluidization > altered neuronal membrane permeability > altered neuronal signaling > neuronal dysfunction > neurodegeneration",
+    "tokens": [
+      "altered",
+      "cns",
+      "depression",
+      "dysfunction",
+      "fluidization",
+      "membrane",
+      "neurodegeneration",
+      "neuronal",
+      "permeability",
+      "signaling"
+    ],
+    "length": 5,
+    "final_ao": true,
+    "confidence_score": 0.7786947452493673,
+    "termination_reason": "The pathway has progressed from MIE through multiple KEs to a terminal Adverse Outcome (Neurodegeneration) consistent with the neurotoxicity liability of toluene.",
+    "timestamp": 1788379539.1302888
   }
 ]

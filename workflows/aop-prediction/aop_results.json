@@ -1,62 +1,169 @@
 {
-  "chemical": "daridorexant",
+  "chemical": "toluene",
   "pathway": [
     {
-      "event": "CYP3A4 Inhibition",
+      "event": "CNS depression via membrane fluidization",
       "type": "MIE",
-      "score": 0.7,
+      "score": 0.8,
       "provenance": [
         "MIEs"
       ],
-      "reasoning": "Daridorexant is primarily metabolized by CYP3A4; potential for drug-drug interactions via competitive inhibition of the same enzyme."
+      "reasoning": "Toluene's lipophilicity leads to accumulation in lipid-rich brain tissues, causing non-specific disruption of neuronal membranes and modulation of GABAergic/glutamatergic signaling, consistent with its neurotoxicity liability."
+    },
+    {
+      "event": "Altered neuronal membrane permeability",
+      "type": "KE",
+      "score": 0.8,
+      "provenance": [
+        "aop_expert"
+      ],
+      "reasoning": "Direct downstream effect of 'CNS depression via membrane fluidization' based on the non-specific membrane disruption mechanism of lipophilic solvents."
+    },
+    {
+      "event": "Altered neuronal signaling",
+      "type": "KE",
+      "score": 0.7,
+      "provenance": [
+        "aop_expert"
+      ],
+      "reasoning": "Following altered neuronal membrane permeability, the disruption of ion channel function and receptor modulation (GABA/NMDA) leads to altered neuronal signaling, a documented step in neurotoxicity AOPs for organic solvents."
+    },
+    {
+      "event": "Neuronal dysfunction",
+      "type": "KE",
+      "score": 0.7,
+      "provenance": [
+        "aop_expert"
+      ],
+      "reasoning": "Following 'Altered neuronal signaling', the progression to overall neuronal dysfunction is a documented Key Event in neurotoxicity AOPs involving organic solvents and membrane disruption (AOP-Wiki)."
+    },
+    {
+      "event": "Neurodegeneration",
+      "type": "AO",
+      "score": 0.6,
+      "provenance": [
+        "aop_expert"
+      ]
     }
   ],
-  "final_ao": false,
-  "confidence_score": 0.0,
-  "confidence_breakdown": {},
-  "uncertainty": 0.0,
-  "decision_risk": "medium",
-  "next_action": "expand",
-  "decision_reason": "",
-  "iteration_count": 1,
-  "termination_reason": "Pathway is still too shallow",
+  "final_ao": true,
+  "confidence_score": 0.7786947452493673,
+  "confidence_breakdown": {
+    "mie_foundation": 0.6375,
+    "pathway_confidence": 0.6950472741943794,
+    "similarity_consistency": 0.9175,
+    "pathway_length_penalty": 1.0,
+    "pathway_uniqueness": 0.9523809523809523,
+    "weights": {
+      "mie_foundation": 0.3,
+      "pathway_confidence": 0.4,
+      "similarity_consistency": 0.15,
+      "pathway_length": 0.05,
+      "pathway_uniqueness": 0.1
+    },
+    "local_confidence_score": 0.752132004915847
+  },
+  "uncertainty": 0.22130525475063267,
+  "decision_risk": "low",
+  "next_action": "terminate",
+  "decision_reason": "The current pathway already contains three intermediate KEs (Altered neuronal membrane permeability, Altered neuronal signaling, and Neuronal dysfunction), meeting the minimum requirement of 1 intermediate KE. The candidate 'Neurodegeneration' provides a logical terminal AO with a confidence score of 0.6.",
+  "iteration_count": 3,
+  "termination_reason": "The pathway has progressed from MIE through multiple KEs to a terminal Adverse Outcome (Neurodegeneration) consistent with the neurotoxicity liability of toluene.",
   "MIEs": [
     {
-      "name": "CYP3A4 Inhibition",
+      "name": "CNS depression via membrane fluidization",
+      "confidence": 0.8,
+      "reasoning": "Toluene's lipophilicity leads to accumulation in lipid-rich brain tissues, causing non-specific disruption of neuronal membranes and modulation of GABAergic/glutamatergic signaling, consistent with its neurotoxicity liability."
+    },
+    {
+      "name": "Oxidative stress in hepatocytes",
       "confidence": 0.7,
-      "reasoning": "Daridorexant is primarily metabolized by CYP3A4; potential for drug-drug interactions via competitive inhibition of the same enzyme."
+      "reasoning": "Metabolism of toluene via CYP450 enzymes to benzyl alcohol and benzoic acid can generate reactive oxygen species, contributing to the identified hepatotoxicity liability."
     }
   ],
-  "similarity_scores": [],
-  "candidates": [],
+  "similarity_scores": [
+    {
+      "name": "Neuronal dysfunction",
+      "similarity": 0.3125,
+      "reasoning": "candidate reasoning overlaps target profile; candidate text overlaps target profile terms; candidate confidence carried forward"
+    },
+    {
+      "name": "Neurodegeneration",
+      "similarity": 0.14750000000000002,
+      "reasoning": "candidate reasoning overlaps target profile; candidate text overlaps target profile terms; candidate confidence carried forward"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Neuronal dysfunction",
+      "type": "KE",
+      "confidence": 0.7,
+      "similarity": 0.3125,
+      "reasoning": "Following 'Altered neuronal signaling', the progression to overall neuronal dysfunction is a documented Key Event in neurotoxicity AOPs involving organic solvents and membrane disruption (AOP-Wiki).",
+      "source": "aop_expert",
+      "similarity_reasoning": "candidate reasoning overlaps target profile; candidate text overlaps target profile terms; candidate confidence carried forward"
+    },
+    {
+      "name": "Neurodegeneration",
+      "type": "AO",
+      "confidence": 0.6,
+      "similarity": 0.14750000000000002,
+      "reasoning": "Chronic exposure to solvents causing membrane fluidization and altered signaling can lead to the Adverse Outcome of neurodegeneration, as documented in OECD AOP databases for neurotoxicants.",
+      "source": "aop_expert",
+      "similarity_reasoning": "candidate reasoning overlaps target profile; candidate text overlaps target profile terms; candidate confidence carried forward"
+    }
+  ],
   "provenance": [
     {
       "node": "Initial_ADMET",
       "agent": "admet_mie",
       "reason": "Target profile and initial MIEs extracted",
-      "timestamp": 1788301308.2669199,
-      "source_hint": "daridorexant"
+      "timestamp": 1788379334.2846398,
+      "source_hint": "toluene"
     },
     {
       "node": "candidate_gen",
       "agent": "aop_expert",
-      "reason": "No supported downstream KE/AO candidates returned; read-across retained as supporting evidence only",
-      "timestamp": 1788301309.1507788,
-      "source_hint": "daridorexant",
-      "read_across_summary": ""
+      "reason": "Generated 3 candidates",
+      "timestamp": 1788379334.2870133,
+      "source_hint": "toluene",
+      "pathway_review": {
+        "should_expand": true,
+        "reason": "No meaningful pathway progress; stopping to avoid critic loop",
+        "template_overlap": 0.0,
+        "pathway_uniqueness": 1.0,
+        "generic_score": 1.0
+      },
+      "read_across_summary": "",
+      "read_across_analogs": [],
+      "read_across_endpoints": []
     },
     {
       "node": "Similarity_Scoring",
       "agent": "admet_mie",
-      "reason": "No candidates to score",
-      "timestamp": 1788301309.151569,
-      "no_candidates": true
+      "reason": "Scored 3 candidates",
+      "timestamp": 1788379358.1544306
     },
     {
       "node": "expand",
       "agent": "aop_constructor",
-      "reason": "No candidates available; returning to AOP-Expert for another evidence pass",
-      "timestamp": 1788301309.152427,
+      "reason": "AOP Constructor selected the next pathway step",
+      "timestamp": 1788379358.156463,
+      "confidence": 0.8,
+      "similarity": 0.615,
+      "selected_candidate": {
+        "name": "Altered neuronal membrane permeability",
+        "type": "KE",
+        "confidence": 0.8,
+        "similarity": 0.615,
+        "reasoning": "Direct downstream effect of 'CNS depression via membrane fluidization' based on the non-specific membrane disruption mechanism of lipophilic solvents."
+      }
+    },
+    {
+      "node": "expand",
+      "agent": "internal_critic",
+      "reason": "Forced expansion due to generic or template-like pathway",
+      "timestamp": 1788379358.1564658,
       "pathway_review": {
         "should_expand": true,
         "reason": "No meaningful pathway progress; stopping to avoid critic loop",
@@ -69,24 +176,128 @@
       "node": "critic",
       "agent": "internal_critic",
       "reason": "Local verification checkpoint",
-      "timestamp": 1788301309.1534512,
+      "timestamp": 1788379358.1576114,
       "critic_flags": {
-        "template_overlap": 0.4,
-        "pathway_uniqueness": 0.6,
-        "generic_score": 0.0,
+        "template_overlap": 0.05555555555555555,
+        "pathway_uniqueness": 0.9444444444444444,
+        "generic_score": 0.09999999999999999,
         "template_reuse": false,
-        "premature_termination": true
+        "premature_termination": false
       },
-      "critic_reason": "Pathway is still too shallow"
+      "critic_reason": "No meaningful pathway progress; stopping to avoid critic loop"
+    },
+    {
+      "node": "candidate_gen",
+      "agent": "aop_expert",
+      "reason": "Generated 2 candidates",
+      "timestamp": 1788379366.661391,
+      "source_hint": "toluene",
+      "pathway_review": {
+        "should_expand": false,
+        "reason": "No meaningful pathway progress; stopping to avoid critic loop",
+        "template_overlap": 0.05555555555555555,
+        "pathway_uniqueness": 0.9444444444444444,
+        "generic_score": 0.09999999999999999
+      },
+      "read_across_summary": "",
+      "read_across_analogs": [],
+      "read_across_endpoints": []
+    },
+    {
+      "node": "Similarity_Scoring",
+      "agent": "admet_mie",
+      "reason": "Scored 2 candidates",
+      "timestamp": 1788379383.0721157
+    },
+    {
+      "node": "expand",
+      "agent": "aop_constructor",
+      "reason": "AOP Constructor selected the next pathway step",
+      "timestamp": 1788379422.54887,
+      "confidence": 0.7,
+      "similarity": 0.4675,
+      "selected_candidate": {
+        "name": "Altered neuronal signaling",
+        "type": "KE",
+        "confidence": 0.7,
+        "similarity": 0.4675,
+        "reasoning": "Following altered neuronal membrane permeability, the disruption of ion channel function and receptor modulation (GABA/NMDA) leads to altered neuronal signaling, a documented step in neurotoxicity AOPs for organic solvents."
+      }
+    },
+    {
+      "node": "critic",
+      "agent": "internal_critic",
+      "reason": "Local verification checkpoint",
+      "timestamp": 1788379422.5501335,
+      "critic_flags": {
+        "template_overlap": 0.05263157894736842,
+        "pathway_uniqueness": 0.9473684210526316,
+        "generic_score": 0.15000000000000002,
+        "template_reuse": false,
+        "premature_termination": false
+      },
+      "critic_reason": "No meaningful pathway progress; stopping to avoid critic loop"
+    },
+    {
+      "node": "candidate_gen",
+      "agent": "aop_expert",
+      "reason": "Generated 2 candidates",
+      "timestamp": 1788379452.705042,
+      "source_hint": "toluene",
+      "pathway_review": {
+        "should_expand": false,
+        "reason": "No meaningful pathway progress; stopping to avoid critic loop",
+        "template_overlap": 0.05263157894736842,
+        "pathway_uniqueness": 0.9473684210526316,
+        "generic_score": 0.15000000000000002
+      },
+      "read_across_summary": "",
+      "read_across_analogs": [],
+      "read_across_endpoints": []
+    },
+    {
+      "node": "Similarity_Scoring",
+      "agent": "admet_mie",
+      "reason": "Scored 2 candidates",
+      "timestamp": 1788379470.3469164
+    },
+    {
+      "node": "expand",
+      "agent": "aop_constructor",
+      "reason": "AOP Constructor selected the next pathway step",
+      "timestamp": 1788379515.089938,
+      "confidence": 0.7,
+      "similarity": 0.3125,
+      "selected_candidate": {
+        "name": "Neuronal dysfunction",
+        "type": "KE",
+        "confidence": 0.7,
+        "similarity": 0.3125,
+        "reasoning": "Following 'Altered neuronal signaling', the progression to overall neuronal dysfunction is a documented Key Event in neurotoxicity AOPs involving organic solvents and membrane disruption (AOP-Wiki)."
+      }
+    },
+    {
+      "node": "critic",
+      "agent": "internal_critic",
+      "reason": "Local verification checkpoint",
+      "timestamp": 1788379515.0917745,
+      "critic_flags": {
+        "template_overlap": 0.05,
+        "pathway_uniqueness": 0.95,
+        "generic_score": 0.1607142857142857,
+        "template_reuse": false,
+        "premature_termination": false
+      },
+      "critic_reason": "No meaningful pathway progress; stopping to avoid critic loop"
     }
   ],
-  "no_candidate_cycles": 2,
+  "no_candidate_cycles": 0,
   "critic_flags": {
-    "template_overlap": 0.4,
-    "pathway_uniqueness": 0.6,
-    "generic_score": 0.0,
+    "template_overlap": 0.05,
+    "pathway_uniqueness": 0.95,
+    "generic_score": 0.1607142857142857,
     "template_reuse": false,
-    "premature_termination": true
+    "premature_termination": false
   },
-  "critic_reason": "Pathway is still too shallow"
+  "critic_reason": "No meaningful pathway progress; stopping to avoid critic loop"
 }

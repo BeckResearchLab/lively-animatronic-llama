@@ -6,6 +6,7 @@ import time
 import asyncio
 from typing import Any, Dict, List, Optional, Tuple
 from concurrent.futures import ThreadPoolExecutor
+from unittest import result
 
 from langgraph.graph import END, START, StateGraph
 
@@ -117,24 +118,20 @@ def parallel_candidate_generation(state: AOPState) -> AOPState:
 def enrich_read_across_node(state: AOPState) -> AOPState:
     chemical = str(state.get("chemical", "")).strip()
     data = state.setdefault("data", {}) if isinstance(state.get("data", {}), dict) else {}
-
     if data.get("read_across_attempted"):
         return state
 
     if not chemical:
-        log("Cannot run read-across: no chemical name provided")
         return state
 
     if "target_profile" not in data:
-        log(f"Cannot run read-across: no target_profile available for {chemical}")
         return state
 
     data["read_across_attempted"] = True
-
-    enrich_read_across_state(
-        state,
-        use_ctx=True,            # allow ctx bundle enrichment
-    )
+    method = os.environ.get("READ_ACROSS_METHOD", "auto")
+    result = enrich_read_across_state(state, use_ctx=True, method=method)
+    data["read_across"] = result
+    log(f"Read-across result for {chemical}: {result.get('status')} | analogs={len(result.get('analogs', []))}")
     return state
 
 def _read_across_summary(state: AOPState) -> Dict[str, Any]:

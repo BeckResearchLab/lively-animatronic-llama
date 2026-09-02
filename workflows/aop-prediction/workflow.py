@@ -18,6 +18,7 @@ import os
 import re
 import sys
 from pathlib import Path
+from copy import copy
 sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -450,37 +451,35 @@ def _normalize_step_signature(step):
     return f"{typ}:{event}"
 
 def _prune_pathway_steps(pathway):
-    """Keep one primary MIE and remove only immediate duplicate non-MIE steps."""
     if not isinstance(pathway, list):
         return []
 
     pruned = []
+    seen = set()
     mie_kept = False
-    last_sig = ""
 
     for step in pathway:
         if not isinstance(step, dict):
             continue
 
         step_type = str(step.get("type", "")).upper().strip()
-        sig = _normalize_step_signature(step)
+        event = str(step.get("event") or step.get("name") or step.get("description") or "").strip().lower()
+        event = re.sub(r"[^a-z0-9]+", " ", event)
+        event = re.sub(r"\s+", " ", event).strip()
+
+        sig = (step_type, event)
+        if sig in seen:
+            continue
 
         if step_type == "MIE":
             if mie_kept:
                 continue
             mie_kept = True
-            pruned.append(step)
-            last_sig = sig
-            continue
 
-        if sig and sig == last_sig:
-            continue
-
+        seen.add(sig)
         pruned.append(step)
-        last_sig = sig
 
     return pruned
-
 
 # -------------------------
 # Agent runtime
@@ -808,8 +807,21 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
         raise RuntimeError(f"aop_constructor returned unexpected output: {payload}")
     decision = PathwayDecision.model_validate(payload)
 
-    prev_pathway = previous_pathway if isinstance(previous_pathway, list) else []
+    prev_pathway_list = previous_pathway if isinstance(previous_pathway, list) else []
+    prev_step = prev_pathway_list[-1] if prev_pathway_list else None
     updated_pathway = decision.updated_pathway or []
+    new_step = updated_pathway[-1] if updated_pathway else None
+
+    if isinstance(prev_step, dict) and isinstance(new_step, dict):
+        prev_sig = _normalize_step_signature(prev_step)
+        new_sig = _normalize_step_signature(new_step)
+        if prev_sig == new_sig:
+            state["no_progress_cycles"] = state.get("no_progress_cycles", 0) + 1
+            state["next_action"] = "expand"
+            state["termination_reason"] = "Duplicate pathway step proposed; forcing expansion"
+            return state
+
+    prev_pathway = previous_pathway if isinstance(previous_pathway, list) else []
     if not isinstance(updated_pathway, list):
         updated_pathway = []
 
@@ -920,6 +932,12 @@ def critic_review(state: AOPState, pathway: Optional[List[Dict[str, Any]]] = Non
         "template_reuse": False,
         "premature_termination": False,
     }
+
+    events = pathway_events(pathway)
+    if len(events) != len(set(events)):
+        flags["template_reuse"] = True
+        next_action = "expand"
+        termination_reason = "Duplicate pathway step detected"
 
     if state.get("next_action") == "terminate" and pathway:
         flags["premature_termination"] = True
