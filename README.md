@@ -58,7 +58,7 @@ python wiki_seed_agents_europepmc.py
 ### Prerequisites
 
 ### Workflows
-**RAG-ingest**
+- RAG-ingest:
 
 ### Process Flow
 
@@ -74,6 +74,9 @@ To run the RAG ingest:
 ### Prerequisites
 
 ### Workflows
+- aop_wiki_api:
+- aop_prediction:
+- multi-agent-researcher:
 
 ### Process Flow
 
