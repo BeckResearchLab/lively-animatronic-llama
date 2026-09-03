@@ -12,6 +12,7 @@ import numpy as np
 try:
     from rdkit import Chem, DataStructs
     from rdkit.Chem import AllChem
+    from rdkit.Chem import rdFingerprintGenerator
 except Exception as e:  # pragma: no cover
     raise RuntimeError("RDKit is required for read_across.py.") from e
 
@@ -87,9 +88,14 @@ def _canonicalize_smiles(smiles: str) -> Optional[str]:
     return Chem.MolToSmiles(mol, canonical=True) if mol else None
 
 
+_MORGAN_GENERATOR = rdFingerprintGenerator.GetMorganGenerator(
+    radius=FP_RADIUS,
+    fpSize=FP_NBITS,
+)
+
 def fingerprint_from_smiles(smiles: str):
     mol = Chem.MolFromSmiles(smiles or "")
-    return None if mol is None else AllChem.GetMorganFingerprintAsBitVect(mol, radius=FP_RADIUS, nBits=FP_NBITS)
+    return None if mol is None else _MORGAN_GENERATOR.GetFingerprint(mol)
 
 
 def tanimoto_from_smiles(smiles_a: str, smiles_b: str) -> float:
@@ -153,6 +159,14 @@ def _records(obj: Any) -> List[Dict[str, Any]]:
     if isinstance(obj, list):
         return [x for x in obj if isinstance(x, dict)]
     return []
+
+def _is_likely_chemical_seed(name: str) -> bool:
+    s = str(name or "").strip()
+    if not s:
+        return False
+    if re.fullmatch(r"[A-Z0-9\-]{3,}", s):  # PTGS1, TP53, etc.
+        return False
+    return any(c.isalpha() for c in s)
 
 
 def _normalize_chemical_details(query: str, item: Dict[str, Any], source: str = "ctx") -> Dict[str, Any]:
@@ -263,8 +277,6 @@ def _ctx_seed_names(target_profile: Optional[Dict[str, Any]], mies: Optional[Seq
     for key in ("similar_chemicals", "reference_chemicals", "analog_chemicals", "seed_chemicals"):
         names.extend(_as_list(target_profile.get(key)))
         names.extend(_as_list(props.get(key)))
-    names.extend(_as_list(target_profile.get("known_targets")))
-    names.extend(_as_list(props.get("known_targets")))
     if mies:
         for mie in mies:
             if isinstance(mie, dict):
@@ -298,6 +310,12 @@ def _ctx_seed_reference_records(target_profile: Optional[Dict[str, Any]], mies: 
 
     records: List[Dict[str, Any]] = []
     for seed in seed_names[:max_seeds]:
+        if not _is_likely_chemical_seed(seed):
+            continue
+        chem = _ctx_lookup_chemical(seed)
+    for seed in seed_names[:max_seeds]:
+        if not _is_likely_chemical_seed(seed):
+            continue
         chem = _ctx_lookup_chemical(seed)
         bundle = _ctx_bundle(seed) if READ_ACROSS_CTX_ONLY or fetch_compound_bundle is not None else {}
         merged: Dict[str, Any] = {}
@@ -671,6 +689,7 @@ def enrich_read_across_state(state: Dict[str, Any], use_ctx: bool = False, metho
     target_profile = data.get("target_profile", {}) if isinstance(data.get("target_profile", {}), dict) else {}
     if not target_profile:
         return state
+
 
     data["read_across_attempted"] = True
     result = enrich_read_across(chemical=chemical, target_profile=target_profile, mies=state.get("MIEs", []), use_ctx=use_ctx, method=method)

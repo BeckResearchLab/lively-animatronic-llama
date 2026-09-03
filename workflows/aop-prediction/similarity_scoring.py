@@ -11,7 +11,7 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 
-from workflow import AOPState, SIMILARITY_THRESHOLD, NO_CANDIDATE_LIMIT, add_provenance, log
+from workflow import AOPState, SIMILARITY_THRESHOLD, NO_CANDIDATE_LIMIT, add_provenance, log, safe_json_dumps
 
 ROOT = Path(".")
 AGENT_PATHS = {
@@ -236,11 +236,11 @@ def similarity_scoring_node(state: AOPState) -> AOPState:
         prompt = (
             f"Chemical: {state.get('chemical', '')}\n"
             f"Candidate to score: {cand_name}\n"
-            f"Candidate details: {json.dumps(cand, indent=2)}\n"
-            f"Current pathway: {json.dumps(state.get('AOP_pathways', []), indent=2)}\n"
-            f"MIEs: {json.dumps(state.get('MIEs', []), indent=2)}\n"
-            f"Target ADMET profile: {json.dumps(target_profile, indent=2)}\n"
-            f"Similarity-relevant properties: {json.dumps(props, indent=2)}\n"
+            f"Candidate details: {safe_json_dumps(cand, indent=2)}\n"
+            f"Current pathway: {safe_json_dumps(state.get('AOP_pathways', []), indent=2)}\n"
+            f"MIEs: {safe_json_dumps(state.get('MIEs', []), indent=2)}\n"
+            f"Target ADMET profile: {safe_json_dumps(target_profile, indent=2)}\n"
+            f"Similarity-relevant properties: {safe_json_dumps(props, indent=2)}\n"
             f"Similarity threshold: {SIMILARITY_THRESHOLD}\n\n"
             "Return ONLY structured JSON matching this schema:\n"
             '{"similarities":[{"name":"...","similarity":0.0,"reasoning":"..."}]}\n\n'

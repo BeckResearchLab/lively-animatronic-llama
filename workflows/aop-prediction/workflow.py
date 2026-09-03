@@ -42,6 +42,40 @@ except Exception:
     enrich_read_across_state = None  # type: ignore
     summarize_read_across = None  # type: ignore
 
+def safe_json_dumps(obj, indent=None):
+    """Safely serialize objects to JSON, handling circular references."""
+    seen_objects = set()
+    
+    def _convert(obj):
+        if isinstance(obj, (str, int, float, bool)) or obj is None:
+            return obj
+
+        obj_id = id(obj)
+        if obj_id in seen_objects:
+            return "[Circular Reference]"
+        
+        seen_objects.add(obj_id)
+        
+        try:
+            if isinstance(obj, dict):
+                result = {}
+                for key, value in obj.items():
+                    result[key] = _convert(value)
+                return result
+            elif isinstance(obj, (list, tuple)):
+                result = []
+                for item in obj:
+                    result.append(_convert(item))
+                return result
+            else:
+                return str(obj)
+        finally:
+            # Remove the object from seen when we're done processing it
+            # to allow the same object to appear in different branches
+            seen_objects.discard(obj_id)
+    
+    return json.dumps(_convert(obj), indent=indent)
+
 ROOT = Path(".")
 AGENT_PATHS = {
     "admet_mie": ROOT / ".opencode/agents/admet-mie.md",
@@ -57,7 +91,7 @@ SIMILARITY_THRESHOLD = float(
         str(getattr(config, "similarity_threshold", 0.0) if config is not None else 0.0),
     )
 )
-MIN_PATHWAY_LENGTH = int(os.environ.get("AOP_MIN_PATHWAY_LENGTH", "3"))
+MIN_PATHWAY_LENGTH = int(os.environ.get("AOP_MIN_PATHWAY_LENGTH", "2"))
 MIN_KE_STEPS = int(os.environ.get("AOP_MIN_KE_STEPS", "1"))
 VERBOSE = os.environ.get("AOP_VERBOSE", "false").lower() == "true"
 OUTPUT_DIR = Path(os.environ.get("AOP_OUTPUT_DIR", "outputs"))
@@ -311,6 +345,13 @@ def pathway_generic_score(pathway: List[Dict[str, Any]]) -> float:
 def _pathway_has_minimum_depth(pathway: List[Dict[str, Any]]) -> bool:
     pathway_len = len(pathway or [])
     ke_count = sum(1 for s in pathway or [] if isinstance(s, dict) and str(s.get("type", "")).upper() == "KE")
+    mie_count = sum(1 for s in pathway or [] if isinstance(s, dict) and str(s.get("type", "")).upper() == "MIE")
+    
+    # Allow progression when we have at least 1 MIE and 1 KE, or when we have enough total steps
+    # This prevents infinite loops while still ensuring pathway depth
+    if mie_count >= 1 and ke_count >= 1:
+        return True
+    
     return pathway_len >= MIN_PATHWAY_LENGTH and ke_count >= MIN_KE_STEPS
 
 def pathway_depth_ok(pathway: List[Dict[str, Any]]) -> bool:
@@ -653,16 +694,16 @@ def candidate_gen_node(state: AOPState) -> AOPState:
 
     prompt = (
         f"Chemical: {chem}\n"
-        f"Current pathway: {json.dumps(state.get('AOP_pathways', []), indent=2)}\n"
-        f"MIEs: {json.dumps(state.get('MIEs', []), indent=2)}\n"
-        f"Target profile: {json.dumps(target_profile, indent=2)}\n"
-        f"Relevant properties: {json.dumps(props, indent=2)}\n"
-        f"Known liabilities: {json.dumps(liabilities, indent=2)}\n"
+        f"Current pathway: {safe_json_dumps(state.get('AOP_pathways', []), indent=2)}\n"
+        f"MIEs: {safe_json_dumps(state.get('MIEs', []), indent=2)}\n"
+        f"Target profile: {safe_json_dumps(target_profile, indent=2)}\n"
+        f"Relevant properties: {safe_json_dumps(props, indent=2)}\n"
+        f"Known liabilities: {safe_json_dumps(liabilities, indent=2)}\n"
         f"Read-across summary: {read_across_summary or 'none'}\n"
-        f"Read-across analogs: {json.dumps(read_across_analogs[:3], indent=2)}\n"
-        f"Read-across endpoints: {json.dumps(read_across_endpoints[:10], indent=2)}\n"
-        f"Read-across evidence: {json.dumps(read_across_evidence[:3], indent=2)}\n"
-        f"Pathway review: {json.dumps(review, indent=2)}\n\n"
+        f"Read-across analogs: {safe_json_dumps(read_across_analogs[:3], indent=2)}\n"
+        f"Read-across endpoints: {safe_json_dumps(read_across_endpoints[:10], indent=2)}\n"
+        f"Read-across evidence: {safe_json_dumps(read_across_evidence[:3], indent=2)}\n"
+        f"Pathway review: {safe_json_dumps(review, indent=2)}\n\n"
         "Return ONLY structured JSON matching this schema:\n"
         '{"candidates":[{"name":"...","type":"KE|AO","confidence":0.0,"reasoning":"..."}]}\n\n'
         "Use only your provided databases and skills. Do not add prose. "
@@ -785,17 +826,17 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     metrics = calculate_confidence_metrics(state)
     prompt = (
         f"Chemical: {state.get('chemical', '')}\n"
-        f"Current pathway: {json.dumps(previous_pathway, indent=2)}\n"
-        f"Candidates: {json.dumps(state.get('candidates', []), indent=2)}\n"
-        f"Similarity scores: {json.dumps(state.get('similarity_scores', []), indent=2)}\n"
-        f"Read-across evidence: {json.dumps(read_across, indent=2)}\n"
-        f"MIEs: {json.dumps(state.get('MIEs', []), indent=2)}\n"
-        f"Target profile: {json.dumps(state.get('data', {}).get('target_profile', {}), indent=2)}\n"
+        f"Current pathway: {safe_json_dumps(previous_pathway, indent=2)}\n"
+        f"Candidates: {safe_json_dumps(state.get('candidates', []), indent=2)}\n"
+        f"Similarity scores: {safe_json_dumps(state.get('similarity_scores', []), indent=2)}\n"
+        f"Read-across evidence: {safe_json_dumps(read_across, indent=2)}\n"
+        f"MIEs: {safe_json_dumps(state.get('MIEs', []), indent=2)}\n"
+        f"Target profile: {safe_json_dumps(state.get('data', {}).get('target_profile', {}), indent=2)}\n"
         f"Iteration: {state.get('iteration_count', 0)}\n"
         f"Max iterations: {MAX_ITERATIONS}\n"
-        f"Rejected candidates so far: {json.dumps(state.get('rejected_candidates', []), indent=2)}\n"
-        f"Pathway review: {json.dumps(review, indent=2)}\n\n"
-        f"Calculated quantitative metrics:\n{json.dumps(metrics, indent=2)}\n\n"
+        f"Rejected candidates so far: {safe_json_dumps(state.get('rejected_candidates', []), indent=2)}\n"
+        f"Pathway review: {safe_json_dumps(review, indent=2)}\n\n"
+        f"Calculated quantitative metrics:\n{safe_json_dumps(metrics, indent=2)}\n\n"
         "Return ONLY structured JSON matching this schema:\n"
         '{"selected_candidate":{"name":"...","type":"KE|AO","confidence":0.0,"similarity":0.0,"reasoning":""},"updated_pathway":[{"event":"...","type":"MIE|KE|AO","score":0.0,"provenance":[]}],"uncertainty":0.0,"decision_risk":"low|medium|high","next_action":"expand|prune|branch|terminate","is_ao_reached":false,"termination_reason":"","decision_reason":"","rejected_candidates":[]}\n\n'
         "IMPORTANT: Return only the single next biologically plausible pathway step. Do not return the full pathway. "

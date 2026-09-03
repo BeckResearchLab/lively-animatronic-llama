@@ -134,12 +134,17 @@ def fetch_chemical_details_by_smiles(smiles: str) -> Dict[str, Any]:
 def resolve_chemical(query: str) -> Dict[str, Any]:
     chem = _chemical_client()
     try:
-        result = chem.search(by="equals", query=query)
+        try:
+            result = chem.search(by="equals", query=query)
+        except Exception:
+            result = chem.search(by="contains", query=query)
     except Exception:
-        result = chem.search(by="contains", query=query)
+        return {"query": query, "status": "not_found", "name": query, "smiles": "", "raw": {}}
+
     hit = _first_hit(result)
     if not hit:
         return {"query": query, "status": "not_found", "name": query, "smiles": "", "raw": {}}
+
     normalized = _normalize_chemical_record(query, hit, source="ctx_search")
     if normalized.get("dtxsid"):
         try:

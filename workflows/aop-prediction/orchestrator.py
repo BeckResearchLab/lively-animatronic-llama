@@ -8,6 +8,11 @@ from typing import Any, Dict, List, Optional, Tuple
 from concurrent.futures import ThreadPoolExecutor
 from unittest import result
 
+# Disable LangChain tracing to prevent recursion errors
+os.environ["LANGCHAIN_TRACING_V2"] = "false"
+os.environ["LANGCHAIN_TRACING"] = "false"
+os.environ["LANGCHAIN_PROJECT"] = ""
+
 from langgraph.graph import END, START, StateGraph
 
 from workflow import (
@@ -30,6 +35,7 @@ from workflow import (
     pathway_depth_ok,
     _prune_pathway_steps,
     _trim_to_one_new_step,
+    safe_json_dumps,
 )
 from read_across import enrich_read_across_state
 from similarity_scoring import similarity_scoring_node
@@ -118,20 +124,28 @@ def parallel_candidate_generation(state: AOPState) -> AOPState:
 def enrich_read_across_node(state: AOPState) -> AOPState:
     chemical = str(state.get("chemical", "")).strip()
     data = state.setdefault("data", {}) if isinstance(state.get("data", {}), dict) else {}
+
     if data.get("read_across_attempted"):
+        log(f"Read-across already attempted for {chemical}, reusing cached result")
         return state
 
     if not chemical:
+        log("Cannot run read-across: no chemical name provided")
         return state
 
     if "target_profile" not in data:
+        log(f"Cannot run read-across: no target_profile available for {chemical}")
         return state
 
+    result = enrich_read_across_state(
+        state,
+        use_ctx=True,
+        method=os.environ.get("READ_ACROSS_METHOD", "auto"),
+    )
+
+    data["read_across"] = data.get("read_across", result)
     data["read_across_attempted"] = True
-    method = os.environ.get("READ_ACROSS_METHOD", "auto")
-    result = enrich_read_across_state(state, use_ctx=True, method=method)
-    data["read_across"] = result
-    log(f"Read-across result for {chemical}: {result.get('status')} | analogs={len(result.get('analogs', []))}")
+    log(f"Read-across for {chemical}: {result.get('status')} | analogs={len(result.get('analogs', []))}")
     return state
 
 def _read_across_summary(state: AOPState) -> Dict[str, Any]:
@@ -211,12 +225,12 @@ def finalize_aop_node(state: AOPState) -> AOPState:
         return state
     prompt = (
         f"Chemical: {state.get('chemical', '')}\n"
-        f"Current pathway: {json.dumps(previous_pathway, indent=2)}\n"
-        f"Current candidates: {json.dumps(state.get('candidates', []), indent=2)}\n"
-        f"Similarity scores: {json.dumps(state.get('similarity_scores', []), indent=2)}\n"
+        f"Current pathway: {safe_json_dumps(previous_pathway, indent=2)}\n"
+        f"Current candidates: {safe_json_dumps(state.get('candidates', []), indent=2)}\n"
+        f"Similarity scores: {safe_json_dumps(state.get('similarity_scores', []), indent=2)}\n"
         f"Read-across summary: {ra.get('summary', '')}\n"
-        f"Read-across analogs: {json.dumps(ra.get('analogs', [])[:5], indent=2)}\n"
-        f"Target profile: {json.dumps(target_profile, indent=2)}\n\n"
+        f"Read-across analogs: {safe_json_dumps(ra.get('analogs', [])[:5], indent=2)}\n"
+        f"Target profile: {safe_json_dumps(target_profile, indent=2)}\n\n"
         "You are the aop-constructor agent.\n"
         "Return ONLY the single next pathway step needed to close the pathway to AO.\n"
         "Do not restate earlier steps.\n"
