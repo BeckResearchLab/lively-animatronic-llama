@@ -4,3 +4,4 @@ requests
 docling
 langgraph
 lightrag-hku[api]
+fastapi[standard]

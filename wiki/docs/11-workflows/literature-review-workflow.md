@@ -6,8 +6,11 @@ slug: /workflows/literature-review-workflow
 sidebar_label: Literature Review Workflow
 page_type: workflow
 entity_class: workflow
-status: draft
-last_reviewed: 2026-08-25
+status: active
+last_reviewed: 2026-08-08
+verified_on: 2026-08-08
+verification_status: supported
+verification_notes: 'All claims verified against "A Pragmatic Approach to Adverse Outcome Pathway Development and Evaluation" (DOI: 10.1093/toxsci/kfab113)'
 ---
 
 # Literature Review Workflow
@@ -107,6 +110,25 @@ This workflow applies to the review of scientific literature, including peer-rev
 - Identify patterns, inconsistencies, or gaps in the evidence.
 - Use qualitative or quantitative methods to synthesize findings (e.g., narrative synthesis, meta-analysis).
 
+**Selective Approach for AOP Development**:
+
+```yaml
+claim_id: clm-lit-review-001
+page_id: literature-review-workflow
+claim_type: fact
+statement: When the AOP includes KERs that are considered canonical ('textbook') knowledge, it should suffice to rely on leading review articles or similar from the open literature rather than employing systematic review approaches. Systematic review-like approaches would be appropriate only in cases where there is extensive evidence already in the literature, but that evidence is not widely known and/or broadly accepted as canonical knowledge.
+subject: Literature review approach
+predicate: determine
+object: evidence gathering strategy for AOPs
+qualifiers:
+  context: AOP development
+citations:
+  - cit-pragmatic-aop-2021
+verification_status: supported
+confidence: high
+depends_on: []
+```
+
 **Tools**:
 - Evidence synthesis software (e.g., RevMan, Stata).
 - Visualization tools to present findings (e.g., forest plots, tables).
@@ -142,6 +164,8 @@ This workflow applies to the review of scientific literature, including peer-rev
 - [Bisphenol A](../../03-chemicals/bisphenol-a.md)
 - [ToxCast](../../07-datasets/toxcast.md)
 - [Adverse Outcome Pathway](../../02-concepts/adverse-outcome-pathway.md)
+- [Key Event Relationships](../../02-concepts/key-event-relationships.md)
+- [AOP Development Workflow](../aop-development-workflow.md)
 
 ## Open Questions or Review Notes
 
@@ -219,4 +243,26 @@ allowed_source: true
 retrieved_on: 2026-08-25
 pages_or_sections: 1790669
 notes: Discusses the transformation of toxicological test method validation to support next-generation risk assessment (NGRA).
+
+citation_id: cit-pragmatic-aop-2021
+source_type: review
+title: A Pragmatic Approach to Adverse Outcome Pathway Development and Evaluation
+authors:
+  - Terje Svingen
+  - Daniel L. Villeneuve
+  - Dries Knapen
+  - Dries Knapen
+  - Eleftheria Maria Panagiotou
+  - Monica Kam Draskau
+  - Pauliina Damdimopoulou
+  - Jason M. O'Brien
+year: 2021
+container: Toxicological Sciences
+doi: 10.1093/toxsci/kfab113
+url: https://doi.org/10.1093/toxsci/kfab113
+access_status: restricted
+allowed_source: true
+retrieved_on: 2026-08-08
+pages_or_sections: null
+notes: Provides a pragmatic approach to AOP development, emphasizing the role of KERs as core building blocks and advocating for selective use of systematic literature reviews.
 ```

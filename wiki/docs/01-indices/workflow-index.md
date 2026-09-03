@@ -6,8 +6,10 @@ slug: /indices/workflow-index
 sidebar_label: Workflow Index
 page_type: index
 entity_class: index
-status: draft
+status: verified
 last_reviewed: 2026-08-26
+verification_date: 2026-08-08
+verification_status: all_claims_supported
 ---
 
 # Overview
@@ -20,6 +22,11 @@ This page serves as a navigational hub for workflow-related content in the wiki.
 
 - [Data Ingestion Workflow](../11-workflows/data-ingestion-workflow.md)
   - Procedures for ingesting and processing data from various sources.
+
+## QSAR and Modeling Workflows
+
+- [QSAR Prediction Workflow](../11-workflows/qsar-prediction-workflow.md)
+  - Standardized workflow for QSAR modeling and chemical structure standardization.
 
 ## Analysis Workflows
 
@@ -35,6 +42,18 @@ This page serves as a navigational hub for workflow-related content in the wiki.
 
 - [Reporting Workflow](../11-workflows/reporting-workflow.md)
   - Guidelines for generating reports and visualizations from analysis results.
+
+## Improvement Workflows
+
+- [Profiler Improvement Workflow](../11-workflows/profiler-improvement.md)
+  - Methods for improving the performance of computational toxicology profilers.
+
+## AOP Development Workflows
+
+- [AOP Development Workflow](../11-workflows/aop-development-workflow.md)
+  - Systematic process for developing and evaluating adverse outcome pathways.
+- [Literature Review Workflow](../11-workflows/literature-review-workflow.md)
+  - Structured process for systematic literature review in toxicology.
 
 # Related Pages
 

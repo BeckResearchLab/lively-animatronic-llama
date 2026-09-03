@@ -608,7 +608,6 @@ def score_against_reference_library(
         "ctx_seed_count": len(ctx_seed_records),
     }
 
-
 def enrich_read_across(
     chemical: str,
     target_profile: Optional[Dict[str, Any]] = None,

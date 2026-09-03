@@ -48,6 +48,7 @@ This page serves as a navigational hub for all chemical pages in the wiki. Chemi
 #### Endocrine Disruptors
 
 - [Bisphenol A](03-chemicals/bisphenol-a.md)
+- [Bisphenol A Analogs](03-chemicals/bisphenol-a-analogs.md)
 - [Diethylhexyl Phthalate](03-chemicals/diethylhexyl-phthalate.md)
 
 #### Antimicrobials
@@ -61,6 +62,7 @@ This page serves as a navigational hub for all chemical pages in the wiki. Chemi
 Chemicals prioritized for detailed evidence synthesis and assessment:
 
 - [Bisphenol A](03-chemicals/bisphenol-a.md)
+- [Bisphenol A Analogs](03-chemicals/bisphenol-a-analogs.md)
 - [Glyphosate](03-chemicals/glyphosate.md)
 - [Perfluorooctanoic Acid](03-chemicals/perfluorooctanoic-acid.md)
 

@@ -10,11 +10,13 @@ __pycache__
 node_modules
 .env
 .venv
-node_modules
+
 
 data/*
 pdfs/*
 artifacts/*
-wiki/*
+wiki/docs.bak
+.docusaurus
 /private
 *.pdf
+.DS_Store

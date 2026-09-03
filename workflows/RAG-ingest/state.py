@@ -58,7 +58,7 @@ class RAGIngestionState(TypedDict, total=False):
 
     wiki_ingest_output: str
     wiki_write_output: str
-    summaries: RagIngestionOutputSummaries
+    summaries:  Annotated[RagIngestionOutputSummaries, smart_merge_dict]
 
 
 def make_initial_state(config_file: str) -> RAGIngestionState:
