@@ -6,10 +6,19 @@ import time
 import asyncio
 from typing import Any, Dict, List, Optional, Tuple
 from concurrent.futures import ThreadPoolExecutor
+from unittest import result
+
+# Disable LangChain tracing to prevent recursion errors
+os.environ["LANGCHAIN_TRACING_V2"] = "false"
+os.environ["LANGCHAIN_TRACING"] = "false"
+os.environ["LANGCHAIN_PROJECT"] = ""
 
 from langgraph.graph import END, START, StateGraph
 
 from workflow import (
+    MIN_KE_STEPS,
+    MIN_PATHWAY_LENGTH,
+    NO_PROGRESS_LIMIT,
     AOPState,
     Initial_ADMET_node,
     PathwayDecision,
@@ -21,7 +30,12 @@ from workflow import (
     expand_and_prune_node,
     initial_state,
     log,
+    pathway_signature,
     run_agent,
+    pathway_depth_ok,
+    _prune_pathway_steps,
+    _trim_to_one_new_step,
+    safe_json_dumps,
 )
 from read_across import enrich_read_across_state
 from similarity_scoring import similarity_scoring_node
@@ -32,7 +46,13 @@ READ_ACROSS_FINALIZE_CONFIDENCE = float(os.environ.get("AOP_READ_ACROSS_FINALIZE
 READ_ACROSS_FINALIZE_MIN_ANALOGS = int(os.environ.get("AOP_READ_ACROSS_FINALIZE_MIN_ANALOGS", "1"))
 READ_ACROSS_FINALIZE_MIN_TOP_SIM = float(os.environ.get("AOP_READ_ACROSS_FINALIZE_MIN_TOP_SIM", "0.40"))
 AOP_FORCE_FINALIZE_MIN_CONFIDENCE = float(os.environ.get("AOP_FORCE_FINALIZE_MIN_CONFIDENCE", "0.50"))
-AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH = int(os.environ.get("AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH", "2"))
+AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH = int(os.environ.get("AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH", str(MIN_PATHWAY_LENGTH)))
+
+
+DIRECT_AO_CONFIDENCE_THRESHOLD = float(os.environ.get("DIRECT_AO_CONFIDENCE_THRESHOLD", "0.60"))
+MIN_KE_BEFORE_AO = int(os.environ.get("MIN_KE_BEFORE_AO", str(MIN_KE_STEPS)))
+AOP_NO_PROGRESS_LIMIT = int(os.environ.get("AOP_NO_PROGRESS_LIMIT", "2"))
+AOP_NO_CANDIDATE_LIMIT = int(os.environ.get("AOP_NO_CANDIDATE_LIMIT", "2"))
 
 #Tracking for workflow execution times and success rates
 class WorkflowMonitor:
@@ -105,45 +125,28 @@ def enrich_read_across_node(state: AOPState) -> AOPState:
     chemical = str(state.get("chemical", "")).strip()
     data = state.setdefault("data", {}) if isinstance(state.get("data", {}), dict) else {}
 
-    # Make sure read_across has the ADMET profile it expects.
-    if "target_profile" in data and "admet_profile" not in data:
-        data["admet_profile"] = data.get("target_profile", {})
-
-    # Run read-across only once per workflow run.
     if data.get("read_across_attempted"):
         log(f"Read-across already attempted for {chemical}, reusing cached result")
         return state
 
-    data["read_across_attempted"] = True
-
-    # If a valid result already exists, keep it.
-    cached_ra = data.get("read_across", {})
-    if isinstance(cached_ra, dict) and cached_ra:
-        log(f"Read-across already computed for {chemical}, skipping calculation")
-        return state
-
-    source = os.environ.get("TOX21_DB_FILE", "tox21_database.csv")
-    if not os.path.exists(source):
-        source = None
-
-    use_ctx = os.environ.get("USE_CTX_PYTHON", "false").lower() == "true"
-
-    # Ensure we have the necessary data before running read-across
     if not chemical:
-        log(f"Cannot run read-across: no chemical name provided")
+        log("Cannot run read-across: no chemical name provided")
         return state
-    
+
     if "target_profile" not in data:
         log(f"Cannot run read-across: no target_profile available for {chemical}")
         return state
 
-    enrich_read_across_state(
+    result = enrich_read_across_state(
         state,
-        reference_source=source,
-        use_ctx=use_ctx,
+        use_ctx=True,
+        method=os.environ.get("READ_ACROSS_METHOD", "auto"),
     )
-    return state
 
+    data["read_across"] = data.get("read_across", result)
+    data["read_across_attempted"] = True
+    log(f"Read-across for {chemical}: {result.get('status')} | analogs={len(result.get('analogs', []))}")
+    return state
 
 def _read_across_summary(state: AOPState) -> Dict[str, Any]:
     ra = state.get("data", {}).get("read_across", {}) if isinstance(state.get("data", {}), dict) else {}
@@ -175,23 +178,21 @@ def _read_across_summary(state: AOPState) -> Dict[str, Any]:
 def _should_attempt_finalize(state: AOPState) -> bool:
     ra = _read_across_summary(state)
     pathway_length = len(state.get("AOP_pathways", []))
+    ke_count = sum(1 for step in state.get("AOP_pathways", []) if isinstance(step, dict) and str(step.get("type", "")).upper() == "KE")
     confidence_score = float(state.get("confidence_score", 0.0) or 0.0)
     
-    # More lenient conditions for finalization
-    # Allow finalization if we have either:
-    # 1. Strong read-across evidence AND sufficient pathway length, OR
-    # 2. High confidence score AND reasonable pathway length
+    required_pathway_length = max(MIN_PATHWAY_LENGTH, AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH)
+    required_ke_steps = max(MIN_KE_STEPS, MIN_KE_BEFORE_AO)
+    required_confidence = max(0.5, AOP_FORCE_FINALIZE_MIN_CONFIDENCE)
     
     has_read_across_evidence = ra["analog_count"] >= max(1, READ_ACROSS_FINALIZE_MIN_ANALOGS // 2)
     has_good_similarity = ra["top_similarity"] >= max(0.3, READ_ACROSS_FINALIZE_MIN_TOP_SIM * 0.6)
-    has_sufficient_pathway = pathway_length >= max(2, AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH // 2)
-    has_high_confidence = confidence_score >= max(0.5, AOP_FORCE_FINALIZE_MIN_CONFIDENCE * 0.7)
-    
-    # Attempt finalization if:
-    # - We have read-across evidence AND sufficient pathway length, OR
-    # - We have high confidence AND reasonable pathway length
-    condition1 = (has_read_across_evidence and has_good_similarity and has_sufficient_pathway)
-    condition2 = (has_high_confidence and has_sufficient_pathway)
+    has_sufficient_pathway = pathway_length >= required_pathway_length and ke_count >= required_ke_steps
+    has_high_confidence = confidence_score >= required_confidence
+
+    # Finalization is only allowed when the pathway is genuinely deep enough.
+    condition1 = has_read_across_evidence and has_good_similarity and has_sufficient_pathway
+    condition2 = has_high_confidence and has_sufficient_pathway
     
     return condition1 or condition2
 
@@ -204,25 +205,44 @@ def finalize_aop_node(state: AOPState) -> AOPState:
         return state
 
     ra = _read_across_summary(state)
-    target_profile = state.get("data", {}).get("target_profile", {}) if isinstance(state.get("data", {}), dict) else {}
+    data = state.setdefault("data", {}) if isinstance(state.get("data", {}), dict) else {}
+    target_profile = data.get("target_profile", {}) if isinstance(data, dict) else {}
+    previous_pathway = state.get("AOP_pathways", []) if isinstance(state.get("AOP_pathways", []), list) else []
+
+    pathway_len = len(previous_pathway)
+    ke_count = sum(
+        1 for s in previous_pathway
+        if isinstance(s, dict) and str(s.get("type", "")).upper() == "KE"
+    )
+
+    can_finalize = (
+        pathway_len >= min(MIN_PATHWAY_LENGTH, 3)
+        and ke_count >= min(MIN_KE_STEPS, 2)
+    )
+    if not can_finalize:
+        state["next_action"] = "expand"
+        state["termination_reason"] = state.get("termination_reason") or "AO proposed prematurely; pathway is still too shallow"
+        return state
     prompt = (
         f"Chemical: {state.get('chemical', '')}\n"
-        f"Current pathway: {json.dumps(state.get('AOP_pathways', []), indent=2)}\n"
-        f"Current candidates: {json.dumps(state.get('candidates', []), indent=2)}\n"
-        f"Similarity scores: {json.dumps(state.get('similarity_scores', []), indent=2)}\n"
+        f"Current pathway: {safe_json_dumps(previous_pathway, indent=2)}\n"
+        f"Current candidates: {safe_json_dumps(state.get('candidates', []), indent=2)}\n"
+        f"Similarity scores: {safe_json_dumps(state.get('similarity_scores', []), indent=2)}\n"
         f"Read-across summary: {ra.get('summary', '')}\n"
-        f"Read-across analogs: {json.dumps(ra.get('analogs', [])[:5], indent=2)}\n"
-        f"Target profile: {json.dumps(target_profile, indent=2)}\n\n"
-        "You are the aop-constructor agent. The workflow already has strong ADMET and read-across support.\n"
-        "If the evidence supports a terminal adverse outcome, return a complete pathway ending in AO.\n"
-        "Do not invent unsupported steps, but DO allow a shorter scientifically supported pathway when the evidence is strong.\n"
+        f"Read-across analogs: {safe_json_dumps(ra.get('analogs', [])[:5], indent=2)}\n"
+        f"Target profile: {safe_json_dumps(target_profile, indent=2)}\n\n"
+        "You are the aop-constructor agent.\n"
+        "Return ONLY the single next pathway step needed to close the pathway to AO.\n"
+        "Do not restate earlier steps.\n"
+        "Do not return the full pathway.\n"
+        "If the evidence supports a terminal adverse outcome, return exactly one AO step.\n"
         "Return ONLY structured JSON matching this schema:\n"
         '{"selected_candidate":{"name":"...","type":"KE|AO","confidence":0.0,"similarity":0.0,"reasoning":""},'
         '"updated_pathway":[{"event":"...","type":"MIE|KE|AO","score":0.0,"provenance":[]}],'
         '"uncertainty":0.0,"decision_risk":"low|medium|high","next_action":"expand|prune|branch|terminate",'
-        '"is_ao_reached":false,"termination_reason":"","decision_reason":"","rejected_candidates":[] }\n'
+        '"is_ao_reached":false,"termination_reason":"","decision_reason":"","rejected_candidates":[]}\n'
         "Favor a direct closure to the adverse outcome if the pathway already contains the necessary key events.\n"
-        "IMPORTANT: Be aggressive in closing pathways to AO when the evidence is strong. If the pathway contains sufficient key events and the read-across evidence supports it, add the AO step."
+        f"MINIMUM REQUIREMENTS FOR DIRECT AO: {MIN_KE_BEFORE_AO} intermediate KEs and confidence > {DIRECT_AO_CONFIDENCE_THRESHOLD}"
     )
 
     try:
@@ -234,54 +254,87 @@ def finalize_aop_node(state: AOPState) -> AOPState:
         log(f"finalize_aop_node failed: {e}")
         return state
 
-    updated_pathway = decision.updated_pathway or state.get("AOP_pathways", [])
+    updated_pathway = decision.updated_pathway or []
     if not isinstance(updated_pathway, list):
-        updated_pathway = state.get("AOP_pathways", [])
+        updated_pathway = []
 
-    last_is_ao = bool(
-        updated_pathway
-        and isinstance(updated_pathway[-1], dict)
-        and str(updated_pathway[-1].get("type", "")).upper() == "AO"
-    )
+    # We only want the AO step from the constructor here.
+    ao_step = None
+    for step in reversed(updated_pathway):
+        if isinstance(step, dict) and str(step.get("type", "")).upper() == "AO":
+            ao_step = step
+            break
+
+    if ao_step is None and updated_pathway:
+        last_step = updated_pathway[-1]
+        if isinstance(last_step, dict) and str(last_step.get("type", "")).upper() == "AO":
+            ao_step = last_step
+
     has_aop_evidence = any(
-        isinstance(step, dict)
-        and str(step.get("source", step.get("provenance_source", ""))).lower() == "aop_expert"
-        for step in updated_pathway
+        isinstance(step, dict) and str(step.get("source", step.get("provenance_source", ""))).lower() == "aop_expert"
+        for step in previous_pathway
     ) or any(
         isinstance(candidate, dict) and str(candidate.get("source", "")).lower() == "aop_expert"
         for candidate in state.get("candidates", [])
     )
-    decision_is_ao = bool((decision.is_ao_reached or last_is_ao) and has_aop_evidence)
 
-    if decision_is_ao:
-        state["AOP_pathways"] = updated_pathway
-        state["is_ao_reached"] = True
-        state["next_action"] = "terminate"
-        state["termination_reason"] = decision.termination_reason or "AO reached from strong ADMET + read-across evidence"
+    ao_present = ao_step is not None
+    decision_is_ao = bool((decision.is_ao_reached or ao_present) and has_aop_evidence and can_finalize)
+
+    if decision_is_ao and ao_step is not None:
+        prev_pathway = list(previous_pathway or [])
+        pathway_len = len(prev_pathway)
+        ke_count = sum(
+            1 for s in prev_pathway
+            if isinstance(s, dict) and str(s.get("type", "")).upper() == "KE"
+        )
+
+        can_finalize = (
+            pathway_len >= MIN_PATHWAY_LENGTH
+            and ke_count >= MIN_KE_STEPS
+            and state.get("no_progress_cycles", 0) < NO_PROGRESS_LIMIT
+        )
+
+        if decision_is_ao and ao_step is not None and can_finalize:
+            final_pathway = prev_pathway
+            if not final_pathway or str(final_pathway[-1].get("type", "")).upper() != "AO":
+                final_pathway.append(ao_step)
+
+            state["AOP_pathways"] = final_pathway
+            state["is_ao_reached"] = True
+            state["next_action"] = "terminate"
+            state["termination_reason"] = (
+                decision.termination_reason
+                or "AO reached from strong ADMET + read-across evidence"
+            )
+        else:
+            # AO was proposed too early: strip it and keep expanding.
+            final_pathway = [
+                s for s in prev_pathway
+                if not (isinstance(s, dict) and str(s.get("type", "")).upper() == "AO")
+            ]
+            state["AOP_pathways"] = final_pathway
+            state["is_ao_reached"] = False
+            state["next_action"] = "expand"
+            state["termination_reason"] = (
+                decision.termination_reason
+                or "AO proposed prematurely; pathway is still too shallow"
+            )
+
         state["decision_reason"] = decision.decision_reason or state.get("decision_reason", "")
         state["rejected_candidates"] = decision.rejected_candidates or state.get("rejected_candidates", [])
-        state["current_node_type"] = (
-            updated_pathway[-1].get("type", state.get("current_node_type", "MIE"))
-            if updated_pathway and isinstance(updated_pathway[-1], dict)
-            else state.get("current_node_type", "MIE")
+        state["current_node_type"] = "AO" if state["is_ao_reached"] else state.get("current_node_type", "KE")
+
+        local_breakdown = build_local_confidence_breakdown(state, state["AOP_pathways"])
+        state["confidence_score"] = max(
+            float(state.get("confidence_score", 0.0) or 0.0),
+            float(local_breakdown["local_confidence_score"]),
         )
-        local_breakdown = build_local_confidence_breakdown(state, updated_pathway)
-        state["confidence_score"] = max(float(state.get("confidence_score", 0.0) or 0.0), float(local_breakdown["local_confidence_score"]))
         state["confidence_breakdown"] = local_breakdown
         state["uncertainty"] = float(max(0.0, min(1.0, 1.0 - state["confidence_score"])))
         state["decision_risk"] = "low" if state["confidence_score"] >= 0.75 else ("medium" if state["confidence_score"] >= 0.5 else "high")
         state.setdefault("messages", []).append({"role": "agent", "agent": "aop_constructor", "content": payload})
-        add_provenance(
-            state,
-            "finalize",
-            "aop_constructor",
-            "Final AO closure accepted",
-            confidence=decision.selected_candidate.confidence if decision.selected_candidate else None,
-            similarity=decision.selected_candidate.similarity if decision.selected_candidate else None,
-            selected_candidate=decision.selected_candidate.model_dump() if decision.selected_candidate else None,
-            read_across_confidence=ra.get("confidence", 0.0),
-            read_across_analogs=[a.get("name", "unknown") for a in ra.get("analogs", [])[:5] if isinstance(a, dict)],
-        )
+
     return state
 
 # Loops unless AO is reached or termination conditions are met
@@ -302,34 +355,51 @@ def adaptive_route_after_critic(state: AOPState):
     confidence = state.get("confidence_score", 0)
     iteration_count = state.get("iteration_count", 0)
     pathway_length = len(pathway)
+    ke_count = sum(1 for step in pathway if isinstance(step, dict) and str(step.get("type", "")).upper() == "KE")
+    current_signature = pathway_signature(pathway)
+
+    if state.get("previous_pathway_signature") == current_signature:
+        state["no_progress_cycles"] = state.get("no_progress_cycles", 0) + 1
+    else:
+        state["no_progress_cycles"] = 0
+    state["previous_pathway_signature"] = current_signature
+
+    no_progress_limit = int(os.environ.get("AOP_NO_PROGRESS_LIMIT", str(AOP_NO_PROGRESS_LIMIT)))
+    no_candidate_limit = int(os.environ.get("AOP_NO_CANDIDATE_LIMIT", str(AOP_NO_CANDIDATE_LIMIT)))
+    required_pathway_length = max(MIN_PATHWAY_LENGTH, AOP_FORCE_FINALIZE_MIN_PATHWAY_LENGTH)
+    required_ke_steps = max(MIN_KE_STEPS, MIN_KE_BEFORE_AO)
     finalize_ready = _should_attempt_finalize(state)
 
     if state.get("is_ao_reached"):
         return END
     if not pathway:
+        if state.get("no_progress_cycles", 0) >= no_progress_limit or state.get("no_candidate_cycles", 0) >= no_candidate_limit:
+            state["termination_reason"] = state.get("termination_reason") or "No meaningful pathway progress; stopping to avoid critic loop"
+            return END
         return "candidate_gen"
-    if finalize_ready:
-        return "finalize"
-    if state.get("next_action") == "terminate":
+    if state.get("no_progress_cycles", 0) >= no_progress_limit:
+        state["termination_reason"] = state.get("termination_reason") or "No meaningful pathway progress; stopping to avoid critic loop"
         return END
-    if state.get("no_candidate_cycles", 0) >= int(os.environ.get("AOP_NO_CANDIDATE_LIMIT", "2")):
+    if state.get("no_candidate_cycles", 0) >= no_candidate_limit:
         state["termination_reason"] = state.get("termination_reason") or "No candidates generated after fallback"
         return END
-    if state.get("no_progress_cycles", 0) >= int(os.environ.get("AOP_NO_PROGRESS_LIMIT", "2")):
-        state["termination_reason"] = state.get("termination_reason") or "No meaningful pathway progress"
+    if any(isinstance(step, dict) and str(step.get("type", "")).upper() == "AO" for step in pathway) and not pathway_depth_ok(pathway):
+        state["termination_reason"] = state.get("termination_reason") or "AO reached prematurely; pathway is still too shallow"
+        return "candidate_gen"
+    if finalize_ready and pathway_depth_ok(pathway):
+        return "finalize"
+    if state.get("next_action") == "terminate":
         return END
     if iteration_count >= int(os.environ.get("AOP_MAX_ITERATIONS", "10")):
         state["termination_reason"] = state.get("termination_reason") or "Maximum iterations reached"
         return END
 
-    # More aggressive routing to finalize when we have reasonable evidence
-    if confidence > 0.6 and pathway_length >= 3:
-        return "finalize"
-    elif confidence > 0.5 and pathway_length >= 2 and iteration_count >= 2:
+    # Finalize only when the pathway is actually deep enough.
+    if confidence >= AOP_FORCE_FINALIZE_MIN_CONFIDENCE and pathway_length >= required_pathway_length and ke_count >= required_ke_steps:
         return "finalize"
     elif confidence < 0.5 and iteration_count > 3:
         return "candidate_gen"
-    elif pathway_length < 3 and iteration_count < 2:
+    elif pathway_length < required_pathway_length and iteration_count < 2:
         return "candidate_gen"
     else:
         return "candidate_gen"

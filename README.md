@@ -5,7 +5,7 @@ This project provides a computational workflow for predicting Adverse Outcome Pa
 
 1. **Wiki Seeding**: Establishes a foundational knowledge base with structured toxicology information
 2. **RAG Ingestion**: Processes and indexes scientific literature for retrieval-augmented generation
-3. **AOP Prediction**: Predicts adverse outcome pathways using...
+3. **AOP Prediction**: Predicts adverse outcome pathways through similarity scoring, and aop wiki queries
 
 The system combines literature review, in silico toxicology, and adverse-outcome pathway analysis to provide a workflow for computational toxicology assessment.
 
@@ -164,20 +164,71 @@ PYTHONPATH=workflows python workflows/RAG-ingest/workflow.py
 
 ## AOP prediction
 
-### Overview
+AOP prediction is the main toxicology reasoning component of the project. It takes a chemical input and builds a candidate Adverse Outcome Pathway by combining ADMET analysis, CTX-based read-across, similarity scoring, iterative pathway expansion, and critic review. The workflow is designed to be iterative and evidence-driven: it should continue when the pathway is still under-supported and stop when the evidence is insufficient or the pathway is complete. It assembles evidence into a structured MIE -> KE -> KE -> AO pathway, with the number of KEs varying based on pathway reasonability.
 
-### Prerequisites
+### Key agents and skills used
+- `admet-mie` — Calculates ADMET scores of chemicals and predicts possible MIEs (for first pathway step)
+- `aop-expert` — Queries the aop xml database to map potential KEs and AOs
+- `admet-ai-scoring` — identifies core ADMET properties and likely mechanistic liabilities.
+- `admet-secondary-scoring` — provides a secondary ADMET pass for extra coverage.
+- `confidence-scoring` — estimates pathway reliability and confidence.
+- `mie-identification` — maps ADMET signals to likely Molecular Initiating Events.
+- `similarity-scoring` — ranks candidates based on overlap with the target profile and read-across support.
+For best results, the workflow also expects:
+- A resolved chemical name or structure
+- Read-across-friendly analogs when available
+- At least some mechanistic evidence from ADMET or literature
+- Proper environment variables for model access and CTX credentials
 
 ### Workflows
-- aop_wiki_api:
-- aop_prediction:
-- multi-agent-researcher:
+#### aop_wiki_api: 
+API path for accessing AOP wiki pathway information and descriptions. 
+#### aop_prediction:
+**orchestrator.py** — Builds the overall LangGraph framework using nodes for each step and routing through edges and conditional edges. It coordinates the full AOP workflow, including ADMET analysis, read-across, similarity scoring, pathway expansion, critic review, and finalization.
+
+**workflow.py** — Defines the shared AOP state, pathway heuristics, confidence calculations, node helper functions, pruning logic, and output saving. It also contains the core node implementations for ADMET, candidate generation, pathway expansion, critic review, and AO finalization.
+
+**read_across.py** — Implements CTX-only read-across logic for resolving the target chemical, finding analogs, scoring structural similarity, and building supporting evidence for pathway construction. It helps seed and strengthen the AOP workflow with analog-based context.
+
+**similarity_acoring.py** — Scores candidate pathway steps against the target chemical’s ADMET profile and read-across evidence. It ranks candidate KEs and AOs based on similarity, mechanistic overlap, and support from the current pathway context.
+
+**utils.py** — Provides the shared agent execution wrapper used throughout the workflow. It handles LLM calls, prompt assembly, optional structured output, and caching so that agents can be invoked consistently from the workflow.
+
+**ctx_api.py** — Wraps the CTX Python client and provides functions for chemical search, chemical details lookup, compound bundle retrieval, and query resolution. It serves as the API layer that read-across uses to interact with EPA CTX data.
+
 
 ### Process Flow
+The AOP prediction workflow follows this general order:
+
+1. **Initial ADMET analysis**: identify likely MIEs and toxicity-relevant liabilities.
+2. **CTX read-across**: resolve the target chemical and search for close analogs or supporting evidence.
+3. **Candidate generation**: ask the AOP expert for plausible downstream KEs and AOs.
+4. **Similarity scoring**: rank candidate events against the target profile and read-across support.
+5. **Pathway expansion**: add one biologically plausible step at a time.
+6. **Critic review**: check whether the pathway is too shallow, too generic, duplicated, or ready to terminate.
+7. **Finalization**: close the pathway only if the evidence is strong enough.
+8. **Documentation**: save the result and prepare it for wiki publication.
+
+This workflow is intended to behave like an evidence manager rather than an answer generator. If the evidence is weak, it should stop, mark uncertainty, or stay incomplete instead of inventing a pathway.
 
 ### Output
+The AOP prediction workflow produces:
+- A structured pathway from MIE to KE to AO
+- MIE prediction and basic ADMET properties
+- Confidence scores for each step and for the overall pathway
+- Similarity scores for candidate events
+- Critic/review reasons when the pathway is incomplete and periodically through the prediction
+- A final human-readable summary suitable for wiki publication
+
+### Notes
+Not every chemical produces a valid AOP. For data-poor chemicals or non-toxicants, the correct result may be an incomplete pathway or no supported pathway at all. That is expected behavior.
 
 ### Running
+To run the AOP prediction workflow:
+
+```bash
+python workflows/aop-prediction/orchestrator.py aspirin
+```
 
 ## Project Structure
 
@@ -187,19 +238,19 @@ Contains agents, skills, scripts, and plugins to support all opencode-centric ag
 
 #### Agents
 
-- `admet-mie`
-- `aop-constructor`
+- `admet-mie` Calculates ADMET score for a given molecule and maps potential MIES to it, along with calculating ADMET for similar molecules.
+- `aop-constructor` Agent used to manage 'admet-mie' and 'aop-expert'. Mostly leftover from previous workflow.
 - `aop-expert` Handles interactions with the downloaded `.xml` file containing the OECD AOP database. Combined with the `aop-xml` skill, it gives a brief overview of the contents along with instructions on how to traverse the database and do some basic analysis on it.
 - `jsonl-cleaner` Takes a raw RAG ingestion stream and cleans it up in ways that a pure Python script would have trouble with (e.g. determining if a chunk contains useful content, fixing grammatical errors, and repairing boundaries across chunks)
 - `wiki-expert` Contains high-level overview information about the wiki structure. This agent is used in all nodes relating to the wiki and is meant to be used in conjunction with any of the wiki skills.
 
 #### Skills
 
-- `admet-ai-scoring`
-- `admet-secondary-scoring`
-- `confidence-scoring`
-- `mie-identification`
-- `similarity-scoring`
+- `admet-ai-scoring` Predicts core ADMET properties for a molecule and identifies likely targets and signals used for MIE prediction.
+- `admet-secondary-scoring` Provides secondary scoring to 'admet-ai-scoring' to catch any additional liabilities or interpretations that may be missed.
+- `confidence-scoring` Computes confidence metrics for pathway steps.
+- `mie-identification` Identifies potential MIEs for a molecule based on ADMET scores by connecting endpoints to MIEs in the AOP database.
+- `similarity-scoring` Analyzes the similarity of ADMET scores between molecules
 - `aop-xml` Meant to be used by the `aop-expert` agent. Contains information that is more procedural while the agent contains information that is more general.
 - `wiki-read` Contains information about the wiki structure as well as procedures for searching the wiki given a query.
 - `wiki-ingest` Explains the kinds of information that are meant to be stored in the wiki along with details about claim extraction and citation generation.
@@ -210,8 +261,8 @@ Contains agents, skills, scripts, and plugins to support all opencode-centric ag
 
 Contains LangGraph workflows meant for more structured agentic execution.
 
-- `aop_wiki_api`
-- `aop-prediction`
+- `aop_wiki_api` Accesses the AOP Wiki for use in AOP prediction
+- `aop-prediction` Obtains chemical from user and performs ADMET analysis, similarity scoring, candidate generation, read across, and AOP prediction
 - `multi-agent-researcher`
 - `rag-ingest` Handles the entire pipeline from PDF -> LightRAG ingestion and verified wiki edits
 

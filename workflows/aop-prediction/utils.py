@@ -7,6 +7,10 @@ from typing import Any, Dict, List, Optional, Type
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel
+from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv(Path(__file__).resolve().parent.parent / ".env", override=False)
 
 # Cache configuration
 CACHE_ENABLED = os.environ.get("ENABLE_CACHE", "true").lower() == "true"

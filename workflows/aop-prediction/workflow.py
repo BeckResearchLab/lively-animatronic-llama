@@ -17,19 +17,19 @@ import json
 import os
 import re
 import sys
-import time
 from pathlib import Path
+from copy import copy
+sys.path.insert(0, str(Path(__file__).parent))
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+import time
 from typing import Any, Dict, List, Optional, TypedDict, Type
 
 import numpy as np
 from pydantic import BaseModel, Field
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
 
-try:
-    from workflow1.utils import WorkflowUtils  # type: ignore
-except Exception:
-    WorkflowUtils = None  # type: ignore
+from utils import WorkflowUtils
 
 try:
     from workflows.config import config  # type: ignore
@@ -41,6 +41,40 @@ try:
 except Exception:
     enrich_read_across_state = None  # type: ignore
     summarize_read_across = None  # type: ignore
+
+def safe_json_dumps(obj, indent=None):
+    """Safely serialize objects to JSON, handling circular references."""
+    seen_objects = set()
+    
+    def _convert(obj):
+        if isinstance(obj, (str, int, float, bool)) or obj is None:
+            return obj
+
+        obj_id = id(obj)
+        if obj_id in seen_objects:
+            return "[Circular Reference]"
+        
+        seen_objects.add(obj_id)
+        
+        try:
+            if isinstance(obj, dict):
+                result = {}
+                for key, value in obj.items():
+                    result[key] = _convert(value)
+                return result
+            elif isinstance(obj, (list, tuple)):
+                result = []
+                for item in obj:
+                    result.append(_convert(item))
+                return result
+            else:
+                return str(obj)
+        finally:
+            # Remove the object from seen when we're done processing it
+            # to allow the same object to appear in different branches
+            seen_objects.discard(obj_id)
+    
+    return json.dumps(_convert(obj), indent=indent)
 
 ROOT = Path(".")
 AGENT_PATHS = {
@@ -57,8 +91,8 @@ SIMILARITY_THRESHOLD = float(
         str(getattr(config, "similarity_threshold", 0.0) if config is not None else 0.0),
     )
 )
-MIN_PATHWAY_LENGTH = int(os.environ.get("AOP_MIN_PATHWAY_LENGTH", "5"))
-MIN_KE_STEPS = int(os.environ.get("AOP_MIN_KE_STEPS", "3"))
+MIN_PATHWAY_LENGTH = int(os.environ.get("AOP_MIN_PATHWAY_LENGTH", "2"))
+MIN_KE_STEPS = int(os.environ.get("AOP_MIN_KE_STEPS", "1"))
 VERBOSE = os.environ.get("AOP_VERBOSE", "false").lower() == "true"
 OUTPUT_DIR = Path(os.environ.get("AOP_OUTPUT_DIR", "outputs"))
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -308,16 +342,21 @@ def pathway_generic_score(pathway: List[Dict[str, Any]]) -> float:
     diversity = len(pathway_token_set(pathway)) / max(sum(len(e.split()) for e in events), 1)
     return float(np.clip(0.55 * (generic_hits / max(len(events), 1)) + 0.45 * (1.0 - diversity), 0.0, 1.0))
 
-def pathway_depth_ok(pathway: List[Dict[str, Any]]) -> bool:
-    # More lenient criteria for pathway depth
-    # Allow AO if we have at least 2 steps and 1 KE, or 3 steps total
-    pathway_len = len(pathway)
-    ke_count = sum(1 for s in pathway if isinstance(s, dict) and str(s.get("type", "")).upper() == "KE")
+def _pathway_has_minimum_depth(pathway: List[Dict[str, Any]]) -> bool:
+    pathway_len = len(pathway or [])
+    ke_count = sum(1 for s in pathway or [] if isinstance(s, dict) and str(s.get("type", "")).upper() == "KE")
+    mie_count = sum(1 for s in pathway or [] if isinstance(s, dict) and str(s.get("type", "")).upper() == "MIE")
     
-    # Accept if we have sufficient pathway length OR sufficient KE steps
-    return (pathway_len >= MIN_PATHWAY_LENGTH and ke_count >= MIN_KE_STEPS) or \
-           (pathway_len >= 3) or \
-           (ke_count >= 1 and pathway_len >= 2)
+    # Allow progression when we have at least 1 MIE and 1 KE, or when we have enough total steps
+    # This prevents infinite loops while still ensuring pathway depth
+    if mie_count >= 1 and ke_count >= 1:
+        return True
+    
+    return pathway_len >= MIN_PATHWAY_LENGTH and ke_count >= MIN_KE_STEPS
+
+def pathway_depth_ok(pathway: List[Dict[str, Any]]) -> bool:
+    # Require a genuinely non-shallow pathway before allowing finalize / terminal AO logic.
+    return _pathway_has_minimum_depth(pathway)
 
 def pathway_review(state: AOPState, pathway: Optional[List[Dict[str, Any]]] = None, memory: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
     pathway = state.get("AOP_pathways", []) if pathway is None else pathway
@@ -327,15 +366,16 @@ def pathway_review(state: AOPState, pathway: Optional[List[Dict[str, Any]]] = No
     uniqueness = pathway_uniqueness_score(pathway, memory)
     generic = pathway_generic_score(pathway)
     ke_count = sum(1 for s in pathway if isinstance(s, dict) and str(s.get("type", "")).upper() == "KE")
+    no_progress_cycles = int(state.get("no_progress_cycles", 0) or 0)
 
-    should_expand = (
-        len(pathway) < MIN_PATHWAY_LENGTH
-        or ke_count < MIN_KE_STEPS
-        or overlap >= TEMPLATE_OVERLAP_THRESHOLD
-        or generic >= GENERIC_SCORE_THRESHOLD
-    )
+    shallow = len(pathway) < MIN_PATHWAY_LENGTH or ke_count < MIN_KE_STEPS
+    stuck = no_progress_cycles >= NO_PROGRESS_LIMIT or pathway_signature(pathway) == state.get("previous_pathway_signature", "")
 
-    if len(pathway) < MIN_PATHWAY_LENGTH:
+    should_expand = ((shallow and not stuck) or overlap >= TEMPLATE_OVERLAP_THRESHOLD or generic >= GENERIC_SCORE_THRESHOLD)
+
+    if stuck:
+        reason = "No meaningful pathway progress; stopping to avoid critic loop"
+    elif len(pathway) < MIN_PATHWAY_LENGTH:
         reason = "Pathway is still too shallow"
     elif ke_count < MIN_KE_STEPS:
         reason = "Pathway is still too shallow"
@@ -426,6 +466,61 @@ def compute_final_confidence(metrics: Dict[str, float]) -> float:
     )
     return float(np.clip(score, 0.0, 1.0))
 
+def _trim_to_one_new_step(previous_pathway, new_pathway):
+    prev = list(previous_pathway or []) if isinstance(previous_pathway, list) else []
+    if not isinstance(new_pathway, list) or not new_pathway:
+        return prev
+
+    # If the model returned only the next step, append it instead of replacing the path.
+    if len(new_pathway) <= len(prev):
+        next_step = new_pathway[-1]
+        if not prev or _normalize_step_signature(prev[-1]) != _normalize_step_signature(next_step):
+            return prev + [next_step]
+        return prev
+
+    # If the model returned a longer pathway, keep only the next new step.
+    next_step = new_pathway[len(prev)]
+    return prev + [next_step]
+
+def _normalize_step_signature(step):
+    if not isinstance(step, dict):
+        return ""
+    typ = str(step.get("type", "")).upper().strip()
+    event = str(step.get("event") or step.get("name") or "").lower().strip()
+    event = re.sub(r"[^a-z0-9]+", " ", event)
+    event = re.sub(r"\s+", " ", event).strip()
+    return f"{typ}:{event}"
+
+def _prune_pathway_steps(pathway):
+    if not isinstance(pathway, list):
+        return []
+
+    pruned = []
+    seen = set()
+    mie_kept = False
+
+    for step in pathway:
+        if not isinstance(step, dict):
+            continue
+
+        step_type = str(step.get("type", "")).upper().strip()
+        event = str(step.get("event") or step.get("name") or step.get("description") or "").strip().lower()
+        event = re.sub(r"[^a-z0-9]+", " ", event)
+        event = re.sub(r"\s+", " ", event).strip()
+
+        sig = (step_type, event)
+        if sig in seen:
+            continue
+
+        if step_type == "MIE":
+            if mie_kept:
+                continue
+            mie_kept = True
+
+        seen.add(sig)
+        pruned.append(step)
+
+    return pruned
 
 # -------------------------
 # Agent runtime
@@ -494,6 +589,7 @@ def initial_state() -> AOPState:
         "no_candidate_cycles": 0,
         "previous_pathway_signature": "",
         "no_progress_cycles": 0,
+        "last_critic_pathway_signature": "",
     }
 
 
@@ -598,16 +694,16 @@ def candidate_gen_node(state: AOPState) -> AOPState:
 
     prompt = (
         f"Chemical: {chem}\n"
-        f"Current pathway: {json.dumps(state.get('AOP_pathways', []), indent=2)}\n"
-        f"MIEs: {json.dumps(state.get('MIEs', []), indent=2)}\n"
-        f"Target profile: {json.dumps(target_profile, indent=2)}\n"
-        f"Relevant properties: {json.dumps(props, indent=2)}\n"
-        f"Known liabilities: {json.dumps(liabilities, indent=2)}\n"
+        f"Current pathway: {safe_json_dumps(state.get('AOP_pathways', []), indent=2)}\n"
+        f"MIEs: {safe_json_dumps(state.get('MIEs', []), indent=2)}\n"
+        f"Target profile: {safe_json_dumps(target_profile, indent=2)}\n"
+        f"Relevant properties: {safe_json_dumps(props, indent=2)}\n"
+        f"Known liabilities: {safe_json_dumps(liabilities, indent=2)}\n"
         f"Read-across summary: {read_across_summary or 'none'}\n"
-        f"Read-across analogs: {json.dumps(read_across_analogs[:3], indent=2)}\n"
-        f"Read-across endpoints: {json.dumps(read_across_endpoints[:10], indent=2)}\n"
-        f"Read-across evidence: {json.dumps(read_across_evidence[:3], indent=2)}\n"
-        f"Pathway review: {json.dumps(review, indent=2)}\n\n"
+        f"Read-across analogs: {safe_json_dumps(read_across_analogs[:3], indent=2)}\n"
+        f"Read-across endpoints: {safe_json_dumps(read_across_endpoints[:10], indent=2)}\n"
+        f"Read-across evidence: {safe_json_dumps(read_across_evidence[:3], indent=2)}\n"
+        f"Pathway review: {safe_json_dumps(review, indent=2)}\n\n"
         "Return ONLY structured JSON matching this schema:\n"
         '{"candidates":[{"name":"...","type":"KE|AO","confidence":0.0,"reasoning":"..."}]}\n\n'
         "Use only your provided databases and skills. Do not add prose. "
@@ -632,6 +728,7 @@ def candidate_gen_node(state: AOPState) -> AOPState:
         state["candidates"] = []
         state["similarity_scores"] = []
         state["no_candidate_cycles"] = state.get("no_candidate_cycles", 0) + 1
+        state["no_progress_cycles"] = state.get("no_progress_cycles", 0) + 1
         state["next_action"] = "expand"
         state["termination_reason"] = "AOP-Expert returned no supported downstream KE/AO candidates"
         add_provenance(state, "candidate_gen", "aop_expert", "No supported downstream KE/AO candidates returned; read-across retained as supporting evidence only", source_hint=state.get("chemical", ""), read_across_summary=read_across_summary)
@@ -685,8 +782,31 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     candidates = state.get("candidates", [])
     review = pathway_review(state)
     read_across = state.get("data", {}).get("read_across", {}) if isinstance(state.get("data", {}), dict) else {}
+    previous_pathway = state.get("AOP_pathways", [])
+
+    if state.get("no_progress_cycles", 0) >= NO_PROGRESS_LIMIT:
+        state["is_ao_reached"] = False
+        state["next_action"] = "terminate"
+        state["termination_reason"] = state.get("termination_reason") or "No meaningful pathway progress; terminating to avoid critic loop"
+        add_provenance(state, "expand", "aop_constructor", "Forced terminate after repeated no-progress cycles", pathway_review=review)
+        return state
     
-    # Check if candidates are just placeholders or very low confidence
+    # If pathway is empty but we have MIEs, add the highest confidence MIE as the first step
+    if not previous_pathway and state.get("MIEs"):
+        mies = state["MIEs"]
+        if isinstance(mies, list) and mies:
+            # Sort by confidence and pick the highest
+            sorted_mies = sorted(mies, key=lambda x: float(x.get("confidence", 0.0)), reverse=True)
+            top_mie = sorted_mies[0]
+            previous_pathway = [{
+                "event": top_mie.get("name", "Unknown MIE"),
+                "type": "MIE",
+                "score": float(top_mie.get("confidence", 0.0)),
+                "provenance": ["MIEs"],
+                "reasoning": top_mie.get("reasoning", "")
+            }]
+            state["AOP_pathways"] = previous_pathway
+
     if not candidates or all(_is_placeholder_candidate(c) for c in candidates):
         state["is_ao_reached"] = False
         state["next_action"] = "candidate_gen" if state.get("no_candidate_cycles", 0) < NO_CANDIDATE_LIMIT else "terminate"
@@ -694,11 +814,9 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
         state["iteration_count"] = state.get("iteration_count", 0) + 1
         add_provenance(state, "expand", "aop_constructor", "No candidates available; returning to AOP-Expert for another evidence pass", pathway_review=review)
         return state
-    
-    # If candidates have very low confidence, try to generate better ones
+
     avg_confidence = sum(float(c.get("confidence", 0.0)) for c in candidates) / max(len(candidates), 1)
     if avg_confidence < 0.2:
-        # Try to regenerate candidates with more specific prompting
         state["no_candidate_cycles"] = state.get("no_candidate_cycles", 0) + 1
         state["next_action"] = "candidate_gen"
         state["termination_reason"] = "Low confidence candidates generated, regenerating"
@@ -708,98 +826,84 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
     metrics = calculate_confidence_metrics(state)
     prompt = (
         f"Chemical: {state.get('chemical', '')}\n"
-        f"Current pathway: {json.dumps(state.get('AOP_pathways', []), indent=2)}\n"
-        f"Candidates: {json.dumps(state.get('candidates', []), indent=2)}\n"
-        f"Similarity scores: {json.dumps(state.get('similarity_scores', []), indent=2)}\n"
-        f"Read-across evidence: {json.dumps(read_across, indent=2)}\n"
-        f"MIEs: {json.dumps(state.get('MIEs', []), indent=2)}\n"
-        f"Target profile: {json.dumps(state.get('data', {}).get('target_profile', {}), indent=2)}\n"
+        f"Current pathway: {safe_json_dumps(previous_pathway, indent=2)}\n"
+        f"Candidates: {safe_json_dumps(state.get('candidates', []), indent=2)}\n"
+        f"Similarity scores: {safe_json_dumps(state.get('similarity_scores', []), indent=2)}\n"
+        f"Read-across evidence: {safe_json_dumps(read_across, indent=2)}\n"
+        f"MIEs: {safe_json_dumps(state.get('MIEs', []), indent=2)}\n"
+        f"Target profile: {safe_json_dumps(state.get('data', {}).get('target_profile', {}), indent=2)}\n"
         f"Iteration: {state.get('iteration_count', 0)}\n"
         f"Max iterations: {MAX_ITERATIONS}\n"
-        f"Rejected candidates so far: {json.dumps(state.get('rejected_candidates', []), indent=2)}\n"
-        f"Pathway review: {json.dumps(review, indent=2)}\n\n"
-        f"Calculated quantitative metrics:\n{json.dumps(metrics, indent=2)}\n\n"
+        f"Rejected candidates so far: {safe_json_dumps(state.get('rejected_candidates', []), indent=2)}\n"
+        f"Pathway review: {safe_json_dumps(review, indent=2)}\n\n"
+        f"Calculated quantitative metrics:\n{safe_json_dumps(metrics, indent=2)}\n\n"
         "Return ONLY structured JSON matching this schema:\n"
         '{"selected_candidate":{"name":"...","type":"KE|AO","confidence":0.0,"similarity":0.0,"reasoning":""},"updated_pathway":[{"event":"...","type":"MIE|KE|AO","score":0.0,"provenance":[]}],"uncertainty":0.0,"decision_risk":"low|medium|high","next_action":"expand|prune|branch|terminate","is_ao_reached":false,"termination_reason":"","decision_reason":"","rejected_candidates":[]}\n\n'
-        "Use the provided metrics to guide the decision, but let the orchestrator compute the final confidence locally. "
+        "IMPORTANT: Return only the single next biologically plausible pathway step. Do not return the full pathway. "
         "Prefer chemical-specific evidence, but avoid premature termination."
     )
+
     payload = as_dict(run_agent("aop_constructor", prompt, PathwayDecision))
     if not isinstance(payload, dict):
         raise RuntimeError(f"aop_constructor returned unexpected output: {payload}")
     decision = PathwayDecision.model_validate(payload)
 
+    prev_pathway_list = previous_pathway if isinstance(previous_pathway, list) else []
+    prev_step = prev_pathway_list[-1] if prev_pathway_list else None
+    updated_pathway = decision.updated_pathway or []
+    new_step = updated_pathway[-1] if updated_pathway else None
+
+    if isinstance(prev_step, dict) and isinstance(new_step, dict):
+        prev_sig = _normalize_step_signature(prev_step)
+        new_sig = _normalize_step_signature(new_step)
+        if prev_sig == new_sig:
+            state["no_progress_cycles"] = state.get("no_progress_cycles", 0) + 1
+            state["next_action"] = "expand"
+            state["termination_reason"] = "Duplicate pathway step proposed; forcing expansion"
+            return state
+
+    prev_pathway = previous_pathway if isinstance(previous_pathway, list) else []
+    if not isinstance(updated_pathway, list):
+        updated_pathway = []
+
+    updated_pathway = _prune_pathway_steps(updated_pathway)
+    updated_pathway = _trim_to_one_new_step(prev_pathway, updated_pathway)
+
+    state["current_pathway_signature"] = pathway_signature(state["AOP_pathways"])
+
+    ao_index = next((i for i, s in enumerate(updated_pathway) if isinstance(s, dict) and str(s.get("type", "")).upper() == "AO"), None)
     has_aop_evidence = any(
-        isinstance(step, dict)
-        and str(step.get("source", step.get("provenance_source", ""))).lower() == "aop_expert"
-        for step in decision.updated_pathway
+        isinstance(step, dict) and str(step.get("source", step.get("provenance_source", ""))).lower() == "aop_expert"
+        for step in updated_pathway
     ) or any(
         isinstance(candidate, dict) and str(candidate.get("source", "")).lower() == "aop_expert"
         for candidate in candidates
     )
-    ao_index = next(
-        (i for i, s in enumerate(decision.updated_pathway)
-         if isinstance(s, dict) and str(s.get("type", "")).upper() == "AO"),
-        None,
-    )
-    if ao_index is not None and has_aop_evidence:
-        decision.updated_pathway = decision.updated_pathway[: ao_index + 1]
+
+    pathway_ready_for_ao = pathway_depth_ok(prev_pathway)
+
+    if ao_index is not None and has_aop_evidence and pathway_ready_for_ao:
+        updated_pathway = updated_pathway[: ao_index + 1]
         decision.is_ao_reached = True
         decision.next_action = "terminate"
-        decision.termination_reason = decision.termination_reason or "AO reached from AOP-Expert-supported pathway"
-        
-        # If we have a reasonable pathway and confidence, accept the AO
-        if len(decision.updated_pathway) >= 3 and state.get("confidence_score", 0) > 0.5:
-            decision.is_ao_reached = True
-            decision.next_action = "terminate"
-            decision.termination_reason = "AO reached with sufficient evidence"
     elif ao_index is not None:
-        decision.updated_pathway = [
-            step for step in decision.updated_pathway
-            if not (isinstance(step, dict) and str(step.get("type", "")).upper() == "AO")
-        ]
+        updated_pathway = [s for s in updated_pathway if not (isinstance(s, dict) and str(s.get("type", "")).upper() == "AO")]
         decision.is_ao_reached = False
         decision.next_action = "expand"
-        decision.termination_reason = "AO proposed without AOP-Expert-supported pathway evidence"
+        decision.termination_reason = decision.termination_reason or "AO proposed prematurely; pathway is still too shallow"
 
-    if decision.is_ao_reached and not pathway_depth_ok(decision.updated_pathway):
-        # Be more lenient about pathway depth when confidence is high
-        confidence_score = state.get("confidence_score", 0)
-        if confidence_score > 0.6 and len(decision.updated_pathway) >= 2:
-            # Accept AO even if pathway is slightly short but confidence is high
-            pass
-        else:
-            decision.is_ao_reached = False
-            decision.next_action = "expand"
-            decision.termination_reason = "Outcome proposed before minimum pathway depth was reached"
-            decision.updated_pathway = [s for s in decision.updated_pathway if not (isinstance(s, dict) and str(s.get("type", "")).upper() == "AO")] or state.get("AOP_pathways", [])
+    state["AOP_pathways"] = updated_pathway
 
-    if decision.next_action == "terminate" and review.get("should_expand"):
-        decision.next_action = "expand"
-        decision.termination_reason = review.get("reason") or "Forced expansion: pathway still too shallow for termination"
-
-    state["AOP_pathways"] = decision.updated_pathway
     current_sig = pathway_signature(state["AOP_pathways"])
     if current_sig == state.get("previous_pathway_signature", ""):
         state["no_progress_cycles"] = state.get("no_progress_cycles", 0) + 1
     else:
         state["no_progress_cycles"] = 0
         state["previous_pathway_signature"] = current_sig
-    
-    # Print pathway information
+
     print(f"\n{'='*60}")
     print(f"PATHWAY EXPANSION RESULTS FOR: {state.get('chemical', '')}")
     print(f"{'='*60}")
-    print(f"\nCurrent AOP Pathway:")
-    for i, step in enumerate(state["AOP_pathways"], 1):
-        event_type = step.get('type', 'Unknown')
-        event_desc = step.get('description', 'No description')
-        event_score = step.get('score', 0.0)
-        print(f"  {i}. {event_type}: {event_desc}")
-        print(f"     Score: {event_score}")
-        if event_type == 'MIE':
-            print(f"     MIE: {step.get('event', 'Unknown')}")
-    
     if decision.selected_candidate:
         print(f"\nSelected candidate for next step:")
         print(f"  Name: {decision.selected_candidate.name}")
@@ -812,7 +916,7 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
         state["next_action"] = "terminate"
         state["termination_reason"] = "Pathway stopped changing"
 
-    local_breakdown = build_local_confidence_breakdown(state, decision.updated_pathway)
+    local_breakdown = build_local_confidence_breakdown(state, state["AOP_pathways"])
     state["confidence_score"] = local_breakdown["local_confidence_score"]
     state["confidence_breakdown"] = local_breakdown
     state["uncertainty"] = float(np.clip(1.0 - state["confidence_score"], 0.0, 1.0))
@@ -822,26 +926,13 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
         state["next_action"] = decision.next_action if not review.get("should_expand") else "expand"
     state["decision_reason"] = decision.decision_reason or review.get("reason", "")
     state["rejected_candidates"] = decision.rejected_candidates or state.get("rejected_candidates", [])
-
-    last_is_ao = bool(
-        decision.updated_pathway
-        and isinstance(decision.updated_pathway[-1], dict)
-        and str(decision.updated_pathway[-1].get("type", "")).upper() == "AO"
-        and has_aop_evidence
+    state["is_ao_reached"] = bool(
+        decision.is_ao_reached
+        and pathway_depth_ok(state["AOP_pathways"])
+        or (state["AOP_pathways"] and str(state["AOP_pathways"][-1].get("type", "")).upper() == "AO" and pathway_depth_ok(state["AOP_pathways"]))
     )
-    state["is_ao_reached"] = bool(decision.is_ao_reached or last_is_ao)
-    if state["is_ao_reached"] and not pathway_depth_ok(state.get("AOP_pathways", [])):
-        # Be more lenient about pathway depth when confidence is high
-        confidence_score = state.get("confidence_score", 0)
-        if confidence_score > 0.6 and len(state.get("AOP_pathways", [])) >= 2:
-            # Accept AO even if pathway is slightly short but confidence is high
-            pass
-        else:
-            state["is_ao_reached"] = False
-            state["next_action"] = "expand"
-            state["termination_reason"] = "Outcome rejected because minimum pathway depth was not met"
-    elif not force_terminate:
-        state["termination_reason"] = decision.termination_reason or review.get("reason", "") or ("Final pathway state reached" if state["is_ao_reached"] else "")
+    if state["is_ao_reached"]:
+        state["next_action"] = "terminate"
 
     if decision.selected_candidate:
         add_provenance(
@@ -858,19 +949,23 @@ def expand_and_prune_node(state: AOPState) -> AOPState:
         add_provenance(state, "expand", "internal_critic", "Forced expansion due to generic or template-like pathway", pathway_review=review)
 
     state["current_node_type"] = (
-        decision.updated_pathway[-1].get("type", state.get("current_node_type", "MIE"))
-        if decision.updated_pathway and isinstance(decision.updated_pathway[-1], dict)
+        state["AOP_pathways"][-1].get("type", state.get("current_node_type", "MIE"))
+        if state["AOP_pathways"] and isinstance(state["AOP_pathways"][-1], dict)
         else state.get("current_node_type", "MIE")
     )
     state["iteration_count"] = state.get("iteration_count", 0) + 1
-    state["previous_pathway_length"] = len(decision.updated_pathway)
+    state["previous_pathway_length"] = len(state["AOP_pathways"])
     state["messages"].append({"role": "agent", "agent": "aop_constructor", "content": payload})
     return state
-
 
 def critic_review(state: AOPState, pathway: Optional[List[Dict[str, Any]]] = None) -> Dict[str, Any]:
     review = pathway_review(state, pathway)
     pathway = state.get("AOP_pathways", []) if pathway is None else pathway
+
+    current_sig = pathway_signature(pathway)
+    last_sig = state.get("last_critic_pathway_signature", "")
+    no_progress = bool(pathway) and current_sig == last_sig
+
     flags = {
         "template_overlap": float(review.get("template_overlap", 0.0)),
         "pathway_uniqueness": float(review.get("pathway_uniqueness", 0.0)),
@@ -878,6 +973,13 @@ def critic_review(state: AOPState, pathway: Optional[List[Dict[str, Any]]] = Non
         "template_reuse": False,
         "premature_termination": False,
     }
+
+    events = pathway_events(pathway)
+    if len(events) != len(set(events)):
+        flags["template_reuse"] = True
+        next_action = "expand"
+        termination_reason = "Duplicate pathway step detected"
+
     if state.get("next_action") == "terminate" and pathway:
         flags["premature_termination"] = True
     if flags["template_overlap"] >= TEMPLATE_OVERLAP_THRESHOLD and len(pathway) >= max(3, MIN_PATHWAY_LENGTH - 1):
@@ -885,15 +987,30 @@ def critic_review(state: AOPState, pathway: Optional[List[Dict[str, Any]]] = Non
 
     next_action = state.get("next_action", "expand")
     termination_reason = state.get("termination_reason", "")
+
     if not pathway:
+        if state.get("no_candidate_cycles", 0) >= NO_CANDIDATE_LIMIT:
+            next_action = "terminate"
+            termination_reason = "No AOP pathway has been established; stopping to avoid critic loop."
+        else:
+            next_action = "expand"
+            termination_reason = "No AOP pathway has been established; additional evidence generation is required."
+
+    elif any(isinstance(s, dict) and str(s.get("type", "")).upper() == "AO" for s in pathway) and not pathway_depth_ok(pathway):
         next_action = "expand"
-        termination_reason = "No AOP pathway has been established; additional evidence generation is required."
+        termination_reason = "AO reached prematurely; pathway is still too shallow."
+
     elif flags["premature_termination"]:
         next_action = "expand"
         termination_reason = review.get("reason") or "Critic forced expansion: pathway is not ready to terminate"
+
     elif flags["template_reuse"]:
         next_action = "expand"
         termination_reason = "Critic forced expansion: pathway template reuse is too high"
+
+    elif no_progress and state.get("no_progress_cycles", 0) >= NO_PROGRESS_LIMIT:
+        next_action = "terminate"
+        termination_reason = "No meaningful pathway progress; stopping to avoid critic loop."
 
     return {
         "critic_flags": flags,
@@ -902,7 +1019,6 @@ def critic_review(state: AOPState, pathway: Optional[List[Dict[str, Any]]] = Non
         "should_expand": review.get("should_expand", False),
         "reason": review.get("reason", ""),
     }
-
 
 def critic_node(state: AOPState) -> AOPState:
     review = critic_review(state, state.get("AOP_pathways", []))
@@ -935,6 +1051,8 @@ def critic_node(state: AOPState) -> AOPState:
         critic_flags=state["critic_flags"],
         critic_reason=state["critic_reason"],
     )
+    state["last_critic_pathway_signature"] = pathway_signature(state.get("AOP_pathways", []))
+
     return state
 
 
@@ -967,6 +1085,13 @@ def save_results_to_files(result: AOPState):
         "critic_flags": result.get("critic_flags", {}),
         "critic_reason": result.get("critic_reason", ""),
     }
+
+    pathway = result.get("AOP_pathways", [])
+    if result.get("is_ao_reached") and not pathway_depth_ok(pathway):
+        out["final_ao"] = False
+        out["next_action"] = "expand"
+        out["termination_reason"] = "AO proposed prematurely; pathway is still too shallow"
+
     Path("aop_results.json").write_text(json.dumps(out, indent=2))
     pathway = result.get("AOP_pathways", [])
     if pathway:
@@ -980,8 +1105,3 @@ def save_results_to_files(result: AOPState):
             "termination_reason": result.get("termination_reason", ""),
             "timestamp": time.time(),
         })
-
-
-# NOTE: build_workflow() is now implemented in orchestrator.py as AOPOrchestrator._build_graph()
-# NOTE: main() is now implemented in orchestrator.py as AOPOrchestrator.run()
-# NOTE: Use orchestrator.py for the main entry point
