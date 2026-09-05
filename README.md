@@ -9,35 +9,63 @@ This project provides a computational workflow for predicting Adverse Outcome Pa
 
 The system combines literature review, in silico toxicology, and adverse-outcome pathway analysis to provide a workflow for computational toxicology assessment.
 
-## System Architecture
-
 ## Wiki Seeding
 
 ### Overview
-Wiki seeding establishes a foundational knowledge base with structured toxicology information organized for Docusaurus documentation. This creates a comprehensive reference system to be more fully completed by the RAG ingest.
 
-### Prerequisites
+Wiki seeding establishes a foundational knowledge base containing structured toxicology information organized for Docusaurus. The resulting pages provide a reference framework that can be expanded and enriched during RAG ingestion.
 
-### Workflows 
-- wiki_seeding:
+### Workflow Components
 
-### Process Flow
-The seeding process follows this order:
+1. **Supervisor Node** (`workflow.py`)
+   - Orchestrates the entire workflow
+   - Selects the next step
+- Tracks completion and execution status
 
-1. **Create Docusaurus structure**: Sets up the folder structure and category files
-2. **Create information pages**: Creates initial governance and quality pages
-3. **Create core pages**: Seeds the main content including:
-   - Cross-cutting concepts
-   - Core methods and frameworks
-   - Major datasets and assay families
-   - Sentinel chemicals and endpoints
-   - Workflows
-4. **Create index pages**: Creates master index pages for navigation
-5. **Verify pages**: Validates that all pages meet the minimum standard
-6. **Verify wiki**: Runs completion checks to ensure the wiki is ready
+2. **Docusaurus Node** (`workflow.py`)
+   - Creates Docusaurus configuration files
+   - Sets up folder structure and category files
+   - Generates `intro.md`, `docusarus.config.ts`, `package.json`, `sidebar.ts`
 
-### Output
-The wiki is created in the `./wiki/docs/` directory with:
+3. **Info Pages Node** (`info_node.py`)
+   - Creates governance and operational pages
+   - Handles workflow, agent operations, and quality pages
+   - Uses `info_prompt.md` for guidance
+
+4. **Core Pages Node** (`core_node.py`)
+   - Create content pages for concepts, chemicals, biology, and related topics.
+   - Performs literature research through Europe PMC (`europepmc.py`)
+   - Uses `core_prompt.md` for guidance
+
+5. **Index Pages Node** (`workflow.py`) 
+   - Creates navigation pages in `01-indices` 
+   - Links to canonical content pages
+
+### Reference Files
+
+#### Prompts
+
+- `docusaurus_prompt.md`: Instructions for Docusaurus structure
+- `info_prompt.md`: Guidelines for info page creation
+- `core_prompt.md`: Instructions for core page creation
+- `supervisor_prompt.md`: Decision-making rules for supervisor
+
+#### Reference Documentation
+- `specs.md`: Structural rules for all wiki pages
+- `categories.md`: Descriptions of each category
+- `wiki-seed-overview.md`: High-level overview of the process
+- `wiki-seed-outline.md`: Detailed outline of all pages
+- `wiki-seed-checklist.md`: Completion checklist
+
+#### Scripts
+- `workflow.py`: Main workflow orchestrator with supervisor logic
+- `info_node.py`: Info pages creation workflow
+- `core_node.py`: Core pages creation workflow
+- `helper_functions.py`L Shared utilities and file operations
+- `europepmc.py`: Europe PMC literature search 
+
+### Expected Output
+The wiki is created in`./wiki/docs/` and includes:
 - Lowercase kebab-case folders and filenames
 - Markdown or MDX pages
 - `_category_.json` files for Docusaurus
@@ -45,11 +73,28 @@ The wiki is created in the `./wiki/docs/` directory with:
 - Relative links between pages
 - Mermaid support for diagrams
 
-### Running
-To run the wiki seeding process:
+### Prerequisites
+To run this code, 
+- Python 3.10+
+- The installation of langgraph and langchain
 
+The code uses ChatOpenAI
 ```bash
-python wiki_seed_agents_europepmc.py
+pip install -U langchain langchain-openai
+```
+An API key for the configured OpenAI-compatible model
+
+Create a local `.env` file in the project root:
+
+```dotenv
+OPENAI_API_KEY=your_api_key_here
+OPENAI_MODEL=your_model_name
+```
+The model name is not a credential, but storing it in an environment variable makes it easy to change without modifying code. 
+
+Install the project dependencies, activate the environment, configure `.env`, and run:
+```bash
+python workflow.py
 ```
 
 ## RAG ingestion
